@@ -1,0 +1,66 @@
+{
+  "runId": "c2-requestid-100k-clean",
+  "mode": "requestid",
+  "nonceBackend": "redis",
+  "vizEnabled": false,
+  "label": "nonce-store growth from requests rejected at the request-ID check",
+  "createdAt": "2026-10-17T21:57:01.193Z",
+  "nonceTtlSeconds": 86400,
+  "duration_ns": "208648364200",
+  "durationSeconds": 208.6483642,
+  "durationVsTtl": 0.002414911622685185,
+  "baselineUsedMemoryBytes": 1046880,
+  "baselineNonceKeys": 0,
+  "snapshots": [
+    {
+      "targetKeys": 0,
+      "measuredKeys": 0,
+      "usedMemoryBytes": 1046880,
+      "baselineUsedMemoryBytes": 1046880,
+      "deltaBytes": 0,
+      "bytesPerKeyAboveBaseline": null,
+      "elapsed_ns": "0",
+      "ttlSeconds": 86400
+    },
+    {
+      "targetKeys": 1000,
+      "measuredKeys": 1000,
+      "usedMemoryBytes": 1207200,
+      "baselineUsedMemoryBytes": 1046880,
+      "deltaBytes": 160320,
+      "bytesPerKeyAboveBaseline": 160.32,
+      "elapsed_ns": "2824209600",
+      "elapsedSeconds": 2.8242096,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.00003268761111111111
+    },
+    {
+      "targetKeys": 10000,
+      "measuredKeys": 10000,
+      "usedMemoryBytes": 2748960,
+      "baselineUsedMemoryBytes": 1046880,
+      "deltaBytes": 1702080,
+      "bytesPerKeyAboveBaseline": 170.208,
+      "elapsed_ns": "22523927300",
+      "elapsedSeconds": 22.5239273,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.00026069360300925927
+    },
+    {
+      "targetKeys": 100000,
+      "measuredKeys": 100000,
+      "usedMemoryBytes": 17543968,
+      "baselineUsedMemoryBytes": 1046880,
+      "deltaBytes": 16497088,
+      "bytesPerKeyAboveBaseline": 164.97088,
+      "elapsed_ns": "207610616700",
+      "elapsedSeconds": 207.6106167,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.00240290065625
+    }
+  ],
+  "baselineSubtractedSlopeBytesPerKey": 164.97088,
+  "requestRowsCsv": "nonce-memory-requestid-c2-requestid-100k-clean-requests.csv",
+  "controlRowsCsv": "nonce-memory-requestid-c2-requestid-100k-clean-control.csv",
+  "requestCount": 100000
+}

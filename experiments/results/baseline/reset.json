@@ -1,0 +1,21 @@
+{
+    "status":  "RESET",
+    "accounts":  [
+                     {
+                         "user_id":  "anis_101",
+                         "username":  "Anis Ahmed",
+                         "balance":  10000,
+                         "currency":  "BDT",
+                         "created_at":  "2026-09-21 05:30:11"
+                     }
+                 ],
+    "transactions":  [
+
+                     ],
+    "clearedNonceKeys":  [
+
+                         ],
+    "keys":  [
+
+             ]
+}

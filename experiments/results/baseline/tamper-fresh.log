@@ -1,0 +1,11 @@
+[EVE] TAMPERING WITH CAPTURED PACKET
+[EVE] Source payload: /tmp/eve-captured.json
+[EVE] Original amount: 1000
+[EVE] Modified amount: 2000
+[EVE] Signature: UNCHANGED
+[EVE] Preserved signature: da7acac7ed578eb4e2554e7b94c2e45e26f1a5b83226b216ed3bbd7f4799177e
+[EVE] Sending modified packet...
+{
+  "status": "REJECTED",
+  "reason": "SIGNATURE_FAIL"
+}

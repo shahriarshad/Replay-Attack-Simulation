@@ -1,0 +1,18 @@
+[
+    {
+        "body":  {
+                     "amount":  1000,
+                     "status":  "ACCEPTED",
+                     "newBalance":  9000
+                 },
+        "httpStatus":  200
+    },
+    {
+        "body":  {
+                     "amount":  1000,
+                     "status":  "ACCEPTED",
+                     "newBalance":  8000
+                 },
+        "httpStatus":  200
+    }
+]

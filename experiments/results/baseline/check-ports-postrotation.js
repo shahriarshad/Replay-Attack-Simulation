@@ -1,0 +1,3 @@
+const net=require("net"),fs=require("fs"),path=require("path");
+const ports=[3000,3001,6379];
+Promise.all(ports.map(port=>new Promise(resolve=>{const s=net.createConnection({host:"127.0.0.1",port});s.once("connect",()=>{s.destroy();resolve({port,reachable:true})});s.once("error",e=>resolve({port,reachable:false,error:e.message}))}))).then(results=>{const out=path.resolve(process.cwd(),"../experiments/results/baseline/postrotation-port-check.json");fs.writeFileSync(out,JSON.stringify({checkedAt:new Date().toISOString(),results},null,2)+"\n");console.log(JSON.stringify(results))});

@@ -1,0 +1,87 @@
+{
+  "phase": 0,
+  "status": "measured",
+  "environment": "../environment.json",
+  "ports": {
+    "windowsNative": {
+      "3000": "reachable",
+      "3001": "reachable",
+      "6379": "reachable"
+    },
+    "wslToWindowsHealth": "HTTP 200, body OK"
+  },
+  "measuredAnswers": {
+    "parallelIdenticalRequests": {
+      "total": 50,
+      "accepted": 1,
+      "rejected": 49,
+      "reasons": {
+        "NONCE_FAIL": 49
+      },
+      "raw": "parallel-50-responses.json"
+    },
+    "inWindowReplayAfterNonceCrash": {
+      "blocked": true,
+      "reason": "ALREADY_PROCESSED",
+      "raw": "replay-after-nonce-crash.log"
+    },
+    "changedRequestIdWithOldSignature": {
+      "httpStatus": 401,
+      "reason": "SIGNATURE_FAIL",
+      "raw": "../measured-cases.json"
+    },
+    "uniqueNonceGrowth": {
+      "requests": 10000,
+      "uniqueNonces": 10000,
+      "redisCompatibleKeys": 10000,
+      "usedMemoryBytes": 2519240,
+      "usedMemoryHuman": "2.40M",
+      "product": "Memurai Developer 4.2.3, not stock Redis",
+      "raw": "nonce-growth-measured.json",
+      "label": "nonce-store growth from requests rejected at the request-ID check",
+      "disposition": "Each request had a fresh nonce and reused a request_id already stored as SUCCESS; it was rejected after nonce acceptance.",
+      "durationRecorded": false
+    },
+    "clockOffsets": {
+      "-10m": "TIMESTAMP_FAIL",
+      "-1m": "ACCEPTED",
+      "+10s": "TIMESTAMP_FAIL",
+      "+1m": "TIMESTAMP_FAIL",
+      "+10m": "TIMESTAMP_FAIL",
+      "raw": "../measured-cases.json"
+    }
+  },
+  "attackFlows": {
+    "capture": "capture.log",
+    "immediateReplay": "immediate-replay.log",
+    "tamper": "tamper-fresh.log",
+    "stalePayloadOver300Seconds": "stale-replay.log",
+    "replayAfterNonceCrash": "replay-after-nonce-crash.log"
+  },
+  "section5Comparison": {
+    "mismatchesAmongMeasuredCases": [],
+    "measuredMatches": [
+      "health returned HTTP 200 and plain-text OK",
+      "valid withdrawal returned ACCEPTED with amount and newBalance",
+      "fresh amount tampering returned SIGNATURE_FAIL",
+      "stale signed payload returned TIMESTAMP_FAIL",
+      "exact in-window replay returned NONCE_FAIL",
+      "replay after nonce-store clearing returned ALREADY_PROCESSED",
+      "capture mode printed the watched payload fields and saved the capture"
+    ],
+    "remainingRowsUnmeasured": [
+      "known and unknown account lookup and transaction history",
+      "deposit success and rejection cases",
+      "unknown account and insufficient balance",
+      "malformed requests and unhandled server errors",
+      "default attack and continuous-loop modes",
+      "invalid CLI, payload, and missing-jq cases"
+    ],
+    "note": "Section 5 describes implementation-derived outputs. The listed remaining rows were not treated as experimentally verified."
+  },
+  "tests": {
+    "passed": 0,
+    "failed": 3,
+    "reason": "npm test was attempted in server, client/bank, and client/viz; none defines a test script. Logs are saved beside this summary."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "measuredAt": "2026-10-17T21:59:06.975Z",
+  "capturePath": "C:\\Users\\Home\\AppData\\Local\\Temp\\cs-project-c4-5c1b286e016c47e281c0e67945b9b3ac.json",
+  "captureSha256": "bc66977926f46d674163bd15dd37fc27369a45c631c1f85dc78bbe4b0dda97b6",
+  "capturedRequestMatchedForwardedBody": true,
+  "attackerReplaySource": "on-path proxy recording file; no server-written payload file read",
+  "original": {
+    "httpStatus": 200,
+    "outcome": "ACCEPTED",
+    "started_ns": "1269107268380200",
+    "ended_ns": "1269107339059400",
+    "duration_ns": "70679200"
+  },
+  "replay": {
+    "httpStatus": 409,
+    "reason": "NONCE_FAIL",
+    "started_ns": "1269107339334900",
+    "ended_ns": "1269107344709800",
+    "duration_ns": "5374900"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "measuredOnce": true,
+  "vizEnabled": true,
+  "resetTiming": {
+    "start_ns": "1269319730281500",
+    "end_ns": "1269319814337200",
+    "duration_ns": "84055700",
+    "status": 200,
+    "body": {
+      "status": "RESET",
+      "accounts": [
+        {
+          "user_id": "anis_101",
+          "username": "Anis Ahmed",
+          "balance": 10000,
+          "currency": "BDT",
+          "account_id": "acc_777",
+          "created_at": "2026-10-17 22:01:53"
+        }
+      ],
+      "transactions": [],
+      "clearedNonceKeys": [],
+      "keys": []
+    }
+  },
+  "label": "dashboard per-request key-scan implementation artifact, not a defense property",
+  "nonceKeySamples": [
+    {
+      "nonceKeysAtDashboardScan": 1,
+      "duration_ns": "17646400",
+      "duration_ms": 17.6464,
+      "httpStatus": 200
+    },
+    {
+      "nonceKeysAtDashboardScan": 100,
+      "duration_ns": "6579000",
+      "duration_ms": 6.579,
+      "httpStatus": 200
+    },
+    {
+      "nonceKeysAtDashboardScan": 1000,
+      "duration_ns": "21229900",
+      "duration_ms": 21.2299,
+      "httpStatus": 200
+    },
+    {
+      "nonceKeysAtDashboardScan": 5000,
+      "duration_ns": "23034300",
+      "duration_ms": 23.0343,
+      "httpStatus": 200
+    }
+  ],
+  "allRequests": 5000
+}

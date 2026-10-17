@@ -1,0 +1,2168 @@
+{
+  "repetitionsPerOffset": 30,
+  "vizEnabled": false,
+  "cases": [
+    {
+      "label": "minus_10m",
+      "offsetMs": -600000,
+      "expected": "TIMESTAMP_FAIL",
+      "measuredCount": 30
+    },
+    {
+      "label": "minus_1m",
+      "offsetMs": -60000,
+      "expected": "ACCEPTED",
+      "measuredCount": 30
+    },
+    {
+      "label": "plus_10s",
+      "offsetMs": 10000,
+      "expected": "TIMESTAMP_FAIL",
+      "measuredCount": 30
+    },
+    {
+      "label": "plus_1m",
+      "offsetMs": 60000,
+      "expected": "TIMESTAMP_FAIL",
+      "measuredCount": 30
+    },
+    {
+      "label": "plus_10m",
+      "offsetMs": 600000,
+      "expected": "TIMESTAMP_FAIL",
+      "measuredCount": 30
+    }
+  ],
+  "responses": [
+    {
+      "label": "minus_10m",
+      "repetition": 1,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746438995500",
+      "ended_ns": "1269746442686800",
+      "duration_ns": "3691300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 2,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746442860700",
+      "ended_ns": "1269746445924400",
+      "duration_ns": "3063700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 3,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746446174200",
+      "ended_ns": "1269746449809400",
+      "duration_ns": "3635200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 4,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746450000600",
+      "ended_ns": "1269746454039800",
+      "duration_ns": "4039200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 5,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746454224900",
+      "ended_ns": "1269746458383100",
+      "duration_ns": "4158200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 6,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746458491800",
+      "ended_ns": "1269746462366800",
+      "duration_ns": "3875000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 7,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746462573400",
+      "ended_ns": "1269746467390800",
+      "duration_ns": "4817400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 8,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746467509400",
+      "ended_ns": "1269746470192400",
+      "duration_ns": "2683000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 9,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746470305000",
+      "ended_ns": "1269746472842700",
+      "duration_ns": "2537700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 10,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746472926000",
+      "ended_ns": "1269746475819000",
+      "duration_ns": "2893000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 11,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746475932100",
+      "ended_ns": "1269746478556500",
+      "duration_ns": "2624400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 12,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746478646200",
+      "ended_ns": "1269746481173000",
+      "duration_ns": "2526800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 13,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746481267000",
+      "ended_ns": "1269746483883400",
+      "duration_ns": "2616400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 14,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746483978400",
+      "ended_ns": "1269746486797600",
+      "duration_ns": "2819200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 15,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746486906000",
+      "ended_ns": "1269746489386200",
+      "duration_ns": "2480200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 16,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746489518500",
+      "ended_ns": "1269746492321500",
+      "duration_ns": "2803000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 17,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746492418700",
+      "ended_ns": "1269746494972800",
+      "duration_ns": "2554100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 18,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746495090600",
+      "ended_ns": "1269746497394800",
+      "duration_ns": "2304200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 19,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746497488400",
+      "ended_ns": "1269746499859000",
+      "duration_ns": "2370600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 20,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746499955500",
+      "ended_ns": "1269746502484800",
+      "duration_ns": "2529300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 21,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746502581500",
+      "ended_ns": "1269746505348100",
+      "duration_ns": "2766600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 22,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746505477800",
+      "ended_ns": "1269746508482700",
+      "duration_ns": "3004900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 23,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746508629200",
+      "ended_ns": "1269746511147900",
+      "duration_ns": "2518700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 24,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746511234100",
+      "ended_ns": "1269746513640000",
+      "duration_ns": "2405900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 25,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746513710000",
+      "ended_ns": "1269746516207700",
+      "duration_ns": "2497700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 26,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746516297000",
+      "ended_ns": "1269746518766200",
+      "duration_ns": "2469200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 27,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746518840200",
+      "ended_ns": "1269746521424900",
+      "duration_ns": "2584700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 28,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746521565200",
+      "ended_ns": "1269746524747000",
+      "duration_ns": "3181800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 29,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746524863800",
+      "ended_ns": "1269746527307400",
+      "duration_ns": "2443600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_10m",
+      "repetition": 30,
+      "offset_ms": -600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746527378100",
+      "ended_ns": "1269746529958000",
+      "duration_ns": "2579900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 1,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9999
+      },
+      "started_ns": "1269746530037600",
+      "ended_ns": "1269746539236400",
+      "duration_ns": "9198800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 2,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9998
+      },
+      "started_ns": "1269746539321900",
+      "ended_ns": "1269746545394200",
+      "duration_ns": "6072300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 3,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9997
+      },
+      "started_ns": "1269746545481400",
+      "ended_ns": "1269746550849200",
+      "duration_ns": "5367800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 4,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9996
+      },
+      "started_ns": "1269746550970000",
+      "ended_ns": "1269746556500200",
+      "duration_ns": "5530200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 5,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9995
+      },
+      "started_ns": "1269746556637000",
+      "ended_ns": "1269746562010800",
+      "duration_ns": "5373800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 6,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9994
+      },
+      "started_ns": "1269746562132600",
+      "ended_ns": "1269746567432000",
+      "duration_ns": "5299400",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 7,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9993
+      },
+      "started_ns": "1269746567524500",
+      "ended_ns": "1269746573316700",
+      "duration_ns": "5792200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 8,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9992
+      },
+      "started_ns": "1269746573415500",
+      "ended_ns": "1269746578847300",
+      "duration_ns": "5431800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 9,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9991
+      },
+      "started_ns": "1269746578931300",
+      "ended_ns": "1269746584206500",
+      "duration_ns": "5275200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 10,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9990
+      },
+      "started_ns": "1269746584323100",
+      "ended_ns": "1269746590320900",
+      "duration_ns": "5997800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 11,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9989
+      },
+      "started_ns": "1269746590419800",
+      "ended_ns": "1269746595926800",
+      "duration_ns": "5507000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 12,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9988
+      },
+      "started_ns": "1269746596014100",
+      "ended_ns": "1269746601440700",
+      "duration_ns": "5426600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 13,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9987
+      },
+      "started_ns": "1269746601561600",
+      "ended_ns": "1269746607493400",
+      "duration_ns": "5931800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 14,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9986
+      },
+      "started_ns": "1269746607587700",
+      "ended_ns": "1269746613449000",
+      "duration_ns": "5861300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 15,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9985
+      },
+      "started_ns": "1269746613562100",
+      "ended_ns": "1269746618864800",
+      "duration_ns": "5302700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 16,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9984
+      },
+      "started_ns": "1269746618952000",
+      "ended_ns": "1269746624608500",
+      "duration_ns": "5656500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 17,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9983
+      },
+      "started_ns": "1269746624766500",
+      "ended_ns": "1269746630987400",
+      "duration_ns": "6220900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 18,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9982
+      },
+      "started_ns": "1269746631134600",
+      "ended_ns": "1269746637156700",
+      "duration_ns": "6022100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 19,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9981
+      },
+      "started_ns": "1269746637317500",
+      "ended_ns": "1269746643903200",
+      "duration_ns": "6585700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 20,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9980
+      },
+      "started_ns": "1269746643979600",
+      "ended_ns": "1269746649590500",
+      "duration_ns": "5610900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 21,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9979
+      },
+      "started_ns": "1269746649678300",
+      "ended_ns": "1269746655920200",
+      "duration_ns": "6241900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 22,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9978
+      },
+      "started_ns": "1269746656066700",
+      "ended_ns": "1269746662687500",
+      "duration_ns": "6620800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 23,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9977
+      },
+      "started_ns": "1269746662790900",
+      "ended_ns": "1269746668891800",
+      "duration_ns": "6100900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 24,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9976
+      },
+      "started_ns": "1269746669015000",
+      "ended_ns": "1269746674963100",
+      "duration_ns": "5948100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 25,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9975
+      },
+      "started_ns": "1269746675076400",
+      "ended_ns": "1269746681202100",
+      "duration_ns": "6125700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 26,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9974
+      },
+      "started_ns": "1269746681291900",
+      "ended_ns": "1269746691808700",
+      "duration_ns": "10516800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 27,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9973
+      },
+      "started_ns": "1269746691939500",
+      "ended_ns": "1269746701430700",
+      "duration_ns": "9491200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 28,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9972
+      },
+      "started_ns": "1269746701631700",
+      "ended_ns": "1269746710593700",
+      "duration_ns": "8962000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 29,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9971
+      },
+      "started_ns": "1269746710750900",
+      "ended_ns": "1269746739889700",
+      "duration_ns": "29138800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "minus_1m",
+      "repetition": 30,
+      "offset_ms": -60000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9970
+      },
+      "started_ns": "1269746740011400",
+      "ended_ns": "1269746749023300",
+      "duration_ns": "9011900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 1,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746749174600",
+      "ended_ns": "1269746753543600",
+      "duration_ns": "4369000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 2,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746753716000",
+      "ended_ns": "1269746757888900",
+      "duration_ns": "4172900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 3,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746758060700",
+      "ended_ns": "1269746762663400",
+      "duration_ns": "4602700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 4,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746762828200",
+      "ended_ns": "1269746767671200",
+      "duration_ns": "4843000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 5,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746767846700",
+      "ended_ns": "1269746772128600",
+      "duration_ns": "4281900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 6,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746772350700",
+      "ended_ns": "1269746777081600",
+      "duration_ns": "4730900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 7,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746777273900",
+      "ended_ns": "1269746781184600",
+      "duration_ns": "3910700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 8,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746781284400",
+      "ended_ns": "1269746785630100",
+      "duration_ns": "4345700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 9,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746785780900",
+      "ended_ns": "1269746790132100",
+      "duration_ns": "4351200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 10,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746790245400",
+      "ended_ns": "1269746793871200",
+      "duration_ns": "3625800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 11,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746794019200",
+      "ended_ns": "1269746797984700",
+      "duration_ns": "3965500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 12,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746798166000",
+      "ended_ns": "1269746802642000",
+      "duration_ns": "4476000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 13,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746802766500",
+      "ended_ns": "1269746807341500",
+      "duration_ns": "4575000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 14,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746807503700",
+      "ended_ns": "1269746811686600",
+      "duration_ns": "4182900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 15,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746811801600",
+      "ended_ns": "1269746815724100",
+      "duration_ns": "3922500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 16,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746815841200",
+      "ended_ns": "1269746819628500",
+      "duration_ns": "3787300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 17,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746819729400",
+      "ended_ns": "1269746823487400",
+      "duration_ns": "3758000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 18,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746823591600",
+      "ended_ns": "1269746827238300",
+      "duration_ns": "3646700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 19,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746827365200",
+      "ended_ns": "1269746831046400",
+      "duration_ns": "3681200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 20,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746831159200",
+      "ended_ns": "1269746834952800",
+      "duration_ns": "3793600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 21,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746835068600",
+      "ended_ns": "1269746839406200",
+      "duration_ns": "4337600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 22,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746839580800",
+      "ended_ns": "1269746843286100",
+      "duration_ns": "3705300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 23,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746843418100",
+      "ended_ns": "1269746846782200",
+      "duration_ns": "3364100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 24,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746846909500",
+      "ended_ns": "1269746850882400",
+      "duration_ns": "3972900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 25,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746851012100",
+      "ended_ns": "1269746855432100",
+      "duration_ns": "4420000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 26,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746855615800",
+      "ended_ns": "1269746860186600",
+      "duration_ns": "4570800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 27,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746860380100",
+      "ended_ns": "1269746864935300",
+      "duration_ns": "4555200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 28,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746865143400",
+      "ended_ns": "1269746869684400",
+      "duration_ns": "4541000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 29,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746869900300",
+      "ended_ns": "1269746874927200",
+      "duration_ns": "5026900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10s",
+      "repetition": 30,
+      "offset_ms": 10000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746875107700",
+      "ended_ns": "1269746879957200",
+      "duration_ns": "4849500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 1,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746880114900",
+      "ended_ns": "1269746883293800",
+      "duration_ns": "3178900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 2,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746883446400",
+      "ended_ns": "1269746888093500",
+      "duration_ns": "4647100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 3,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746888227500",
+      "ended_ns": "1269746891755800",
+      "duration_ns": "3528300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 4,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746891836300",
+      "ended_ns": "1269746895504000",
+      "duration_ns": "3667700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 5,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746895621100",
+      "ended_ns": "1269746899298400",
+      "duration_ns": "3677300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 6,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746899397900",
+      "ended_ns": "1269746902791400",
+      "duration_ns": "3393500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 7,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746902889700",
+      "ended_ns": "1269746906061400",
+      "duration_ns": "3171700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 8,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746906261900",
+      "ended_ns": "1269746910250000",
+      "duration_ns": "3988100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 9,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746910368600",
+      "ended_ns": "1269746913653300",
+      "duration_ns": "3284700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 10,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746913790400",
+      "ended_ns": "1269746917128700",
+      "duration_ns": "3338300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 11,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746917239100",
+      "ended_ns": "1269746920398000",
+      "duration_ns": "3158900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 12,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746920491300",
+      "ended_ns": "1269746923544800",
+      "duration_ns": "3053500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 13,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746923625500",
+      "ended_ns": "1269746926426600",
+      "duration_ns": "2801100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 14,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746926545100",
+      "ended_ns": "1269746929718200",
+      "duration_ns": "3173100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 15,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746929845000",
+      "ended_ns": "1269746933070400",
+      "duration_ns": "3225400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 16,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746933183900",
+      "ended_ns": "1269746936537300",
+      "duration_ns": "3353400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 17,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746936659400",
+      "ended_ns": "1269746940456000",
+      "duration_ns": "3796600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 18,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746940606400",
+      "ended_ns": "1269746943919000",
+      "duration_ns": "3312600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 19,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746943994300",
+      "ended_ns": "1269746946390600",
+      "duration_ns": "2396300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 20,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746946479000",
+      "ended_ns": "1269746949484000",
+      "duration_ns": "3005000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 21,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746949597200",
+      "ended_ns": "1269746951941500",
+      "duration_ns": "2344300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 22,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746952008800",
+      "ended_ns": "1269746954404300",
+      "duration_ns": "2395500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 23,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746954507700",
+      "ended_ns": "1269746957944300",
+      "duration_ns": "3436600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 24,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746958078800",
+      "ended_ns": "1269746961133400",
+      "duration_ns": "3054600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 25,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746961241800",
+      "ended_ns": "1269746964815900",
+      "duration_ns": "3574100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 26,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746964941200",
+      "ended_ns": "1269746968502900",
+      "duration_ns": "3561700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 27,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746968616900",
+      "ended_ns": "1269746972470000",
+      "duration_ns": "3853100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 28,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746972584600",
+      "ended_ns": "1269746976258200",
+      "duration_ns": "3673600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 29,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746976396400",
+      "ended_ns": "1269746980068900",
+      "duration_ns": "3672500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_1m",
+      "repetition": 30,
+      "offset_ms": 60000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746980211900",
+      "ended_ns": "1269746983792700",
+      "duration_ns": "3580800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 1,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746983899800",
+      "ended_ns": "1269746988245900",
+      "duration_ns": "4346100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 2,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746988387100",
+      "ended_ns": "1269746991632900",
+      "duration_ns": "3245800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 3,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746991750700",
+      "ended_ns": "1269746994665500",
+      "duration_ns": "2914800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 4,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746994758100",
+      "ended_ns": "1269746998708900",
+      "duration_ns": "3950800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 5,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746998840100",
+      "ended_ns": "1269747002433900",
+      "duration_ns": "3593800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 6,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747002556400",
+      "ended_ns": "1269747005571000",
+      "duration_ns": "3014600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 7,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747005643600",
+      "ended_ns": "1269747009227200",
+      "duration_ns": "3583600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 8,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747009362300",
+      "ended_ns": "1269747013071300",
+      "duration_ns": "3709000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 9,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747013196500",
+      "ended_ns": "1269747017389400",
+      "duration_ns": "4192900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 10,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747017528900",
+      "ended_ns": "1269747020615000",
+      "duration_ns": "3086100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 11,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747020750300",
+      "ended_ns": "1269747023934400",
+      "duration_ns": "3184100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 12,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747024039400",
+      "ended_ns": "1269747026695400",
+      "duration_ns": "2656000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 13,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747026776100",
+      "ended_ns": "1269747029881700",
+      "duration_ns": "3105600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 14,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747030041200",
+      "ended_ns": "1269747032874600",
+      "duration_ns": "2833400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 15,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747032963600",
+      "ended_ns": "1269747035943200",
+      "duration_ns": "2979600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 16,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747036028700",
+      "ended_ns": "1269747039083800",
+      "duration_ns": "3055100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 17,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747039212900",
+      "ended_ns": "1269747043226900",
+      "duration_ns": "4014000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 18,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747043348900",
+      "ended_ns": "1269747046876800",
+      "duration_ns": "3527900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 19,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747046953100",
+      "ended_ns": "1269747049990000",
+      "duration_ns": "3036900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 20,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747050116700",
+      "ended_ns": "1269747053727500",
+      "duration_ns": "3610800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 21,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747053835600",
+      "ended_ns": "1269747056702900",
+      "duration_ns": "2867300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 22,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747056835900",
+      "ended_ns": "1269747060621500",
+      "duration_ns": "3785600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 23,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747060791900",
+      "ended_ns": "1269747063856800",
+      "duration_ns": "3064900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 24,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747063951600",
+      "ended_ns": "1269747066700100",
+      "duration_ns": "2748500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 25,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747066854900",
+      "ended_ns": "1269747070979000",
+      "duration_ns": "4124100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 26,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747071100800",
+      "ended_ns": "1269747075403700",
+      "duration_ns": "4302900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 27,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747075574300",
+      "ended_ns": "1269747080156600",
+      "duration_ns": "4582300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 28,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747080358000",
+      "ended_ns": "1269747084956000",
+      "duration_ns": "4598000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 29,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747085147900",
+      "ended_ns": "1269747089481800",
+      "duration_ns": "4333900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "plus_10m",
+      "repetition": 30,
+      "offset_ms": 600000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269747089862600",
+      "ended_ns": "1269747093905800",
+      "duration_ns": "4043200",
+      "outcome": "TIMESTAMP_FAIL"
+    }
+  ]
+}

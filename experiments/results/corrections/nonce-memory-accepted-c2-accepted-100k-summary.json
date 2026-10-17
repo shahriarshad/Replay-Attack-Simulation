@@ -1,0 +1,63 @@
+{
+  "runId": "c2-accepted-100k",
+  "mode": "accepted",
+  "label": "nonce-store growth from accepted requests",
+  "createdAt": "2026-10-17T21:51:54.255Z",
+  "nonceTtlSeconds": 86400,
+  "duration_ns": "915017261000",
+  "durationSeconds": 915.017261,
+  "durationVsTtl": 0.01059047755787037,
+  "baselineUsedMemoryBytes": 1047648,
+  "baselineNonceKeys": 0,
+  "snapshots": [
+    {
+      "targetKeys": 0,
+      "measuredKeys": 0,
+      "usedMemoryBytes": 1047648,
+      "baselineUsedMemoryBytes": 1047648,
+      "deltaBytes": 0,
+      "bytesPerKeyAboveBaseline": null,
+      "elapsed_ns": "0",
+      "ttlSeconds": 86400
+    },
+    {
+      "targetKeys": 1000,
+      "measuredKeys": 1000,
+      "usedMemoryBytes": 1207648,
+      "baselineUsedMemoryBytes": 1047648,
+      "deltaBytes": 160000,
+      "bytesPerKeyAboveBaseline": 160,
+      "elapsed_ns": "6717485300",
+      "elapsedSeconds": 6.7174853,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.0000777486724537037
+    },
+    {
+      "targetKeys": 10000,
+      "measuredKeys": 10000,
+      "usedMemoryBytes": 2749408,
+      "baselineUsedMemoryBytes": 1047648,
+      "deltaBytes": 1701760,
+      "bytesPerKeyAboveBaseline": 170.176,
+      "elapsed_ns": "65708870400",
+      "elapsedSeconds": 65.7088704,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.0007605193333333332
+    },
+    {
+      "targetKeys": 100000,
+      "measuredKeys": 100000,
+      "usedMemoryBytes": 17543968,
+      "baselineUsedMemoryBytes": 1047648,
+      "deltaBytes": 16496320,
+      "bytesPerKeyAboveBaseline": 164.9632,
+      "elapsed_ns": "913855557400",
+      "elapsedSeconds": 913.8555574,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.010577031914351852
+    }
+  ],
+  "baselineSubtractedSlopeBytesPerKey": 164.9632,
+  "requestRowsCsv": "nonce-memory-accepted-c2-accepted-100k-requests.csv",
+  "requestCount": 100000
+}

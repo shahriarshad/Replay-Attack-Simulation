@@ -1,0 +1,81 @@
+{
+  "parallel50": {
+    "total": 50,
+    "counts": {
+      "ACCEPTED": 1,
+      "NONCE_FAIL": 49
+    }
+  },
+  "changedRequestIdWithOldSignature": {
+    "httpStatus": 401,
+    "status": "REJECTED",
+    "reason": "SIGNATURE_FAIL"
+  },
+  "clockSkew": [
+    {
+      "label": "-10m",
+      "offsetMs": -600000,
+      "result": {
+        "httpStatus": 400,
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      }
+    },
+    {
+      "label": "-1m",
+      "offsetMs": -60000,
+      "result": {
+        "httpStatus": 200,
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 6998
+      }
+    },
+    {
+      "label": "+10s",
+      "offsetMs": 10000,
+      "result": {
+        "httpStatus": 400,
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      }
+    },
+    {
+      "label": "+1m",
+      "offsetMs": 60000,
+      "result": {
+        "httpStatus": 400,
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      }
+    },
+    {
+      "label": "+10m",
+      "offsetMs": 600000,
+      "result": {
+        "httpStatus": 400,
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      }
+    }
+  ],
+  "nonceGrowth": {
+    "resetPerformed": true,
+    "seedResult": {
+      "httpStatus": 200,
+      "status": "ACCEPTED",
+      "amount": 1,
+      "newBalance": 9999
+    },
+    "nonceStoreClearedBeforeLoop": {
+      "ok": true,
+      "deleted": 1
+    },
+    "requests": 10000,
+    "uniqueNonces": 10000,
+    "reusedRequestId": "41b4e07f-4190-4eed-af01-ba2298912b5f",
+    "responseCounts": {
+      "ALREADY_PROCESSED": 10000
+    }
+  }
+}

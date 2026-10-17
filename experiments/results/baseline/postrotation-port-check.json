@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-17T19:06:25.991Z",
+  "results": [
+    {
+      "port": 3000,
+      "reachable": true
+    },
+    {
+      "port": 3001,
+      "reachable": true
+    },
+    {
+      "port": 6379,
+      "reachable": true
+    }
+  ]
+}

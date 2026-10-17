@@ -1,0 +1,12 @@
+{
+  "method": "POST",
+  "path": "/api/withdraw",
+  "user_id": "anis_101",
+  "account_id": "acc_777",
+  "amount": 1000,
+  "currency": "BDT",
+  "timestamp": "2026-10-17T18:42:21.561Z",
+  "nonce": "5190c432-421c-4ca6-ad75-bbd2c9d05e79",
+  "request_id": "126f6ec0-c622-4a00-bd0a-e9491b4b9dc5",
+  "signature": "32a74cd4f2866d7c131f4d25f767ea9fea8e6c387d3ac9a7237bdedf71cd26ce"
+}

@@ -1,0 +1,53 @@
+{
+  "vizEnabled": false,
+  "identicalPayloadRace": {
+    "batches": 1000,
+    "parallelWidth": 50,
+    "acceptedCountDistribution": {
+      "1": 1000
+    },
+    "acceptedPerBatch": 1,
+    "totalRequests": 50000
+  },
+  "secretHolderSameRequestIdRace": {
+    "parallelWidth": 50,
+    "acceptedCount": 1,
+    "requestIdShared": true,
+    "distinctValidNonces": 50,
+    "debitAmount": 1,
+    "duration_ns": "133438200",
+    "beforeBalanceTiming": {
+      "start_ns": "1269043455696700",
+      "end_ns": "1269043458880200",
+      "duration_ns": "3183500",
+      "status": 200,
+      "body": {
+        "user_id": "anis_101",
+        "username": "Anis Ahmed",
+        "balance": 10000,
+        "currency": "BDT",
+        "account_id": "acc_777"
+      }
+    },
+    "afterBalanceTiming": {
+      "start_ns": "1269043592349000",
+      "end_ns": "1269043594349200",
+      "duration_ns": "2000200",
+      "status": 200,
+      "body": {
+        "user_id": "anis_101",
+        "username": "Anis Ahmed",
+        "balance": 9999,
+        "currency": "BDT",
+        "account_id": "acc_777"
+      }
+    },
+    "oracle": {
+      "totalDebited": 1,
+      "authorizedTotal": 50,
+      "duplicateDebitAmount": 0,
+      "duplicateDebitCount": 0,
+      "integrityHolds": true
+    }
+  }
+}

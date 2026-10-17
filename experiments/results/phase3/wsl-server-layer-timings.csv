@@ -1,0 +1,3 @@
+config_id,scenario_id,run_id,started_ns,ended_ns,duration_ns,hmac_ns,timestamp_ns,nonce_ns,request_id_ns,balance_ns,outcome,http_status
+default,unspecified,unspecified,1269669943682500,1269669966972700,23290200,2438800,342800,skipped,skipped,skipped,TIMESTAMP_FAIL,400
+default,unspecified,unspecified,1269671184185100,1269671185337700,1152600,116200,skipped,skipped,skipped,skipped,SIGNATURE_FAIL,401

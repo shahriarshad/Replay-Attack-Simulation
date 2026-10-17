@@ -1,0 +1,15 @@
+{
+  "capturedAt": "2026-10-17T19:00:15.066Z",
+  "usedNonceKeys": 10000,
+  "usedMemoryBytes": 2519240,
+  "usedMemoryHuman": "2.40M",
+  "memuraiVersion": "4.2.3",
+  "nonceTtlSeconds": 300,
+  "requestsWithUniqueNonces": 10000,
+  "label": "nonce-store growth from requests rejected at the request-ID check",
+  "disposition": "Each request had a fresh nonce and reused a request_id already stored as SUCCESS; it was rejected after nonce acceptance.",
+  "requestsAccepted": 0,
+  "durationSeconds": null,
+  "durationVsNonceTtl": null,
+  "durationWasRecorded": false
+}

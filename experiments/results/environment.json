@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-10-17T19:00:15.066Z",
+  "host": {
+    "os": "win32 10.0.26200",
+    "osVersion": "Windows 11 Pro",
+    "cpuModel": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+    "logicalCpuCount": 8,
+    "totalRamBytes": 8395841536,
+    "totalRamGiB": 7.82
+  },
+  "runtime": {
+    "node": "v24.11.1",
+    "sqlite3NodePackage": "5.1.7",
+    "sqliteLibrary": "3.44.2"
+  },
+  "nonceBackend": {
+    "product": "Memurai Developer (not stock Redis)",
+    "memuraiVersion": "4.2.3",
+    "edition": "Memurai Developer",
+    "redisProtocolVersion": "7.4.9",
+    "bind": "name=tcp,bind=127.0.0.1,port=6379",
+    "usedNonceKeys": 10000,
+    "usedMemoryBytes": 2519240,
+    "usedMemoryHuman": "2.40M"
+  },
+  "portsReachableFromNativeNode": {
+    "3000": true,
+    "3001": true,
+    "6379": true
+  },
+  "apiHealth": {
+    "status": 200,
+    "body": "OK"
+  },
+  "redisUrl": "redis://127.0.0.1:6379",
+  "audit": {
+    "commitHash": "42d570d0dc218746750498500dbf568f20562528",
+    "gitStatusShort": " M PROJECT_AUDIT_REPORT.md\n M attack/attack.sh\n M attack/payload.json\n M client/bank/src/App.jsx\n M client/bank/src/api.js\n M server/package.json\n M server/server.js\n M server/utils/hmac.js\n M server/utils/idempotency.js\n M server/utils/nonce.js\n?? docs/\n?? experiments/\n?? package.json\n?? server/core.js\n?? server/test/\n?? server/utils/money-oracle.js\n",
+    "gitStatusClean": false,
+    "gitStatusCaptureNote": "Captured before Phase 0 artifact commits; pre-existing user changes and Phase 1-3 working changes remain. The status is intentionally reported as-is."
+  }
+}

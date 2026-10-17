@@ -1,0 +1,253 @@
+[
+  {
+    "httpStatus": 200,
+    "status": "ACCEPTED",
+    "amount": 1,
+    "newBalance": 6999
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  },
+  {
+    "httpStatus": 409,
+    "status": "REJECTED",
+    "reason": "NONCE_FAIL"
+  }
+]

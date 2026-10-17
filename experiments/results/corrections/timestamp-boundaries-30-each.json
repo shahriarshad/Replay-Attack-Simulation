@@ -1,0 +1,2686 @@
+{
+  "repetitionsPerCase": 30,
+  "vizEnabled": false,
+  "cases": [
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "offsetMs": -5000,
+      "expected": "ACCEPTED",
+      "measuredCount": 30
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "offsetMs": 5000,
+      "expected": "ACCEPTED",
+      "measuredCount": 30
+    },
+    {
+      "label": "age_299s",
+      "offsetMs": -299000,
+      "expected": "ACCEPTED",
+      "measuredCount": 30
+    },
+    {
+      "label": "age_300s",
+      "offsetMs": -300000,
+      "expected": "ACCEPTED",
+      "measuredCount": 30
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "offsetMs": -301000,
+      "expected": "TIMESTAMP_FAIL",
+      "measuredCount": 30
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "offsetMs": 6000,
+      "expected": "TIMESTAMP_FAIL",
+      "measuredCount": 30
+    }
+  ],
+  "firstRejectedPastAgeSeconds": 301,
+  "firstRejectedFutureOffsetSeconds": 6,
+  "responses": [
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 1,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9999
+      },
+      "started_ns": "1269745293161100",
+      "ended_ns": "1269745302813100",
+      "duration_ns": "9652000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 2,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9998
+      },
+      "started_ns": "1269745303099200",
+      "ended_ns": "1269745313864100",
+      "duration_ns": "10764900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 3,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9997
+      },
+      "started_ns": "1269745314137400",
+      "ended_ns": "1269745324424300",
+      "duration_ns": "10286900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 4,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9996
+      },
+      "started_ns": "1269745324650600",
+      "ended_ns": "1269745335180600",
+      "duration_ns": "10530000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 5,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9995
+      },
+      "started_ns": "1269745335437400",
+      "ended_ns": "1269745345545600",
+      "duration_ns": "10108200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 6,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9994
+      },
+      "started_ns": "1269745345728100",
+      "ended_ns": "1269745354652100",
+      "duration_ns": "8924000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 7,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9993
+      },
+      "started_ns": "1269745354885700",
+      "ended_ns": "1269745365152600",
+      "duration_ns": "10266900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 8,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9992
+      },
+      "started_ns": "1269745365366900",
+      "ended_ns": "1269745374142400",
+      "duration_ns": "8775500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 9,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9991
+      },
+      "started_ns": "1269745374292000",
+      "ended_ns": "1269745382171800",
+      "duration_ns": "7879800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 10,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9990
+      },
+      "started_ns": "1269745382322300",
+      "ended_ns": "1269745389649100",
+      "duration_ns": "7326800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 11,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9989
+      },
+      "started_ns": "1269745389836900",
+      "ended_ns": "1269745398780800",
+      "duration_ns": "8943900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 12,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9988
+      },
+      "started_ns": "1269745398984300",
+      "ended_ns": "1269745407857200",
+      "duration_ns": "8872900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 13,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9987
+      },
+      "started_ns": "1269745408059900",
+      "ended_ns": "1269745416961700",
+      "duration_ns": "8901800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 14,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9986
+      },
+      "started_ns": "1269745417122400",
+      "ended_ns": "1269745425401700",
+      "duration_ns": "8279300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 15,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9985
+      },
+      "started_ns": "1269745425654800",
+      "ended_ns": "1269745433035800",
+      "duration_ns": "7381000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 16,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9984
+      },
+      "started_ns": "1269745433209300",
+      "ended_ns": "1269745441270300",
+      "duration_ns": "8061000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 17,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9983
+      },
+      "started_ns": "1269745441482800",
+      "ended_ns": "1269745450563700",
+      "duration_ns": "9080900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 18,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9982
+      },
+      "started_ns": "1269745450694900",
+      "ended_ns": "1269745457292500",
+      "duration_ns": "6597600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 19,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9981
+      },
+      "started_ns": "1269745457459300",
+      "ended_ns": "1269745464223300",
+      "duration_ns": "6764000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 20,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9980
+      },
+      "started_ns": "1269745464324900",
+      "ended_ns": "1269745470172200",
+      "duration_ns": "5847300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 21,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9979
+      },
+      "started_ns": "1269745470315400",
+      "ended_ns": "1269745476662600",
+      "duration_ns": "6347200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 22,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9978
+      },
+      "started_ns": "1269745476865500",
+      "ended_ns": "1269745482728200",
+      "duration_ns": "5862700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 23,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9977
+      },
+      "started_ns": "1269745482846900",
+      "ended_ns": "1269745489169300",
+      "duration_ns": "6322400",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 24,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9976
+      },
+      "started_ns": "1269745489264900",
+      "ended_ns": "1269745496900100",
+      "duration_ns": "7635200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 25,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9975
+      },
+      "started_ns": "1269745497045600",
+      "ended_ns": "1269745505183700",
+      "duration_ns": "8138100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 26,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9974
+      },
+      "started_ns": "1269745505396400",
+      "ended_ns": "1269745512920700",
+      "duration_ns": "7524300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 27,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9973
+      },
+      "started_ns": "1269745513046200",
+      "ended_ns": "1269745520040500",
+      "duration_ns": "6994300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 28,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9972
+      },
+      "started_ns": "1269745520160000",
+      "ended_ns": "1269745527525300",
+      "duration_ns": "7365300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 29,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9971
+      },
+      "started_ns": "1269745527680500",
+      "ended_ns": "1269745534672600",
+      "duration_ns": "6992100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "past_tolerance_edge_minus_5s",
+      "repetition": 30,
+      "offset_ms": -5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9970
+      },
+      "started_ns": "1269745534790600",
+      "ended_ns": "1269745541914500",
+      "duration_ns": "7123900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 1,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9969
+      },
+      "started_ns": "1269745542078100",
+      "ended_ns": "1269745548282200",
+      "duration_ns": "6204100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 2,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9968
+      },
+      "started_ns": "1269745548365600",
+      "ended_ns": "1269745554852100",
+      "duration_ns": "6486500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 3,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9967
+      },
+      "started_ns": "1269745555001800",
+      "ended_ns": "1269745562628400",
+      "duration_ns": "7626600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 4,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9966
+      },
+      "started_ns": "1269745562754200",
+      "ended_ns": "1269745569466400",
+      "duration_ns": "6712200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 5,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9965
+      },
+      "started_ns": "1269745569618900",
+      "ended_ns": "1269745577747400",
+      "duration_ns": "8128500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 6,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9964
+      },
+      "started_ns": "1269745577870100",
+      "ended_ns": "1269745583912700",
+      "duration_ns": "6042600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 7,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9963
+      },
+      "started_ns": "1269745584046000",
+      "ended_ns": "1269745591359900",
+      "duration_ns": "7313900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 8,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9962
+      },
+      "started_ns": "1269745591556400",
+      "ended_ns": "1269745599404000",
+      "duration_ns": "7847600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 9,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9961
+      },
+      "started_ns": "1269745599530700",
+      "ended_ns": "1269745606034100",
+      "duration_ns": "6503400",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 10,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9960
+      },
+      "started_ns": "1269745606125100",
+      "ended_ns": "1269745612919700",
+      "duration_ns": "6794600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 11,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9959
+      },
+      "started_ns": "1269745613046200",
+      "ended_ns": "1269745619416500",
+      "duration_ns": "6370300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 12,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9958
+      },
+      "started_ns": "1269745619605500",
+      "ended_ns": "1269745628778100",
+      "duration_ns": "9172600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 13,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9957
+      },
+      "started_ns": "1269745628868300",
+      "ended_ns": "1269745634408300",
+      "duration_ns": "5540000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 14,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9956
+      },
+      "started_ns": "1269745634532100",
+      "ended_ns": "1269745640487300",
+      "duration_ns": "5955200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 15,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9955
+      },
+      "started_ns": "1269745640606500",
+      "ended_ns": "1269745646527300",
+      "duration_ns": "5920800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 16,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9954
+      },
+      "started_ns": "1269745646616500",
+      "ended_ns": "1269745652440700",
+      "duration_ns": "5824200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 17,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9953
+      },
+      "started_ns": "1269745652547600",
+      "ended_ns": "1269745659247500",
+      "duration_ns": "6699900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 18,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9952
+      },
+      "started_ns": "1269745659340500",
+      "ended_ns": "1269745665694200",
+      "duration_ns": "6353700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 19,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9951
+      },
+      "started_ns": "1269745665799500",
+      "ended_ns": "1269745672651300",
+      "duration_ns": "6851800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 20,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9950
+      },
+      "started_ns": "1269745672788600",
+      "ended_ns": "1269745679172600",
+      "duration_ns": "6384000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 21,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9949
+      },
+      "started_ns": "1269745679262900",
+      "ended_ns": "1269745686363200",
+      "duration_ns": "7100300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 22,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9948
+      },
+      "started_ns": "1269745686455100",
+      "ended_ns": "1269745692854900",
+      "duration_ns": "6399800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 23,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9947
+      },
+      "started_ns": "1269745693032500",
+      "ended_ns": "1269745698713100",
+      "duration_ns": "5680600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 24,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9946
+      },
+      "started_ns": "1269745698859300",
+      "ended_ns": "1269745705219800",
+      "duration_ns": "6360500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 25,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9945
+      },
+      "started_ns": "1269745705393000",
+      "ended_ns": "1269745712121000",
+      "duration_ns": "6728000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 26,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9944
+      },
+      "started_ns": "1269745712251600",
+      "ended_ns": "1269745718581200",
+      "duration_ns": "6329600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 27,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9943
+      },
+      "started_ns": "1269745718715500",
+      "ended_ns": "1269745725510300",
+      "duration_ns": "6794800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 28,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9942
+      },
+      "started_ns": "1269745725634600",
+      "ended_ns": "1269745731349300",
+      "duration_ns": "5714700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 29,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9941
+      },
+      "started_ns": "1269745731480600",
+      "ended_ns": "1269745738145000",
+      "duration_ns": "6664400",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "future_tolerance_edge_plus_5s",
+      "repetition": 30,
+      "offset_ms": 5000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9940
+      },
+      "started_ns": "1269745738253800",
+      "ended_ns": "1269745744520500",
+      "duration_ns": "6266700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 1,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9939
+      },
+      "started_ns": "1269745744613200",
+      "ended_ns": "1269745752861100",
+      "duration_ns": "8247900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 2,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9938
+      },
+      "started_ns": "1269745753037000",
+      "ended_ns": "1269745763047500",
+      "duration_ns": "10010500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 3,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9937
+      },
+      "started_ns": "1269745763255700",
+      "ended_ns": "1269745774446500",
+      "duration_ns": "11190800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 4,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9936
+      },
+      "started_ns": "1269745774620100",
+      "ended_ns": "1269745783102500",
+      "duration_ns": "8482400",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 5,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9935
+      },
+      "started_ns": "1269745783303500",
+      "ended_ns": "1269745791255500",
+      "duration_ns": "7952000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 6,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9934
+      },
+      "started_ns": "1269745791433800",
+      "ended_ns": "1269745815492600",
+      "duration_ns": "24058800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 7,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9933
+      },
+      "started_ns": "1269745815612600",
+      "ended_ns": "1269745822895500",
+      "duration_ns": "7282900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 8,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9932
+      },
+      "started_ns": "1269745823048700",
+      "ended_ns": "1269745831018800",
+      "duration_ns": "7970100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 9,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9931
+      },
+      "started_ns": "1269745831166400",
+      "ended_ns": "1269745838747500",
+      "duration_ns": "7581100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 10,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9930
+      },
+      "started_ns": "1269745838901100",
+      "ended_ns": "1269745847023700",
+      "duration_ns": "8122600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 11,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9929
+      },
+      "started_ns": "1269745847171800",
+      "ended_ns": "1269745855371000",
+      "duration_ns": "8199200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 12,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9928
+      },
+      "started_ns": "1269745855518100",
+      "ended_ns": "1269745868045400",
+      "duration_ns": "12527300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 13,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9927
+      },
+      "started_ns": "1269745868180400",
+      "ended_ns": "1269745877847500",
+      "duration_ns": "9667100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 14,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9926
+      },
+      "started_ns": "1269745878030700",
+      "ended_ns": "1269745893199600",
+      "duration_ns": "15168900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 15,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9925
+      },
+      "started_ns": "1269745893402400",
+      "ended_ns": "1269745901716900",
+      "duration_ns": "8314500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 16,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9924
+      },
+      "started_ns": "1269745901928400",
+      "ended_ns": "1269745919605000",
+      "duration_ns": "17676600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 17,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9923
+      },
+      "started_ns": "1269745919800300",
+      "ended_ns": "1269745925940100",
+      "duration_ns": "6139800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 18,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9922
+      },
+      "started_ns": "1269745926038100",
+      "ended_ns": "1269745931704200",
+      "duration_ns": "5666100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 19,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9921
+      },
+      "started_ns": "1269745931850300",
+      "ended_ns": "1269745938010500",
+      "duration_ns": "6160200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 20,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9920
+      },
+      "started_ns": "1269745938121800",
+      "ended_ns": "1269745944143500",
+      "duration_ns": "6021700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 21,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9919
+      },
+      "started_ns": "1269745944232400",
+      "ended_ns": "1269745949879300",
+      "duration_ns": "5646900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 22,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9918
+      },
+      "started_ns": "1269745949981200",
+      "ended_ns": "1269745955843700",
+      "duration_ns": "5862500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 23,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9917
+      },
+      "started_ns": "1269745955928900",
+      "ended_ns": "1269745961737000",
+      "duration_ns": "5808100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 24,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9916
+      },
+      "started_ns": "1269745961871200",
+      "ended_ns": "1269745967305500",
+      "duration_ns": "5434300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 25,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9915
+      },
+      "started_ns": "1269745967412700",
+      "ended_ns": "1269745973003000",
+      "duration_ns": "5590300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 26,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9914
+      },
+      "started_ns": "1269745973217700",
+      "ended_ns": "1269745979467800",
+      "duration_ns": "6250100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 27,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9913
+      },
+      "started_ns": "1269745979553200",
+      "ended_ns": "1269745984863700",
+      "duration_ns": "5310500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 28,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9912
+      },
+      "started_ns": "1269745984953000",
+      "ended_ns": "1269745990714300",
+      "duration_ns": "5761300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 29,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9911
+      },
+      "started_ns": "1269745990860300",
+      "ended_ns": "1269745996279800",
+      "duration_ns": "5419500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_299s",
+      "repetition": 30,
+      "offset_ms": -299000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9910
+      },
+      "started_ns": "1269745996392000",
+      "ended_ns": "1269746002060600",
+      "duration_ns": "5668600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 1,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9909
+      },
+      "started_ns": "1269746002182000",
+      "ended_ns": "1269746007687700",
+      "duration_ns": "5505700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 2,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9908
+      },
+      "started_ns": "1269746007775200",
+      "ended_ns": "1269746013596000",
+      "duration_ns": "5820800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 3,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9907
+      },
+      "started_ns": "1269746013733800",
+      "ended_ns": "1269746029448500",
+      "duration_ns": "15714700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 4,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9906
+      },
+      "started_ns": "1269746029575800",
+      "ended_ns": "1269746035391100",
+      "duration_ns": "5815300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 5,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9905
+      },
+      "started_ns": "1269746035492800",
+      "ended_ns": "1269746041502900",
+      "duration_ns": "6010100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 6,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9904
+      },
+      "started_ns": "1269746041658800",
+      "ended_ns": "1269746047989600",
+      "duration_ns": "6330800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 7,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9903
+      },
+      "started_ns": "1269746048094900",
+      "ended_ns": "1269746057030400",
+      "duration_ns": "8935500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 8,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9902
+      },
+      "started_ns": "1269746057176700",
+      "ended_ns": "1269746067738300",
+      "duration_ns": "10561600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 9,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9901
+      },
+      "started_ns": "1269746067910400",
+      "ended_ns": "1269746075062700",
+      "duration_ns": "7152300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 10,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9900
+      },
+      "started_ns": "1269746075162800",
+      "ended_ns": "1269746082427100",
+      "duration_ns": "7264300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 11,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9899
+      },
+      "started_ns": "1269746082538600",
+      "ended_ns": "1269746089708000",
+      "duration_ns": "7169400",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 12,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9898
+      },
+      "started_ns": "1269746089994900",
+      "ended_ns": "1269746096769900",
+      "duration_ns": "6775000",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 13,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9897
+      },
+      "started_ns": "1269746096859200",
+      "ended_ns": "1269746102531900",
+      "duration_ns": "5672700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 14,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9896
+      },
+      "started_ns": "1269746102644100",
+      "ended_ns": "1269746108167300",
+      "duration_ns": "5523200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 15,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9895
+      },
+      "started_ns": "1269746108284400",
+      "ended_ns": "1269746114342900",
+      "duration_ns": "6058500",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 16,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9894
+      },
+      "started_ns": "1269746114490400",
+      "ended_ns": "1269746119986500",
+      "duration_ns": "5496100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 17,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9893
+      },
+      "started_ns": "1269746120098100",
+      "ended_ns": "1269746126310200",
+      "duration_ns": "6212100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 18,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9892
+      },
+      "started_ns": "1269746126418700",
+      "ended_ns": "1269746132071900",
+      "duration_ns": "5653200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 19,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9891
+      },
+      "started_ns": "1269746132166800",
+      "ended_ns": "1269746137939400",
+      "duration_ns": "5772600",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 20,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9890
+      },
+      "started_ns": "1269746138030700",
+      "ended_ns": "1269746143807100",
+      "duration_ns": "5776400",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 21,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9889
+      },
+      "started_ns": "1269746143929000",
+      "ended_ns": "1269746149325100",
+      "duration_ns": "5396100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 22,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9888
+      },
+      "started_ns": "1269746149416700",
+      "ended_ns": "1269746155387900",
+      "duration_ns": "5971200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 23,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9887
+      },
+      "started_ns": "1269746155475900",
+      "ended_ns": "1269746161580000",
+      "duration_ns": "6104100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 24,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9886
+      },
+      "started_ns": "1269746161664600",
+      "ended_ns": "1269746167134800",
+      "duration_ns": "5470200",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 25,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9885
+      },
+      "started_ns": "1269746167221500",
+      "ended_ns": "1269746172690200",
+      "duration_ns": "5468700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 26,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9884
+      },
+      "started_ns": "1269746172794600",
+      "ended_ns": "1269746178922300",
+      "duration_ns": "6127700",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 27,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9883
+      },
+      "started_ns": "1269746179041400",
+      "ended_ns": "1269746185281200",
+      "duration_ns": "6239800",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 28,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9882
+      },
+      "started_ns": "1269746185387600",
+      "ended_ns": "1269746191446700",
+      "duration_ns": "6059100",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 29,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9881
+      },
+      "started_ns": "1269746191691700",
+      "ended_ns": "1269746198380000",
+      "duration_ns": "6688300",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_300s",
+      "repetition": 30,
+      "offset_ms": -300000,
+      "status": 200,
+      "data": {
+        "status": "ACCEPTED",
+        "amount": 1,
+        "newBalance": 9880
+      },
+      "started_ns": "1269746198475900",
+      "ended_ns": "1269746204989800",
+      "duration_ns": "6513900",
+      "outcome": "ACCEPTED"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 1,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746205113300",
+      "ended_ns": "1269746208519100",
+      "duration_ns": "3405800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 2,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746208627100",
+      "ended_ns": "1269746211466700",
+      "duration_ns": "2839600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 3,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746211569900",
+      "ended_ns": "1269746214453300",
+      "duration_ns": "2883400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 4,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746214576100",
+      "ended_ns": "1269746217678500",
+      "duration_ns": "3102400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 5,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746217794200",
+      "ended_ns": "1269746220828800",
+      "duration_ns": "3034600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 6,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746220917000",
+      "ended_ns": "1269746223988700",
+      "duration_ns": "3071700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 7,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746224097100",
+      "ended_ns": "1269746227347900",
+      "duration_ns": "3250800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 8,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746227434400",
+      "ended_ns": "1269746230284400",
+      "duration_ns": "2850000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 9,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746230446700",
+      "ended_ns": "1269746233658700",
+      "duration_ns": "3212000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 10,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746233769600",
+      "ended_ns": "1269746236959500",
+      "duration_ns": "3189900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 11,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746237061500",
+      "ended_ns": "1269746240443500",
+      "duration_ns": "3382000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 12,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746240537400",
+      "ended_ns": "1269746243212100",
+      "duration_ns": "2674700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 13,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746243294500",
+      "ended_ns": "1269746246131300",
+      "duration_ns": "2836800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 14,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746246235300",
+      "ended_ns": "1269746249265400",
+      "duration_ns": "3030100",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 15,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746249346100",
+      "ended_ns": "1269746252080000",
+      "duration_ns": "2733900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 16,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746252170000",
+      "ended_ns": "1269746255739700",
+      "duration_ns": "3569700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 17,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746255845900",
+      "ended_ns": "1269746259422500",
+      "duration_ns": "3576600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 18,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746259587700",
+      "ended_ns": "1269746263133700",
+      "duration_ns": "3546000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 19,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746263279900",
+      "ended_ns": "1269746267416300",
+      "duration_ns": "4136400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 20,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746267504800",
+      "ended_ns": "1269746270776500",
+      "duration_ns": "3271700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 21,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746270908400",
+      "ended_ns": "1269746274044400",
+      "duration_ns": "3136000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 22,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746274207700",
+      "ended_ns": "1269746278751300",
+      "duration_ns": "4543600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 23,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746278918900",
+      "ended_ns": "1269746282245600",
+      "duration_ns": "3326700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 24,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746282337400",
+      "ended_ns": "1269746286340400",
+      "duration_ns": "4003000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 25,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746286491800",
+      "ended_ns": "1269746290540800",
+      "duration_ns": "4049000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 26,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746290682400",
+      "ended_ns": "1269746294646100",
+      "duration_ns": "3963700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 27,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746294769200",
+      "ended_ns": "1269746299024400",
+      "duration_ns": "4255200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 28,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746299112400",
+      "ended_ns": "1269746303090200",
+      "duration_ns": "3977800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 29,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746303216200",
+      "ended_ns": "1269746307479900",
+      "duration_ns": "4263700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "age_301s_first_rejected_past_side",
+      "repetition": 30,
+      "offset_ms": -301000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746307587400",
+      "ended_ns": "1269746310602300",
+      "duration_ns": "3014900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 1,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746310723100",
+      "ended_ns": "1269746314594900",
+      "duration_ns": "3871800",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 2,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746314739700",
+      "ended_ns": "1269746319093200",
+      "duration_ns": "4353500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 3,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746319295600",
+      "ended_ns": "1269746323668600",
+      "duration_ns": "4373000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 4,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746323874400",
+      "ended_ns": "1269746328104700",
+      "duration_ns": "4230300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 5,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746328217700",
+      "ended_ns": "1269746331637900",
+      "duration_ns": "3420200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 6,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746331778600",
+      "ended_ns": "1269746335343800",
+      "duration_ns": "3565200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 7,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746335482800",
+      "ended_ns": "1269746338956300",
+      "duration_ns": "3473500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 8,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746339085500",
+      "ended_ns": "1269746343088200",
+      "duration_ns": "4002700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 9,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746343187600",
+      "ended_ns": "1269746346488000",
+      "duration_ns": "3300400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 10,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746346751300",
+      "ended_ns": "1269746351950500",
+      "duration_ns": "5199200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 11,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746352070300",
+      "ended_ns": "1269746355753200",
+      "duration_ns": "3682900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 12,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746355895300",
+      "ended_ns": "1269746360341800",
+      "duration_ns": "4446500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 13,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746360465100",
+      "ended_ns": "1269746363714700",
+      "duration_ns": "3249600",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 14,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746364043300",
+      "ended_ns": "1269746368031700",
+      "duration_ns": "3988400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 15,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746368147500",
+      "ended_ns": "1269746373227400",
+      "duration_ns": "5079900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 16,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746373384700",
+      "ended_ns": "1269746377424700",
+      "duration_ns": "4040000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 17,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746377596300",
+      "ended_ns": "1269746380936000",
+      "duration_ns": "3339700",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 18,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746381023600",
+      "ended_ns": "1269746384826100",
+      "duration_ns": "3802500",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 19,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746384989000",
+      "ended_ns": "1269746388218900",
+      "duration_ns": "3229900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 20,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746388331100",
+      "ended_ns": "1269746391619000",
+      "duration_ns": "3287900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 21,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746391717600",
+      "ended_ns": "1269746394517800",
+      "duration_ns": "2800200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 22,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746394636000",
+      "ended_ns": "1269746398091000",
+      "duration_ns": "3455000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 23,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746398211300",
+      "ended_ns": "1269746401209700",
+      "duration_ns": "2998400",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 24,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746401286500",
+      "ended_ns": "1269746404555400",
+      "duration_ns": "3268900",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 25,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746404652600",
+      "ended_ns": "1269746408616900",
+      "duration_ns": "3964300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 26,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746408780100",
+      "ended_ns": "1269746412037400",
+      "duration_ns": "3257300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 27,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746412176900",
+      "ended_ns": "1269746415648200",
+      "duration_ns": "3471300",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 28,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746415741100",
+      "ended_ns": "1269746418926100",
+      "duration_ns": "3185000",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 29,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746419074200",
+      "ended_ns": "1269746422624400",
+      "duration_ns": "3550200",
+      "outcome": "TIMESTAMP_FAIL"
+    },
+    {
+      "label": "future_6s_first_rejected_future_side",
+      "repetition": 30,
+      "offset_ms": 6000,
+      "status": 400,
+      "data": {
+        "status": "REJECTED",
+        "reason": "TIMESTAMP_FAIL"
+      },
+      "started_ns": "1269746422757400",
+      "ended_ns": "1269746427037500",
+      "duration_ns": "4280100",
+      "outcome": "TIMESTAMP_FAIL"
+    }
+  ]
+}

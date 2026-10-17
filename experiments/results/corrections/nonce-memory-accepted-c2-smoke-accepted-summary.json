@@ -1,0 +1,39 @@
+{
+  "runId": "c2-smoke-accepted",
+  "mode": "accepted",
+  "label": "nonce-store growth from accepted requests",
+  "createdAt": "2026-10-17T21:36:33.274Z",
+  "nonceTtlSeconds": 86400,
+  "duration_ns": "177076700",
+  "durationSeconds": 0.1770767,
+  "durationVsTtl": 0.0000020494988425925926,
+  "baselineUsedMemoryBytes": 1047328,
+  "baselineNonceKeys": 0,
+  "snapshots": [
+    {
+      "targetKeys": 0,
+      "measuredKeys": 0,
+      "usedMemoryBytes": 1047328,
+      "baselineUsedMemoryBytes": 1047328,
+      "deltaBytes": 0,
+      "bytesPerKeyAboveBaseline": null,
+      "elapsed_ns": "0",
+      "ttlSeconds": 86400
+    },
+    {
+      "targetKeys": 10,
+      "measuredKeys": 10,
+      "usedMemoryBytes": 1048960,
+      "baselineUsedMemoryBytes": 1047328,
+      "deltaBytes": 1632,
+      "bytesPerKeyAboveBaseline": 163.2,
+      "elapsed_ns": "116431800",
+      "elapsedSeconds": 0.1164318,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.0000013475902777777779
+    }
+  ],
+  "baselineSubtractedSlopeBytesPerKey": 0.01632,
+  "requestRowsCsv": "nonce-memory-accepted-c2-smoke-accepted-requests.csv",
+  "requestCount": 10
+}

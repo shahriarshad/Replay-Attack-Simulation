@@ -1,0 +1,8 @@
+{
+  "httpStatus": 200,
+  "body": {
+    "status": "ACCEPTED",
+    "amount": 1000,
+    "newBalance": 7000
+  }
+}

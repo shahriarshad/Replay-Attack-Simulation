@@ -1,0 +1,20 @@
+[
+    {
+        "package":  "server",
+        "exitCode":  1,
+        "passed":  false,
+        "outputFile":  "npm-test-server.log"
+    },
+    {
+        "package":  "client\\bank",
+        "exitCode":  1,
+        "passed":  false,
+        "outputFile":  "npm-test-client-bank.log"
+    },
+    {
+        "package":  "client\\viz",
+        "exitCode":  1,
+        "passed":  false,
+        "outputFile":  "npm-test-client-viz.log"
+    }
+]
