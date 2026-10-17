@@ -23,7 +23,7 @@ Generated from the current `experiments/` tree. It includes the complete folder 
 - Nonce store: Memurai Developer (not stock Redis), version 4.2.3; Redis protocol 7.4.9. Memurai, not stock Redis, was used.
 - Memurai listens on IPv4 only. The configured URL is `redis://127.0.0.1:6379`; `localhost` may resolve to `::1` and fail.
 - Native Windows ports 3000, 3001, and 6379 were reachable. WSL reached the Windows API at `http://localhost:3000/api/health` with HTTP 200 and body `OK`.
-- Git commit captured in environment metadata: `42d570d0dc218746750498500dbf568f20562528`; status snapshot clean: false. The snapshot is preserved verbatim in `results/environment.json`.
+- Git commit captured in environment metadata: `4d9eceec78b0474bfad4e8711584268882697561`; status snapshot clean: false. The snapshot is preserved verbatim in `results/environment.json`.
 - The attacker shell ran in WSL. All server, Node, SQLite, Memurai, and measurement traffic ran on Windows and targeted only the local simulation.
 
 ## Phase 0 run method
@@ -295,7 +295,7 @@ experiments/
 | `experiments/results/corrections/wsl-invalid-cases.log` | 2702 | `f3bc728225a7dc9e81e3a342c5bab19f6e7989696222988c0918f8840c19590c` |
 | `experiments/results/corrections/wsl-replay.log` | 828 | `885fe86c7df5eb37ea53f0a65a56bbdbc76868a295e104e8a02990ecaa50eaf0` |
 | `experiments/results/corrections/wsl-timing-verification.log` | 1570 | `7961fa3b8d4c055f64ba3e65cd45c8adef40d088b8653ffa3c29a4a56076b710` |
-| `experiments/results/environment.json` | 1579 | `f635322ff14bc83a6adcb44977406cfaf0c429669421a0e7cc5085eae92c9ffd` |
+| `experiments/results/environment.json` | 1529 | `3a7b4483f57f212c278b6008cd9a43c171e128367469944a8a123bfcf7514019` |
 | `experiments/results/phase3/client-build.log` | 778 | `e6721975888edf390bb33de45b368b6dc4147afd58a8c9973f66b19d92230bd4` |
 | `experiments/results/phase3/layer-timings-1212.csv` | 46625 | `a416b36935c313f3838390d6d768fed970a7fcd9a7e0bf2e1c168bc669a224ab` |
 | `experiments/results/phase3/layer-timings-32508.csv` | 46674 | `6c9a38715bf46921ec40048feb66707492e34aa7fab7ea13061c0f1adfd754b3` |
@@ -303,7 +303,7 @@ experiments/
 | `experiments/results/phase3/layer-timings-9412.csv` | 46402 | `bd27b57160ba85bd80583d4d1a51630d856bc4e9d14508663e7bc83b2374b9a9` |
 | `experiments/results/phase3/npm-test.log` | 4206 | `5c954643f630754c6ce5a1dec2867b934db9e842ffa84451ca8ac96d369ef49d` |
 | `experiments/results/phase3/wsl-server-layer-timings.csv` | 401 | `f280433bc4a6859667b40650346b9a5d3142017042baf57d16264b31871567cc` |
-| `experiments/results/SHA256SUMS.json` | 18739 | `32c9dd0176ac7cc6b360a8e0d8eab6ace7d20d235957a125e71c9231d05f9e0c` |
+| `experiments/results/SHA256SUMS.json` | 18739 | `241f358ffd467a8ad5abe93953a4147f6c1bfa0fab5dc357a0f69575f6108923` |
 | `experiments/run-nonce-memory.js` | 6837 | `0cfd333ac7c09a2ae9378425a7ade9e4fc9724ac6c9bdeb55fe3359acb19496a` |
 | `experiments/run-races.js` | 5313 | `0d2882e56b85887b9dd966ea102b9c5578bcf5ea95e8521fecd4eaae7e2fe8e7` |
 | `experiments/run-viz-curve.js` | 2710 | `fd8170f37e44cdb7b2e2106a49eac81d9154fd5e1b90aa614bb7b08ff50c1869` |
@@ -4056,7 +4056,7 @@ Bytes: 1570. SHA-256: `7961fa3b8d4c055f64ba3e65cd45c8adef40d088b8653ffa3c29a4a56
 
 ### `experiments/results/environment.json`
 
-Bytes: 1579. SHA-256: `f635322ff14bc83a6adcb44977406cfaf0c429669421a0e7cc5085eae92c9ffd`.
+Bytes: 1529. SHA-256: `3a7b4483f57f212c278b6008cd9a43c171e128367469944a8a123bfcf7514019`.
 
 ```json
 {
@@ -4095,10 +4095,10 @@ Bytes: 1579. SHA-256: `f635322ff14bc83a6adcb44977406cfaf0c429669421a0e7cc5085eae
   },
   "redisUrl": "redis://127.0.0.1:6379",
   "audit": {
-    "commitHash": "42d570d0dc218746750498500dbf568f20562528",
-    "gitStatusShort": " M PROJECT_AUDIT_REPORT.md\n M attack/attack.sh\n M attack/payload.json\n M client/bank/src/App.jsx\n M client/bank/src/api.js\n M server/package.json\n M server/server.js\n M server/utils/hmac.js\n M server/utils/idempotency.js\n M server/utils/nonce.js\n?? docs/\n?? experiments/\n?? package.json\n?? server/core.js\n?? server/test/\n?? server/utils/money-oracle.js\n",
+    "commitHash": "4d9eceec78b0474bfad4e8711584268882697561",
+    "gitStatusShort": " M attack/payload.json\n M client/bank/src/App.jsx\n M client/bank/src/api.js\n M server/package.json\n M server/server.js\n M server/utils/hmac.js\n M server/utils/idempotency.js\n M server/utils/nonce.js\n?? package.json\n?? server/core.js\n?? server/test/\n?? server/utils/money-oracle.js\n",
     "gitStatusClean": false,
-    "gitStatusCaptureNote": "Captured before Phase 0 artifact commits; pre-existing user changes and Phase 1-3 working changes remain. The status is intentionally reported as-is."
+    "gitStatusCaptureNote": "Captured after the Phase 0 artifacts commit and before environment-metadata finalization; Phase 1-3 implementation changes remain uncommitted. Status is reported as observed."
   }
 }
 ```
@@ -5543,7 +5543,7 @@ default,unspecified,unspecified,1269671184185100,1269671185337700,1152600,116200
 
 ### `experiments/results/SHA256SUMS.json`
 
-Bytes: 18739. SHA-256: `32c9dd0176ac7cc6b360a8e0d8eab6ace7d20d235957a125e71c9231d05f9e0c`.
+Bytes: 18739. SHA-256: `241f358ffd467a8ad5abe93953a4147f6c1bfa0fab5dc357a0f69575f6108923`.
 
 ```json
 [
@@ -6014,8 +6014,8 @@ Bytes: 18739. SHA-256: `32c9dd0176ac7cc6b360a8e0d8eab6ace7d20d235957a125e71c9231
   },
   {
     "path": "experiments/results/environment.json",
-    "sizeBytes": 1579,
-    "sha256": "f635322ff14bc83a6adcb44977406cfaf0c429669421a0e7cc5085eae92c9ffd"
+    "sizeBytes": 1529,
+    "sha256": "3a7b4483f57f212c278b6008cd9a43c171e128367469944a8a123bfcf7514019"
   },
   {
     "path": "experiments/results/phase3/client-build.log",

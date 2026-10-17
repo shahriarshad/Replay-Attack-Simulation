@@ -466,8 +466,8 @@
   },
   {
     "path": "experiments/results/environment.json",
-    "sizeBytes": 1579,
-    "sha256": "f635322ff14bc83a6adcb44977406cfaf0c429669421a0e7cc5085eae92c9ffd"
+    "sizeBytes": 1529,
+    "sha256": "3a7b4483f57f212c278b6008cd9a43c171e128367469944a8a123bfcf7514019"
   },
   {
     "path": "experiments/results/phase3/client-build.log",

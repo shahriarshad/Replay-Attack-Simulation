@@ -34,9 +34,9 @@
   },
   "redisUrl": "redis://127.0.0.1:6379",
   "audit": {
-    "commitHash": "42d570d0dc218746750498500dbf568f20562528",
-    "gitStatusShort": " M PROJECT_AUDIT_REPORT.md\n M attack/attack.sh\n M attack/payload.json\n M client/bank/src/App.jsx\n M client/bank/src/api.js\n M server/package.json\n M server/server.js\n M server/utils/hmac.js\n M server/utils/idempotency.js\n M server/utils/nonce.js\n?? docs/\n?? experiments/\n?? package.json\n?? server/core.js\n?? server/test/\n?? server/utils/money-oracle.js\n",
+    "commitHash": "4d9eceec78b0474bfad4e8711584268882697561",
+    "gitStatusShort": " M attack/payload.json\n M client/bank/src/App.jsx\n M client/bank/src/api.js\n M server/package.json\n M server/server.js\n M server/utils/hmac.js\n M server/utils/idempotency.js\n M server/utils/nonce.js\n?? package.json\n?? server/core.js\n?? server/test/\n?? server/utils/money-oracle.js\n",
     "gitStatusClean": false,
-    "gitStatusCaptureNote": "Captured before Phase 0 artifact commits; pre-existing user changes and Phase 1-3 working changes remain. The status is intentionally reported as-is."
+    "gitStatusCaptureNote": "Captured after the Phase 0 artifacts commit and before environment-metadata finalization; Phase 1-3 implementation changes remain uncommitted. Status is reported as observed."
   }
 }
