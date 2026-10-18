@@ -1,12 +1,13 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const { generateSignature, verifySignature } = require('../utils/hmac');
-const { verifyNonce, verifyNonceResilient, sweepExpiredMemory } = require('../utils/nonce');
+const { verifyNonce, verifyNonceResilient, sweepExpiredMemory, startNonceSweep } = require('../utils/nonce');
 const { isRequestProcessed } = require('../utils/idempotency');
 const { computeMoneyIntegrity } = require('../utils/money-oracle');
 const sqlite3 = require('sqlite3').verbose();
 const { sqliteRun } = require('../utils/nonce');
 const { validSignedRequest } = require('../utils/request');
+const { getStartupWarnings } = require('../utils/config-warnings');
 
 test('HMAC signs the canonical payload and rejects a modified field', () => {
   const payload = { method: 'POST', path: '/api/withdraw', user_id: 'u1', account_id: 'a1', amount: 20, currency: 'BDT', timestamp: '2026-01-01T00:00:00.000Z', nonce: 'n1', request_id: 'r1' };
@@ -27,6 +28,12 @@ test('signed request canonical fields must be strings without separators or cont
   assert.equal(validSignedRequest({ ...base, amount: 1.2 }, 'WITHDRAW'), false);
 });
 
+test('startup warnings flag a short nonce TTL and demo routes exposed on all interfaces', () => {
+  assert.deepEqual(getStartupWarnings({ nonceTtl: 300, pastWindow: 300, futureWindow: 5, host: '127.0.0.1', enableDemoRoutes: true }), ['NONCE_TTL (300s) is shorter than the combined timestamp window (305s).']);
+  assert.equal(getStartupWarnings({ nonceTtl: 400, pastWindow: 300, futureWindow: 5, host: '0.0.0.0', enableDemoRoutes: true }).length, 1);
+  assert.deepEqual(getStartupWarnings({ nonceTtl: 400, pastWindow: 300, futureWindow: 5, host: '0.0.0.0', enableDemoRoutes: false }), []);
+});
+
 test('memory nonce backend lazily expires only the looked-up nonce and supports periodic sweeping', async () => {
   const store = new Map();
   let clock = 1000;
@@ -38,6 +45,27 @@ test('memory nonce backend lazily expires only the looked-up nonce and supports 
   assert.equal(store.size, 2, 'lookup must not sweep the unrelated key');
   assert.equal(sweepExpiredMemory(store, clock + 10000), 2);
   assert.equal(store.size, 0);
+});
+
+test('periodic memory and SQLite nonce sweeps remove expired entries off the lookup path', async () => {
+  const memory = new Map([['expired', 10]]);
+  const memoryTimer = startNonceSweep({ backend: 'memory', store: memory, intervalMs: 10, now: () => 20 });
+  const db = new sqlite3.Database(':memory:');
+  let sqliteTimer;
+  try {
+    await sqliteRun(db, 'CREATE TABLE used_nonces (user_id TEXT NOT NULL, nonce TEXT NOT NULL, expires_at INTEGER NOT NULL, PRIMARY KEY(user_id, nonce))');
+    await sqliteRun(db, 'CREATE INDEX idx_sweep_expires_at ON used_nonces(expires_at)');
+    await sqliteRun(db, 'INSERT INTO used_nonces VALUES (?, ?, ?)', ['u', 'expired', 10]);
+    sqliteTimer = startNonceSweep({ backend: 'sqlite', store: db, intervalMs: 10, now: () => 20 });
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    assert.equal(memory.size, 0);
+    const row = await new Promise((resolve, reject) => db.get('SELECT COUNT(*) AS count FROM used_nonces', (error, result) => error ? reject(error) : resolve(result)));
+    assert.equal(row.count, 0);
+  } finally {
+    clearInterval(memoryTimer);
+    if (sqliteTimer) clearInterval(sqliteTimer);
+    await new Promise((resolve, reject) => db.close((error) => error ? reject(error) : resolve()));
+  }
 });
 
 test('SQLite nonce backend enforces durable uniqueness and expires entries', async () => {

@@ -9,6 +9,7 @@ const sqlite3 = require('sqlite3').verbose();
 const { createClient } = require('redis');
 const { verifySignature } = require('./utils/hmac');
 const { validSignedRequest } = require('./utils/request');
+const { getStartupWarnings } = require('./utils/config-warnings');
 const { verifyNonceResilient, listNonceKeys, clearNonceKeys, sqliteRun, sqliteGet, startNonceSweep } = require('./utils/nonce');
 const { isRequestProcessed } = require('./utils/idempotency');
 const { startVizServer, emitVizEvent } = require('./viz-server');
@@ -240,7 +241,7 @@ async function authenticate(req, userId) {
 
 async function verifyAndRememberNonce(userId, nonce) {
   const store = NONCE_BACKEND === 'redis' ? redisClient : NONCE_BACKEND === 'sqlite' ? db : memoryNonces;
-  return verifyNonceResilient(store, userId, nonce, { backend: NONCE_BACKEND, ttlSeconds: NONCE_TTL, failMode: NONCE_STORE_FAIL_MODE });
+  return verifyNonceResilient(store, userId, nonce, { backend: NONCE_BACKEND, ttlSeconds: NONCE_TTL, failMode: NONCE_STORE_FAIL_MODE, now: () => now() });
 }
 
 function errorResponse(res, statusCode, reason) {
@@ -528,8 +529,7 @@ app.use((error, req, res, next) => {
 app.use((req, res) => res.status(404).json({ error: 'NOT_FOUND' }));
 
 async function start() {
-  if (NONCE_TTL < PAST_WINDOW + FUTURE_WINDOW) console.warn(`NONCE_TTL (${NONCE_TTL}s) is shorter than the combined timestamp window (${PAST_WINDOW + FUTURE_WINDOW}s).`);
-  if (HOST === '0.0.0.0' && ENABLE_DEMO_ROUTES) console.warn('ENABLE_DEMO_ROUTES is enabled while HOST=0.0.0.0; demo reset/crash routes are exposed on all interfaces.');
+  for (const warning of getStartupWarnings({ nonceTtl: NONCE_TTL, pastWindow: PAST_WINDOW, futureWindow: FUTURE_WINDOW, host: HOST, enableDemoRoutes: ENABLE_DEMO_ROUTES })) console.warn(warning);
   await initializeDatabase();
   try {
     if (!redisClient.isOpen) await redisClient.connect();
@@ -551,7 +551,7 @@ function setClock(clockFn) { now = clockFn; }
 module.exports = {
   app, db, redisClient, initializeDatabase, start, setClock, processTransaction,
   config: { LEGACY_SHARED_SECRET, HMAC_SECRET, NONCE_BACKEND, NONCE_TTL, PAST_WINDOW, FUTURE_WINDOW, VIZ_ENABLED, DEMO_MODE, ENABLE_DEMO_ROUTES, DEPOSIT_REPLAY_PROTECTION, DEFENSES, CHECK_ORDER, NONCE_STORE_FAIL_MODE },
-  helpers: { get, all, run, pinDigest, clearUsedNonces, currentNonceKeys, emitDatabaseUpdate, parseOrder, validRequest }
+  helpers: { get, all, run, pinDigest, clearUsedNonces, currentNonceKeys, emitDatabaseUpdate, parseOrder, validRequest, getStartupWarnings }
 };
 
 if (require.main === module) {
