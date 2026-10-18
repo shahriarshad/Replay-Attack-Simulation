@@ -82,6 +82,7 @@ async function runConfiguration(mask, profile = {}) {
   const future = profile.future ?? FUTURE;
   const nonceTtl = profile.nonceTtl ?? NONCE_TTL;
   const sessionTtl = profile.sessionTtl ?? SESSION_TTL;
+  const policy = profile.idempotencyPolicy || process.env.IDEMPOTENCY_POLICY || 'success_only';
   const id = `H${mask & 1 ? 1 : 0}T${mask & 2 ? 1 : 0}N${mask & 4 ? 1 : 0}R${mask & 8 ? 1 : 0}${profile.suffix || ''}`;
   const port = 3200;
   const vizPort = 3201;
@@ -101,6 +102,7 @@ async function runConfiguration(mask, profile = {}) {
     TIMESTAMP_PAST_WINDOW_SECONDS: String(past), TIMESTAMP_FUTURE_WINDOW_SECONDS: String(future), SESSION_TTL: String(sessionTtl),
     DEFENSE_HMAC: String(Boolean(mask & 1)), DEFENSE_TIMESTAMP: String(Boolean(mask & 2)),
     DEFENSE_NONCE: String(Boolean(mask & 4)), DEFENSE_REQUEST_ID: String(Boolean(mask & 8)),
+    IDEMPOTENCY_POLICY: policy,
     EXPERIMENT_LOG: path.join(runDir, 'server-timings.csv'), CONFIG_ID: id, SCENARIO_ID: 'e1', RUN_ID: `e1-${Date.now()}`
   };
   const server = spawnLogged(process.execPath, ['server.js'], { cwd: SERVER, env: serverEnv }, path.join(runDir, 'server.stdout.log'), path.join(runDir, 'server.stderr.log'));
@@ -223,7 +225,9 @@ async function runConfiguration(mask, profile = {}) {
       return summaries;
     }
 
-    for (const scenario of ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7a', 'S7b', 'S8', 'S9', 'S10_fast', 'S10_late']) {
+    const filter = process.env.E1_SCENARIO_FILTER || '';
+    const selectedScenarios = filter ? [filter] : ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7a', 'S7b', 'S8', 'S9', 'S10_fast', 'S10_late'];
+    for (const scenario of selectedScenarios) {
       await login();
       if (scenario === 'S1' || scenario === 'S2' || scenario === 'S3' || scenario === 'S4' || scenario === 'S8') {
         const captures = await baseline(`${scenario}_legitimate_seed`, WIDTH);
@@ -269,6 +273,17 @@ async function runConfiguration(mask, profile = {}) {
         const payloads = Array.from({ length: WIDTH }, () => signedPayload({}, leakedKey));
         const results = await measureScenario(scenario, WIDTH, async () => Promise.all(payloads.map((payload) => submit(payload, bearer))));
         recordAttempts(scenario, results);
+      } else if (scenario === 'S11') {
+        const [tokenCapture] = await baseline('S11_token_capture_seed', 1);
+        const bearer = tokenCapture.request.headers.authorization.replace(/^Bearer\s+/i, '');
+        // The attacker gets only the bearer token. No session key is read or used here.
+        const forged = Array.from({ length: WIDTH }, () => ({
+          method: 'POST', path: '/api/withdraw', user_id: 'anis_101', account_id: 'acc_777', amount: 1,
+          currency: 'BDT', timestamp: new Date().toISOString(), nonce: `s11-n-${deterministicId(id)}`,
+          request_id: `s11-r-${deterministicId(id)}`
+        }));
+        const results = await measureScenario(scenario, WIDTH, async () => Promise.all(forged.map((payload) => submit(payload, bearer))));
+        recordAttempts(scenario, results);
       } else if (scenario === 'S10_fast' || scenario === 'S10_late') {
         const deposit = async (amount) => {
           const payload = { method: 'POST', path: '/api/deposit', user_id: 'anis_101', account_id: 'acc_777', amount, currency: 'BDT', timestamp: new Date().toISOString(), nonce: `deposit-${deterministicId(id)}`, request_id: `fund-${deterministicId(id)}` };
@@ -306,12 +321,24 @@ async function main() {
   fs.mkdirSync(RUN_OUTPUT, { recursive: true });
   const started = new Date().toISOString();
   const allSummaries = [];
-  for (let mask = 0; mask < 16; mask += 1) {
+  const filter = process.env.E1_SCENARIO_FILTER || '';
+  const onlyS11 = filter === 'S11';
+  const policySweep = process.env.E1_POLICY_SWEEP === 'true';
+  if (policySweep) {
+    for (const policy of ['success_only', 'any_outcome']) {
+      for (let mask = 8; mask < 16; mask += 1) {
+        process.stdout.write(`Policy ${policy}, config mask ${mask}, scenario ${filter}\n`);
+        allSummaries.push(...await runConfiguration(mask, { suffix: `-${policy}`, idempotencyPolicy: policy }));
+      }
+    }
+  } else for (let mask = 0; mask < 16; mask += 1) {
     process.stdout.write(`E1 ${mask + 1}/16: defense mask ${mask}\n`);
     allSummaries.push(...await runConfiguration(mask));
   }
-  process.stdout.write('E1 default-window confirmation: S2/60s and S4/301s\n');
-  allSummaries.push(...await runConfiguration(15, { suffix: '-DEFAULT', past: 300, future: 5, nonceTtl: 86400, sessionTtl: 900, fullScale: true }));
+  if (!onlyS11 && !policySweep) {
+    process.stdout.write('E1 default-window confirmation: S2/60s and S4/301s\n');
+    allSummaries.push(...await runConfiguration(15, { suffix: '-DEFAULT', past: 300, future: 5, nonceTtl: 86400, sessionTtl: 900, fullScale: true }));
+  }
   const headers = ['config_id', 'scenario_id', 'variant', 'attempts', 'http_accepted_count', 'debited_count', 'attack_success_rate', 'wilson95_low', 'wilson95_high', 'blocking_reason_histogram', 'oracle_total_debited_delta', 'oracle_duplicate_debit_count_delta', 'oracle_duplicate_debit_amount_delta', 'oracle_unauthorized_debit_amount_delta', 'oracle_delayed_execution_count_delta', 'oracle_delayed_execution_amount_delta', 'oracle_integrity_holds'];
   writeCsv(path.join(RUN_OUTPUT, 'summary.csv'), headers, allSummaries);
   const configs = [...new Set(allSummaries.map((r) => r.config_id))];

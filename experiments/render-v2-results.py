@@ -21,6 +21,10 @@ def save(fig,directory,name):
     for ext in ('png','pdf','svg'):fig.savefig(os.path.join(directory,f'{name}.{ext}'),dpi=180)
 
 e1run=read(os.path.join(E1,'summary.csv'))
+S11=os.path.join(ROOT,'experiments','results','e1-v2-s11','summary.csv')
+if os.path.exists(S11):
+    s11rows=read(S11)
+    e1run=[r for r in e1run if r['scenario_id']!='S11']+[r for r in s11rows if r['scenario_id']=='S11']
 scenarios=list(dict.fromkeys(r['scenario_id'] for r in e1run if r['scenario_id']!='LEGITIMATE_CONTROL'))
 configs=list(dict.fromkeys(r['config_id'] for r in e1run if '-DEFAULT' not in r['config_id']))
 matrix=np.full((len(configs),len(scenarios)),np.nan)
@@ -35,6 +39,11 @@ fig.colorbar(im,ax=ax,label='Debited / attempts');save(fig,E1,'attack-success-he
 tex=['\\begin{tabular}{l'+'c'*len(scenarios)+'}','\\toprule','Configuration & '+' & '.join(scenarios)+' \\\\','\\midrule']
 for i,c in enumerate(configs):tex.append(c+' & '+' & '.join('---' if not np.isfinite(matrix[i,j]) else f'{matrix[i,j]:.2f}' for j in range(len(scenarios)))+' \\\\')
 tex+=['\\bottomrule','\\end{tabular}'];open(os.path.join(E1,'coverage-matrix.tex'),'w',encoding='utf-8').write('\n'.join(tex)+'\n')
+if os.path.exists(S11):
+    with open(os.path.join(E1,'coverage-provenance.txt'),'w',encoding='utf-8') as f:
+        import hashlib
+        for p in (os.path.join(E1,'summary.csv'),S11):
+            with open(p,'rb') as data:f.write(f"{os.path.relpath(p,ROOT)} sha256={hashlib.sha256(data.read()).hexdigest()}\n")
 
 if os.path.exists(os.path.join(E2,'load-repeat-summary.csv')):
     rows=read(os.path.join(E2,'load-repeat-summary.csv'));stacks=[r['stack_id'] for r in rows];vals=[float(r['server_handler_repeat_median_median_ns'])/1e6 for r in rows];means=[(float(r['server_handler_t_ci95_low_ns'])+float(r['server_handler_t_ci95_high_ns']))/2e6 for r in rows];lo=[(float(r['server_handler_t_ci95_high_ns'])-float(r['server_handler_t_ci95_low_ns']))/2e6 for r in rows];

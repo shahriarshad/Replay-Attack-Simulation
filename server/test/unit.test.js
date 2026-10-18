@@ -8,6 +8,15 @@ const sqlite3 = require('sqlite3').verbose();
 const { sqliteRun } = require('../utils/nonce');
 const { validSignedRequest } = require('../utils/request');
 const { getStartupWarnings } = require('../utils/config-warnings');
+const { isTimestampWithinWindow } = require('../utils/timestamp');
+
+test('server and E3 share the inclusive timestamp acceptance rule', () => {
+  const now = Date.parse('2026-01-01T00:00:00.000Z');
+  assert.equal(isTimestampWithinWindow(new Date(now - 300000).toISOString(), now, 300, 5), true);
+  assert.equal(isTimestampWithinWindow(new Date(now + 5000).toISOString(), now, 300, 5), true);
+  assert.equal(isTimestampWithinWindow(new Date(now - 301000).toISOString(), now, 300, 5), false);
+  assert.equal(isTimestampWithinWindow(new Date(now + 6000).toISOString(), now, 300, 5), false);
+});
 
 test('HMAC signs the canonical payload and rejects a modified field', () => {
   const payload = { method: 'POST', path: '/api/withdraw', user_id: 'u1', account_id: 'a1', amount: 20, currency: 'BDT', timestamp: '2026-01-01T00:00:00.000Z', nonce: 'n1', request_id: 'r1' };
@@ -98,6 +107,17 @@ test('idempotency is scoped to successful transactions so failures may retry', a
   };
   assert.deepEqual((await isRequestProcessed(fakeDb, 'failed')).processed, false);
   assert.equal((await isRequestProcessed(fakeDb, 'success')).processed, true);
+});
+
+test('idempotency policy selects SUCCESS-only or any-outcome lookup', async () => {
+  const fakeDb = {
+    get(sql, params, callback) {
+      if (sql.includes("status IN ('SUCCESS', 'FAILED')")) callback(null, { request_id: params[0], status: 'FAILED' });
+      else callback(null, null);
+    }
+  };
+  assert.equal((await isRequestProcessed(fakeDb, 'failed', 'success_only')).processed, false);
+  assert.equal((await isRequestProcessed(fakeDb, 'failed', 'any_outcome')).processed, true);
 });
 
 test('money oracle accepts a clean ledger against authorized intents', () => {

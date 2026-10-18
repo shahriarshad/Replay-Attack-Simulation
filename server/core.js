@@ -10,6 +10,7 @@ const sqlite3 = require('sqlite3').verbose();
 const { createClient } = require('redis');
 const { verifySignature } = require('./utils/hmac');
 const { validSignedRequest } = require('./utils/request');
+const { isTimestampWithinWindow } = require('./utils/timestamp');
 const { getStartupWarnings } = require('./utils/config-warnings');
 const { verifyNonceResilient, listNonceKeys, clearNonceKeys, sqliteRun, sqliteGet, startNonceSweep } = require('./utils/nonce');
 const { isRequestProcessed } = require('./utils/idempotency');
@@ -26,6 +27,7 @@ const NONCE_BACKEND = (process.env.NONCE_STORE || 'redis').toLowerCase();
 const NONCE_TTL = Number(process.env.NONCE_TTL || 300);
 const NONCE_STORE_FAIL_MODE = (process.env.NONCE_STORE_FAIL_MODE || 'fail-closed').toLowerCase();
 const SESSION_TTL = Number(process.env.SESSION_TTL || 900);
+const IDEMPOTENCY_POLICY = (process.env.IDEMPOTENCY_POLICY || 'success_only').toLowerCase();
 const PAST_WINDOW = Number(process.env.TIMESTAMP_PAST_WINDOW_SECONDS || 300);
 const FUTURE_WINDOW = Number(process.env.TIMESTAMP_FUTURE_WINDOW_SECONDS || 5);
 const VIZ_ENABLED = flag('VIZ_ENABLED', true);
@@ -167,10 +169,12 @@ async function initializeDatabase() {
     FOREIGN KEY (user_id) REFERENCES accounts(user_id)
   )`);
   await migrateTransactions();
-  if (DEFENSES.request_id) {
-    await run("CREATE UNIQUE INDEX IF NOT EXISTS idx_transactions_success_request_id ON transactions(request_id) WHERE status = 'SUCCESS'");
-  } else {
-    await run('DROP INDEX IF EXISTS idx_transactions_success_request_id');
+  await run('DROP INDEX IF EXISTS idx_transactions_success_request_id');
+  await run('DROP INDEX IF EXISTS idx_transactions_any_outcome_request_id');
+  if (DEFENSES.request_id && IDEMPOTENCY_POLICY === 'any_outcome') {
+    await run("CREATE UNIQUE INDEX idx_transactions_any_outcome_request_id ON transactions(request_id) WHERE status IN ('SUCCESS', 'FAILED')");
+  } else if (DEFENSES.request_id) {
+    await run("CREATE UNIQUE INDEX idx_transactions_success_request_id ON transactions(request_id) WHERE status = 'SUCCESS'");
   }
   await run(`CREATE TABLE IF NOT EXISTS used_nonces (
     user_id TEXT NOT NULL, nonce TEXT NOT NULL, expires_at INTEGER NOT NULL,
@@ -346,8 +350,8 @@ async function processTransaction(req, res, type) {
         if (!DEFENSES.timestamp) return { valid: true, disabled: true };
         const checkedAtMs = now();
         if (experimentLogPath) res.setHeader('x-server-check-time-ms', String(checkedAtMs));
+        const valid = isTimestampWithinWindow(payload.timestamp, checkedAtMs, PAST_WINDOW, FUTURE_WINDOW);
         const skewSeconds = (checkedAtMs - Date.parse(payload.timestamp)) / 1000;
-        const valid = skewSeconds >= -FUTURE_WINDOW && skewSeconds <= PAST_WINDOW;
         emit('check-timestamp', { status: valid ? 'PASS' : 'FAIL', diff: Math.round(skewSeconds), allowedPast: PAST_WINDOW, allowedFuture: FUTURE_WINDOW });
         return { valid, skewSeconds };
       },
@@ -360,7 +364,7 @@ async function processTransaction(req, res, type) {
       },
       request_id: async () => {
         if (!DEFENSES.request_id) return { valid: true, disabled: true };
-        const result = await isRequestProcessed(db, payload.request_id);
+        const result = await isRequestProcessed(db, payload.request_id, IDEMPOTENCY_POLICY);
         emit('check-requestid', { status: result.processed ? 'FAIL' : 'PASS', found: result.processed });
         return { valid: !result.processed, result };
       },
@@ -389,7 +393,7 @@ async function processTransaction(req, res, type) {
     const transaction = await withTransactionLock(async () => {
       await run('BEGIN IMMEDIATE');
       try {
-        if (DEFENSES.request_id && (await isRequestProcessed(db, payload.request_id)).processed) {
+        if (DEFENSES.request_id && (await isRequestProcessed(db, payload.request_id, IDEMPOTENCY_POLICY)).processed) {
           await run('ROLLBACK');
           return { rejected: 'ALREADY_PROCESSED' };
         }
@@ -501,7 +505,7 @@ app.post('/api/deposit', async (req, res) => {
       const account = await get('SELECT account_id FROM accounts WHERE user_id = ?', [payload.user_id]);
       if (!account) return res.status(404).json({ error: 'ACCOUNT_NOT_FOUND' });
       if (payload.account_id !== account.account_id) return errorResponse(res, 403, 'ACCOUNT_OWNERSHIP_FAIL');
-      const existing = await isRequestProcessed(db, payload.request_id);
+      const existing = await isRequestProcessed(db, payload.request_id, IDEMPOTENCY_POLICY);
       if (existing.processed) return errorResponse(res, 409, 'ALREADY_PROCESSED');
       await withTransactionLock(async () => {
         await run('BEGIN IMMEDIATE');

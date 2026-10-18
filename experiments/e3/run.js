@@ -3,6 +3,7 @@ const os = require('os');
 const path = require('path');
 const { spawn } = require('child_process');
 const { generateSignature } = require('../../server/utils/hmac');
+const { isTimestampWithinWindow } = require('../../server/utils/timestamp');
 const { timedRequest } = require('../lib/http');
 
 const ROOT = path.resolve(__dirname, '../..');
@@ -40,7 +41,7 @@ async function main() {
         const p={method:'POST',path:'/api/withdraw',user_id:'anis_101',account_id:'acc_777',amount:1,currency:'BDT',timestamp:timestampIso,nonce:`e3-${cell}-${i}-${Math.floor(random()*1e12)}`,request_id:`e3-${cell}-${i}`}; p.signature=generateSignature(p,sessionKey);
         const response=await timedRequest(`http://127.0.0.1:${port}/api/withdraw`,{method:'POST',headers:{'content-type':'application/json',authorization:`Bearer ${sessionToken}`},body:JSON.stringify(p)});
         const observed=response.status!==200; rejected+=observed?1:0;
-        const checkMs=Number(response.headers?.['x-server-check-time-ms']||sendMs); const expectedAge=(checkMs-serializedTimestampMs)/1000; const offline=expectedAge>past||expectedAge< -future; offlineRejected+=offline?1:0; mismatch+=offline!==observed?1:0;
+        const checkMs=Number(response.headers?.['x-server-check-time-ms']||sendMs); const expectedAge=(checkMs-serializedTimestampMs)/1000; const offline=!isTimestampWithinWindow(timestampIso,checkMs,past,future); offlineRejected+=offline?1:0; mismatch+=offline!==observed?1:0;
         requests.push({profile:profile.id,past_seconds:past,future_seconds:future,attempt:i+1,send_time_epoch_ms:sendMs,timestamp_iso:timestampIso,timestamp_epoch_ms:serializedTimestampMs,server_check_time_ms:checkMs,client_offset_seconds:offset,assumed_delay_seconds:delay,expected_age_at_check_seconds:expectedAge,offline_expected_rejected:offline?1:0,http_status:response.status,reason:response.body.reason||response.body.error||'',observed_rejected:observed?1:0,duration_ns:response.duration_ns});
       }
       const [low,high]=wilson(rejected,N); summary.push({profile:profile.id,past_seconds:past,future_seconds:future,attempts:N,false_rejections:rejected,false_rejection_rate:rejected/N,wilson95_low:low,wilson95_high:high,offline_expected_rejections:offlineRejected,mismatch_count:mismatch,validated:mismatch===0,assumptions:JSON.stringify(profile)});

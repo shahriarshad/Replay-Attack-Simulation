@@ -49,3 +49,4 @@ test('FAILED ID may be retried as SUCCESS, but a second SUCCESS with that ID is 
   assert.equal((await require('../utils/idempotency').isRequestProcessed(core.db, 'legacy-failed')).processed, true);
   await assert.rejects(core.helpers.run("INSERT INTO transactions (request_id,user_id,account_id,type,amount,status) VALUES ('legacy-failed','anis_101','acc_777','WITHDRAW',5,'SUCCESS')"), /UNIQUE constraint failed/i);
 });
+

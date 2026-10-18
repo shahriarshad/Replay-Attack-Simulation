@@ -1,4 +1,4 @@
-# Paper Facts Register
+# Raw Machine Register, Not for Citation
 
 One row per numeric finding used in a potential paper claim. `measured under explicit assumptions` refers to E3’s measured simulation outcomes; the clock/delay parameters themselves are separately labelled `assumption`. E4d rows are derived and carry their formulas. All hashes are SHA-256 of the exact source file. No paper table should cite the superseded nonce-memory pass.
 
