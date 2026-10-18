@@ -22,7 +22,7 @@ function bytesToHex(buffer) {
 function randomToken(prefix) {
   const values = new Uint32Array(3);
   window.crypto.getRandomValues(values);
-  return `${prefix}_${Array.from(values).map((value) => value.toString(16)).join('')}`;
+  return `${prefix}_${Array.from(values).map((value) => value.toString(16).padStart(8, '0')).join('')}`;
 }
 
 // 9 IMPORTANT DATA OF REQUEST BODY TO BE SIGNED IN HMAC MESSAGE
