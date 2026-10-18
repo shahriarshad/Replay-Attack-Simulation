@@ -21,7 +21,13 @@ function timedRequest(input, options = {}) {
         resolve({ start_ns: start.toString(), end_ns: end.toString(), duration_ns: (end - start).toString(), status: response.statusCode, body });
       });
     });
-    request.on('error', reject);
+    request.on('error', (error) => {
+      const end = process.hrtime.bigint();
+      error.start_ns = start.toString();
+      error.end_ns = end.toString();
+      error.duration_ns = (end - start).toString();
+      reject(error);
+    });
     if (options.body !== undefined) request.write(options.body);
     request.end();
   });

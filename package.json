@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "npm --prefix server test"
+    "test": "npm --prefix server test",
+    "experiments": "node experiments/run-phase4.js",
+    "experiments:e1": "node experiments/e1/run.js",
+    "experiments:e2": "node experiments/e2/run.js",
+    "experiments:render": "python experiments/render-pack-a.py",
+    "experiments:pack": "node experiments/write-results-pack.js"
   }
 }

@@ -132,7 +132,8 @@ function buildTree(files) {
 }
 
 refreshResultManifest();
-const allFiles = walk(experimentRoot);
+const dossierTextExtensions = new Set(['.js', '.py', '.md', '.json', '.csv', '.log', '.tex', '.sh', '.txt']);
+const allFiles = walk(experimentRoot).filter((filePath) => dossierTextExtensions.has(path.extname(filePath).toLowerCase()));
 const resultFiles = allFiles.filter((filePath) => filePath.startsWith(`${resultRoot}${path.sep}`));
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const manifestHashes = new Map(manifest.map((entry) => [entry.path, entry.sha256]));
@@ -148,6 +149,7 @@ add(
   '# Complete Experiment Dossier',
   '',
   'Generated from the current `experiments/` tree. It includes the complete folder structure, a file inventory, measured interpretation, and a full text/code listing of every file currently under `experiments/`.',
+  'Binary SQLite databases and rendered image/PDF artifacts are excluded from the inline source listing; their paths and hashes remain in `experiments/results/SHA256SUMS.json`, and paper figures are summarized in `docs/RESULTS_PACK_A.md`.',
   '',
   '## Scope and evidence rules',
   '',

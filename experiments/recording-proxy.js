@@ -10,6 +10,7 @@ const outputPath = process.env.PROXY_CAPTURE_FILE || path.join(os.tmpdir(), 'cs-
 const captureLogPath = `${outputPath}.jsonl`;
 const withdrawalCapturePath = process.env.PROXY_WITHDRAW_CAPTURE_FILE || `${outputPath}.withdraw.json`;
 const redactLogin = /^(1|true|yes|on)$/i.test(process.env.PROXY_REDACT_LOGIN || 'false');
+const upstreamAgent = new http.Agent({ keepAlive: true });
 
 const server = http.createServer((request, response) => {
   const started = process.hrtime.bigint();
@@ -20,12 +21,14 @@ const server = http.createServer((request, response) => {
     const headers = { ...request.headers };
     delete headers.host;
     delete headers['content-length'];
+    delete headers['transfer-encoding'];
     const proxyRequest = http.request({
       hostname: upstream.hostname,
       port: Number(upstream.port || 80),
       method: request.method,
       path: request.url,
-      headers: { ...headers, 'content-length': bodyBuffer.length }
+      headers: { ...headers, 'content-length': bodyBuffer.length },
+      agent: upstreamAgent
     }, (upstreamResponse) => {
       const responseChunks = [];
       upstreamResponse.on('data', (chunk) => responseChunks.push(chunk));
