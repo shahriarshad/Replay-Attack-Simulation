@@ -1,88 +1,77 @@
-# Review Bundle V2, part 4 of 7
+# Review Bundle V2, part 4 of 13
 
-Source HEAD: `ac6eefe60aea95aedce38ab52080317e9b274ec6`. Parts are ordered numerically. This part continues the unified bundle; fenced blocks may continue in the next part.
+Source HEAD: `c72333baad0e6af0d189d372680e66f06294d397`. Parts are ordered numerically. This part continues the unified bundle; fenced blocks may continue in the next part.
 
 # Shared table of contents
 
 | File | Source line count | Bundle part and line range |
 |---|---:|---|
-| `attack/attack.sh` | 287 | REVIEW_BUNDLE_V2_part7.md:6630-6916 |
-| `client/bank/src/App.jsx` | 109 | REVIEW_BUNDLE_V2_part7.md:6922-7030 |
-| `client/bank/src/api.js` | 135 | REVIEW_BUNDLE_V2_part7.md:7036-7170 |
-| `client/bank/src/components/BalanceDisplay.jsx` | 20 | REVIEW_BUNDLE_V2_part7.md:7176-7195 |
-| `client/bank/src/components/DepositForm.jsx` | 43 | REVIEW_BUNDLE_V2_part7.md:7201-7243 |
-| `client/bank/src/components/TransactionHistory.jsx` | 42 | REVIEW_BUNDLE_V2_part7.md:7249-7290 |
-| `client/bank/src/components/WithdrawForm.jsx` | 44 | REVIEW_BUNDLE_V2_part7.md:7296-7339 |
-| `client/bank/src/socket.js` | 6 | REVIEW_BUNDLE_V2_part7.md:7345-7350 |
-| `client/bank/src/styles.css` | 201 | REVIEW_BUNDLE_V2_part7.md:7356-7556 |
-| `docs/CLAIMS_EVIDENCE.md` | 22 | REVIEW_BUNDLE_V2_part7.md:7562-7583 |
-| `docs/DEMO.md` | 99 | REVIEW_BUNDLE_V2_part7.md:7589-7687 |
-| `docs/LIMITATIONS.md` | 31 | REVIEW_BUNDLE_V2_part7.md:7693-7723 |
-| `docs/REPRODUCE.md` | 76 | REVIEW_BUNDLE_V2_part7.md:7729-7804 |
-| `docs/THREAT_MODEL.md` | 26 | REVIEW_BUNDLE_V2_part7.md:7810-7835 |
-| `experiments/audit-egress.js` | 72 | REVIEW_BUNDLE_V2_part7.md:7841-7912 |
-| `experiments/audit/build-curated-facts.js` | 28 | REVIEW_BUNDLE_V2_part7.md:7918-7945 |
-| `experiments/audit/build-policy-tradeoff.js` | 6 | REVIEW_BUNDLE_V2_part7.md:7951-7956 |
-| `experiments/audit/build-results-pack-final.js` | 16 | REVIEW_BUNDLE_V2_part7.md:7962-7977 |
-| `experiments/audit/check-e4a-rule.js` | 45 | REVIEW_BUNDLE_V2_part7.md:7983-8027 |
-| `experiments/audit/make-e2-layer-table.js` | 13 | REVIEW_BUNDLE_V2_part7.md:8033-8045 |
-| `experiments/audit/make-review-bundle-v2.js` | 200 | REVIEW_BUNDLE_V2_part7.md:8051-8250 |
-| `experiments/audit/verify-results.js` | 43 | REVIEW_BUNDLE_V2_part7.md:8256-8298 |
-| `experiments/e1/finalize-oracle-summary.js` | 63 | REVIEW_BUNDLE_V2_part7.md:8304-8366 |
-| `experiments/e1/reconcile-oracle-amounts.js` | 33 | REVIEW_BUNDLE_V2_part7.md:8372-8404 |
-| `experiments/e1/run-policy-resubmit.js` | 19 | REVIEW_BUNDLE_V2_part7.md:8410-8428 |
-| `experiments/e1/run.js` | 357 | REVIEW_BUNDLE_V2_part7.md:8434-8790 |
-| `experiments/e2/run.js` | 347 | REVIEW_BUNDLE_V2_part7.md:8796-9142 |
-| `experiments/e3/run.js` | 56 | REVIEW_BUNDLE_V2_part7.md:9148-9203 |
-| `experiments/e4/run.js` | 74 | REVIEW_BUNDLE_V2_part7.md:9209-9282 |
-| `experiments/lib/http.js` | 37 | REVIEW_BUNDLE_V2_part7.md:9288-9324 |
-| `experiments/recording-proxy.js` | 81 | REVIEW_BUNDLE_V2_part7.md:9330-9410 |
-| `experiments/render-documentation.js` | 317 | REVIEW_BUNDLE_V2_part7.md:9416-9732 |
-| `experiments/render-pack-a.py` | 80 | REVIEW_BUNDLE_V2_part7.md:9738-9817 |
-| `experiments/render-v2-results.py` | 111 | REVIEW_BUNDLE_V2_part7.md:9823-9933 |
-| `experiments/run-f1-races.js` | 79 | REVIEW_BUNDLE_V2_part7.md:9939-10017 |
-| `experiments/run-nonce-memory.js` | 118 | REVIEW_BUNDLE_V2_part7.md:10023-10140 |
-| `experiments/run-phase4.js` | 18 | REVIEW_BUNDLE_V2_part7.md:10146-10163 |
-| `experiments/run-races.js` | 117 | REVIEW_BUNDLE_V2_part7.md:10169-10285 |
-| `experiments/run-viz-curve.js` | 40 | REVIEW_BUNDLE_V2_part7.md:10291-10330 |
-| `experiments/send-through-proxy.js` | 49 | REVIEW_BUNDLE_V2_part7.md:10336-10384 |
-| `experiments/verify-demo-session-flow.js` | 49 | REVIEW_BUNDLE_V2_part7.md:10390-10438 |
-| `experiments/write-paper-facts.js` | 26 | REVIEW_BUNDLE_V2_part7.md:10444-10469 |
-| `experiments/write-results-pack-v2.js` | 115 | REVIEW_BUNDLE_V2_part7.md:10475-10589 |
-| `experiments/write-results-pack.js` | 175 | REVIEW_BUNDLE_V2_part7.md:10595-10769 |
-| `package.json` | 19 | REVIEW_BUNDLE_V2_part7.md:10775-10793 |
-| `server/.env.example` | 23 | REVIEW_BUNDLE_V2_part7.md:10799-10821 |
-| `server/core.js` | 601 | REVIEW_BUNDLE_V2_part7.md:10827-11427 |
-| `server/package.json` | 25 | REVIEW_BUNDLE_V2_part7.md:11433-11457 |
-| `server/server.js` | 10 | REVIEW_BUNDLE_V2_part7.md:11463-11472 |
-| `server/test/idempotency-policy.test.js` | 10 | REVIEW_BUNDLE_V2_part7.md:11478-11487 |
-| `server/test/integration.test.js` | 296 | REVIEW_BUNDLE_V2_part7.md:11493-11788 |
-| `server/test/migration.test.js` | 53 | REVIEW_BUNDLE_V2_part7.md:11794-11846 |
-| `server/test/proxy.test.js` | 64 | REVIEW_BUNDLE_V2_part7.md:11852-11915 |
-| `server/test/route-gating.test.js` | 35 | REVIEW_BUNDLE_V2_part7.md:11921-11955 |
-| `server/test/unit.test.js` | 157 | REVIEW_BUNDLE_V2_part7.md:11961-12117 |
-| `server/utils/config-warnings.js` | 13 | REVIEW_BUNDLE_V2_part7.md:12123-12135 |
-| `server/utils/hmac.js` | 39 | REVIEW_BUNDLE_V2_part7.md:12141-12179 |
-| `server/utils/idempotency.js` | 38 | REVIEW_BUNDLE_V2_part7.md:12185-12222 |
-| `server/utils/money-oracle.js` | 66 | REVIEW_BUNDLE_V2_part7.md:12228-12293 |
-| `server/utils/nonce.js` | 123 | REVIEW_BUNDLE_V2_part7.md:12299-12421 |
-| `server/utils/request.js` | 18 | REVIEW_BUNDLE_V2_part7.md:12427-12444 |
-| `server/utils/timestamp.js` | 9 | REVIEW_BUNDLE_V2_part7.md:12450-12458 |
-| `server/viz-server.js` | 63 | REVIEW_BUNDLE_V2_part7.md:12464-12526 |
+| `attack/attack.sh` | 287 | REVIEW_BUNDLE_V2_part13.md:19982-20268 |
+| `client/bank/src/App.jsx` | 109 | REVIEW_BUNDLE_V2_part13.md:20274-20382 |
+| `client/bank/src/api.js` | 135 | REVIEW_BUNDLE_V2_part13.md:20388-20522 |
+| `client/bank/src/components/BalanceDisplay.jsx` | 20 | REVIEW_BUNDLE_V2_part13.md:20528-20547 |
+| `client/bank/src/components/DepositForm.jsx` | 43 | REVIEW_BUNDLE_V2_part13.md:20553-20595 |
+| `client/bank/src/components/TransactionHistory.jsx` | 42 | REVIEW_BUNDLE_V2_part13.md:20601-20642 |
+| `client/bank/src/components/WithdrawForm.jsx` | 44 | REVIEW_BUNDLE_V2_part13.md:20648-20691 |
+| `client/bank/src/socket.js` | 6 | REVIEW_BUNDLE_V2_part13.md:20697-20702 |
+| `client/bank/src/styles.css` | 201 | REVIEW_BUNDLE_V2_part13.md:20708-20908 |
+| `docs/CLAIMS_EVIDENCE.md` | 22 | REVIEW_BUNDLE_V2_part13.md:20914-20935 |
+| `docs/DEMO.md` | 99 | REVIEW_BUNDLE_V2_part13.md:20941-21039 |
+| `docs/LIMITATIONS.md` | 31 | REVIEW_BUNDLE_V2_part13.md:21045-21075 |
+| `docs/REPRODUCE.md` | 76 | REVIEW_BUNDLE_V2_part13.md:21081-21156 |
+| `docs/THREAT_MODEL.md` | 26 | REVIEW_BUNDLE_V2_part13.md:21162-21187 |
+| `experiments/audit-egress.js` | 72 | REVIEW_BUNDLE_V2_part13.md:21193-21264 |
+| `experiments/audit/build-curated-facts.js` | 28 | REVIEW_BUNDLE_V2_part13.md:21270-21297 |
+| `experiments/audit/build-policy-tradeoff.js` | 6 | REVIEW_BUNDLE_V2_part13.md:21303-21308 |
+| `experiments/audit/build-results-pack-final.js` | 16 | REVIEW_BUNDLE_V2_part13.md:21314-21329 |
+| `experiments/audit/check-e4a-rule.js` | 45 | REVIEW_BUNDLE_V2_part13.md:21335-21379 |
+| `experiments/audit/make-e2-layer-table.js` | 13 | REVIEW_BUNDLE_V2_part13.md:21385-21397 |
+| `experiments/audit/make-review-bundle-v2.js` | 200 | REVIEW_BUNDLE_V2_part13.md:21403-21602 |
+| `experiments/audit/verify-results.js` | 43 | REVIEW_BUNDLE_V2_part13.md:21608-21650 |
+| `experiments/e1/finalize-oracle-summary.js` | 63 | REVIEW_BUNDLE_V2_part13.md:21656-21718 |
+| `experiments/e1/reconcile-oracle-amounts.js` | 33 | REVIEW_BUNDLE_V2_part13.md:21724-21756 |
+| `experiments/e1/run-policy-resubmit.js` | 19 | REVIEW_BUNDLE_V2_part13.md:21762-21780 |
+| `experiments/e1/run.js` | 357 | REVIEW_BUNDLE_V2_part13.md:21786-22142 |
+| `experiments/e2/run.js` | 347 | REVIEW_BUNDLE_V2_part13.md:22148-22494 |
+| `experiments/e3/run.js` | 56 | REVIEW_BUNDLE_V2_part13.md:22500-22555 |
+| `experiments/e4/run.js` | 74 | REVIEW_BUNDLE_V2_part13.md:22561-22634 |
+| `experiments/lib/http.js` | 37 | REVIEW_BUNDLE_V2_part13.md:22640-22676 |
+| `experiments/recording-proxy.js` | 81 | REVIEW_BUNDLE_V2_part13.md:22682-22762 |
+| `experiments/render-documentation.js` | 317 | REVIEW_BUNDLE_V2_part13.md:22768-23084 |
+| `experiments/render-pack-a.py` | 80 | REVIEW_BUNDLE_V2_part13.md:23090-23169 |
+| `experiments/render-v2-results.py` | 111 | REVIEW_BUNDLE_V2_part13.md:23175-23285 |
+| `experiments/run-f1-races.js` | 79 | REVIEW_BUNDLE_V2_part13.md:23291-23369 |
+| `experiments/run-nonce-memory.js` | 118 | REVIEW_BUNDLE_V2_part13.md:23375-23492 |
+| `experiments/run-phase4.js` | 18 | REVIEW_BUNDLE_V2_part13.md:23498-23515 |
+| `experiments/run-races.js` | 117 | REVIEW_BUNDLE_V2_part13.md:23521-23637 |
+| `experiments/run-viz-curve.js` | 40 | REVIEW_BUNDLE_V2_part13.md:23643-23682 |
+| `experiments/send-through-proxy.js` | 49 | REVIEW_BUNDLE_V2_part13.md:23688-23736 |
+| `experiments/verify-demo-session-flow.js` | 49 | REVIEW_BUNDLE_V2_part13.md:23742-23790 |
+| `experiments/write-paper-facts.js` | 26 | REVIEW_BUNDLE_V2_part13.md:23796-23821 |
+| `experiments/write-results-pack-v2.js` | 115 | REVIEW_BUNDLE_V2_part13.md:23827-23941 |
+| `experiments/write-results-pack.js` | 175 | REVIEW_BUNDLE_V2_part13.md:23947-24121 |
+| `package.json` | 19 | REVIEW_BUNDLE_V2_part13.md:24127-24145 |
+| `server/.env.example` | 23 | REVIEW_BUNDLE_V2_part13.md:24151-24173 |
+| `server/core.js` | 601 | REVIEW_BUNDLE_V2_part13.md:24179-24779 |
+| `server/package.json` | 25 | REVIEW_BUNDLE_V2_part13.md:24785-24809 |
+| `server/server.js` | 10 | REVIEW_BUNDLE_V2_part13.md:24815-24824 |
+| `server/test/idempotency-policy.test.js` | 10 | REVIEW_BUNDLE_V2_part13.md:24830-24839 |
+| `server/test/integration.test.js` | 296 | REVIEW_BUNDLE_V2_part13.md:24845-25140 |
+| `server/test/migration.test.js` | 53 | REVIEW_BUNDLE_V2_part13.md:25146-25198 |
+| `server/test/proxy.test.js` | 64 | REVIEW_BUNDLE_V2_part13.md:25204-25267 |
+| `server/test/route-gating.test.js` | 35 | REVIEW_BUNDLE_V2_part13.md:25273-25307 |
+| `server/test/unit.test.js` | 157 | REVIEW_BUNDLE_V2_part13.md:25313-25469 |
+| `server/utils/config-warnings.js` | 13 | REVIEW_BUNDLE_V2_part13.md:25475-25487 |
+| `server/utils/hmac.js` | 39 | REVIEW_BUNDLE_V2_part13.md:25493-25531 |
+| `server/utils/idempotency.js` | 38 | REVIEW_BUNDLE_V2_part13.md:25537-25574 |
+| `server/utils/money-oracle.js` | 66 | REVIEW_BUNDLE_V2_part13.md:25580-25645 |
+| `server/utils/nonce.js` | 123 | REVIEW_BUNDLE_V2_part13.md:25651-25773 |
+| `server/utils/request.js` | 18 | REVIEW_BUNDLE_V2_part13.md:25779-25796 |
+| `server/utils/timestamp.js` | 9 | REVIEW_BUNDLE_V2_part13.md:25802-25810 |
+| `server/viz-server.js` | 63 | REVIEW_BUNDLE_V2_part13.md:25816-25878 |
 
 ---
 
-+all_four,flood-duplicate_request_id,flood-duplicate_request_id-r2,1332128789434800,1332128791175200,1740400,76300,18300,251100,414100,not_reached,ALREADY_PROCESSED,409
-+```
-+
-+### `experiments/results/e2-v2-profiled-corrected/2026-10-18T15-29-06-997Z/all_four-timestampfirst-flood-duplicate_request_id-r2/profile-flush.json`
-+
-+Bytes: 150. SHA-256: `a2c7580894afda5f23f16be7a3caba350f8726cf74489b859e7641971dbec0d3`.
-+
-+```json
-+{
-+  "status": 200,
-+  "body": {
 +    "logged": true
 +  },
 +  "start_ns": "1332128850643700",
@@ -47641,3 +47630,4 @@ index 0000000..078203a
 +| timestamp-boundaries-30-each.json.responses[35].status | 200 | count / source unit | measured | `experiments/results/corrections/timestamp-boundaries-30-each.json` | `96b2e35e20e61f7c0e2afe7ae03b876c531c023c527d6d08defbeeb40354f2fc` | `node experiments/run-races.js / node experiments/run-phase0-corrections.js` |  |
 +| timestamp-boundaries-30-each.json.responses[35].data.amount | 1 | count / source unit | measured | `experiments/results/corrections/timestamp-boundaries-30-each.json` | `96b2e35e20e61f7c0e2afe7ae03b876c531c023c527d6d08defbeeb40354f2fc` | `node experiments/run-races.js / node experiments/run-phase0-corrections.js` |  |
 +| timestamp-boundaries-30-each.json.responses[35].data.newBalance | 9964 | count / source unit | measured | `experiments/results/corrections/timestamp-boundaries-30-each.json` | `96b2e35e20e61f7c0e2afe7ae03b876c531c023c527d6d08defbeeb40354f2fc` | `node experiments/run-races.js / node experiments/run-phase0-corrections.js` |  |
++| timestamp-boundaries-30-each.json.responses[36].repetition | 7 | count / source unit | measured | `experiments/results/corrections/timestamp-boundaries-30-each.json` | `96b2e35e20e61f7c0e2afe7ae03b876c531c023c527d6d08defbeeb40354f2fc` | `node experiments/run-races.js / node experiments/run-phase0-corrections.js` |  |

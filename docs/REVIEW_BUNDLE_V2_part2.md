@@ -1,84 +1,77 @@
-# Review Bundle V2, part 2 of 7
+# Review Bundle V2, part 2 of 13
 
-Source HEAD: `ac6eefe60aea95aedce38ab52080317e9b274ec6`. Parts are ordered numerically. This part continues the unified bundle; fenced blocks may continue in the next part.
+Source HEAD: `c72333baad0e6af0d189d372680e66f06294d397`. Parts are ordered numerically. This part continues the unified bundle; fenced blocks may continue in the next part.
 
 # Shared table of contents
 
 | File | Source line count | Bundle part and line range |
 |---|---:|---|
-| `attack/attack.sh` | 287 | REVIEW_BUNDLE_V2_part7.md:6630-6916 |
-| `client/bank/src/App.jsx` | 109 | REVIEW_BUNDLE_V2_part7.md:6922-7030 |
-| `client/bank/src/api.js` | 135 | REVIEW_BUNDLE_V2_part7.md:7036-7170 |
-| `client/bank/src/components/BalanceDisplay.jsx` | 20 | REVIEW_BUNDLE_V2_part7.md:7176-7195 |
-| `client/bank/src/components/DepositForm.jsx` | 43 | REVIEW_BUNDLE_V2_part7.md:7201-7243 |
-| `client/bank/src/components/TransactionHistory.jsx` | 42 | REVIEW_BUNDLE_V2_part7.md:7249-7290 |
-| `client/bank/src/components/WithdrawForm.jsx` | 44 | REVIEW_BUNDLE_V2_part7.md:7296-7339 |
-| `client/bank/src/socket.js` | 6 | REVIEW_BUNDLE_V2_part7.md:7345-7350 |
-| `client/bank/src/styles.css` | 201 | REVIEW_BUNDLE_V2_part7.md:7356-7556 |
-| `docs/CLAIMS_EVIDENCE.md` | 22 | REVIEW_BUNDLE_V2_part7.md:7562-7583 |
-| `docs/DEMO.md` | 99 | REVIEW_BUNDLE_V2_part7.md:7589-7687 |
-| `docs/LIMITATIONS.md` | 31 | REVIEW_BUNDLE_V2_part7.md:7693-7723 |
-| `docs/REPRODUCE.md` | 76 | REVIEW_BUNDLE_V2_part7.md:7729-7804 |
-| `docs/THREAT_MODEL.md` | 26 | REVIEW_BUNDLE_V2_part7.md:7810-7835 |
-| `experiments/audit-egress.js` | 72 | REVIEW_BUNDLE_V2_part7.md:7841-7912 |
-| `experiments/audit/build-curated-facts.js` | 28 | REVIEW_BUNDLE_V2_part7.md:7918-7945 |
-| `experiments/audit/build-policy-tradeoff.js` | 6 | REVIEW_BUNDLE_V2_part7.md:7951-7956 |
-| `experiments/audit/build-results-pack-final.js` | 16 | REVIEW_BUNDLE_V2_part7.md:7962-7977 |
-| `experiments/audit/check-e4a-rule.js` | 45 | REVIEW_BUNDLE_V2_part7.md:7983-8027 |
-| `experiments/audit/make-e2-layer-table.js` | 13 | REVIEW_BUNDLE_V2_part7.md:8033-8045 |
-| `experiments/audit/make-review-bundle-v2.js` | 200 | REVIEW_BUNDLE_V2_part7.md:8051-8250 |
-| `experiments/audit/verify-results.js` | 43 | REVIEW_BUNDLE_V2_part7.md:8256-8298 |
-| `experiments/e1/finalize-oracle-summary.js` | 63 | REVIEW_BUNDLE_V2_part7.md:8304-8366 |
-| `experiments/e1/reconcile-oracle-amounts.js` | 33 | REVIEW_BUNDLE_V2_part7.md:8372-8404 |
-| `experiments/e1/run-policy-resubmit.js` | 19 | REVIEW_BUNDLE_V2_part7.md:8410-8428 |
-| `experiments/e1/run.js` | 357 | REVIEW_BUNDLE_V2_part7.md:8434-8790 |
-| `experiments/e2/run.js` | 347 | REVIEW_BUNDLE_V2_part7.md:8796-9142 |
-| `experiments/e3/run.js` | 56 | REVIEW_BUNDLE_V2_part7.md:9148-9203 |
-| `experiments/e4/run.js` | 74 | REVIEW_BUNDLE_V2_part7.md:9209-9282 |
-| `experiments/lib/http.js` | 37 | REVIEW_BUNDLE_V2_part7.md:9288-9324 |
-| `experiments/recording-proxy.js` | 81 | REVIEW_BUNDLE_V2_part7.md:9330-9410 |
-| `experiments/render-documentation.js` | 317 | REVIEW_BUNDLE_V2_part7.md:9416-9732 |
-| `experiments/render-pack-a.py` | 80 | REVIEW_BUNDLE_V2_part7.md:9738-9817 |
-| `experiments/render-v2-results.py` | 111 | REVIEW_BUNDLE_V2_part7.md:9823-9933 |
-| `experiments/run-f1-races.js` | 79 | REVIEW_BUNDLE_V2_part7.md:9939-10017 |
-| `experiments/run-nonce-memory.js` | 118 | REVIEW_BUNDLE_V2_part7.md:10023-10140 |
-| `experiments/run-phase4.js` | 18 | REVIEW_BUNDLE_V2_part7.md:10146-10163 |
-| `experiments/run-races.js` | 117 | REVIEW_BUNDLE_V2_part7.md:10169-10285 |
-| `experiments/run-viz-curve.js` | 40 | REVIEW_BUNDLE_V2_part7.md:10291-10330 |
-| `experiments/send-through-proxy.js` | 49 | REVIEW_BUNDLE_V2_part7.md:10336-10384 |
-| `experiments/verify-demo-session-flow.js` | 49 | REVIEW_BUNDLE_V2_part7.md:10390-10438 |
-| `experiments/write-paper-facts.js` | 26 | REVIEW_BUNDLE_V2_part7.md:10444-10469 |
-| `experiments/write-results-pack-v2.js` | 115 | REVIEW_BUNDLE_V2_part7.md:10475-10589 |
-| `experiments/write-results-pack.js` | 175 | REVIEW_BUNDLE_V2_part7.md:10595-10769 |
-| `package.json` | 19 | REVIEW_BUNDLE_V2_part7.md:10775-10793 |
-| `server/.env.example` | 23 | REVIEW_BUNDLE_V2_part7.md:10799-10821 |
-| `server/core.js` | 601 | REVIEW_BUNDLE_V2_part7.md:10827-11427 |
-| `server/package.json` | 25 | REVIEW_BUNDLE_V2_part7.md:11433-11457 |
-| `server/server.js` | 10 | REVIEW_BUNDLE_V2_part7.md:11463-11472 |
-| `server/test/idempotency-policy.test.js` | 10 | REVIEW_BUNDLE_V2_part7.md:11478-11487 |
-| `server/test/integration.test.js` | 296 | REVIEW_BUNDLE_V2_part7.md:11493-11788 |
-| `server/test/migration.test.js` | 53 | REVIEW_BUNDLE_V2_part7.md:11794-11846 |
-| `server/test/proxy.test.js` | 64 | REVIEW_BUNDLE_V2_part7.md:11852-11915 |
-| `server/test/route-gating.test.js` | 35 | REVIEW_BUNDLE_V2_part7.md:11921-11955 |
-| `server/test/unit.test.js` | 157 | REVIEW_BUNDLE_V2_part7.md:11961-12117 |
-| `server/utils/config-warnings.js` | 13 | REVIEW_BUNDLE_V2_part7.md:12123-12135 |
-| `server/utils/hmac.js` | 39 | REVIEW_BUNDLE_V2_part7.md:12141-12179 |
-| `server/utils/idempotency.js` | 38 | REVIEW_BUNDLE_V2_part7.md:12185-12222 |
-| `server/utils/money-oracle.js` | 66 | REVIEW_BUNDLE_V2_part7.md:12228-12293 |
-| `server/utils/nonce.js` | 123 | REVIEW_BUNDLE_V2_part7.md:12299-12421 |
-| `server/utils/request.js` | 18 | REVIEW_BUNDLE_V2_part7.md:12427-12444 |
-| `server/utils/timestamp.js` | 9 | REVIEW_BUNDLE_V2_part7.md:12450-12458 |
-| `server/viz-server.js` | 63 | REVIEW_BUNDLE_V2_part7.md:12464-12526 |
+| `attack/attack.sh` | 287 | REVIEW_BUNDLE_V2_part13.md:19982-20268 |
+| `client/bank/src/App.jsx` | 109 | REVIEW_BUNDLE_V2_part13.md:20274-20382 |
+| `client/bank/src/api.js` | 135 | REVIEW_BUNDLE_V2_part13.md:20388-20522 |
+| `client/bank/src/components/BalanceDisplay.jsx` | 20 | REVIEW_BUNDLE_V2_part13.md:20528-20547 |
+| `client/bank/src/components/DepositForm.jsx` | 43 | REVIEW_BUNDLE_V2_part13.md:20553-20595 |
+| `client/bank/src/components/TransactionHistory.jsx` | 42 | REVIEW_BUNDLE_V2_part13.md:20601-20642 |
+| `client/bank/src/components/WithdrawForm.jsx` | 44 | REVIEW_BUNDLE_V2_part13.md:20648-20691 |
+| `client/bank/src/socket.js` | 6 | REVIEW_BUNDLE_V2_part13.md:20697-20702 |
+| `client/bank/src/styles.css` | 201 | REVIEW_BUNDLE_V2_part13.md:20708-20908 |
+| `docs/CLAIMS_EVIDENCE.md` | 22 | REVIEW_BUNDLE_V2_part13.md:20914-20935 |
+| `docs/DEMO.md` | 99 | REVIEW_BUNDLE_V2_part13.md:20941-21039 |
+| `docs/LIMITATIONS.md` | 31 | REVIEW_BUNDLE_V2_part13.md:21045-21075 |
+| `docs/REPRODUCE.md` | 76 | REVIEW_BUNDLE_V2_part13.md:21081-21156 |
+| `docs/THREAT_MODEL.md` | 26 | REVIEW_BUNDLE_V2_part13.md:21162-21187 |
+| `experiments/audit-egress.js` | 72 | REVIEW_BUNDLE_V2_part13.md:21193-21264 |
+| `experiments/audit/build-curated-facts.js` | 28 | REVIEW_BUNDLE_V2_part13.md:21270-21297 |
+| `experiments/audit/build-policy-tradeoff.js` | 6 | REVIEW_BUNDLE_V2_part13.md:21303-21308 |
+| `experiments/audit/build-results-pack-final.js` | 16 | REVIEW_BUNDLE_V2_part13.md:21314-21329 |
+| `experiments/audit/check-e4a-rule.js` | 45 | REVIEW_BUNDLE_V2_part13.md:21335-21379 |
+| `experiments/audit/make-e2-layer-table.js` | 13 | REVIEW_BUNDLE_V2_part13.md:21385-21397 |
+| `experiments/audit/make-review-bundle-v2.js` | 200 | REVIEW_BUNDLE_V2_part13.md:21403-21602 |
+| `experiments/audit/verify-results.js` | 43 | REVIEW_BUNDLE_V2_part13.md:21608-21650 |
+| `experiments/e1/finalize-oracle-summary.js` | 63 | REVIEW_BUNDLE_V2_part13.md:21656-21718 |
+| `experiments/e1/reconcile-oracle-amounts.js` | 33 | REVIEW_BUNDLE_V2_part13.md:21724-21756 |
+| `experiments/e1/run-policy-resubmit.js` | 19 | REVIEW_BUNDLE_V2_part13.md:21762-21780 |
+| `experiments/e1/run.js` | 357 | REVIEW_BUNDLE_V2_part13.md:21786-22142 |
+| `experiments/e2/run.js` | 347 | REVIEW_BUNDLE_V2_part13.md:22148-22494 |
+| `experiments/e3/run.js` | 56 | REVIEW_BUNDLE_V2_part13.md:22500-22555 |
+| `experiments/e4/run.js` | 74 | REVIEW_BUNDLE_V2_part13.md:22561-22634 |
+| `experiments/lib/http.js` | 37 | REVIEW_BUNDLE_V2_part13.md:22640-22676 |
+| `experiments/recording-proxy.js` | 81 | REVIEW_BUNDLE_V2_part13.md:22682-22762 |
+| `experiments/render-documentation.js` | 317 | REVIEW_BUNDLE_V2_part13.md:22768-23084 |
+| `experiments/render-pack-a.py` | 80 | REVIEW_BUNDLE_V2_part13.md:23090-23169 |
+| `experiments/render-v2-results.py` | 111 | REVIEW_BUNDLE_V2_part13.md:23175-23285 |
+| `experiments/run-f1-races.js` | 79 | REVIEW_BUNDLE_V2_part13.md:23291-23369 |
+| `experiments/run-nonce-memory.js` | 118 | REVIEW_BUNDLE_V2_part13.md:23375-23492 |
+| `experiments/run-phase4.js` | 18 | REVIEW_BUNDLE_V2_part13.md:23498-23515 |
+| `experiments/run-races.js` | 117 | REVIEW_BUNDLE_V2_part13.md:23521-23637 |
+| `experiments/run-viz-curve.js` | 40 | REVIEW_BUNDLE_V2_part13.md:23643-23682 |
+| `experiments/send-through-proxy.js` | 49 | REVIEW_BUNDLE_V2_part13.md:23688-23736 |
+| `experiments/verify-demo-session-flow.js` | 49 | REVIEW_BUNDLE_V2_part13.md:23742-23790 |
+| `experiments/write-paper-facts.js` | 26 | REVIEW_BUNDLE_V2_part13.md:23796-23821 |
+| `experiments/write-results-pack-v2.js` | 115 | REVIEW_BUNDLE_V2_part13.md:23827-23941 |
+| `experiments/write-results-pack.js` | 175 | REVIEW_BUNDLE_V2_part13.md:23947-24121 |
+| `package.json` | 19 | REVIEW_BUNDLE_V2_part13.md:24127-24145 |
+| `server/.env.example` | 23 | REVIEW_BUNDLE_V2_part13.md:24151-24173 |
+| `server/core.js` | 601 | REVIEW_BUNDLE_V2_part13.md:24179-24779 |
+| `server/package.json` | 25 | REVIEW_BUNDLE_V2_part13.md:24785-24809 |
+| `server/server.js` | 10 | REVIEW_BUNDLE_V2_part13.md:24815-24824 |
+| `server/test/idempotency-policy.test.js` | 10 | REVIEW_BUNDLE_V2_part13.md:24830-24839 |
+| `server/test/integration.test.js` | 296 | REVIEW_BUNDLE_V2_part13.md:24845-25140 |
+| `server/test/migration.test.js` | 53 | REVIEW_BUNDLE_V2_part13.md:25146-25198 |
+| `server/test/proxy.test.js` | 64 | REVIEW_BUNDLE_V2_part13.md:25204-25267 |
+| `server/test/route-gating.test.js` | 35 | REVIEW_BUNDLE_V2_part13.md:25273-25307 |
+| `server/test/unit.test.js` | 157 | REVIEW_BUNDLE_V2_part13.md:25313-25469 |
+| `server/utils/config-warnings.js` | 13 | REVIEW_BUNDLE_V2_part13.md:25475-25487 |
+| `server/utils/hmac.js` | 39 | REVIEW_BUNDLE_V2_part13.md:25493-25531 |
+| `server/utils/idempotency.js` | 38 | REVIEW_BUNDLE_V2_part13.md:25537-25574 |
+| `server/utils/money-oracle.js` | 66 | REVIEW_BUNDLE_V2_part13.md:25580-25645 |
+| `server/utils/nonce.js` | 123 | REVIEW_BUNDLE_V2_part13.md:25651-25773 |
+| `server/utils/request.js` | 18 | REVIEW_BUNDLE_V2_part13.md:25779-25796 |
+| `server/utils/timestamp.js` | 9 | REVIEW_BUNDLE_V2_part13.md:25802-25810 |
+| `server/viz-server.js` | 63 | REVIEW_BUNDLE_V2_part13.md:25816-25878 |
 
 ---
 
-+6,1317296522637600,1317296584043400,61405800,200,ACCEPTED
-+7,1317296522684300,1317296552647500,29963200,200,ACCEPTED
-+8,1317296522730500,1317296556683800,33953300,200,ACCEPTED
-+9,1317296522776300,1317296579937700,57161400,200,ACCEPTED
-+10,1317296522822900,1317296588101600,65278700,200,ACCEPTED
-+11,1317296522869800,1317296563171600,40301800,200,ACCEPTED
-+12,1317296522915400,1317296566843300,43927900,200,ACCEPTED
 +13,1317296522961400,1317296571453500,48492100,200,ACCEPTED
 +14,1317296523033100,1317296576265000,53231900,200,ACCEPTED
 +15,1317296523083500,1317296591589600,68506100,200,ACCEPTED
@@ -62472,3 +62465,10 @@ Source HEAD: `ac6eefe60aea95aedce38ab52080317e9b274ec6`. Parts are ordered numer
 +375,1329370739295800,1329370746828700,7532900,200,ACCEPTED
 +376,1329370747009900,1329370756199100,9189200,200,ACCEPTED
 +377,1329370756384600,1329370764745100,8360500,200,ACCEPTED
++378,1329370764936500,1329370772332000,7395500,200,ACCEPTED
++379,1329370772483200,1329370780282900,7799700,200,ACCEPTED
++380,1329370780477800,1329370787548200,7070400,200,ACCEPTED
++381,1329370787732700,1329370795694900,7962200,200,ACCEPTED
++382,1329370795898700,1329370803135300,7236600,200,ACCEPTED
++383,1329370803319000,1329370811158800,7839800,200,ACCEPTED
++384,1329370811340800,1329370818675200,7334400,200,ACCEPTED
