@@ -2748,7 +2748,7 @@ experiments/
 | `experiments/run-viz-curve.js` | 2710 | `fd8170f37e44cdb7b2e2106a49eac81d9154fd5e1b90aa614bb7b08ff50c1869` |
 | `experiments/send-through-proxy.js` | 2882 | `62890986624f5a34c2d69b354bfbba00e4441e85eda46eb25ea9ecffdf85a587` |
 | `experiments/verify-demo-session-flow.js` | 3825 | `ce0197418e7ae82f4b121f5dac620d2f570eda6bac1af5f4134e4526c9b6b65d` |
-| `experiments/write-results-pack.js` | 17247 | `57020ac6dcc51444f6fc9ddcdb2006d0503b7f6c9d939f2e527f3715927d9b56` |
+| `experiments/write-results-pack.js` | 18853 | `1ee0e2377428e612730f646d4ac5c9b7b6668810c47be27ed64b0b2e0f80e46f` |
 
 ## Phase 0 correction measurements
 
@@ -110554,7 +110554,7 @@ main().catch((error)=>{ process.stderr.write(`${error.stack||error.message}\n`);
 
 ### `experiments/write-results-pack.js`
 
-Bytes: 17247. SHA-256: `57020ac6dcc51444f6fc9ddcdb2006d0503b7f6c9d939f2e527f3715927d9b56`.
+Bytes: 18853. SHA-256: `1ee0e2377428e612730f646d4ac5c9b7b6668810c47be27ed64b0b2e0f80e46f`.
 
 ```js
 ﻿const fs = require('fs');
@@ -110687,6 +110687,17 @@ lines.push('', '| Check order | Flood | Attempts | Rejected | Mean latency (ms) 
 for (const row of e2Floods) lines.push(`| ${row.check_order} | ${row.flood} | ${row.attempts} | ${row.rejected_count} | ${row.mean_duration_ms} | ${row.p50_ms} | ${row.p95_ms} | ${row.p99_ms} |`);
 for (const file of ['load-repeats.csv', 'load-repeat-summary.csv', 'layer-timing-summary.csv', 'rejection-cost.csv', 'load-summary.tex', 'rejection-cost.tex', ...e2Figure.map((item) => path.basename(item))].map((name) => path.join(E2, name))) {
   if (fs.existsSync(file)) lines.push(`- \`${path.relative(ROOT, file).replace(/\\/g, '/')}\`: size ${fs.statSync(file).size} bytes; SHA-256 \`${sha256(file)}\`.`);
+}
+const defaultDuplicateId = e2Floods.find((row) => row.check_order === 'default' && row.flood === 'duplicate_request_id');
+if (defaultDuplicateId) {
+  const timingPath = path.join(ROOT, defaultDuplicateId.raw_path.replace(/requests\.csv$/, 'layer-timings-rejected.csv'));
+  const timingRows = parseCsv(fs.readFileSync(timingPath, 'utf8')).rows;
+  const handlerMs = timingRows.map((row) => Number(row.duration_ns) / 1e6).filter(Number.isFinite);
+  const handlerSummary = stats(handlerMs);
+  const slowestHandler = timingRows.reduce((slowest, row) => Number(row.duration_ns) > Number(slowest.duration_ns) ? row : slowest, timingRows[0]);
+  lines.push('', '### Investigated latency outlier', '',
+    `The default-order duplicate-request-ID flood had a client-side p99 of ${defaultDuplicateId.p99_ms} ms. Its server handler timing CSV shows p99 ${handlerSummary.p99} ms; the slowest logged handler took ${(Number(slowestHandler.duration_ns) / 1e6).toFixed(3)} ms, with request-ID layer timing ${slowestHandler.request_id_ns} ns and balance marked \`${slowestHandler.balance_ns}\`.`,
+    `The code runs account lookup and session-token authentication before the replay layers, and writes EXPERIMENT_LOG synchronously in the request's finally block. Those costs are outside the per-layer timing columns. The current records do not isolate which uninstrumented work caused this tail, so the scenario was retained unchanged and the cause is reported as unresolved. Server timing evidence: \`${path.relative(ROOT, timingPath).replace(/\\/g, '/')}\`; client request evidence: \`${defaultDuplicateId.raw_path}\`.`);
 }
 lines.push('', '## Derived figures and tables: provenance', '');
 const provenance = [

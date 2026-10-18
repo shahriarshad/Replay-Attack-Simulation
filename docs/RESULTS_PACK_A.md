@@ -94,6 +94,11 @@ E1 scanned 16 flag configurations and 11 replay scenarios. Across "none", S1 exa
 - `experiments/results/e2/latency-by-stack.pdf`: size 18005 bytes; SHA-256 `8c46530d1ee735b74d90cc94f77f871c4b2cfde5522f1222706e792ece7c2959`.
 - `experiments/results/e2/latency-by-stack.svg`: size 50320 bytes; SHA-256 `c84d6335d269287fca84f9d9d42873a3fa68837468f4ae26041d37b833bd7b49`.
 
+### Investigated latency outlier
+
+The default-order duplicate-request-ID flood had a client-side p99 of 511.44797 ms. Its server handler timing CSV shows p99 508.8682 ms; the slowest logged handler took 515.681 ms, with request-ID layer timing 12862800 ns and balance marked `not_reached`.
+The code runs account lookup and session-token authentication before the replay layers, and writes EXPERIMENT_LOG synchronously in the request's finally block. Those costs are outside the per-layer timing columns. The current records do not isolate which uninstrumented work caused this tail, so the scenario was retained unchanged and the cause is reported as unresolved. Server timing evidence: `experiments/results/e2/2026-10-18T11-06-22-520Z/all_four-hmac,timestamp,nonce,request_id,balance-flood-duplicate_request_id/layer-timings-rejected.csv`; client request evidence: `experiments/results/e2/2026-10-18T11-06-22-520Z/all_four-hmac,timestamp,nonce,request_id,balance-flood-duplicate_request_id/requests.csv`.
+
 ## Derived figures and tables: provenance
 
 - `experiments/results/e1-sqlite-final/attack-success-heatmap.png`: SHA-256 `2fadb0791b96098a0d9b47cfa53d1ba79e219a17afaa7e617afec541e82fba7f`; raw CSV `experiments/results/e1-sqlite-final/summary.csv` SHA-256 `00deed725995a103e866a6ba4e25f872cadebf315d4285c97efc6decc97237b4`; command `python experiments/render-pack-a.py`; run runtime 997.096 seconds.
