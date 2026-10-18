@@ -1,0 +1,8 @@
+{
+  "name": "replay-attack-research-artifact",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm --prefix server test"
+  }
+}
