@@ -1,17 +1,30 @@
-async function timedRequest(url, options = {}) {
-  const start = process.hrtime.bigint();
-  const response = await fetch(url, options);
-  const text = await response.text();
-  const end = process.hrtime.bigint();
-  let body;
-  try { body = JSON.parse(text); } catch { body = text; }
-  return {
-    start_ns: start.toString(),
-    end_ns: end.toString(),
-    duration_ns: (end - start).toString(),
-    status: response.status,
-    body
-  };
+const http = require('http');
+const https = require('https');
+const agents = { 'http:': new http.Agent({ keepAlive: true }), 'https:': new https.Agent({ keepAlive: true }) };
+
+function timedRequest(input, options = {}) {
+  return new Promise((resolve, reject) => {
+    const url = new URL(input);
+    const start = process.hrtime.bigint();
+    const request = (url.protocol === 'https:' ? https : http).request(url, {
+      method: options.method || 'GET',
+      headers: options.headers || {},
+      agent: agents[url.protocol]
+    }, (response) => {
+      const chunks = [];
+      response.on('data', (chunk) => chunks.push(chunk));
+      response.on('end', () => {
+        const end = process.hrtime.bigint();
+        const text = Buffer.concat(chunks).toString('utf8');
+        let body;
+        try { body = JSON.parse(text); } catch { body = text; }
+        resolve({ start_ns: start.toString(), end_ns: end.toString(), duration_ns: (end - start).toString(), status: response.statusCode, body });
+      });
+    });
+    request.on('error', reject);
+    if (options.body !== undefined) request.write(options.body);
+    request.end();
+  });
 }
 
-module.exports = { timedRequest };
+module.exports = { timedRequest, keepAlive: true, agents };

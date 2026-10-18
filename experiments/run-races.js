@@ -7,20 +7,21 @@ const { computeMoneyIntegrity } = require('../server/utils/money-oracle');
 const { timedRequest } = require('./lib/http');
 
 const baseUrl = process.env.EXPERIMENT_API || 'http://127.0.0.1:3000';
-const output = path.join(__dirname, 'results', 'corrections');
+const output = process.env.RACE_OUTPUT || path.join(__dirname, 'results', 'corrections');
 const batches = Number(process.env.RACE_BATCHES || 1000);
 const width = 50;
 fs.mkdirSync(output, { recursive: true });
 
+let session;
 function makePayload(requestId = `request_${crypto.randomUUID()}`, nonce = `nonce_${crypto.randomUUID()}`) {
   const payload = { method: 'POST', path: '/api/withdraw', user_id: 'anis_101', account_id: 'acc_777', amount: 1,
     currency: 'BDT', timestamp: new Date().toISOString(), nonce, request_id: requestId };
-  payload.signature = generateSignature(payload, process.env.HMAC_SECRET);
+  payload.signature = generateSignature(payload, session.sessionKey);
   return payload;
 }
 
 async function request(payload) {
-  return timedRequest(`${baseUrl}/api/withdraw`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
+  return timedRequest(`${baseUrl}/api/withdraw`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${session.sessionToken}` }, body: JSON.stringify(payload) });
 }
 
 function writeRows(filename, header, rows) {
@@ -28,6 +29,10 @@ function writeRows(filename, header, rows) {
 }
 
 async function main() {
+  const login = await timedRequest(`${baseUrl}/api/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ user_id: 'anis_101', pin: process.env.DEMO_PIN || '1234' }) });
+  if (login.status !== 200) throw new Error(`Session login failed: ${login.status}`);
+  session = login.body;
+  const signedRequest = (payload) => { payload.signature = generateSignature(payload, session.sessionKey); return payload; };
   const perRequestRows = [];
   const batchRows = [];
   const acceptedDistribution = {};
@@ -42,32 +47,35 @@ async function main() {
     const reasons = responses.reduce((map, response) => {
       const reason = response.body.reason || response.body.status || 'UNKNOWN'; map[reason] = (map[reason] || 0) + 1; return map;
     }, {});
+    const ledger = await timedRequest(`${baseUrl}/api/transactions/anis_101`, { headers: { authorization: `Bearer ${session.sessionToken}` } });
+    const oracle = computeMoneyIntegrity(ledger.body.transactions, [{ request_id: payload.request_id, amount: payload.amount, type: 'WITHDRAW' }]);
+    if (!oracle.integrity_holds || oracle.total_debited !== 1) throw new Error(`Money oracle failed in batch ${batch}`);
+    const balance = await timedRequest(`${baseUrl}/api/balance/anis_101`, { headers: { authorization: `Bearer ${session.sessionToken}` } });
     acceptedDistribution[accepted] = (acceptedDistribution[accepted] || 0) + 1;
-    batchRows.push([batch, accepted, reasons.NONCE_FAIL || 0, (end - start).toString(), reset.start_ns, reset.end_ns, reset.duration_ns].join(','));
+    batchRows.push([batch, accepted, reasons.NONCE_FAIL || 0, oracle.total_debited, oracle.duplicate_debit_count, oracle.unauthorized_debit_amount, 10000 - balance.body.balance, (end - start).toString(), reset.start_ns, reset.end_ns, reset.duration_ns].join(','));
     responses.forEach((response, index) => perRequestRows.push([batch, index + 1, response.start_ns, response.end_ns, response.duration_ns, response.status, response.body.reason || response.body.status || ''].join(',')));
     if (accepted !== 1) throw new Error(`Batch ${batch}: expected one acceptance, got ${accepted}`);
   }
   writeRows(`race-identical-50x${batches}-requests.csv`, 'batch,request_index,started_ns,ended_ns,duration_ns,http_status,outcome', perRequestRows);
-  writeRows(`race-identical-50x${batches}-batches.csv`, 'batch,accepted_count,nonce_fail_count,batch_duration_ns,reset_started_ns,reset_ended_ns,reset_duration_ns', batchRows);
+  writeRows(`race-identical-50x${batches}-batches.csv`, 'batch,accepted_count,nonce_fail_count,oracle_total_debited,oracle_duplicate_debit_count,oracle_unauthorized_debit_amount,balance_delta,batch_duration_ns,reset_started_ns,reset_ended_ns,reset_duration_ns', batchRows);
 
   await timedRequest(`${baseUrl}/api/reset`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' });
   const sharedRequestId = `secret-holder-${crypto.randomUUID()}`;
   const payloads = Array.from({ length: width }, (_, index) => makePayload(sharedRequestId, `secret-holder-nonce-${index}-${crypto.randomUUID()}`));
-  const before = await timedRequest(`${baseUrl}/api/balance/anis_101`);
+  const before = await timedRequest(`${baseUrl}/api/balance/anis_101`, { headers: { authorization: `Bearer ${session.sessionToken}` } });
   const raceStart = process.hrtime.bigint();
   const race = await Promise.all(payloads.map(request));
   const raceEnd = process.hrtime.bigint();
-  const after = await timedRequest(`${baseUrl}/api/balance/anis_101`);
-  const transactions = race.map((result, index) => result.body.status === 'ACCEPTED' ? ({
-    type: 'WITHDRAW', status: 'SUCCESS', amount: 1, signature: payloads[index].signature
-  }) : null).filter(Boolean);
-  const oracle = computeMoneyIntegrity(transactions, payloads);
+  const after = await timedRequest(`${baseUrl}/api/balance/anis_101`, { headers: { authorization: `Bearer ${session.sessionToken}` } });
+  const ledger = await timedRequest(`${baseUrl}/api/transactions/anis_101`, { headers: { authorization: `Bearer ${session.sessionToken}` } });
+  const authorized = payloads.map((payload) => ({ request_id: payload.request_id, amount: payload.amount, type: 'WITHDRAW' }));
+  const oracle = computeMoneyIntegrity(ledger.body.transactions, authorized);
   const summary = {
     vizEnabled: process.env.VIZ_ENABLED === 'true',
     identicalPayloadRace: { batches, parallelWidth: width, acceptedCountDistribution: acceptedDistribution, acceptedPerBatch: 1, totalRequests: batches * width },
     secretHolderSameRequestIdRace: {
       parallelWidth: width, acceptedCount: race.filter((result) => result.body.status === 'ACCEPTED').length,
-      requestIdShared: true, distinctValidNonces: width, debitAmount: Number(before.body.balance) - Number(after.body.balance),
+      requestIdShared: true, distinctValidNonces: width, balanceDelta: Number(before.body.balance) - Number(after.body.balance),
       duration_ns: (raceEnd - raceStart).toString(), beforeBalanceTiming: before, afterBalanceTiming: after, oracle
     }
   };

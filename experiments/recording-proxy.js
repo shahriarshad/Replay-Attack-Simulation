@@ -9,6 +9,7 @@ const port = Number(process.env.PROXY_PORT || 3002);
 const outputPath = process.env.PROXY_CAPTURE_FILE || path.join(os.tmpdir(), 'cs-project-onpath-capture.json');
 const captureLogPath = `${outputPath}.jsonl`;
 const withdrawalCapturePath = process.env.PROXY_WITHDRAW_CAPTURE_FILE || `${outputPath}.withdraw.json`;
+const redactLogin = /^(1|true|yes|on)$/i.test(process.env.PROXY_REDACT_LOGIN || 'false');
 
 const server = http.createServer((request, response) => {
   const started = process.hrtime.bigint();
@@ -31,6 +32,8 @@ const server = http.createServer((request, response) => {
       upstreamResponse.on('end', () => {
         const responseBody = Buffer.concat(responseChunks);
         const ended = process.hrtime.bigint();
+        const isLogin = request.method === 'POST' && new URL(request.url, upstream).pathname === '/api/login';
+        const redact = redactLogin && isLogin;
         const record = {
           capturedAt: new Date().toISOString(),
           start_ns: started.toString(),
@@ -40,9 +43,9 @@ const server = http.createServer((request, response) => {
             method: request.method,
             path: request.url,
             headers: request.headers,
-            body: bodyBuffer.toString('utf8')
+            body: redact ? '<REDACTED LOGIN REQUEST>' : bodyBuffer.toString('utf8')
           },
-          response: { statusCode: upstreamResponse.statusCode, body: responseBody.toString('utf8') }
+          response: { statusCode: upstreamResponse.statusCode, body: redact ? '<REDACTED LOGIN RESPONSE>' : responseBody.toString('utf8') }
         };
         fs.appendFileSync(captureLogPath, `${JSON.stringify(record)}\n`, { mode: 0o600 });
         const tempPath = `${outputPath}.${process.pid}.tmp`;
