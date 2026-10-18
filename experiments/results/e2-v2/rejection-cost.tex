@@ -1,0 +1,22 @@
+\begin{tabular}{llrrrrrr}\toprule
+Order & Flood & N & Handler p50 ns & p95 ns & p99 ns & Trimmed p99 ns & Max ns \\
+\midrule
+default & duplicate_request_id r3 & 3000 & 1224300 & 1826100 & 2333000 & 2133440 & 9180400 \\
+request_id_before_nonce & duplicate_request_id r1 & 3000 & 1058800 & 1600100 & 1977600 & 1819339.9999999998 & 12190600 \\
+request_id_before_nonce & duplicate_nonce r1 & 3000 & 1265900 & 2448700 & 4118200 & 3236179.999999999 & 18509400 \\
+timestamp_first & duplicate_request_id r1 & 3000 & 1281400 & 1989900 & 2527100 & 2259259.9999999995 & 14387300 \\
+request_id_before_nonce & bad_signature r1 & 3000 & 729100 & 1105720 & 1493764.9999999984 & 1300142.0000000002 & 16750600 \\
+default & stale_timestamp r1 & 3000 & 755450 & 1123684.9999999995 & 1527102 & 1355344 & 16037000 \\
+default & duplicate_nonce r1 & 3000 & 938200 & 1415700 & 1935300 & 1748479.9999999998 & 7242300 \\
+timestamp_first & duplicate_request_id r3 & 3000 & 1228100 & 1831800 & 2274100 & 2083119.9999999998 & 14886000 \\
+request_id_before_nonce & duplicate_request_id r2 & 3000 & 1088000 & 1739300 & 2370100 & 2050959.9999999993 & 9703000 \\
+default & duplicate_request_id r2 & 3000 & 1229300 & 1767500 & 2290100 & 2094339.9999999998 & 15759800 \\
+timestamp_first & duplicate_request_id r2 & 3000 & 1233700 & 1878600 & 2428000 & 2200159.9999999995 & 14470800 \\
+timestamp_first & bad_signature r1 & 3000 & 737700 & 1145429.9999999998 & 1474754.9999999963 & 1269342.0000000002 & 7910100 \\
+request_id_before_nonce & stale_timestamp r1 & 3000 & 724500 & 1079584.9999999995 & 1371304 & 1263458.000000001 & 4685200 \\
+timestamp_first & duplicate_nonce r1 & 3000 & 1256900 & 2086500 & 2800700 & 2483040 & 25556200 \\
+timestamp_first & stale_timestamp r1 & 3000 & 784300 & 1413289.999999998 & 2276061.9999999986 & 1773857.0000000005 & 17643600 \\
+default & bad_signature r1 & 3000 & 733000 & 1072310 & 1365811.9999999998 & 1220891.0000000005 & 5712700 \\
+request_id_before_nonce & duplicate_request_id r3 & 3000 & 1172500 & 2234500 & 2998400 & 2636759.9999999995 & 22227300 \\
+default & duplicate_request_id r1 & 3000 & 1245900 & 1874700 & 2383900 & 2181999.9999999986 & 13225200 \\
+\bottomrule\end{tabular}

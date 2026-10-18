@@ -1,0 +1,14 @@
+{
+  "started": "2026-10-18T15:12:37.007Z",
+  "ended": "2026-10-18T15:12:58.673Z",
+  "elapsedSeconds": 21.666,
+  "e4cResponseLossCells": 12,
+  "requestIdDefense": true,
+  "orders": [
+    "default",
+    "request_id_before_nonce"
+  ],
+  "supersedes": "experiments/results/e4-v2/e4c.csv due to missing DEFENSE_REQUEST_ID=true in the original harness run",
+  "localhostOnly": true,
+  "keepAliveHttpAgent": true
+}

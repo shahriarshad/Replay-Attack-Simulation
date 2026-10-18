@@ -1,0 +1,55 @@
+{
+  "started": "2026-10-18T14:48:53.710Z",
+  "ended": "2026-10-18T15:04:27.257Z",
+  "elapsedSeconds": 933.547,
+  "seed": 3810534928,
+  "cells": 75,
+  "requests": 2000,
+  "profiles": [
+    {
+      "id": "P1",
+      "offsetMean": 0,
+      "offsetSigma": 0.5,
+      "delayMedian": 0.2,
+      "delaySigma": 0.6
+    },
+    {
+      "id": "P2",
+      "offsetMean": 0,
+      "offsetSigma": 3,
+      "delayMedian": 0.5,
+      "delaySigma": 1
+    },
+    {
+      "id": "P3",
+      "offsetMean": 0,
+      "offsetSigma": 30,
+      "delayMedian": 2,
+      "delaySigma": 1.2
+    }
+  ],
+  "pastSeconds": [
+    5,
+    30,
+    60,
+    120,
+    300
+  ],
+  "futureSeconds": [
+    0,
+    2,
+    5,
+    30,
+    60
+  ],
+  "localhostOnly": true,
+  "keepAliveHttpAgent": true,
+  "nonceStore": "Memurai Developer via redis",
+  "falseRejectionFormula": "(server rejection responses) / 2000; offline age=(server_check_time_ms-parsed_timestamp), reject if age>PAST or age< -FUTURE; server check time is captured in response header",
+  "machine": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+    "totalRamBytes": 8395841536
+  }
+}

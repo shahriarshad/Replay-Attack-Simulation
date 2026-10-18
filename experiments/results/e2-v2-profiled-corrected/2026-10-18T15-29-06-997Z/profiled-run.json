@@ -1,0 +1,17 @@
+{
+  "started": "2026-10-18T15:29:06.999Z",
+  "ended": "2026-10-18T15:30:22.350Z",
+  "elapsedSeconds": 75.351,
+  "scenario": "duplicate_request_id",
+  "orders": [
+    "default",
+    "timestamp_first",
+    "request_id_before_nonce"
+  ],
+  "repeatsPerOrder": 3,
+  "attemptsPerCell": 3000,
+  "experimentProfile": true,
+  "eventLoopFlushRoute": "/__test/profile/flush",
+  "keepAliveHttpAgent": true,
+  "outputDirectory": "2026-10-18T15-29-06-997Z"
+}

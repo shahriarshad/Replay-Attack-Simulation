@@ -1,0 +1,16 @@
+EXPERIMENT_PROFILE enabled: event-loop delay and GC events are recorded in the server log.
+Viz Socket.io server listening on port 3301
+Bank server listening on 127.0.0.1:3300
+{"type":"EXPERIMENT_GC","kind":1,"flags":0,"duration_ms":4.904099941253662,"start_time_ms":1220.8353}
+{"type":"EXPERIMENT_GC","kind":1,"flags":0,"duration_ms":7.0676000118255615,"start_time_ms":2141.8516}
+{"type":"EXPERIMENT_GC","kind":1,"flags":0,"duration_ms":6.312999963760376,"start_time_ms":3025.3806}
+{"type":"EXPERIMENT_GC","kind":8,"flags":0,"duration_ms":0.5961000919342041,"start_time_ms":3032.3093}
+{"type":"EXPERIMENT_GC","kind":4,"flags":64,"duration_ms":4.216000080108643,"start_time_ms":3040.3188}
+{"type":"EXPERIMENT_GC","kind":1,"flags":0,"duration_ms":3.052299976348877,"start_time_ms":3995.2161}
+{"type":"EXPERIMENT_GC","kind":1,"flags":0,"duration_ms":5.976099967956543,"start_time_ms":4741.1849}
+{"type":"EXPERIMENT_GC","kind":1,"flags":0,"duration_ms":4.318700075149536,"start_time_ms":5527.1782}
+{"type":"EXPERIMENT_GC","kind":1,"flags":0,"duration_ms":8.693000078201294,"start_time_ms":6335.7772}
+{"type":"EXPERIMENT_GC","kind":8,"flags":0,"duration_ms":0.43689990043640137,"start_time_ms":6345.2383}
+{"type":"EXPERIMENT_GC","kind":4,"flags":64,"duration_ms":3.3958001136779785,"start_time_ms":6352.0905}
+{"type":"EXPERIMENT_GC","kind":1,"flags":0,"duration_ms":6.690900087356567,"start_time_ms":8301.1539}
+{"type":"EXPERIMENT_EVENT_LOOP","min_ms":9.150464,"max_ms":61.014015,"mean_ms":10.329895521557718,"p50_ms":10.027007,"p95_ms":10.698751,"p99_ms":16.072703}

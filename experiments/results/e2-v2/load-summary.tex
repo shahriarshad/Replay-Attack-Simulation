@@ -1,0 +1,12 @@
+\begin{tabular}{lrrrr}\toprule
+Stack & Median of repeat medians (ns) & Mean t-CI low & Mean t-CI high & Repeats \\
+\midrule
+nonce_sqlite & 11223050 & 8201636 & 11559774 & 10 \\
+all_four & 6692850 & 4686554 & 6655976 & 10 \\
+hmac & 6128575 & 4410660 & 6264600 & 10 \\
+hmac_ts_nonce & 6316175 & 5524390 & 6642300 & 10 \\
+hmac_ts & 6126975 & 4832520 & 6432760 & 10 \\
+nonce_redis & 6668225 & 5416223 & 6960657 & 10 \\
+none & 6070725 & 4277392 & 6059078 & 10 \\
+nonce_memory & 6448950 & 4588348 & 6463372 & 10 \\
+\bottomrule\end{tabular}

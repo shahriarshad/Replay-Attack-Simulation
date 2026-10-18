@@ -1,0 +1,7 @@
+﻿{
+    "observedAt":  "2026-10-18T20:49:20.8510755+06:00",
+    "source":  "System.Windows.Forms.SystemInformation.PowerStatus",
+    "powerLineStatus":  "Online",
+    "batteryChargeStatus":  "High",
+    "batteryLifePercent":  0.95
+}

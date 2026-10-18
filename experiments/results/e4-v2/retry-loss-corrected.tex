@@ -1,0 +1,18 @@
+\begin{tabular}{lrrrrl}\toprule
+Case & Loss p & Trials & Debits & Failure after debit & Retry reasons \\
+\midrule
+loss-p0-default-same-signed &  & 100 & 100 & 0 & \texttt{\detokenize{{}}} \\
+loss-p0-default-fresh-nonce-same-request-id &  & 100 & 100 & 0 & \texttt{\detokenize{{}}} \\
+loss-p0-request_id_before_nonce-same-signed &  & 100 & 100 & 0 & \texttt{\detokenize{{}}} \\
+loss-p0-request_id_before_nonce-fresh-nonce-same-request-id &  & 100 & 100 & 0 & \texttt{\detokenize{{}}} \\
+loss-p0.05-default-same-signed &  & 100 & 100 & 4 & \texttt{\detokenize{{"NONCE_FAIL":4}}} \\
+loss-p0.05-default-fresh-nonce-same-request-id &  & 100 & 100 & 3 & \texttt{\detokenize{{"ALREADY_PROCESSED":3}}} \\
+loss-p0.05-request_id_before_nonce-same-signed &  & 100 & 100 & 10 & \texttt{\detokenize{{"ALREADY_PROCESSED":10}}} \\
+loss-p0.05-request_id_before_nonce-fresh-nonce-same-request-id &  & 100 & 100 & 1 & \texttt{\detokenize{{"ALREADY_PROCESSED":1}}} \\
+loss-p0.2-default-same-signed &  & 100 & 100 & 18 & \texttt{\detokenize{{"NONCE_FAIL":18}}} \\
+loss-p0.2-default-fresh-nonce-same-request-id &  & 100 & 100 & 25 & \texttt{\detokenize{{"ALREADY_PROCESSED":25}}} \\
+loss-p0.2-request_id_before_nonce-same-signed &  & 100 & 100 & 25 & \texttt{\detokenize{{"ALREADY_PROCESSED":25}}} \\
+loss-p0.2-request_id_before_nonce-fresh-nonce-same-request-id &  & 100 & 100 & 17 & \texttt{\detokenize{{"ALREADY_PROCESSED":17}}} \\
+insufficient-same-nonce & n/a & 1 & n/a & n/a & INSUFFICIENT_BALANCE → NONCE_FAIL \\
+insufficient-fresh-nonce & n/a & 1 & n/a & n/a & INSUFFICIENT_BALANCE → ACCEPTED \\
+\bottomrule\end{tabular}
