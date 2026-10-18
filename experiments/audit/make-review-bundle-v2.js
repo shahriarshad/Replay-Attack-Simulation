@@ -89,14 +89,17 @@ for (const e of tocEntries) {
   offset += titleLines + contentLines + 1;
 }
 for (const e of tocEntries) body += `| \`${e.f}\` | ${e.n} | ${e.range} |\n`;
-body += '\n## Repository tree (excluding dependencies, builds, databases, captures, and result files)\n\n```text\n';
+body += '\n## Repository tree (excluding dependencies, builds, databases, captures, result files, and this generated bundle)\n\n```text\n';
 function tree(dir, depth=0) {
   let out='';
   for (const e of fs.readdirSync(path.join(root,dir),{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name))) {
     if (['node_modules','dist','.git','db','captures','results','__pycache__'].includes(e.name)) continue;
     const p=path.join(root,dir,e.name), r=rel(p);
     if (e.isDirectory()) out += `${'  '.repeat(depth)}${e.name}/\n`+tree(r,depth+1);
-    else { const data=fs.readFileSync(p); const text=data.toString('utf8'); out += `${'  '.repeat(depth)}${e.name} (${data.length} B, ${lines(text)} lines)\n`; }
+    else {
+      if(/^REVIEW_BUNDLE_V2(?:_part\d+)?\.md$/i.test(e.name)) continue;
+      const data=fs.readFileSync(p); const text=data.toString('utf8'); out += `${'  '.repeat(depth)}${e.name} (${data.length} B, ${lines(text)} lines)\n`;
+    }
   }
   return out;
 }
