@@ -129,6 +129,17 @@ for (const row of e2Floods) lines.push(`| ${row.check_order} | ${row.flood} | ${
 for (const file of ['load-repeats.csv', 'load-repeat-summary.csv', 'layer-timing-summary.csv', 'rejection-cost.csv', 'load-summary.tex', 'rejection-cost.tex', ...e2Figure.map((item) => path.basename(item))].map((name) => path.join(E2, name))) {
   if (fs.existsSync(file)) lines.push(`- \`${path.relative(ROOT, file).replace(/\\/g, '/')}\`: size ${fs.statSync(file).size} bytes; SHA-256 \`${sha256(file)}\`.`);
 }
+const defaultDuplicateId = e2Floods.find((row) => row.check_order === 'default' && row.flood === 'duplicate_request_id');
+if (defaultDuplicateId) {
+  const timingPath = path.join(ROOT, defaultDuplicateId.raw_path.replace(/requests\.csv$/, 'layer-timings-rejected.csv'));
+  const timingRows = parseCsv(fs.readFileSync(timingPath, 'utf8')).rows;
+  const handlerMs = timingRows.map((row) => Number(row.duration_ns) / 1e6).filter(Number.isFinite);
+  const handlerSummary = stats(handlerMs);
+  const slowestHandler = timingRows.reduce((slowest, row) => Number(row.duration_ns) > Number(slowest.duration_ns) ? row : slowest, timingRows[0]);
+  lines.push('', '### Investigated latency outlier', '',
+    `The default-order duplicate-request-ID flood had a client-side p99 of ${defaultDuplicateId.p99_ms} ms. Its server handler timing CSV shows p99 ${handlerSummary.p99} ms; the slowest logged handler took ${(Number(slowestHandler.duration_ns) / 1e6).toFixed(3)} ms, with request-ID layer timing ${slowestHandler.request_id_ns} ns and balance marked \`${slowestHandler.balance_ns}\`.`,
+    `The code runs account lookup and session-token authentication before the replay layers, and writes EXPERIMENT_LOG synchronously in the request's finally block. Those costs are outside the per-layer timing columns. The current records do not isolate which uninstrumented work caused this tail, so the scenario was retained unchanged and the cause is reported as unresolved. Server timing evidence: \`${path.relative(ROOT, timingPath).replace(/\\/g, '/')}\`; client request evidence: \`${defaultDuplicateId.raw_path}\`.`);
+}
 lines.push('', '## Derived figures and tables: provenance', '');
 const provenance = [
   ...e1Figure.map((file) => ({ file, raw: path.join(E1, 'summary.csv'), command: 'python experiments/render-pack-a.py', runtime: e1Run.elapsedSeconds })),
