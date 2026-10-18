@@ -98,7 +98,8 @@ const lines = [
   'This pack reports only the E1 ablation and E2 cost runs. E3, E4, and Phase 5 were not run.', '',
   '## Reproduction settings', '',
   `- E1 command: \`node experiments/e1/run.js\`. Runtime: ${e1Run.elapsedSeconds} seconds; started ${e1Run.started}; ended ${e1Run.ended}.`,
-  `- E2 command: \`node experiments/e2/run.js\`. Runtime: ${e2Run.elapsedSeconds} seconds; started ${e2Run.started}; ended ${e2Run.ended}.`,
+  `- E2 command: \`node experiments/e2/run.js\`. This run completed load cells before a setup error stopped the first rejection cell; after fixing log-header initialization, the completed loads were reused with \`$env:E2_RESUME_FROM=experiments/results/e2/${e2Run.dataRunDirectory}; node experiments/e2/run.js\`. Runtime from initial start to final end: ${e2Run.elapsedSeconds} seconds; started ${e2Run.started}; resumed flood phase ${e2Run.resumedRejectionStarted}; ended ${e2Run.ended}.`,
+  '- E2 setup issue and correction: the first attempt read the per-layer CSV before a rejection request had created it, so it ended before that flood sent traffic. The harness now creates the CSV header at server setup. The initial output is retained at `experiments/results/e2-run-console.log`; the resumed run is at `experiments/results/e2-resume-console.log`. All 80 load cells were re-read and their SQLite ledgers revalidated before running the 12 rejection cells.',
   '- Plot and LaTeX rendering: `python experiments/render-pack-a.py`; results documentation: `node experiments/write-results-pack.js`.',
   `- Node: ${e1Run.nodeVersion || process.version}; OS: ${environment?.host?.osVersion || `${process.platform} ${process.arch}`}; CPU: ${environment?.host?.cpuModel || 'see environment.json'}; RAM: ${environment?.host?.totalRamGiB || 'see environment.json'} GiB; SQLite: ${environment?.runtime?.sqliteLibrary || 'see environment.json'}; matplotlib: 3.11.2. Service: ${environment?.nonceBackend?.product || 'Memurai Developer'}, version ${environment?.nonceBackend?.memuraiVersion || 'see environment.json'} (not stock Redis), IPv4 at 127.0.0.1:6379. All traffic was localhost traffic on one Windows machine.`,
   '- The harness used explicit HTTP keep-alive agents. All measured server runs set `LEGACY_SHARED_SECRET=false`, `VIZ_ENABLED=false`, `DEMO_MODE=false`, and `HOST=127.0.0.1`.',
@@ -108,12 +109,13 @@ const lines = [
   '- E2 load cells used 500 warm-up and 5,000 measured requests, five repeats, and concurrency 1 and 16. Latencies are localhost Windows measurements with Memurai 4.2.3 and support relative comparison only.',
   '- Statistical convention: Wilson 95% intervals are recorded for nonconstant E1 outcomes; constant 0/100% cells have blank intervals. E2 reports the mean and t-based 95% CI across five per-repeat medians.',
   '', '## E1 ablation findings', '',
-  '| Configuration | Scenario | Attempts | HTTP accepted | Ledger debits | Attack success | Blocking reasons | Oracle holds |',
-  '| --- | --- | ---: | ---: | ---: | ---: | --- | --- |'
+  '| Configuration | Scenario | Attempts | HTTP accepted | Ledger debits | Attack success | Wilson 95% CI | Blocking reasons | Oracle holds |',
+  '| --- | --- | ---: | ---: | ---: | ---: | --- | --- | --- |'
 ];
 for (const scenario of ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S2_default_window_60s', 'S4_default_window_301s']) {
   for (const row of e1Summary.filter((item) => item.scenario_id === scenario && ['H0T0N0R0', 'H1T1N1R1', 'H1T1N1R1-DEFAULT'].includes(item.config_id))) {
-    lines.push(`| ${row.config_id} | ${scenario} | ${row.attempts} | ${row.http_accepted_count} | ${row.debited_count} | ${row.attack_success_rate} | ${escapeCell(row.blocking_reason_histogram)} | ${row.oracle_integrity_holds} |`);
+    const wilson = row.wilson95_low === '' ? 'constant outcome (not computed)' : `${row.wilson95_low} to ${row.wilson95_high}`;
+    lines.push(`| ${row.config_id} | ${scenario} | ${row.attempts} | ${row.http_accepted_count} | ${row.debited_count} | ${row.attack_success_rate} | ${wilson} | ${escapeCell(row.blocking_reason_histogram)} | ${row.oracle_integrity_holds} |`);
   }
 }
 lines.push('', `E1 scanned ${e1Run.allConfigs} flag configurations and ${e1Run.scenarios} replay scenarios. Across "none", S1 exact replay had ${none.find((r) => r.scenario_id === 'S1')?.debited_count} ledger debits from ${none.find((r) => r.scenario_id === 'S1')?.attempts} attempts; all-on S1 had ${allOn.find((r) => r.scenario_id === 'S1')?.debited_count}. In all-on S9, ${allOn.find((r) => r.scenario_id === 'S9')?.debited_count} of 30 fresh requests were debited with the deliberately leaked session key.`, '');

@@ -53,6 +53,9 @@ for (const row of rows) {
 }
 writeCsv(summaryFile, parsed.headers, rows);
 fs.copyFileSync(summaryFile, path.join(output, 'summary.csv'));
+const latex = ['\\begin{tabular}{llrrrrl}', '\\toprule', 'Configuration & Scenario & Attempts & Accepted & Debits & Success rate & Wilson 95\\% CI \\\\', '\\midrule', ...rows.filter((row) => row.scenario_id !== 'LEGITIMATE_CONTROL').map((row) => `${row.config_id} & ${row.scenario_id} & ${row.attempts} & ${row.http_accepted_count} & ${row.debited_count} & ${(100 * Number(row.attack_success_rate)).toFixed(2)}\\% & ${row.wilson95_low === '' ? 'constant outcome' : `${Number(row.wilson95_low).toFixed(4)}--${Number(row.wilson95_high).toFixed(4)}`} \\\\`), '\\bottomrule', '\\end{tabular}', ''];
+fs.writeFileSync(path.join(runDirectory, 'summary.tex'), latex.join('\n'));
+fs.copyFileSync(path.join(runDirectory, 'summary.tex'), path.join(output, 'summary.tex'));
 run.allSummaries = rows;
 fs.writeFileSync(path.join(runDirectory, 'run.json'), `${JSON.stringify(run, null, 2)}\n`);
 fs.copyFileSync(path.join(runDirectory, 'run.json'), path.join(output, 'run.json'));
