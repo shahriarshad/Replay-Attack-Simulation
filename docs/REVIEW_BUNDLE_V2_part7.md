@@ -1,78 +1,77 @@
 # Review Bundle V2, part 7 of 7
 
-Source HEAD: `6133c6e6984aea0185f1cde37809dc880f68f4dc`. Parts are ordered numerically. This part continues the unified bundle; fenced blocks may continue in the next part.
+Source HEAD: `ac6eefe60aea95aedce38ab52080317e9b274ec6`. Parts are ordered numerically. This part continues the unified bundle; fenced blocks may continue in the next part.
 
 # Shared table of contents
 
 | File | Source line count | Bundle part and line range |
 |---|---:|---|
-| `attack/attack.sh` | 287 | REVIEW_BUNDLE_V2_part7.md:6622-6908 |
-| `client/bank/src/App.jsx` | 109 | REVIEW_BUNDLE_V2_part7.md:6914-7022 |
-| `client/bank/src/api.js` | 135 | REVIEW_BUNDLE_V2_part7.md:7028-7162 |
-| `client/bank/src/components/BalanceDisplay.jsx` | 20 | REVIEW_BUNDLE_V2_part7.md:7168-7187 |
-| `client/bank/src/components/DepositForm.jsx` | 43 | REVIEW_BUNDLE_V2_part7.md:7193-7235 |
-| `client/bank/src/components/TransactionHistory.jsx` | 42 | REVIEW_BUNDLE_V2_part7.md:7241-7282 |
-| `client/bank/src/components/WithdrawForm.jsx` | 44 | REVIEW_BUNDLE_V2_part7.md:7288-7331 |
-| `client/bank/src/socket.js` | 6 | REVIEW_BUNDLE_V2_part7.md:7337-7342 |
-| `client/bank/src/styles.css` | 201 | REVIEW_BUNDLE_V2_part7.md:7348-7548 |
-| `docs/CLAIMS_EVIDENCE.md` | 22 | REVIEW_BUNDLE_V2_part7.md:7554-7575 |
-| `docs/DEMO.md` | 99 | REVIEW_BUNDLE_V2_part7.md:7581-7679 |
-| `docs/LIMITATIONS.md` | 31 | REVIEW_BUNDLE_V2_part7.md:7685-7715 |
-| `docs/REPRODUCE.md` | 76 | REVIEW_BUNDLE_V2_part7.md:7721-7796 |
-| `docs/THREAT_MODEL.md` | 26 | REVIEW_BUNDLE_V2_part7.md:7802-7827 |
-| `experiments/audit-egress.js` | 72 | REVIEW_BUNDLE_V2_part7.md:7833-7904 |
-| `experiments/audit/build-curated-facts.js` | 28 | REVIEW_BUNDLE_V2_part7.md:7910-7937 |
-| `experiments/audit/build-policy-tradeoff.js` | 6 | REVIEW_BUNDLE_V2_part7.md:7943-7948 |
-| `experiments/audit/build-results-pack-final.js` | 16 | REVIEW_BUNDLE_V2_part7.md:7954-7969 |
-| `experiments/audit/check-e4a-rule.js` | 45 | REVIEW_BUNDLE_V2_part7.md:7975-8019 |
-| `experiments/audit/make-e2-layer-table.js` | 13 | REVIEW_BUNDLE_V2_part7.md:8025-8037 |
-| `experiments/audit/make-review-bundle-v2.js` | 196 | REVIEW_BUNDLE_V2_part7.md:8043-8238 |
-| `experiments/audit/verify-results.js` | 43 | REVIEW_BUNDLE_V2_part7.md:8244-8286 |
-| `experiments/e1/finalize-oracle-summary.js` | 63 | REVIEW_BUNDLE_V2_part7.md:8292-8354 |
-| `experiments/e1/reconcile-oracle-amounts.js` | 33 | REVIEW_BUNDLE_V2_part7.md:8360-8392 |
-| `experiments/e1/run-policy-resubmit.js` | 19 | REVIEW_BUNDLE_V2_part7.md:8398-8416 |
-| `experiments/e1/run.js` | 357 | REVIEW_BUNDLE_V2_part7.md:8422-8778 |
-| `experiments/e2/run.js` | 347 | REVIEW_BUNDLE_V2_part7.md:8784-9130 |
-| `experiments/e3/run.js` | 56 | REVIEW_BUNDLE_V2_part7.md:9136-9191 |
-| `experiments/e4/run.js` | 74 | REVIEW_BUNDLE_V2_part7.md:9197-9270 |
-| `experiments/lib/http.js` | 37 | REVIEW_BUNDLE_V2_part7.md:9276-9312 |
-| `experiments/recording-proxy.js` | 81 | REVIEW_BUNDLE_V2_part7.md:9318-9398 |
-| `experiments/render-documentation.js` | 317 | REVIEW_BUNDLE_V2_part7.md:9404-9720 |
-| `experiments/render-pack-a.py` | 80 | REVIEW_BUNDLE_V2_part7.md:9726-9805 |
-| `experiments/render-v2-results.py` | 111 | REVIEW_BUNDLE_V2_part7.md:9811-9921 |
-| `experiments/run-f1-races.js` | 79 | REVIEW_BUNDLE_V2_part7.md:9927-10005 |
-| `experiments/run-nonce-memory.js` | 118 | REVIEW_BUNDLE_V2_part7.md:10011-10128 |
-| `experiments/run-phase4.js` | 18 | REVIEW_BUNDLE_V2_part7.md:10134-10151 |
-| `experiments/run-races.js` | 117 | REVIEW_BUNDLE_V2_part7.md:10157-10273 |
-| `experiments/run-viz-curve.js` | 40 | REVIEW_BUNDLE_V2_part7.md:10279-10318 |
-| `experiments/send-through-proxy.js` | 49 | REVIEW_BUNDLE_V2_part7.md:10324-10372 |
-| `experiments/verify-demo-session-flow.js` | 49 | REVIEW_BUNDLE_V2_part7.md:10378-10426 |
-| `experiments/write-paper-facts.js` | 26 | REVIEW_BUNDLE_V2_part7.md:10432-10457 |
-| `experiments/write-results-pack-v2.js` | 115 | REVIEW_BUNDLE_V2_part7.md:10463-10577 |
-| `experiments/write-results-pack.js` | 175 | REVIEW_BUNDLE_V2_part7.md:10583-10757 |
-| `package.json` | 19 | REVIEW_BUNDLE_V2_part7.md:10763-10781 |
-| `server/.env.example` | 23 | REVIEW_BUNDLE_V2_part7.md:10787-10809 |
-| `server/core.js` | 601 | REVIEW_BUNDLE_V2_part7.md:10815-11415 |
-| `server/package.json` | 25 | REVIEW_BUNDLE_V2_part7.md:11421-11445 |
-| `server/server.js` | 10 | REVIEW_BUNDLE_V2_part7.md:11451-11460 |
-| `server/test/idempotency-policy.test.js` | 10 | REVIEW_BUNDLE_V2_part7.md:11466-11475 |
-| `server/test/integration.test.js` | 296 | REVIEW_BUNDLE_V2_part7.md:11481-11776 |
-| `server/test/migration.test.js` | 53 | REVIEW_BUNDLE_V2_part7.md:11782-11834 |
-| `server/test/proxy.test.js` | 64 | REVIEW_BUNDLE_V2_part7.md:11840-11903 |
-| `server/test/route-gating.test.js` | 35 | REVIEW_BUNDLE_V2_part7.md:11909-11943 |
-| `server/test/unit.test.js` | 157 | REVIEW_BUNDLE_V2_part7.md:11949-12105 |
-| `server/utils/config-warnings.js` | 13 | REVIEW_BUNDLE_V2_part7.md:12111-12123 |
-| `server/utils/hmac.js` | 39 | REVIEW_BUNDLE_V2_part7.md:12129-12167 |
-| `server/utils/idempotency.js` | 38 | REVIEW_BUNDLE_V2_part7.md:12173-12210 |
-| `server/utils/money-oracle.js` | 66 | REVIEW_BUNDLE_V2_part7.md:12216-12281 |
-| `server/utils/nonce.js` | 123 | REVIEW_BUNDLE_V2_part7.md:12287-12409 |
-| `server/utils/request.js` | 18 | REVIEW_BUNDLE_V2_part7.md:12415-12432 |
-| `server/utils/timestamp.js` | 9 | REVIEW_BUNDLE_V2_part7.md:12438-12446 |
-| `server/viz-server.js` | 63 | REVIEW_BUNDLE_V2_part7.md:12452-12514 |
+| `attack/attack.sh` | 287 | REVIEW_BUNDLE_V2_part7.md:6630-6916 |
+| `client/bank/src/App.jsx` | 109 | REVIEW_BUNDLE_V2_part7.md:6922-7030 |
+| `client/bank/src/api.js` | 135 | REVIEW_BUNDLE_V2_part7.md:7036-7170 |
+| `client/bank/src/components/BalanceDisplay.jsx` | 20 | REVIEW_BUNDLE_V2_part7.md:7176-7195 |
+| `client/bank/src/components/DepositForm.jsx` | 43 | REVIEW_BUNDLE_V2_part7.md:7201-7243 |
+| `client/bank/src/components/TransactionHistory.jsx` | 42 | REVIEW_BUNDLE_V2_part7.md:7249-7290 |
+| `client/bank/src/components/WithdrawForm.jsx` | 44 | REVIEW_BUNDLE_V2_part7.md:7296-7339 |
+| `client/bank/src/socket.js` | 6 | REVIEW_BUNDLE_V2_part7.md:7345-7350 |
+| `client/bank/src/styles.css` | 201 | REVIEW_BUNDLE_V2_part7.md:7356-7556 |
+| `docs/CLAIMS_EVIDENCE.md` | 22 | REVIEW_BUNDLE_V2_part7.md:7562-7583 |
+| `docs/DEMO.md` | 99 | REVIEW_BUNDLE_V2_part7.md:7589-7687 |
+| `docs/LIMITATIONS.md` | 31 | REVIEW_BUNDLE_V2_part7.md:7693-7723 |
+| `docs/REPRODUCE.md` | 76 | REVIEW_BUNDLE_V2_part7.md:7729-7804 |
+| `docs/THREAT_MODEL.md` | 26 | REVIEW_BUNDLE_V2_part7.md:7810-7835 |
+| `experiments/audit-egress.js` | 72 | REVIEW_BUNDLE_V2_part7.md:7841-7912 |
+| `experiments/audit/build-curated-facts.js` | 28 | REVIEW_BUNDLE_V2_part7.md:7918-7945 |
+| `experiments/audit/build-policy-tradeoff.js` | 6 | REVIEW_BUNDLE_V2_part7.md:7951-7956 |
+| `experiments/audit/build-results-pack-final.js` | 16 | REVIEW_BUNDLE_V2_part7.md:7962-7977 |
+| `experiments/audit/check-e4a-rule.js` | 45 | REVIEW_BUNDLE_V2_part7.md:7983-8027 |
+| `experiments/audit/make-e2-layer-table.js` | 13 | REVIEW_BUNDLE_V2_part7.md:8033-8045 |
+| `experiments/audit/make-review-bundle-v2.js` | 200 | REVIEW_BUNDLE_V2_part7.md:8051-8250 |
+| `experiments/audit/verify-results.js` | 43 | REVIEW_BUNDLE_V2_part7.md:8256-8298 |
+| `experiments/e1/finalize-oracle-summary.js` | 63 | REVIEW_BUNDLE_V2_part7.md:8304-8366 |
+| `experiments/e1/reconcile-oracle-amounts.js` | 33 | REVIEW_BUNDLE_V2_part7.md:8372-8404 |
+| `experiments/e1/run-policy-resubmit.js` | 19 | REVIEW_BUNDLE_V2_part7.md:8410-8428 |
+| `experiments/e1/run.js` | 357 | REVIEW_BUNDLE_V2_part7.md:8434-8790 |
+| `experiments/e2/run.js` | 347 | REVIEW_BUNDLE_V2_part7.md:8796-9142 |
+| `experiments/e3/run.js` | 56 | REVIEW_BUNDLE_V2_part7.md:9148-9203 |
+| `experiments/e4/run.js` | 74 | REVIEW_BUNDLE_V2_part7.md:9209-9282 |
+| `experiments/lib/http.js` | 37 | REVIEW_BUNDLE_V2_part7.md:9288-9324 |
+| `experiments/recording-proxy.js` | 81 | REVIEW_BUNDLE_V2_part7.md:9330-9410 |
+| `experiments/render-documentation.js` | 317 | REVIEW_BUNDLE_V2_part7.md:9416-9732 |
+| `experiments/render-pack-a.py` | 80 | REVIEW_BUNDLE_V2_part7.md:9738-9817 |
+| `experiments/render-v2-results.py` | 111 | REVIEW_BUNDLE_V2_part7.md:9823-9933 |
+| `experiments/run-f1-races.js` | 79 | REVIEW_BUNDLE_V2_part7.md:9939-10017 |
+| `experiments/run-nonce-memory.js` | 118 | REVIEW_BUNDLE_V2_part7.md:10023-10140 |
+| `experiments/run-phase4.js` | 18 | REVIEW_BUNDLE_V2_part7.md:10146-10163 |
+| `experiments/run-races.js` | 117 | REVIEW_BUNDLE_V2_part7.md:10169-10285 |
+| `experiments/run-viz-curve.js` | 40 | REVIEW_BUNDLE_V2_part7.md:10291-10330 |
+| `experiments/send-through-proxy.js` | 49 | REVIEW_BUNDLE_V2_part7.md:10336-10384 |
+| `experiments/verify-demo-session-flow.js` | 49 | REVIEW_BUNDLE_V2_part7.md:10390-10438 |
+| `experiments/write-paper-facts.js` | 26 | REVIEW_BUNDLE_V2_part7.md:10444-10469 |
+| `experiments/write-results-pack-v2.js` | 115 | REVIEW_BUNDLE_V2_part7.md:10475-10589 |
+| `experiments/write-results-pack.js` | 175 | REVIEW_BUNDLE_V2_part7.md:10595-10769 |
+| `package.json` | 19 | REVIEW_BUNDLE_V2_part7.md:10775-10793 |
+| `server/.env.example` | 23 | REVIEW_BUNDLE_V2_part7.md:10799-10821 |
+| `server/core.js` | 601 | REVIEW_BUNDLE_V2_part7.md:10827-11427 |
+| `server/package.json` | 25 | REVIEW_BUNDLE_V2_part7.md:11433-11457 |
+| `server/server.js` | 10 | REVIEW_BUNDLE_V2_part7.md:11463-11472 |
+| `server/test/idempotency-policy.test.js` | 10 | REVIEW_BUNDLE_V2_part7.md:11478-11487 |
+| `server/test/integration.test.js` | 296 | REVIEW_BUNDLE_V2_part7.md:11493-11788 |
+| `server/test/migration.test.js` | 53 | REVIEW_BUNDLE_V2_part7.md:11794-11846 |
+| `server/test/proxy.test.js` | 64 | REVIEW_BUNDLE_V2_part7.md:11852-11915 |
+| `server/test/route-gating.test.js` | 35 | REVIEW_BUNDLE_V2_part7.md:11921-11955 |
+| `server/test/unit.test.js` | 157 | REVIEW_BUNDLE_V2_part7.md:11961-12117 |
+| `server/utils/config-warnings.js` | 13 | REVIEW_BUNDLE_V2_part7.md:12123-12135 |
+| `server/utils/hmac.js` | 39 | REVIEW_BUNDLE_V2_part7.md:12141-12179 |
+| `server/utils/idempotency.js` | 38 | REVIEW_BUNDLE_V2_part7.md:12185-12222 |
+| `server/utils/money-oracle.js` | 66 | REVIEW_BUNDLE_V2_part7.md:12228-12293 |
+| `server/utils/nonce.js` | 123 | REVIEW_BUNDLE_V2_part7.md:12299-12421 |
+| `server/utils/request.js` | 18 | REVIEW_BUNDLE_V2_part7.md:12427-12444 |
+| `server/utils/timestamp.js` | 9 | REVIEW_BUNDLE_V2_part7.md:12450-12458 |
+| `server/viz-server.js` | 63 | REVIEW_BUNDLE_V2_part7.md:12464-12526 |
 
 ---
 
-+| run.json.layerTimingSummary[327].repeat | 7 | count / source unit | measured | `experiments/results/e2-v2/run.json` | `a3dab817338a4aa5547d205a194a1bcec66aa6dc8e1e796bd4f5f5b1d448bdaf` | `npm.cmd run experiments:e2` |  |
 +| run.json.layerTimingSummary[327].numeric_samples | 3000 | count / source unit | measured | `experiments/results/e2-v2/run.json` | `a3dab817338a4aa5547d205a194a1bcec66aa6dc8e1e796bd4f5f5b1d448bdaf` | `npm.cmd run experiments:e2` |  |
 +| run.json.layerTimingSummary[327].disabled_count | 0 | count / source unit | measured | `experiments/results/e2-v2/run.json` | `a3dab817338a4aa5547d205a194a1bcec66aa6dc8e1e796bd4f5f5b1d448bdaf` | `npm.cmd run experiments:e2` |  |
 +| run.json.layerTimingSummary[327].not_reached_count | 0 | count / source unit | measured | `experiments/results/e2-v2/run.json` | `a3dab817338a4aa5547d205a194a1bcec66aa6dc8e1e796bd4f5f5b1d448bdaf` | `npm.cmd run experiments:e2` |  |
@@ -3053,10 +3052,10 @@ index 0000000..68164f3
 +process.stdout.write(`C5 rows=${output.length}, source=${path.relative(root,file)}, output=${path.relative(root,outPath)}\n`);
 diff --git a/experiments/audit/make-review-bundle-v2.js b/experiments/audit/make-review-bundle-v2.js
 new file mode 100644
-index 0000000..1d688c3
+index 0000000..b6ce559
 --- /dev/null
 +++ b/experiments/audit/make-review-bundle-v2.js
-@@ -0,0 +1,195 @@
+@@ -0,0 +1,199 @@
 +const fs = require('fs');
 +const path = require('path');
 +const cp = require('child_process');
@@ -3126,7 +3125,7 @@ index 0000000..1d688c3
 +const status = run(['status','--short']);
 +const head = run(['rev-parse','HEAD']);
 +const version = (cmd) => { try { return run(Array.isArray(cmd) ? cmd : cmd.split(' ')); } catch { return 'unavailable'; } };
-+let body = `# Review Bundle V2\n\n- Source HEAD: \`${head}\`\n- Bundle generated: ${new Date().toISOString()}\n- Node: ${version(['node','--version'])}\n- SQLite: ${JSON.stringify(env.sqlite || env.sqlite_version || 'see environment.json')}\n- Memurai: ${JSON.stringify(env.memurai || env.redis || 'Memurai Developer 4.2.3; see environment.json')}\n- Git status at generation:\n\n\`\`\`text\n${status || '(clean)'}\n\`\`\`\n\n`;
++let body = `# Review Bundle V2\n\n- Source HEAD: \`${head}\`\n- Bundle generated: ${new Date().toISOString()}\n- Node: ${JSON.stringify(env.runtime?.node || version(['node','--version']))}\n- SQLite library: ${JSON.stringify(env.runtime?.sqliteLibrary || 'see environment.json')} (node package ${JSON.stringify(env.runtime?.sqlite3NodePackage || 'unknown')})\n- Redis-compatible store: ${JSON.stringify(env.nonceBackend?.product || 'unknown')}, version ${JSON.stringify(env.nonceBackend?.memuraiVersion || env.nonceBackend?.redisProtocolVersion || 'see environment.json')}\n- Git status at generation:\n\n\`\`\`text\n${status || '(clean)'}\n\`\`\`\n\n`;
 +
 +const intro = `## What this project is and how it flows\n\nThis is a local bank simulation for studying replay defenses. A signed transaction passes through authentication/session binding and then the configured check order. HMAC verification is implemented in \`server/utils/hmac.js\` and invoked in \`server/core.js\`; timestamp bounds use \`server/utils/timestamp.js\`; nonce consumption is in \`server/utils/nonce.js\`; request-ID lookup is in \`server/utils/idempotency.js\`; balance and ledger writes are in \`server/core.js\`. \`CHECK_ORDER\` is parsed near the top of \`server/core.js\` and the pipeline dispatches those checks before the balance transaction. \`IDEMPOTENCY_POLICY=success_only\` permits a fresh retry after a FAILED insufficient-balance row while blocking duplicate successful IDs; \`any_outcome\` treats either SUCCESS or FAILED as consumed. In both policies callers should retry an insufficient balance only after funding and with a fresh nonce; using a new request ID is required under \`any_outcome\`.\n\n`;
 +body += intro;
@@ -3148,14 +3147,17 @@ index 0000000..1d688c3
 +  offset += titleLines + contentLines + 1;
 +}
 +for (const e of tocEntries) body += `| \`${e.f}\` | ${e.n} | ${e.range} |\n`;
-+body += '\n## Repository tree (excluding dependencies, builds, databases, captures, and result files)\n\n```text\n';
++body += '\n## Repository tree (excluding dependencies, builds, databases, captures, result files, and this generated bundle)\n\n```text\n';
 +function tree(dir, depth=0) {
 +  let out='';
 +  for (const e of fs.readdirSync(path.join(root,dir),{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name))) {
 +    if (['node_modules','dist','.git','db','captures','results','__pycache__'].includes(e.name)) continue;
 +    const p=path.join(root,dir,e.name), r=rel(p);
 +    if (e.isDirectory()) out += `${'  '.repeat(depth)}${e.name}/\n`+tree(r,depth+1);
-+    else { const data=fs.readFileSync(p); const text=data.toString('utf8'); out += `${'  '.repeat(depth)}${e.name} (${data.length} B, ${lines(text)} lines)\n`; }
++    else {
++      if(/^REVIEW_BUNDLE_V2(?:_part\d+)?\.md$/i.test(e.name)) continue;
++      const data=fs.readFileSync(p); const text=data.toString('utf8'); out += `${'  '.repeat(depth)}${e.name} (${data.length} B, ${lines(text)} lines)\n`;
++    }
 +  }
 +  return out;
 +}
@@ -3195,9 +3197,10 @@ index 0000000..1d688c3
 +  sourceCore.split(/\r?\n/).slice(124,187).join('\n'), '```', ''
 +].join('\n');
 +body += `## Decision and bug log\n\n- Policy-aware request-ID migration and lookup: \`server/core.js\`, \`server/utils/idempotency.js\`, migration and policy tests.\n- E3 now imports the server timestamp-window helper: \`experiments/e3/run.js\`, \`server/utils/timestamp.js\`.\n- E4b repetitions and E4c common-random-number retry pattern: \`experiments/e4/run.js\`; corrected outputs are identified in \`docs/RESULTS_PACK_A.md\`.\n- Audit independently re-parses experiment outputs and computes its own intervals: \`experiments/audit/verify-results.js\`; latest report is \`experiments/results/audit/audit-report.md\`.\n- Earlier discovered proxy transfer-encoding, nonce expiry, oracle, E4c flag/state reuse, and profile flush corrections are recorded in the prior bundle and experiment documentation; do not cite superseded outputs.\n\n`;
-+body += `## Changes since the first REVIEW_BUNDLE commit\n\nFirst bundle commit: \`${base}\`. The following is the complete requested source/document diff from that commit to source HEAD (result data excluded).\n\n\`\`\`diff\n${scrub(run(['diff','--no-ext-diff','--unified=2',`${base}..HEAD`,'--','server','client','experiments','attack','package.json','docs/*.md',':(exclude)experiments/results/**']))}\n\`\`\`\n\n`;
++body += `## Changes since the first REVIEW_BUNDLE commit\n\nFirst bundle commit: \`${base}\`. The following is the complete requested source/document diff from that commit to source HEAD (result data and prior generated REVIEW_BUNDLE_V2 parts excluded to avoid recursive self-inclusion).\n\n\`\`\`diff\n${scrub(run(['-c','diff.astextplain.textconv=','diff','--no-ext-diff','--no-textconv','--unified=2',`${base}..HEAD`,'--','server','client','experiments','attack','package.json','docs/*.md',':(exclude)experiments/results/**',':(exclude)docs/REVIEW_BUNDLE_V2*.md']))}\n\`\`\`\n\n`;
 +body += `## Outcomes\n\nHeadline result tables, raw CSV paths, hashes, and caveats are reproduced from \`docs/RESULTS_PACK_A.md\` below.\n\n${scrub(read('docs/RESULTS_PACK_A.md'))}\n\n`;
 +body += `## Commands and run log\n\nThe exact reproduction commands and expected runtimes are listed in \`docs/REPRODUCE.md\`. Saved metadata paths include \`experiments/results/e1-v2/run.json\`, \`experiments/results/e1-v2-s11/run.json\`, \`experiments/results/e2-v2/run.json\`, \`experiments/results/e3-v2/run.json\`, \`experiments/results/e4-v2/run.json\`, and the per-run JSON files under \`experiments/results/s10-policy-*\`.\n\n## Known issues, uncertainties, and weak spots\n\n- Results are localhost measurements on one Windows machine using Memurai Developer; they do not predict real network latency.\n- E3 uses stated assumed delay/clock profiles.\n- E4a tests only the sampled delay grid; a threshold flip between sampled values is not an observed cell.\n- Concurrency and timing results apply to this single-process SQLite simulation.\n- E2 high-performance C8 was optional and was not rerun unless a v3 output is present in the result pack.\n\n## Self-review checklist\n\n1. **Are success decisions derived from SQLite ledger rows?** Yes for the F1 oracle and independent audit: the oracle queries ledger rows; see \`experiments/audit/verify-results.js\` and the included source. HTTP accepted counts are separately reported and are not treated as debit counts.\n2. **Does S10 replay one captured request or several?** Each S10 replay cell replays one captured FAILED request 30 times; separate resubmission cells create distinct failed IDs. Evidence: Results Pack methods and \`experiments/e1/run.js\`.\n3. **Does E3 use the same timestamp rule as the server?** Yes, both import \`isTimestampWithinWindow\` from \`server/utils/timestamp.js\`.\n4. **Can a harness reuse nonce, request ID, or session token across configurations?** Run IDs and per-configuration DB/nonce namespaces are fresh; request identifiers derive from run-specific values. Login returns a fresh server session per server run.\n5. **Can a harness leave state from a previous cell?** E1 creates per-config database and Redis namespace; E3 starts fresh server/database per cell. E4c's first rerun reused output state and was explicitly superseded; only the fresh-directory rerun is cited.\n6. **Are PAST/FUTURE/TTL/SESSION_TTL values what the server received?** Child-process environment assembly is in each experiment runner; inspect \`serverEnv\` in \`experiments/e1/run.js\` and the spawned-server setup in \`experiments/e4/run.js\`. Scaled E1/E4 profiles use the values recorded in each run's metadata.\n\n`;
++body += `### Server environment values verified from child-process builders\n\n- E1 scaled profile: \`TIMESTAMP_PAST_WINDOW_SECONDS=6\`, \`TIMESTAMP_FUTURE_WINDOW_SECONDS=2\`, \`NONCE_TTL=4\`, \`SESSION_TTL=15\`; default-window confirmation: \`300\`, \`5\`, \`86400\`, and \`900\` respectively. Values are assigned in \`experiments/e1/run.js\` and recorded in each run metadata JSON.\n- E4 base profile: PAST=6, FUTURE=2, NONCE_TTL=4, SESSION_TTL=3600; E4a overrides NONCE_TTL per cell with 4, 6, 8, 10, or 12. Assignments are in \`experiments/e4/run.js\`; per-run/cell metadata records the active values.\n\n`;
 +body += `## Full source\n\n`;
 +for (const e of tocEntries) {
 +  const content = scrub(read(e.f));
@@ -6620,6 +6623,11 @@ The exact reproduction commands and expected runtimes are listed in `docs/REPROD
 5. **Can a harness leave state from a previous cell?** E1 creates per-config database and Redis namespace; E3 starts fresh server/database per cell. E4c's first rerun reused output state and was explicitly superseded; only the fresh-directory rerun is cited.
 6. **Are PAST/FUTURE/TTL/SESSION_TTL values what the server received?** Child-process environment assembly is in each experiment runner; inspect `serverEnv` in `experiments/e1/run.js` and the spawned-server setup in `experiments/e4/run.js`. Scaled E1/E4 profiles use the values recorded in each run's metadata.
 
+### Server environment values verified from child-process builders
+
+- E1 scaled profile: `TIMESTAMP_PAST_WINDOW_SECONDS=6`, `TIMESTAMP_FUTURE_WINDOW_SECONDS=2`, `NONCE_TTL=4`, `SESSION_TTL=15`; default-window confirmation: `300`, `5`, `86400`, and `900` respectively. Values are assigned in `experiments/e1/run.js` and recorded in each run metadata JSON.
+- E4 base profile: PAST=6, FUTURE=2, NONCE_TTL=4, SESSION_TTL=3600; E4a overrides NONCE_TTL per cell with 4, 6, 8, 10, or 12. Assignments are in `experiments/e4/run.js`; per-run/cell metadata records the active values.
+
 ## Full source
 
 ### `attack/attack.sh` (287 lines)
@@ -8043,7 +8051,7 @@ process.stdout.write(`C5 rows=${output.length}, source=${path.relative(root,file
 
 ```
 
-### `experiments/audit/make-review-bundle-v2.js` (196 lines)
+### `experiments/audit/make-review-bundle-v2.js` (200 lines)
 
 ```
 const fs = require('fs');
@@ -8115,7 +8123,7 @@ const env = JSON.parse(read('experiments/results/environment.json'));
 const status = run(['status','--short']);
 const head = run(['rev-parse','HEAD']);
 const version = (cmd) => { try { return run(Array.isArray(cmd) ? cmd : cmd.split(' ')); } catch { return 'unavailable'; } };
-let body = `# Review Bundle V2\n\n- Source HEAD: \`${head}\`\n- Bundle generated: ${new Date().toISOString()}\n- Node: ${version(['node','--version'])}\n- SQLite: ${JSON.stringify(env.sqlite || env.sqlite_version || 'see environment.json')}\n- Memurai: ${JSON.stringify(env.memurai || env.redis || 'Memurai Developer 4.2.3; see environment.json')}\n- Git status at generation:\n\n\`\`\`text\n${status || '(clean)'}\n\`\`\`\n\n`;
+let body = `# Review Bundle V2\n\n- Source HEAD: \`${head}\`\n- Bundle generated: ${new Date().toISOString()}\n- Node: ${JSON.stringify(env.runtime?.node || version(['node','--version']))}\n- SQLite library: ${JSON.stringify(env.runtime?.sqliteLibrary || 'see environment.json')} (node package ${JSON.stringify(env.runtime?.sqlite3NodePackage || 'unknown')})\n- Redis-compatible store: ${JSON.stringify(env.nonceBackend?.product || 'unknown')}, version ${JSON.stringify(env.nonceBackend?.memuraiVersion || env.nonceBackend?.redisProtocolVersion || 'see environment.json')}\n- Git status at generation:\n\n\`\`\`text\n${status || '(clean)'}\n\`\`\`\n\n`;
 
 const intro = `## What this project is and how it flows\n\nThis is a local bank simulation for studying replay defenses. A signed transaction passes through authentication/session binding and then the configured check order. HMAC verification is implemented in \`server/utils/hmac.js\` and invoked in \`server/core.js\`; timestamp bounds use \`server/utils/timestamp.js\`; nonce consumption is in \`server/utils/nonce.js\`; request-ID lookup is in \`server/utils/idempotency.js\`; balance and ledger writes are in \`server/core.js\`. \`CHECK_ORDER\` is parsed near the top of \`server/core.js\` and the pipeline dispatches those checks before the balance transaction. \`IDEMPOTENCY_POLICY=success_only\` permits a fresh retry after a FAILED insufficient-balance row while blocking duplicate successful IDs; \`any_outcome\` treats either SUCCESS or FAILED as consumed. In both policies callers should retry an insufficient balance only after funding and with a fresh nonce; using a new request ID is required under \`any_outcome\`.\n\n`;
 body += intro;
@@ -8137,14 +8145,17 @@ for (const e of tocEntries) {
   offset += titleLines + contentLines + 1;
 }
 for (const e of tocEntries) body += `| \`${e.f}\` | ${e.n} | ${e.range} |\n`;
-body += '\n## Repository tree (excluding dependencies, builds, databases, captures, and result files)\n\n```text\n';
+body += '\n## Repository tree (excluding dependencies, builds, databases, captures, result files, and this generated bundle)\n\n```text\n';
 function tree(dir, depth=0) {
   let out='';
   for (const e of fs.readdirSync(path.join(root,dir),{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name))) {
     if (['node_modules','dist','.git','db','captures','results','__pycache__'].includes(e.name)) continue;
     const p=path.join(root,dir,e.name), r=rel(p);
     if (e.isDirectory()) out += `${'  '.repeat(depth)}${e.name}/\n`+tree(r,depth+1);
-    else { const data=fs.readFileSync(p); const text=data.toString('utf8'); out += `${'  '.repeat(depth)}${e.name} (${data.length} B, ${lines(text)} lines)\n`; }
+    else {
+      if(/^REVIEW_BUNDLE_V2(?:_part\d+)?\.md$/i.test(e.name)) continue;
+      const data=fs.readFileSync(p); const text=data.toString('utf8'); out += `${'  '.repeat(depth)}${e.name} (${data.length} B, ${lines(text)} lines)\n`;
+    }
   }
   return out;
 }
@@ -8184,9 +8195,10 @@ body += [
   sourceCore.split(/\r?\n/).slice(124,187).join('\n'), '```', ''
 ].join('\n');
 body += `## Decision and bug log\n\n- Policy-aware request-ID migration and lookup: \`server/core.js\`, \`server/utils/idempotency.js\`, migration and policy tests.\n- E3 now imports the server timestamp-window helper: \`experiments/e3/run.js\`, \`server/utils/timestamp.js\`.\n- E4b repetitions and E4c common-random-number retry pattern: \`experiments/e4/run.js\`; corrected outputs are identified in \`docs/RESULTS_PACK_A.md\`.\n- Audit independently re-parses experiment outputs and computes its own intervals: \`experiments/audit/verify-results.js\`; latest report is \`experiments/results/audit/audit-report.md\`.\n- Earlier discovered proxy transfer-encoding, nonce expiry, oracle, E4c flag/state reuse, and profile flush corrections are recorded in the prior bundle and experiment documentation; do not cite superseded outputs.\n\n`;
-body += `## Changes since the first REVIEW_BUNDLE commit\n\nFirst bundle commit: \`${base}\`. The following is the complete requested source/document diff from that commit to source HEAD (result data excluded).\n\n\`\`\`diff\n${scrub(run(['diff','--no-ext-diff','--unified=2',`${base}..HEAD`,'--','server','client','experiments','attack','package.json','docs/*.md',':(exclude)experiments/results/**']))}\n\`\`\`\n\n`;
+body += `## Changes since the first REVIEW_BUNDLE commit\n\nFirst bundle commit: \`${base}\`. The following is the complete requested source/document diff from that commit to source HEAD (result data and prior generated REVIEW_BUNDLE_V2 parts excluded to avoid recursive self-inclusion).\n\n\`\`\`diff\n${scrub(run(['-c','diff.astextplain.textconv=','diff','--no-ext-diff','--no-textconv','--unified=2',`${base}..HEAD`,'--','server','client','experiments','attack','package.json','docs/*.md',':(exclude)experiments/results/**',':(exclude)docs/REVIEW_BUNDLE_V2*.md']))}\n\`\`\`\n\n`;
 body += `## Outcomes\n\nHeadline result tables, raw CSV paths, hashes, and caveats are reproduced from \`docs/RESULTS_PACK_A.md\` below.\n\n${scrub(read('docs/RESULTS_PACK_A.md'))}\n\n`;
 body += `## Commands and run log\n\nThe exact reproduction commands and expected runtimes are listed in \`docs/REPRODUCE.md\`. Saved metadata paths include \`experiments/results/e1-v2/run.json\`, \`experiments/results/e1-v2-s11/run.json\`, \`experiments/results/e2-v2/run.json\`, \`experiments/results/e3-v2/run.json\`, \`experiments/results/e4-v2/run.json\`, and the per-run JSON files under \`experiments/results/s10-policy-*\`.\n\n## Known issues, uncertainties, and weak spots\n\n- Results are localhost measurements on one Windows machine using Memurai Developer; they do not predict real network latency.\n- E3 uses stated assumed delay/clock profiles.\n- E4a tests only the sampled delay grid; a threshold flip between sampled values is not an observed cell.\n- Concurrency and timing results apply to this single-process SQLite simulation.\n- E2 high-performance C8 was optional and was not rerun unless a v3 output is present in the result pack.\n\n## Self-review checklist\n\n1. **Are success decisions derived from SQLite ledger rows?** Yes for the F1 oracle and independent audit: the oracle queries ledger rows; see \`experiments/audit/verify-results.js\` and the included source. HTTP accepted counts are separately reported and are not treated as debit counts.\n2. **Does S10 replay one captured request or several?** Each S10 replay cell replays one captured FAILED request 30 times; separate resubmission cells create distinct failed IDs. Evidence: Results Pack methods and \`experiments/e1/run.js\`.\n3. **Does E3 use the same timestamp rule as the server?** Yes, both import \`isTimestampWithinWindow\` from \`server/utils/timestamp.js\`.\n4. **Can a harness reuse nonce, request ID, or session token across configurations?** Run IDs and per-configuration DB/nonce namespaces are fresh; request identifiers derive from run-specific values. Login returns a fresh server session per server run.\n5. **Can a harness leave state from a previous cell?** E1 creates per-config database and Redis namespace; E3 starts fresh server/database per cell. E4c's first rerun reused output state and was explicitly superseded; only the fresh-directory rerun is cited.\n6. **Are PAST/FUTURE/TTL/SESSION_TTL values what the server received?** Child-process environment assembly is in each experiment runner; inspect \`serverEnv\` in \`experiments/e1/run.js\` and the spawned-server setup in \`experiments/e4/run.js\`. Scaled E1/E4 profiles use the values recorded in each run's metadata.\n\n`;
+body += `### Server environment values verified from child-process builders\n\n- E1 scaled profile: \`TIMESTAMP_PAST_WINDOW_SECONDS=6\`, \`TIMESTAMP_FUTURE_WINDOW_SECONDS=2\`, \`NONCE_TTL=4\`, \`SESSION_TTL=15\`; default-window confirmation: \`300\`, \`5\`, \`86400\`, and \`900\` respectively. Values are assigned in \`experiments/e1/run.js\` and recorded in each run metadata JSON.\n- E4 base profile: PAST=6, FUTURE=2, NONCE_TTL=4, SESSION_TTL=3600; E4a overrides NONCE_TTL per cell with 4, 6, 8, 10, or 12. Assignments are in \`experiments/e4/run.js\`; per-run/cell metadata records the active values.\n\n`;
 body += `## Full source\n\n`;
 for (const e of tocEntries) {
   const content = scrub(read(e.f));
