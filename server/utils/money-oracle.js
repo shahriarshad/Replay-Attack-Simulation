@@ -28,16 +28,35 @@ function computeMoneyIntegrity(ledgerRows, authorizedIntents = []) {
   }
   let duplicateDebitCount = 0;
   let duplicateDebitAmount = 0;
+  let delayedExecutionCount = 0;
+  let delayedExecutionAmount = 0;
   for (const rows of byRequestId.values()) {
     for (const duplicate of rows.slice(1)) {
       duplicateDebitCount += 1;
       duplicateDebitAmount += Number(duplicate.amount);
     }
   }
+  const failedByRequestId = new Map();
+  for (const row of ledgerRows) {
+    if (row.status !== 'FAILED') continue;
+    const key = String(row.request_id);
+    const list = failedByRequestId.get(key) || [];
+    list.push(Number(row.id ?? -Infinity));
+    failedByRequestId.set(key, list);
+  }
+  for (const row of debits) {
+    const failedIds = failedByRequestId.get(String(row.request_id)) || [];
+    if (failedIds.some((id) => id < Number(row.id ?? Infinity))) {
+      delayedExecutionCount += 1;
+      delayedExecutionAmount += Number(row.amount);
+    }
+  }
   return {
     duplicate_debit_count: duplicateDebitCount,
     duplicate_debit_amount: duplicateDebitAmount,
     unauthorized_debit_amount: unauthorizedDebitAmount,
+    delayed_execution_count: delayedExecutionCount,
+    delayed_execution_amount: delayedExecutionAmount,
     total_debited: totalDebited,
     integrity_holds: duplicateDebitCount === 0 && unauthorizedDebitAmount === 0
   };

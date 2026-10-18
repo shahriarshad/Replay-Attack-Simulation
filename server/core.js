@@ -4,6 +4,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const { monitorEventLoopDelay, PerformanceObserver } = require('perf_hooks');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const { createClient } = require('redis');
@@ -30,6 +31,32 @@ const FUTURE_WINDOW = Number(process.env.TIMESTAMP_FUTURE_WINDOW_SECONDS || 5);
 const VIZ_ENABLED = flag('VIZ_ENABLED', true);
 const DEMO_MODE = flag('DEMO_MODE', true);
 const ENABLE_DEMO_ROUTES = flag('ENABLE_DEMO_ROUTES', true);
+let nonceStoreFaultedForTest = false;
+const EXPERIMENT_PROFILE = flag('EXPERIMENT_PROFILE', false);
+let eventLoopProfile = null;
+let gcObserver = null;
+let eventLoopProfileFlushed = false;
+function flushEventLoopProfile() {
+  if (!EXPERIMENT_PROFILE || eventLoopProfileFlushed || !eventLoopProfile) return false;
+  eventLoopProfileFlushed = true;
+  eventLoopProfile.disable();
+  console.log(JSON.stringify({ type: 'EXPERIMENT_EVENT_LOOP', min_ms: eventLoopProfile.min / 1e6, max_ms: eventLoopProfile.max / 1e6, mean_ms: eventLoopProfile.mean / 1e6, p50_ms: eventLoopProfile.percentile(50) / 1e6, p95_ms: eventLoopProfile.percentile(95) / 1e6, p99_ms: eventLoopProfile.percentile(99) / 1e6 }));
+  gcObserver?.disconnect();
+  return true;
+}
+if (EXPERIMENT_PROFILE) {
+  eventLoopProfile = monitorEventLoopDelay({ resolution: 10 });
+  eventLoopProfile.enable();
+  gcObserver = new PerformanceObserver((list) => {
+    for (const entry of list.getEntries()) console.log(JSON.stringify({ type: 'EXPERIMENT_GC', kind: entry.kind, flags: entry.flags, duration_ms: entry.duration, start_time_ms: entry.startTime }));
+  });
+  gcObserver.observe({ entryTypes: ['gc'] });
+  console.log('EXPERIMENT_PROFILE enabled: event-loop delay and GC events are recorded in the server log.');
+  process.once('SIGTERM', () => {
+    flushEventLoopProfile();
+    process.exit(0);
+  });
+}
 const DEPOSIT_REPLAY_PROTECTION = flag('DEPOSIT_REPLAY_PROTECTION', true);
 const DEFENSES = {
   hmac: flag('DEFENSE_HMAC', true),
@@ -241,7 +268,7 @@ async function authenticate(req, userId) {
 
 async function verifyAndRememberNonce(userId, nonce) {
   const store = NONCE_BACKEND === 'redis' ? redisClient : NONCE_BACKEND === 'sqlite' ? db : memoryNonces;
-  return verifyNonceResilient(store, userId, nonce, { backend: NONCE_BACKEND, ttlSeconds: NONCE_TTL, failMode: NONCE_STORE_FAIL_MODE, now: () => now() });
+  return verifyNonceResilient(store, userId, nonce, { backend: NONCE_BACKEND, ttlSeconds: NONCE_TTL, failMode: NONCE_STORE_FAIL_MODE, now: () => now(), forceError: nonceStoreFaultedForTest });
 }
 
 function errorResponse(res, statusCode, reason) {
@@ -317,7 +344,9 @@ async function processTransaction(req, res, type) {
       },
       timestamp: async () => {
         if (!DEFENSES.timestamp) return { valid: true, disabled: true };
-        const skewSeconds = (now() - Date.parse(payload.timestamp)) / 1000;
+        const checkedAtMs = now();
+        if (experimentLogPath) res.setHeader('x-server-check-time-ms', String(checkedAtMs));
+        const skewSeconds = (checkedAtMs - Date.parse(payload.timestamp)) / 1000;
         const valid = skewSeconds >= -FUTURE_WINDOW && skewSeconds <= PAST_WINDOW;
         emit('check-timestamp', { status: valid ? 'PASS' : 'FAIL', diff: Math.round(skewSeconds), allowedPast: PAST_WINDOW, allowedFuture: FUTURE_WINDOW });
         return { valid, skewSeconds };
@@ -518,7 +547,15 @@ if (ENABLE_DEMO_ROUTES) app.post('/api/demo/nonce-crash', async (req, res) => {
 });
 
 if (flag('ENABLE_TEST_FAULT_ROUTE', false)) {
+  app.post('/__test/fault/nonce-store', (req, res) => {
+    nonceStoreFaultedForTest = req.body?.enabled === true;
+    return res.json({ enabled: nonceStoreFaultedForTest });
+  });
   app.get('/__test/unhandled-error', (req, res, next) => next(new Error('test-only injected failure')));
+  app.post('/__test/profile/flush', (req, res) => {
+    if (!flushEventLoopProfile()) return res.status(404).json({ error: 'NOT_FOUND' });
+    return res.json({ logged: true });
+  });
 }
 app.use((error, req, res, next) => {
   if (res.headersSent) return next(error);

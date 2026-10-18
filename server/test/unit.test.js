@@ -102,7 +102,16 @@ test('idempotency is scoped to successful transactions so failures may retry', a
 
 test('money oracle accepts a clean ledger against authorized intents', () => {
   const report = computeMoneyIntegrity([{ request_id: 'r1', type: 'WITHDRAW', status: 'SUCCESS', amount: 10 }], [{ request_id: 'r1', type: 'WITHDRAW', amount: 10 }]);
-  assert.deepEqual(report, { duplicate_debit_count: 0, duplicate_debit_amount: 0, unauthorized_debit_amount: 0, total_debited: 10, integrity_holds: true });
+  assert.deepEqual(report, { duplicate_debit_count: 0, duplicate_debit_amount: 0, unauthorized_debit_amount: 0, delayed_execution_count: 0, delayed_execution_amount: 0, total_debited: 10, integrity_holds: true });
+});
+
+test('money oracle reports successful execution after an earlier insufficient-balance failure', () => {
+  const report = computeMoneyIntegrity([
+    { id: 1, request_id: 'retry-me', type: 'WITHDRAW', status: 'FAILED', amount: 25 },
+    { id: 2, request_id: 'retry-me', type: 'WITHDRAW', status: 'SUCCESS', amount: 25 }
+  ], [{ request_id: 'retry-me', type: 'WITHDRAW', amount: 25 }]);
+  assert.equal(report.delayed_execution_count, 1);
+  assert.equal(report.delayed_execution_amount, 25);
 });
 
 test('money oracle flags same request ID debited twice regardless of signature', () => {

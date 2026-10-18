@@ -73,6 +73,7 @@ async function verifyNonce(store, userId, nonce, options = {}) {
 
 async function verifyNonceResilient(store, userId, nonce, options = {}) {
   try {
+    if (options.forceError) throw new Error('test-only injected nonce-store fault');
     return await verifyNonce(store, userId, nonce, options);
   } catch (error) {
     if ((options.failMode || 'fail-closed') === 'fail-open') return { valid: true, redisResult: 'STORE_ERROR_FAIL_OPEN', error };

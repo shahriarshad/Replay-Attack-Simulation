@@ -27,6 +27,7 @@ process.env.RUN_ID = `windows-node-test-${process.pid}`;
 
 const { app, db, redisClient, initializeDatabase, setClock } = require('../core');
 const { generateSignature } = require('../utils/hmac');
+const { computeMoneyIntegrity } = require('../utils/money-oracle');
 
 let server;
 let baseUrl;
@@ -136,6 +137,10 @@ test('insufficient balance is recorded as failed and the request ID remains retr
   const retry = payload({ amount: 10, request_id: 'retryable-id' });
   const accepted = await call('POST', '/api/withdraw', retry);
   assert.equal(accepted.data.status, 'ACCEPTED');
+  const ledger = await new Promise((resolve, reject) => db.all("SELECT id,request_id,type,status,amount FROM transactions WHERE request_id='retryable-id' ORDER BY id", [], (error, rows) => error ? reject(error) : resolve(rows)));
+  const oracle = computeMoneyIntegrity(ledger, [{ request_id: 'retryable-id', amount: 10, type: 'WITHDRAW' }]);
+  assert.equal(oracle.delayed_execution_count, 1);
+  assert.equal(oracle.delayed_execution_amount, 10);
 });
 
 test('same request ID is idempotent after success, even when nonce state is wiped', async () => {
@@ -145,6 +150,18 @@ test('same request ID is idempotent after success, even when nonce state is wipe
   await call('POST', '/api/demo/nonce-crash', {});
   const replay = await call('POST', '/api/withdraw', request);
   assert.equal(replay.data.reason, 'ALREADY_PROCESSED');
+});
+
+test('test-only nonce-store fault route causes fail-closed unavailability and can be cleared', async () => {
+  const enabled = await call('POST', '/__test/fault/nonce-store', { enabled: true });
+  assert.equal(enabled.status, 200);
+  const rejected = await call('POST', '/api/withdraw', payload());
+  assert.equal(rejected.status, 503);
+  assert.equal(rejected.data.reason, 'NONCE_STORE_UNAVAILABLE');
+  const disabled = await call('POST', '/__test/fault/nonce-store', { enabled: false });
+  assert.equal(disabled.status, 200);
+  const accepted = await call('POST', '/api/withdraw', payload());
+  assert.equal(accepted.status, 200);
 });
 
 test('malformed input and unknown routes have documented JSON bodies', async () => {
