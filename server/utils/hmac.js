@@ -1,4 +1,4 @@
-const CryptoJS = require('crypto-js');
+const crypto = require('crypto');
 
 function buildHmacMessage(payload) {
   return [
@@ -16,14 +16,16 @@ function buildHmacMessage(payload) {
 
 function generateSignature(payload, secret) {
   const message = buildHmacMessage(payload);
-  return CryptoJS.HmacSHA256(message, secret).toString(CryptoJS.enc.Hex);
+  return crypto.createHmac('sha256', secret).update(message).digest('hex');
 }
 
 function verifySignature(payload, secret) {
   const expected = generateSignature(payload, secret);
   const received = payload.signature || '';
+  const expectedBuffer = Buffer.from(expected, 'hex');
+  const receivedBuffer = /^[0-9a-f]{64}$/i.test(received) ? Buffer.from(received, 'hex') : Buffer.alloc(0);
   return {
-    valid: expected === received,
+    valid: expectedBuffer.length === receivedBuffer.length && crypto.timingSafeEqual(expectedBuffer, receivedBuffer),
     expected,
     received
   };
