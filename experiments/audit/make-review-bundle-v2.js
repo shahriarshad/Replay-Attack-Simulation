@@ -105,11 +105,25 @@ body += tree('',0) + '```\n\n';
 body += `## Plain-English request flow\n\n${intro.replace(/^## What this project is and how it flows\n\n/, '')}`;
 body += `## Reference tables\n\n### Environment variables\n\n| Variable | Default | Read in | Effect |\n|---|---|---|---|\n`;
 const sourceCore = read('server/core.js');
-for (const line of sourceCore.split(/\r?\n/)) {
-  const m=line.match(/const ([A-Z][A-Z0-9_]+) = (?:\(process\.env\.([A-Z][A-Z0-9_]*)[^;]*|flag\('([A-Z][A-Z0-9_]*)',\s*([^)]*)\))/);
-  if (m) { const name=m[2]||m[3]||m[1]; body += `| \`${name}\` | \`${(m[4]||'see code').replaceAll('|','\\|')}\` | \`server/core.js\` | Configures the associated server feature. |\n`; }
+const varLocations = new Map();
+for(const file of files) {
+  if(!/\.(js|py)$/.test(file)) continue;
+  const src=read(file);
+  for(const m of src.matchAll(/process\.env\.([A-Z][A-Z0-9_]*)|\benv\.([A-Z][A-Z0-9_]*)/g)) {
+    const name=m[1]||m[2], arr=varLocations.get(name)||[]; arr.push(file); varLocations.set(name,arr);
+  }
 }
-body += '\n### HTTP routes\n\nSee route handlers in `server/core.js`; authentication and feature guards are shown beside each handler. REST transaction routes pass through the signed-request pipeline when enabled; health/login/reset/demo routes have their route-specific guards.\n\n### SQLite schema and indexes\n\nThe complete schema and migration source is included below in `server/core.js` and `server/test/migration.test.js`. Request-ID uniqueness is policy-specific: `success_only` uses a SUCCESS partial unique index; `any_outcome` uses the SUCCESS/FAILED partial unique index.\n\n### Redis keys\n\nNonce keys use `used_nonce:<namespace>:<user_id>:<nonce>` when a run namespace is set, otherwise `used_nonce:<user_id>:<nonce>`, written with NX and EX=`NONCE_TTL`. Session lookup keys and TTL are documented in `server/core.js`; the environment defaults `SESSION_TTL` to 900 seconds.\n\n';
+const exampleDefaults=new Map();
+if(fs.existsSync(path.join(root,'server/.env.example'))) for(const line of read('server/.env.example').split(/\r?\n/)) {
+  const m=line.match(/^\s*([A-Z][A-Z0-9_]*)\s*=\s*(.*)$/); if(m) exampleDefaults.set(m[1],m[2]);
+}
+for(const [name,locations] of [...varLocations].sort(([a],[b])=>a.localeCompare(b))) {
+  let fallback=exampleDefaults.has(name)?exampleDefaults.get(name):'not specified';
+  const coreDecl=sourceCore.split(/\r?\n/).find(line=>line.includes(`process.env.${name}`));
+  if(coreDecl) { const m=coreDecl.match(/\|\|\s*([^);,]+)|\?\?\s*([^);,]+)/); if(m) fallback=m[1]||m[2]; }
+  body+=`| \`${name}\` | \`${String(fallback).replaceAll('|','\\|')}\` | ${[...new Set(locations)].map(x=>`\`${x}\``).join(', ')} | See the named option's use at the listed source locations. |\n`;
+}
+body += '\n### HTTP routes\n\n| Method | Path | Authentication / checks | Gate |\n|---|---|---|---|\n| GET | `/api/health` | none | none |\n| POST | `/api/login` | user ID and PIN; issues bearer session | none |\n| GET | `/api/balance/:user_id` | bearer session bound to user | none |\n| GET | `/api/transactions/:user_id` | bearer session bound to user | none |\n| POST | `/api/deposit` | bearer, signed-request pipeline, account ownership | deposit replay protection / defense flags |\n| POST | `/api/withdraw` | bearer, signed-request pipeline, account ownership and balance | defense flags |\n| POST | `/api/reset` | demo-only reset operation | `ENABLE_DEMO_ROUTES` |\n| POST | `/api/demo/nonce-crash` | demo nonce wipe operation | `ENABLE_DEMO_ROUTES` |\n| POST | `/__test/fault/nonce-store` | test-only fault injection | `ENABLE_TEST_FAULT_ROUTE` |\n| GET | `/__test/unhandled-error` | test-only error path | `ENABLE_TEST_FAULT_ROUTE` |\n| POST | `/__test/profile/flush` | test-only profiling flush | `ENABLE_TEST_FAULT_ROUTE` |\n\n### SQLite schema and indexes\n\nThe initialization SQL is shown exactly here; full migration and tests are in the source sections.\n\n```js\n${sourceCore.split(/\r?\n/).slice(124,187).join('\n')}\n```\n\n';
 body += `## Decision and bug log\n\n- Policy-aware request-ID migration and lookup: \`server/core.js\`, \`server/utils/idempotency.js\`, migration and policy tests.\n- E3 now imports the server timestamp-window helper: \`experiments/e3/run.js\`, \`server/utils/timestamp.js\`.\n- E4b repetitions and E4c common-random-number retry pattern: \`experiments/e4/run.js\`; corrected outputs are identified in \`docs/RESULTS_PACK_A.md\`.\n- Audit independently re-parses experiment outputs and computes its own intervals: \`experiments/audit/verify-results.js\`; latest report is \`experiments/results/audit/audit-report.md\`.\n- Earlier discovered proxy transfer-encoding, nonce expiry, oracle, E4c flag/state reuse, and profile flush corrections are recorded in the prior bundle and experiment documentation; do not cite superseded outputs.\n\n`;
 body += `## Changes since the first REVIEW_BUNDLE commit\n\nFirst bundle commit: \`${base}\`. The following is the complete requested source/document diff from that commit to source HEAD (result data excluded).\n\n\`\`\`diff\n${scrub(run(['diff','--no-ext-diff','--unified=2',`${base}..HEAD`,'--','server','client','experiments','attack','package.json','docs/*.md',':(exclude)experiments/results/**']))}\n\`\`\`\n\n`;
 body += `## Outcomes\n\nHeadline result tables, raw CSV paths, hashes, and caveats are reproduced from \`docs/RESULTS_PACK_A.md\` below.\n\n${scrub(read('docs/RESULTS_PACK_A.md'))}\n\n`;
