@@ -123,6 +123,10 @@ test('withdraw rejects bad signatures, timestamps, account ownership and unknown
   const unknown = payload({ user_id: 'missing-user' });
   unknown.signature = generateSignature(unknown, session.sessionKey);
   assert.deepEqual((await call('POST', '/api/withdraw', unknown)).data, { error: 'ACCOUNT_NOT_FOUND' });
+  const timingLines = fs.readFileSync(process.env.EXPERIMENT_LOG, 'utf8').trim().split(/\r?\n/);
+  const timingRow = timingLines[timingLines.length - 1];
+  assert.equal(timingRow.includes('skipped'), false);
+  assert.match(timingRow, /,\d+,not_reached,not_reached,not_reached,/);
 });
 
 test('insufficient balance is recorded as failed and the request ID remains retryable', async () => {
