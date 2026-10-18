@@ -389,7 +389,7 @@ Typical rejection reasons include `INVALID_REQUEST`, `ACCOUNT_NOT_FOUND`, `ACCOU
 5. Past and future timestamp limits are separate settings, defaulting to 300 seconds and 5 seconds.
 6. Visualization emits and key/database scans are disabled when `VIZ_ENABLED=false`. When enabled, the single measured curve is only a dashboard implementation cost.
 7. Error response contracts use JSON consistently. Successful transactions include `amount` and `newBalance`; failures carry error/reason without those fields.
-8. The nonce store and check order can be selected for future ablations, but the full ablation matrix has not been run.
+8. The nonce store and check order are configurable. E1/E2 source and results are now documented in `docs/EXPERIMENTS.md` and `docs/RESULTS_PACK_A.md` after the current run finishes.
 
 ## Known risks, caveats, and questions for the next contributor
 
@@ -400,16 +400,17 @@ Typical rejection reasons include `INVALID_REQUEST`, `ACCOUNT_NOT_FOUND`, `ACCOU
 - **Local latency:** all reported request timings are localhost; they are not Internet/mobile-network performance claims.
 - **WSL attacker timestamps:** attacker-side CSV uses wall clock because WSL is not required to have Node. Use the corresponding Windows `EXPERIMENT_LOG` for monotonic processing timings.
 - **Visualization:** one VIZ-on run is noisy. It documents instrumentation overhead and does not establish a stable performance trend.
-- **No complete experiment orchestration:** root `npm test` exists. `npm run experiments` and paper tables/figures are not complete.
+- **E1/E2 state:** E1 has been run with 16 defense configurations plus default-window confirmations; E2 is the current authorized run. Consult `docs/RESULTS_PACK_A.md` and the raw run metadata when complete. The E1/E2 runs must not be confused with Phase 0 or the superseded E1 passes.
+- **Unrun experiment phases:** E3, E4, and Phase 5 remain unrun. Do not start them without authorization.
 - **No USSD mode:** no endpoint, sequence handling, trusted gateway identity, or USSD security comparison exists yet.
 - **Git history:** secrets remain in old reachable commits and remote history. Do not rewrite history or force-push without a separate explicit user authorization and coordinated plan.
-- **Pending source changes:** Phase 1–3 changes are uncommitted; inspect `git diff` before making more edits. Keep the pre-existing `attack/payload.json` change separate unless the user says otherwise.
+- **Working tree:** Phase 1–3 and F1–F8 have local commits. Current E1/E2 source and documentation changes may still be uncommitted; inspect `git status --short` before staging. Keep the pre-existing `attack/payload.json` change separate.
 
 ## What a future AI should do next
 
 1. Read this handoff, `docs/EXPERIMENTS.md`, `docs/THREAT_MODEL.md`, `docs/LIMITATIONS.md`, the current `git status --short`, and the relevant code before changing anything.
-2. Treat the requested Phase 0 corrections and Phases 1–3 as completed, with the evidence and caveats recorded here. Do not redo long 100k-key or 1,000-race measurements unless the user asks.
+2. Treat the requested Phase 0 corrections and Phases 1–3 as completed, with the evidence and caveats recorded here. The current authorized follow-up includes F1–F8 and E1/E2 only. Do not start E3, E4, or Phase 5.
 3. Preserve current `.env` files, `attack/payload.json`, and runtime DB state. Never output secret values or authentication headers.
-4. Do not run full Phase 4 or start Phase 5 unless the user authorizes that new work. The last instruction for those phases was to stop before them.
-5. If authorized to continue, start with a short plan grounded in the existing files and ensure every result is newly measured and saved. Continue to keep all server/harness execution native to Windows and all WSL traffic local.
+4. Do not push, rewrite git history, or stage `attack/payload.json`, `.env` files, runtime databases, `dist/`, or `node_modules/`.
+5. Run all server and harness work natively on Windows; use WSL only for the explicitly requested local attacker shell. Every reported number must point to a saved raw run.
 
