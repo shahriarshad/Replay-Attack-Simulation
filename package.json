@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "test": "npm --prefix server test",
-    "experiments": "node experiments/run-phase4.js",
-    "experiments:e1": "node experiments/e1/run.js",
+    "experiments": "npm run experiments:e1 && npm run experiments:e2 && npm run experiments:e3 && npm run experiments:e4 && npm run experiments:render-v2 && npm run experiments:pack-v2 && npm run experiments:paper-facts",
+    "experiments:e1": "node experiments/e1/run.js && node experiments/e1/reconcile-oracle-amounts.js",
     "experiments:e2": "node experiments/e2/run.js",
+    "experiments:e3": "node experiments/e3/run.js",
+    "experiments:e4": "node experiments/e4/run.js",
     "experiments:render": "python experiments/render-pack-a.py",
-    "experiments:pack": "node experiments/write-results-pack.js"
+    "experiments:render-v2": "python experiments/render-v2-results.py",
+    "experiments:pack": "node experiments/write-results-pack.js",
+    "experiments:pack-v2": "node experiments/write-results-pack-v2.js",
+    "experiments:paper-facts": "node experiments/write-paper-facts.js"
   }
 }

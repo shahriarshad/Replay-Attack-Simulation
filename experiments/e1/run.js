@@ -11,14 +11,14 @@ const { timedRequest } = require('../lib/http');
 
 const ROOT = path.resolve(__dirname, '../..');
 const SERVER = path.join(ROOT, 'server');
-const OUTPUT = path.resolve(process.env.E1_OUTPUT_DIR || path.join(ROOT, 'experiments/results/e1-sqlite-final'));
+const OUTPUT = path.resolve(process.env.E1_OUTPUT_DIR || path.join(ROOT, 'experiments/results/e1-v2'));
 const RUN_TAG = new Date().toISOString().replace(/[:.]/g, '-');
 const RUN_OUTPUT = path.join(OUTPUT, RUN_TAG);
 const RANDOM_SEED = 'e1-fixed-seed-2026-v1';
 const WIDTH = 30;
 const PAST = 6;
 const FUTURE = 2;
-const NONCE_TTL = 30;
+const NONCE_TTL = 4;
 const SESSION_TTL = 15;
 const PIN = process.env.DEMO_PIN || '1234';
 fs.mkdirSync(OUTPUT, { recursive: true });
@@ -29,7 +29,7 @@ const csv = (value) => {
 };
 const writeCsv = (file, headers, rows) => fs.writeFileSync(file, `${[headers.join(','), ...rows.map((row) => headers.map((key) => csv(row[key])).join(','))].join('\n')}\n`);
 const wilson = (successes, n) => {
-  if (successes === 0 || successes === n) return null;
+  if (!n) return [0, 1];
   const z = 1.959963984540054;
   const p = successes / n;
   const d = 1 + z * z / n;
@@ -157,7 +157,7 @@ async function runConfiguration(mask, profile = {}) {
   }
 
   async function ledger() {
-    return new Promise((resolve, reject) => ledgerDb.all('SELECT request_id, type, status, amount FROM transactions ORDER BY id', [], (error, rows) => error ? reject(error) : resolve(rows)));
+    return new Promise((resolve, reject) => ledgerDb.all('SELECT id, request_id, type, status, amount FROM transactions ORDER BY id', [], (error, rows) => error ? reject(error) : resolve(rows)));
   }
 
   async function baseline(label, count, addAuthorization = true) {
@@ -168,7 +168,7 @@ async function runConfiguration(mask, profile = {}) {
       if (response.status !== 200 || response.body.status !== 'ACCEPTED') throw new Error(`${id}/${label}: baseline rejected (${response.status}/${response.body.reason || response.body.error})`);
       if (addAuthorization) authorized.push({ request_id: payload.request_id, amount: payload.amount, type: 'WITHDRAW' });
       captures.push(findCapture(payload.request_id));
-      requestRows.push({ config_id: id, scenario_id: label, attempt: i + 1, phase: 'legitimate', request_id_hash: shortHash(payload.request_id), start_ns: response.start_ns, end_ns: response.end_ns, duration_ns: response.duration_ns, http_status: response.status, outcome: response.body.status, reason: '' });
+      requestRows.push({ config_id: id, scenario_id: label, variant: '', attempt: i + 1, phase: 'legitimate', request_id_hash: shortHash(payload.request_id), start_ns: response.start_ns, end_ns: response.end_ns, duration_ns: response.duration_ns, http_status: response.status, outcome: response.body.status, reason: '' });
     }
     return captures;
   }
@@ -191,13 +191,13 @@ async function runConfiguration(mask, profile = {}) {
     const reasons = {};
     results.forEach((r) => { const reason = r.body.reason || r.body.error || r.body.status || `HTTP_${r.status}`; reasons[reason] = (reasons[reason] || 0) + 1; });
     const interval = wilson(debited, attempts);
-    summaries.push({ config_id: id, scenario_id: name, attempts, http_accepted_count: accepted, debited_count: debited, attack_success_rate: attempts ? debited / attempts : 0, wilson95_low: interval ? interval[0] : null, wilson95_high: interval ? interval[1] : null, blocking_reason_histogram: JSON.stringify(reasons), oracle_duplicate_debit_count_delta: duplicateDelta, oracle_duplicate_debit_amount_delta: duplicateAmountDelta, oracle_unauthorized_debit_amount_delta: unauthorizedDelta, oracle_integrity_holds: duplicateDelta === 0 && unauthorizedDelta === 0 });
+    summaries.push({ config_id: id, scenario_id: name, variant: options.variant || '', attempts, http_accepted_count: accepted, debited_count: debited, attack_success_rate: attempts ? debited / attempts : 0, wilson95_low: interval[0], wilson95_high: interval[1], blocking_reason_histogram: JSON.stringify(reasons), oracle_total_debited_delta: afterOracle.total_debited - beforeOracle.total_debited, oracle_duplicate_debit_count_delta: duplicateDelta, oracle_duplicate_debit_amount_delta: duplicateAmountDelta, oracle_unauthorized_debit_amount_delta: unauthorizedDelta, oracle_delayed_execution_count_delta: afterOracle.delayed_execution_count - beforeOracle.delayed_execution_count, oracle_delayed_execution_amount_delta: afterOracle.delayed_execution_amount - beforeOracle.delayed_execution_amount, oracle_integrity_holds: duplicateDelta === 0 && unauthorizedDelta === 0 });
     return results;
   }
 
-  function recordAttempts(label, results, startIndex = 0) {
+  function recordAttempts(label, results, startIndex = 0, variant = '') {
     results.forEach((response, index) => {
-      requestRows.push({ config_id: id, scenario_id: label, attempt: startIndex + index + 1, phase: 'attacker', request_id_hash: '', start_ns: response.start_ns, end_ns: response.end_ns, duration_ns: response.duration_ns, http_status: response.status, outcome: response.body.status || 'REJECTED', reason: response.body.reason || response.body.error || '' });
+      requestRows.push({ config_id: id, scenario_id: label, variant, attempt: startIndex + index + 1, phase: 'attacker', request_id_hash: '', start_ns: response.start_ns, end_ns: response.end_ns, duration_ns: response.duration_ns, http_status: response.status, outcome: response.body.status || 'REJECTED', reason: response.body.reason || response.body.error || '' });
     });
   }
 
@@ -219,11 +219,11 @@ async function runConfiguration(mask, profile = {}) {
         const results = await measureScenario(`${scenario}_default_window_${waitSeconds}s`, WIDTH, async () => Promise.all(captures.map((capture) => replay(capture))));
         recordAttempts(`${scenario}_default_window_${waitSeconds}s`, results);
       }
-      writeCsv(path.join(runDir, 'requests.csv'), ['config_id', 'scenario_id', 'attempt', 'phase', 'request_id_hash', 'start_ns', 'end_ns', 'duration_ns', 'http_status', 'outcome', 'reason'], requestRows);
+      writeCsv(path.join(runDir, 'requests.csv'), ['config_id', 'scenario_id', 'variant', 'attempt', 'phase', 'request_id_hash', 'start_ns', 'end_ns', 'duration_ns', 'http_status', 'outcome', 'reason'], requestRows);
       return summaries;
     }
 
-    for (const scenario of ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9']) {
+    for (const scenario of ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7a', 'S7b', 'S8', 'S9', 'S10_fast', 'S10_late']) {
       await login();
       if (scenario === 'S1' || scenario === 'S2' || scenario === 'S3' || scenario === 'S4' || scenario === 'S8') {
         const captures = await baseline(`${scenario}_legitimate_seed`, WIDTH);
@@ -257,10 +257,11 @@ async function runConfiguration(mask, profile = {}) {
         const captures = await baseline(`${scenario}_legitimate_seed`, WIDTH);
         const results = await measureScenario(scenario, WIDTH, async () => Promise.all(captures.map((capture) => replay(capture, (body) => ({ ...body, amount: body.amount + 1 })))));
         recordAttempts(scenario, results);
-      } else if (scenario === 'S7') {
+      } else if (scenario === 'S7a' || scenario === 'S7b') {
         const captures = await baseline(`${scenario}_legitimate_seed`, WIDTH);
-        const results = await measureScenario(scenario, WIDTH, async () => Promise.all(captures.map((capture, index) => replay(capture, (body) => index < WIDTH / 2 ? ({ ...body, request_id: `${body.request_id}-changed` }) : ({ ...body, nonce: `${body.nonce}-changed` })))));
-        recordAttempts(scenario, results);
+        const field = scenario === 'S7a' ? 'request_id' : 'nonce';
+        const results = await measureScenario(scenario, WIDTH, async () => Promise.all(captures.map((capture) => replay(capture, (body) => ({ ...body, [field]: `${body[field]}-changed` })))), { variant: field });
+        recordAttempts(scenario, results, 0, field);
       } else if (scenario === 'S9') {
         const [seedCapture] = await baseline('S9_leaked_key_seed', 1);
         const bearer = seedCapture.request.headers.authorization.replace(/^Bearer\s+/i, '');
@@ -268,10 +269,28 @@ async function runConfiguration(mask, profile = {}) {
         const payloads = Array.from({ length: WIDTH }, () => signedPayload({}, leakedKey));
         const results = await measureScenario(scenario, WIDTH, async () => Promise.all(payloads.map((payload) => submit(payload, bearer))));
         recordAttempts(scenario, results);
+      } else if (scenario === 'S10_fast' || scenario === 'S10_late') {
+        const deposit = async (amount) => {
+          const payload = { method: 'POST', path: '/api/deposit', user_id: 'anis_101', account_id: 'acc_777', amount, currency: 'BDT', timestamp: new Date().toISOString(), nonce: `deposit-${deterministicId(id)}`, request_id: `fund-${deterministicId(id)}` };
+          payload.signature = generateSignature(payload, session.sessionKey);
+          return timedRequest(`http://127.0.0.1:${proxyPort}/api/deposit`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${session.sessionToken}` }, body: JSON.stringify(payload) });
+        };
+        await new Promise((resolve, reject) => ledgerDb.run("UPDATE accounts SET balance=1 WHERE user_id='anis_101'", (error) => error ? reject(error) : resolve()));
+        const failedPayload = signedPayload({ requestId: `s10-${deterministicId(id)}`, amount: 100 });
+        authorized.push({ request_id: failedPayload.request_id, amount: failedPayload.amount, type: 'WITHDRAW' });
+        const failedResponse = await submit(failedPayload);
+        if (failedResponse.body.reason !== 'INSUFFICIENT_BALANCE') throw new Error(`${id}/${scenario}: expected INSUFFICIENT_BALANCE, got ${failedResponse.body.reason || failedResponse.body.error}`);
+        const capturedFailure = findCapture(failedPayload.request_id);
+        const funded = await deposit(500);
+        if (funded.status !== 200) throw new Error(`${id}/${scenario}: legitimate funding failed (${funded.status})`);
+        if (scenario === 'S10_fast') await new Promise((resolve) => setTimeout(resolve, 1000));
+        else await new Promise((resolve) => setTimeout(resolve, 7000));
+        const results = await measureScenario(scenario, WIDTH, async () => Promise.all(Array.from({ length: WIDTH }, () => replay(capturedFailure))));
+        recordAttempts(scenario, results);
       }
     }
 
-    const rawHeaders = ['config_id', 'scenario_id', 'attempt', 'phase', 'request_id_hash', 'start_ns', 'end_ns', 'duration_ns', 'http_status', 'outcome', 'reason'];
+    const rawHeaders = ['config_id', 'scenario_id', 'variant', 'attempt', 'phase', 'request_id_hash', 'start_ns', 'end_ns', 'duration_ns', 'http_status', 'outcome', 'reason'];
     writeCsv(path.join(runDir, 'requests.csv'), rawHeaders, requestRows);
   } finally {
     const proxyRows = parseCaptures(captureLog).map((entry) => ({ path: entry.request.path, method: entry.request.method, start_ns: entry.start_ns, end_ns: entry.end_ns, duration_ns: entry.duration_ns, http_status: entry.response.statusCode }));
@@ -293,11 +312,11 @@ async function main() {
   }
   process.stdout.write('E1 default-window confirmation: S2/60s and S4/301s\n');
   allSummaries.push(...await runConfiguration(15, { suffix: '-DEFAULT', past: 300, future: 5, nonceTtl: 86400, sessionTtl: 900, fullScale: true }));
-  const headers = ['config_id', 'scenario_id', 'attempts', 'http_accepted_count', 'debited_count', 'attack_success_rate', 'wilson95_low', 'wilson95_high', 'blocking_reason_histogram', 'oracle_duplicate_debit_count_delta', 'oracle_duplicate_debit_amount_delta', 'oracle_unauthorized_debit_amount_delta', 'oracle_integrity_holds'];
+  const headers = ['config_id', 'scenario_id', 'variant', 'attempts', 'http_accepted_count', 'debited_count', 'attack_success_rate', 'wilson95_low', 'wilson95_high', 'blocking_reason_histogram', 'oracle_total_debited_delta', 'oracle_duplicate_debit_count_delta', 'oracle_duplicate_debit_amount_delta', 'oracle_unauthorized_debit_amount_delta', 'oracle_delayed_execution_count_delta', 'oracle_delayed_execution_amount_delta', 'oracle_integrity_holds'];
   writeCsv(path.join(RUN_OUTPUT, 'summary.csv'), headers, allSummaries);
   const configs = [...new Set(allSummaries.map((r) => r.config_id))];
   const scenarios = [...new Set(allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => r.scenario_id))];
-  const latex = ['\\begin{tabular}{llrrrrl}', '\\toprule', 'Configuration & Scenario & Attempts & Accepted & Debits & Success rate & Wilson 95\\% CI \\\\', '\\midrule', ...allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => `${r.config_id} & ${r.scenario_id} & ${r.attempts} & ${r.http_accepted_count} & ${r.debited_count} & ${(100 * r.attack_success_rate).toFixed(2)}\\% & ${r.wilson95_low === null ? 'constant outcome' : `${r.wilson95_low.toFixed(4)}--${r.wilson95_high.toFixed(4)}`} \\\\`), '\\bottomrule', '\\end{tabular}', ''];
+  const latex = ['\\begin{tabular}{llrrrrl}', '\\toprule', 'Configuration & Scenario & Attempts & Accepted & Debits & Success rate & Wilson 95\\% CI \\\\', '\\midrule', ...allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => `${r.config_id} & ${r.scenario_id} & ${r.attempts} & ${r.http_accepted_count} & ${r.debited_count} & ${(100 * r.attack_success_rate).toFixed(2)}\\% & ${r.wilson95_low.toFixed(4)}--${r.wilson95_high.toFixed(4)} \\\\`), '\\bottomrule', '\\end{tabular}', ''];
   fs.writeFileSync(path.join(RUN_OUTPUT, 'summary.tex'), latex.join('\n'));
   const runMetadata = { started, ended: new Date().toISOString(), elapsedSeconds: (Date.now() - Date.parse(started)) / 1000, nodeVersion: process.version, host: { platform: os.platform(), release: os.release(), architecture: process.arch, cpuModel: os.cpus()[0]?.model, totalRamBytes: os.totalmem() }, dataRunDirectory: path.relative(OUTPUT, RUN_OUTPUT).replace(/\\/g, '/'), randomSeed: RANDOM_SEED, randomSeedScope: 'deterministic scenario request IDs and nonces; server session credentials use the operating-system CSPRNG', scaledProfile: { timestampPastSeconds: PAST, timestampFutureSeconds: FUTURE, nonceTtlSeconds: NONCE_TTL, sessionTtlSeconds: SESSION_TTL }, defaultConfirmationProfile: { timestampPastSeconds: 300, futureToleranceSeconds: 5, nonceTtlSeconds: 86400, sessionTtlSeconds: 900, waits: { S2: 60, S4: 301 } }, keepAliveHttpAgent: true, proxyRedactLogin: true, moneyOracleLedgerSource: 'direct sqlite3 SELECT from the running server database after each scenario', allConfigs: 16, totalSummaryRows: allSummaries.length, scenarios: scenarios.length, allSummaries };
   fs.writeFileSync(path.join(RUN_OUTPUT, 'run.json'), `${JSON.stringify(runMetadata, null, 2)}\n`);

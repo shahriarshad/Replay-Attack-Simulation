@@ -58,7 +58,10 @@ function renderCsvSection(file) {
     out.push('', `**${label}**`, '', `| ${parsed.headers.join(' | ')} |`, `| ${parsed.headers.map(() => '---').join(' | ')} |`);
     for (const row of rows) out.push(`| ${parsed.headers.map((key) => escapeCell(row[key])).join(' | ')} |`);
   }
-  const numeric = parsed.headers.map((key) => [key, parsed.rows.map((row) => row[key]).filter((value) => value !== '' && Number.isFinite(Number(value))).map(Number)]).filter(([, values]) => values.length);
+  // Accept only canonical decimal numeric fields. Number('deadbeef') can
+  // otherwise coerce hexadecimal-looking IDs/hashes in surprising ways.
+  const numericPattern = /^[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?$/;
+  const numeric = parsed.headers.filter((key) => !/(?:hash|_?id$|token|signature|nonce|key)/i.test(key)).map((key) => [key, parsed.rows.map((row) => row[key]).filter((value) => value !== '' && numericPattern.test(String(value))).map(Number)]).filter(([, values]) => values.length);
   out.push('', '**Aggregate statistics for numeric columns**', '', '| Column | count | min | max | mean | p50 | p95 | p99 |', '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |');
   for (const [key, values] of numeric) { const s = stats(values); out.push(`| ${key} | ${s.count} | ${s.min} | ${s.max} | ${s.mean} | ${s.p50} | ${s.p95} | ${s.p99} |`); }
   const numericColumns = new Set(numeric.map(([key]) => key));

@@ -18,7 +18,7 @@ function timedRequest(input, options = {}) {
         const text = Buffer.concat(chunks).toString('utf8');
         let body;
         try { body = JSON.parse(text); } catch { body = text; }
-        resolve({ start_ns: start.toString(), end_ns: end.toString(), duration_ns: (end - start).toString(), status: response.statusCode, body });
+        resolve({ start_ns: start.toString(), end_ns: end.toString(), duration_ns: (end - start).toString(), status: response.statusCode, headers: response.headers, body });
       });
     });
     request.on('error', (error) => {

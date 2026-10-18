@@ -82,7 +82,7 @@ function largeFileSummary(filePath, text, rows) {
   if (path.extname(filePath).toLowerCase() === '.csv' && rows.length > 1) {
     const headers = parseCsv(rows[0]); const columns = headers.map(() => []);
     for (const row of rows.slice(1)) parseCsv(row).forEach((value, index) => {
-      if (value !== '' && Number.isFinite(Number(value))) columns[index].push(Number(value));
+      if (!/(?:hash|_?id$|token|signature|nonce|key)/i.test(headers[index]) && value !== '' && /^[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?$/.test(value)) columns[index].push(Number(value));
     });
     headers.forEach((header, index) => { if (columns[index].length) aggregates[header] = aggregate(columns[index]); });
   } else {
@@ -153,12 +153,15 @@ add(
   '',
   '## Scope and evidence rules',
   '',
-  '- Phase 0 baseline artifacts and Phase 1–3 implementation/test artifacts are recorded here. The full Phase 4 experiment matrix and Phase 5 USSD evaluation have not been run.',
+  '- Phase 0–3 artifacts and measured Phase 4 E1 v2, E2 v2, E3, and E4 results are recorded here. Phase 5 USSD is explicitly outside the current scope.',
+  '- Phase 4 v2 findings in `docs/RESULTS_PACK_A.md` and the matching `*-v2` run directories are authoritative for current claims. Older E1/E2 data remains labeled as supplementary or superseded where applicable.',
+  '- The initial `experiments/results/e4-v2/e4c.csv` run omitted `DEFENSE_REQUEST_ID=true`; it is superseded and must not be used for retry/idempotency claims. Use the corrected run in `experiments/results/e4-v2-corrected/`.',
   '- Every numeric finding below is read from a saved run artifact. No unrun experiment is represented as a result.',
   '- Phase 0 CSVs predate per-request monotonic timing; their missing durations are called out rather than reconstructed. Updated scripts record `process.hrtime.bigint()` start, end, and duration fields.',
   '- The WSL-only Bash attacker does not require Node.js; its client-side timing CSV uses WSL `date +%s%N`. The Windows server experiment log records monotonic `process.hrtime.bigint()` request and layer timings for those same requests.',
   '- Request HMAC signature values are redacted in this document because they are replay-capable authentication artifacts. Their source files remain unchanged in `experiments/results/`; the recorded hashes refer to those original files.',
   '- Every result file is inventoried with current path, byte size, and SHA-256. For a result over 200 KB or 1,000 rows, only its first 20 rows, last 20 rows, and aggregate statistics are shown; the complete file remains on disk. Source code and harness scripts stay in full.',
+  '- The earlier 164.96 B/key / 17,543,968-byte nonce-memory reading is unverified and superseded because its required clean raw INFO evidence was not preserved. It is excluded from every result table. The two clean preserved-INFO reruns are canonical: accepted requests and requests rejected at request-ID.',
   '- The generated document itself is outside `experiments/`, so it is not included in the experiment tree or its result manifest.',
   '',
   '## Reproduction environment',
@@ -210,9 +213,9 @@ add(
   '',
   'Section 5 responses in `PROJECT_AUDIT_REPORT.md` are labeled as measured or code-derived. The Phase 0 10,000-request artifact represents requests rejected at the request-ID check; nonce records were written before that check.',
   '',
-  '### Future timestamp tolerance hypothesis for E3',
+  '### Future timestamp tolerance: E3 measured grid',
   '',
-  'E3 should sweep future tolerance values of 0 s, 5 s, 30 s, and 60 s and measure false rejections for fast legitimate client clocks. Phase 0 observed rejection at +10 s under the 5 s default. The sweep is a hypothesis to test; no false-rejection rate is claimed yet.',
+  'E3 measured all future tolerances 0, 2, 5, 30, and 60 seconds across past windows 5, 30, 60, 120, and 300 seconds for three explicitly assumed offset/delay profiles. Each of the 75 fresh-server cells sent 2,000 requests; offline rejection recomputation matched every observed decision. These are simulated false-rejection outcomes under stated assumptions, not evidence about any real network. Raw per-request and summary data are indexed under `experiments/results/e3-v2/`, with the compact analysis in `docs/RESULTS_PACK_A.md`.',
   '',
   '### On-path capture procedure',
   '',
@@ -246,8 +249,8 @@ for (const absolutePath of allFiles) {
 
 const correctionArtifacts = path.join(resultRoot, 'corrections');
 if (fs.existsSync(correctionArtifacts)) {
-  add('', '## Phase 0 correction measurements', '', 'These are scoped correction checks, not the full Phase 4 experiment matrix.', '');
-  const memoryFiles = fs.readdirSync(correctionArtifacts).filter((name) => /^nonce-memory-(accepted|requestid)-.*100k-summary\.json$/.test(name));
+  add('', '## Phase 0 correction measurements', '', 'These are scoped correction checks. Phase 4 E1–E4 results and any v2 reruns are reported in `docs/RESULTS_PACK_A.md` and the matching raw run directories.', '');
+  const memoryFiles = fs.readdirSync(correctionArtifacts).filter((name) => /^nonce-memory-(accepted-prep-accepted-clean|requestid-prep-requestid)-.*summary\.json$/.test(name));
   for (const name of memoryFiles) {
     const result = JSON.parse(fs.readFileSync(path.join(correctionArtifacts, name), 'utf8'));
     add(`### ${result.label}`, '', `- Mode: ${result.mode}; requests: ${result.requestCount}.`, `- NONCE_TTL: ${result.nonceTtlSeconds} seconds; duration: ${result.durationSeconds} seconds (${result.durationVsTtl} of TTL).`, `- Empty namespace memory baseline: ${result.baselineUsedMemoryBytes} bytes.`, `- Baseline-subtracted slope at 100,000 keys: ${result.baselineSubtractedSlopeBytesPerKey} bytes/key.`, `- Request timings: ${code}corrections/${result.requestRowsCsv}${code}.`, '');
@@ -291,6 +294,10 @@ for (const absolutePath of allFiles) {
   const rows = text.replace(/\r\n/g, '\n').split('\n');
   if (rows.at(-1) === '') rows.pop();
   const isResult = absolutePath.startsWith(`${resultRoot}${path.sep}`) && rel !== 'experiments/results/SHA256SUMS.json';
+  if (isResult && /nonce-memory-(accepted|requestid)-c2-.*summary\.json$/i.test(path.basename(absolutePath))) {
+    add('Older C2 nonce-memory summary excluded from numeric reporting: the raw INFO evidence required for the canonical comparison was not preserved. The raw file remains on disk and is listed with its hash above.', '');
+    continue;
+  }
   if (isResult && (stat.size > 200 * 1024 || rows.length > 1000)) {
     const summary = largeFileSummary(absolutePath, text, rows);
     const excerpt = [...summary.first20, '... omitted rows ...', ...summary.last20].join('\n');

@@ -2,7 +2,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
-const { spawn } = require('child_process');
+const { spawn, execFileSync } = require('child_process');
 require('../../server/node_modules/dotenv').config({ path: path.resolve(__dirname, '../../server/.env') });
 const { generateSignature } = require('../../server/utils/hmac');
 const { computeMoneyIntegrity } = require('../../server/utils/money-oracle');
@@ -11,14 +11,17 @@ const { timedRequest } = require('../lib/http');
 
 const ROOT = path.resolve(__dirname, '../..');
 const SERVER = path.join(ROOT, 'server');
-const OUTPUT = path.join(ROOT, 'experiments/results/e2');
+const OUTPUT = path.resolve(process.env.E2_OUTPUT_DIR || path.join(ROOT, 'experiments/results/e2-v2'));
 const RUN_TAG = new Date().toISOString().replace(/[:.]/g, '-');
 const RUN_OUTPUT = process.env.E2_RESUME_FROM ? path.resolve(process.env.E2_RESUME_FROM) : path.join(OUTPUT, RUN_TAG);
 const PIN = process.env.DEMO_PIN || '1234';
 const WARMUP = 500;
-const MEASURED = 5000;
-const REPEATS = 5;
+const MEASURED = 3000;
+const REPEATS = 10;
+const FLOOD_ATTEMPTS = 3000;
 const RANDOM_SEED = 'e2-fixed-seed-2026-v1';
+let shuffleState = 0xE2202610;
+function shuffle(items) { for (let i=items.length-1;i>0;i--) { shuffleState=(1664525*shuffleState+1013904223)>>>0; const j=shuffleState%(i+1); [items[i],items[j]]=[items[j],items[i]]; } return items; }
 let deterministicSequence = 0;
 const deterministicId = (scope) => crypto.createHash('sha256').update(`${RANDOM_SEED}|${scope}|${deterministicSequence++}`).digest('hex').slice(0, 32);
 const STACKS = [
@@ -66,9 +69,11 @@ function percentile(values, pct) {
 }
 function mean(values) { return values.reduce((a, b) => a + b, 0) / values.length; }
 function ci95(values) {
+  if (values.length < 2) return [null, null];
   const avg = mean(values);
   const sd = Math.sqrt(values.reduce((sum, value) => sum + (value - avg) ** 2, 0) / (values.length - 1));
-  const half = 2.776 * sd / Math.sqrt(values.length);
+  const tCritical = values.length === 10 ? 2.262 : values.length === 5 ? 2.776 : 4.303;
+  const half = tCritical * sd / Math.sqrt(values.length);
   return [avg - half, avg + half];
 }
 function parseCsvLine(line) { return line.split(','); }
@@ -100,7 +105,7 @@ async function stop(child) {
   if (child.exitCode === null && child.pid) spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true });
 }
 
-async function startCell(stack, order, runId, backend = stack.backend || 'redis', scenario = 'legitimate') {
+async function startCell(stack, order, runId, backend = stack.backend || 'redis', scenario = 'legitimate', experimentProfile = false) {
   const port = 3300; const vizPort = 3301;
   const id = [stack.id, backend === (stack.backend || 'redis') ? '' : backend, order || '', runId].filter(Boolean).join('-');
   const dir = path.join(RUN_OUTPUT, id); fs.mkdirSync(dir, { recursive: true });
@@ -109,19 +114,19 @@ async function startCell(stack, order, runId, backend = stack.backend || 'redis'
   if (!fs.existsSync(experimentLog)) writeCsv(experimentLog, experimentHeaders, []);
   const env = {
     ...process.env, PORT: String(port), HOST: '127.0.0.1', VIZ_PORT: String(vizPort),
-    VIZ_ENABLED: 'false', DEMO_MODE: 'false', LEGACY_SHARED_SECRET: 'false', ENABLE_DEMO_ROUTES: 'true',
+    VIZ_ENABLED: 'false', DEMO_MODE: 'false', LEGACY_SHARED_SECRET: 'false', ENABLE_DEMO_ROUTES: 'true', ENABLE_TEST_FAULT_ROUTE: String(experimentProfile),
     NONCE_STORE: backend, NONCE_TTL: '3600', NONCE_KEY_NAMESPACE: `e2-${id}-${process.pid}`,
     REDIS_URL: 'redis://127.0.0.1:6379',
     SQLITE_DB: path.join(RUN_OUTPUT, `${id}.sqlite`), TIMESTAMP_PAST_WINDOW_SECONDS: '300', TIMESTAMP_FUTURE_WINDOW_SECONDS: '5', SESSION_TTL: '3600',
     DEFENSE_HMAC: String(stack.flags[0]), DEFENSE_TIMESTAMP: String(stack.flags[1]), DEFENSE_NONCE: String(stack.flags[2]), DEFENSE_REQUEST_ID: String(stack.flags[3]),
-    CHECK_ORDER: order || ORDERS[0].value, EXPERIMENT_LOG: experimentLog, CONFIG_ID: stack.id, SCENARIO_ID: scenario, RUN_ID: runId
+    CHECK_ORDER: order || ORDERS[0].value, EXPERIMENT_PROFILE: String(experimentProfile), EXPERIMENT_LOG: experimentLog, CONFIG_ID: stack.id, SCENARIO_ID: scenario, RUN_ID: runId
   };
   const child = spawnLogged(['server.js'], env, SERVER, path.join(dir, 'server.stdout.log'), path.join(dir, 'server.stderr.log'));
   await waitHealth(port, child, path.join(dir, 'server.stderr.log'));
   const login = await timedRequest(`http://127.0.0.1:${port}/api/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ user_id: 'anis_101', pin: PIN }) });
   if (login.status !== 200) { await stop(child); throw new Error(`Login failed ${login.status} in ${dir}`); }
   writeCsv(path.join(dir, 'session-setup.csv'), ['request', 'start_ns', 'end_ns', 'duration_ns', 'http_status', 'outcome'], [{ request: 'login', start_ns: login.start_ns, end_ns: login.end_ns, duration_ns: login.duration_ns, http_status: login.status, outcome: 'SESSION_READY' }]);
-  return { child, port, dir, experimentLog, session: login.body, id };
+  return { child, port, dir, experimentLog, session: login.body, id, profile: experimentProfile };
 }
 
 function withdrawPayload(session, index, extra = {}) {
@@ -162,13 +167,13 @@ async function runLoadCell(stack, concurrency, repeat) {
     writeCsv(path.join(cell.dir, 'warmup-requests.csv'), ['index', 'start_ns', 'end_ns', 'duration_ns', 'http_status', 'outcome'], warmupRows);
     const timingLines = fs.readFileSync(cell.experimentLog, 'utf8').trim().split(/\r?\n/).slice(1 + WARMUP);
     const timingHeader = ['config_id', 'scenario_id', 'run_id', 'started_ns', 'ended_ns', 'duration_ns', 'hmac_ns', 'timestamp_ns', 'nonce_ns', 'request_id_ns', 'balance_ns', 'outcome', 'http_status'];
-    const layers = ['hmac_ns', 'timestamp_ns', 'nonce_ns', 'request_id_ns', 'balance_ns'];
+    const layers = ['hmac_ns', 'timestamp_ns', 'nonce_ns', 'request_id_ns', 'balance_ns', 'duration_ns'];
     const layerStats = [];
     for (const layer of layers) {
       const values = timingLines.map((line) => parseCsvLine(line)[timingHeader.indexOf(layer)]).filter((value) => value && /^\d+$/.test(value)).map(Number);
       const statusIndex = timingHeader.indexOf(layer);
       const statuses = timingLines.map((line) => parseCsvLine(line)[statusIndex]);
-      layerStats.push({ stack_id: stack.id, backend: stack.backend || 'redis', concurrency, repeat, layer: layer.replace('_ns', ''), numeric_samples: values.length, disabled_count: statuses.filter((value) => value === 'disabled').length, not_reached_count: statuses.filter((value) => value === 'not_reached').length, p50_ns: percentile(values, 0.5), p95_ns: percentile(values, 0.95), p99_ns: percentile(values, 0.99) });
+      layerStats.push({ stack_id: stack.id, backend: stack.backend || 'redis', concurrency, repeat, layer: layer === 'duration_ns' ? 'handler_total' : layer.replace('_ns', ''), numeric_samples: values.length, disabled_count: statuses.filter((value) => value === 'disabled').length, not_reached_count: statuses.filter((value) => value === 'not_reached').length, p50_ns: percentile(values, 0.5), p95_ns: percentile(values, 0.95), p99_ns: percentile(values, 0.99) });
     }
     const layerPath = path.join(cell.dir, 'layer-summary.csv');
     writeCsv(layerPath, Object.keys(layerStats[0]), layerStats);
@@ -179,7 +184,8 @@ async function runLoadCell(stack, concurrency, repeat) {
     finally { await new Promise((resolve) => ledgerDb.close(() => resolve())); }
     const oracle = computeMoneyIntegrity(ledgerRows, authorizedIntents);
     if (!oracle.integrity_holds || oracle.total_debited !== WARMUP + MEASURED) throw new Error(`${stack.id}/${runId}: money-integrity oracle failed (${JSON.stringify(oracle)})`);
-    const report = { stack_id: stack.id, backend: stack.backend || 'redis', concurrency, repeat, warmup_requests: WARMUP, measured_requests: MEASURED, p50_ms: percentile(endToEnd, 0.5), p95_ms: percentile(endToEnd, 0.95), p99_ms: percentile(endToEnd, 0.99), throughput_requests_per_second: MEASURED / elapsedSeconds, elapsed_seconds: elapsedSeconds, end_to_end_median_ms: percentile(endToEnd, 0.5), money_oracle_total_debited: oracle.total_debited, money_oracle_duplicate_debit_count: oracle.duplicate_debit_count, money_oracle_unauthorized_debit_amount: oracle.unauthorized_debit_amount, money_oracle_integrity_holds: oracle.integrity_holds, layer_stats_path: path.relative(ROOT, layerPath).replace(/\\/g, '/') };
+    const handler = layerStats.find((row) => row.layer === 'handler_total');
+    const report = { stack_id: stack.id, backend: stack.backend || 'redis', concurrency, repeat, warmup_requests: WARMUP, measured_requests: MEASURED, server_handler_p50_ns: handler.p50_ns, server_handler_p95_ns: handler.p95_ns, server_handler_p99_ns: handler.p99_ns, p50_ms: percentile(endToEnd, 0.5), p95_ms: percentile(endToEnd, 0.95), p99_ms: percentile(endToEnd, 0.99), throughput_requests_per_second: MEASURED / elapsedSeconds, elapsed_seconds: elapsedSeconds, end_to_end_median_ms: percentile(endToEnd, 0.5), money_oracle_total_debited: oracle.total_debited, money_oracle_duplicate_debit_count: oracle.duplicate_debit_count, money_oracle_unauthorized_debit_amount: oracle.unauthorized_debit_amount, money_oracle_integrity_holds: oracle.integrity_holds, layer_stats_path: path.relative(ROOT, layerPath).replace(/\\/g, '/') };
     return { report, layerStats };
   } finally { await stop(cell.child); }
 }
@@ -189,9 +195,9 @@ function attackPayload(session, props = {}) {
   payload.signature = generateSignature(payload, session.sessionKey);
   return payload;
 }
-async function runFlood(order, flood) {
+async function runFlood(order, flood, repeat = 1) {
   const stack = { id: 'all_four', flags: [true, true, true, true] };
-  const cell = await startCell(stack, order.value, `flood-${flood}`, 'redis', `flood-${flood}`);
+  const cell = await startCell(stack, order.value, `flood-${flood}-r${repeat}`, 'redis', `flood-${flood}`, flood === 'duplicate_request_id');
   const rows = [];
   const seedRows = [];
   const send = async (payload) => timedRequest(`http://127.0.0.1:${cell.port}/api/withdraw`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${cell.session.sessionToken}` }, body: JSON.stringify(payload) });
@@ -213,8 +219,8 @@ async function runFlood(order, flood) {
     } else if (flood === 'stale_timestamp') repeated = () => attackPayload(cell.session, { timestamp: new Date(Date.now() - 600000).toISOString() });
     else repeated = () => { const payload = attackPayload(cell.session); payload.signature = '0'.repeat(64); return payload; };
     const beforeLines = fs.readFileSync(cell.experimentLog, 'utf8').trim().split(/\r?\n/).length;
-    for (let start = 0; start < 1000; start += 16) {
-      const responses = await Promise.all(Array.from({ length: Math.min(16, 1000 - start) }, (_, j) => send(repeated())));
+    for (let start = 0; start < FLOOD_ATTEMPTS; start += 1) {
+      const responses = [await send(repeated())];
       responses.forEach((response, j) => rows.push({ check_order: order.id, flood, attempt: start + j + 1, phase: 'attacker', start_ns: response.start_ns, end_ns: response.end_ns, duration_ns: response.duration_ns, http_status: response.status, outcome: response.body.status || '', reason: response.body.reason || response.body.error || '' }));
     }
     const lines = fs.readFileSync(cell.experimentLog, 'utf8').trim().split(/\r?\n/);
@@ -224,10 +230,20 @@ async function runFlood(order, flood) {
       headers.forEach((key, index) => { row[key] = values[index]; }); return row;
     });
     const rejects = rows.filter((row) => row.http_status !== 200 || row.outcome !== 'ACCEPTED').length;
+    const handlerValues = logRows.map((row) => Number(row.duration_ns)).filter(Number.isFinite);
+    const sorted = [...handlerValues].sort((a,b)=>a-b); const trim = sorted.slice(Math.floor(sorted.length*.01),Math.ceil(sorted.length*.99));
     writeCsv(path.join(cell.dir, 'requests.csv'), Object.keys(rows[0]), [...seedRows, ...rows]);
     writeCsv(path.join(cell.dir, 'layer-timings-rejected.csv'), headers, logRows);
-    return { check_order: order.id, flood, attempts: 1000, rejected_count: rejects, accepted_count: 1000 - rejects, mean_duration_ms: mean(rows.map((r) => Number(r.duration_ns) / 1e6)), p50_ms: percentile(rows.map((r) => Number(r.duration_ns) / 1e6), .5), p95_ms: percentile(rows.map((r) => Number(r.duration_ns) / 1e6), .95), p99_ms: percentile(rows.map((r) => Number(r.duration_ns) / 1e6), .99), raw_path: path.relative(ROOT, path.join(cell.dir, 'requests.csv')).replace(/\\/g, '/') };
-  } finally { await stop(cell.child); }
+    return { check_order: order.id, flood, repeat, attempts: FLOOD_ATTEMPTS, rejected_count: rejects, accepted_count: FLOOD_ATTEMPTS - rejects, server_handler_p50_ns: percentile(handlerValues,.5), server_handler_p95_ns: percentile(handlerValues,.95), server_handler_p99_ns: percentile(handlerValues,.99), server_handler_trimmed_p50_ns: percentile(trim,.5), server_handler_trimmed_p95_ns: percentile(trim,.95), server_handler_trimmed_p99_ns: percentile(trim,.99), server_handler_max_ns: sorted.at(-1), client_p50_ms: percentile(rows.map((r) => Number(r.duration_ns) / 1e6), .5), client_p95_ms: percentile(rows.map((r) => Number(r.duration_ns) / 1e6), .95), client_p99_ms: percentile(rows.map((r) => Number(r.duration_ns) / 1e6), .99), outlier_profile_enabled: flood === 'duplicate_request_id', raw_path: path.relative(ROOT, path.join(cell.dir, 'requests.csv')).replace(/\\/g, '/') };
+  } finally {
+    if (cell.profile) {
+      try {
+        const profile = await timedRequest(`http://127.0.0.1:${cell.port}/__test/profile/flush`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' });
+        fs.writeFileSync(path.join(cell.dir, 'profile-flush.json'), JSON.stringify({ status: profile.status, body: profile.body, start_ns: profile.start_ns, end_ns: profile.end_ns, duration_ns: profile.duration_ns }, null, 2) + '\n');
+      } catch (error) { fs.writeFileSync(path.join(cell.dir, 'profile-flush.json'), JSON.stringify({ error: error.message }, null, 2) + '\n'); }
+    }
+    await stop(cell.child);
+  }
 }
 
 async function resumeLoadCells() {
@@ -261,6 +277,19 @@ async function resumeLoadCells() {
 
 async function main() {
   fs.mkdirSync(RUN_OUTPUT, { recursive: true });
+  if (process.env.E2_PROFILE_DUPLICATES_ONLY === 'true') {
+    const started = new Date().toISOString();
+    const profileRows = [];
+    for (const order of shuffle([...ORDERS])) for (const repeat of [1, 2, 3]) {
+      process.stdout.write(`E2 profiled duplicate-request-ID ${order.id} repeat=${repeat}/3\n`);
+      profileRows.push(await runFlood(order, 'duplicate_request_id', repeat));
+    }
+    writeCsv(path.join(RUN_OUTPUT, 'rejection-cost-profiled.csv'), Object.keys(profileRows[0]), profileRows);
+    const ended = new Date().toISOString();
+    fs.writeFileSync(path.join(RUN_OUTPUT, 'profiled-run.json'), JSON.stringify({ started, ended, elapsedSeconds:(Date.parse(ended)-Date.parse(started))/1000, scenario:'duplicate_request_id', orders:ORDERS.map(x=>x.id), repeatsPerOrder:3, attemptsPerCell:FLOOD_ATTEMPTS, experimentProfile:true, eventLoopFlushRoute:'/__test/profile/flush', keepAliveHttpAgent:true, outputDirectory:path.relative(OUTPUT,RUN_OUTPUT).replace(/\\/g,'/') },null,2)+'\n');
+    process.stdout.write(`E2 profiled duplicate-request-ID rerun complete: ${RUN_OUTPUT}\n`);
+    return;
+  }
   const originalRunStart = process.env.E2_RESUME_FROM ? new Date(fs.statSync(RUN_OUTPUT).birthtimeMs).toISOString() : new Date().toISOString();
   const started = new Date().toISOString();
   const cellRows = []; const layerRows = [];
@@ -268,37 +297,46 @@ async function main() {
     process.stdout.write(`E2 resuming rejection floods from ${RUN_OUTPUT}; reusing completed load raw data and revalidating SQLite ledgers\n`);
     const resumed = await resumeLoadCells(); cellRows.push(...resumed.cellRows); layerRows.push(...resumed.layerRows);
   } else {
-    for (const stack of STACKS) for (const concurrency of [1, 16]) for (let repeat = 1; repeat <= REPEATS; repeat += 1) {
+    for (let repeat = 1; repeat <= REPEATS; repeat += 1) for (const stack of shuffle([...STACKS])) {
+      const concurrency = 1;
       process.stdout.write(`E2 load ${stack.id} concurrency=${concurrency} repeat=${repeat}/${REPEATS}\n`);
       const result = await runLoadCell(stack, concurrency, repeat);
       cellRows.push(result.report); layerRows.push(...result.layerStats);
     }
   }
   const rejectionRows = [];
-  for (const order of ORDERS) for (const flood of FLOODS) {
-    process.stdout.write(`E2 rejection ${order.id} / ${flood}\n`);
-    rejectionRows.push(await runFlood(order, flood));
+  const floodSchedule = shuffle(ORDERS.flatMap((order) => FLOODS.map((flood) => ({order,flood,repeat:1}))));
+  for (const order of ORDERS) for (const repeat of [2,3]) floodSchedule.push({order,flood:'duplicate_request_id',repeat});
+  shuffle(floodSchedule);
+  for (const {order,flood,repeat} of floodSchedule) {
+    process.stdout.write(`E2 rejection ${order.id} / ${flood} repeat=${repeat}\n`);
+    rejectionRows.push(await runFlood(order, flood, repeat));
   }
   const grouped = new Map();
   for (const row of cellRows) {
     const key = `${row.stack_id}|${row.concurrency}`;
     if (!grouped.has(key)) grouped.set(key, []);
-    grouped.get(key).push(row.end_to_end_median_ms);
+    grouped.get(key).push({client:row.end_to_end_median_ms,handler:Number(row.server_handler_p50_ns)});
   }
   const repeatSummary = [];
   for (const [key, medians] of grouped) {
-    const [stack_id, concurrency] = key.split('|'); const [low, high] = ci95(medians);
-    repeatSummary.push({ stack_id, concurrency: Number(concurrency), repetitions: medians.length, mean_repeat_median_ms: mean(medians), ci95_low_ms: low, ci95_high_ms: high });
+    const [stack_id, concurrency] = key.split('|'); const [low, high] = ci95(medians.map(x=>x.handler)); const [clientLow,clientHigh]=ci95(medians.map(x=>x.client));
+    repeatSummary.push({ stack_id, concurrency: Number(concurrency), repetitions: medians.length, server_handler_repeat_median_median_ns: percentile(medians.map(x=>x.handler),.5), server_handler_t_ci95_low_ns:low, server_handler_t_ci95_high_ns:high, client_e2e_repeat_median_median_ms:percentile(medians.map(x=>x.client),.5), client_e2e_t_ci95_low_ms:clientLow, client_e2e_t_ci95_high_ms:clientHigh });
   }
+  const layerRepeatSummary=[];
+  for(const layer of [...new Set(layerRows.map(r=>`${r.stack_id}|${r.backend}|${r.layer}`))]){const [stack_id,backend,layer_id]=layer.split('|');const group=layerRows.filter(r=>r.stack_id===stack_id&&r.backend===backend&&r.layer===layer_id);const sampled=group.filter(r=>Number(r.numeric_samples)>0);const med=sampled.map(r=>Number(r.p50_ns)).filter(Number.isFinite);const [lo,hi]=ci95(med);layerRepeatSummary.push({stack_id,backend,layer:layer_id,repeats:med.length,p50_repeat_median_ns:percentile(med,.5),p50_t_ci95_low_ns:lo,p50_t_ci95_high_ns:hi,p95_repeat_median_ns:percentile(sampled.map(r=>Number(r.p95_ns)).filter(Number.isFinite),.5),p99_repeat_median_ns:percentile(sampled.map(r=>Number(r.p99_ns)).filter(Number.isFinite),.5)});}
   const reports = [
     ['load-repeats.csv', Object.keys(cellRows[0]), cellRows],
     ['load-repeat-summary.csv', Object.keys(repeatSummary[0]), repeatSummary],
     ['layer-timing-summary.csv', Object.keys(layerRows[0]), layerRows],
+    ['layer-repeat-ci.csv', Object.keys(layerRepeatSummary[0]), layerRepeatSummary],
     ['rejection-cost.csv', Object.keys(rejectionRows[0]), rejectionRows]
   ];
   for (const [name, headers, rows] of reports) writeCsv(path.join(RUN_OUTPUT, name), headers, rows);
   const ended = new Date().toISOString();
-  const runMetadata = { started: process.env.E2_RESUME_FROM ? originalRunStart : started, loadStarted: process.env.E2_RESUME_FROM ? originalRunStart : started, resumedRejectionStarted: process.env.E2_RESUME_FROM ? started : null, ended, elapsedSeconds: (Date.parse(ended) - Date.parse(process.env.E2_RESUME_FROM ? originalRunStart : started)) / 1000, resumedExistingLoadData: Boolean(process.env.E2_RESUME_FROM), nodeVersion: process.version, host: { platform: os.platform(), release: os.release(), architecture: process.arch, cpuModel: os.cpus()[0]?.model, totalRamBytes: os.totalmem() }, dataRunDirectory: path.relative(OUTPUT, RUN_OUTPUT).replace(/\\/g, '/'), randomSeed: RANDOM_SEED, randomSeedScope: 'deterministic request IDs and nonces; server session credentials use the operating-system CSPRNG', warmupRequests: WARMUP, measuredRequests: MEASURED, repeats: REPEATS, concurrency: [1, 16], keepAliveHttpAgent: true, vizEnabled: false, demoMode: false, legacySharedSecret: false, redisUrl: 'redis://127.0.0.1:6379', memuraiVersion: '4.2.3', nonceBackends: ['redis', 'sqlite', 'memory'], moneyOracleLedgerSource: 'direct sqlite3 SELECT from each server database', rejectionFloodsPerLayerOrder: 1000, loadCells: cellRows, repeatSummary, layerTimingSummary: layerRows, rejectionCost: rejectionRows };
+  let power = {}; try { power.activeScheme=execFileSync('powercfg.exe',['/getactivescheme'],{encoding:'utf8'}).trim(); } catch(e) { power.activeSchemeError=e.message; }
+  try { power.systemState=execFileSync('powershell.exe',['-NoProfile','-Command','Get-CimInstance Win32_Battery | Select-Object BatteryStatus,EstimatedChargeRemaining | ConvertTo-Json -Compress'],{encoding:'utf8'}).trim(); if(!power.systemState||power.systemState==='null')power.systemState='no battery device reported by Win32_Battery'; power.cpuFrequency=execFileSync('powershell.exe',['-NoProfile','-Command','Get-CimInstance Win32_Processor | Select-Object Name,CurrentClockSpeed,MaxClockSpeed | ConvertTo-Json -Compress'],{encoding:'utf8'}).trim(); } catch(e) { power.hardwareQueryError=e.message; }
+  const runMetadata = { started: process.env.E2_RESUME_FROM ? originalRunStart : started, loadStarted: process.env.E2_RESUME_FROM ? originalRunStart : started, resumedRejectionStarted: process.env.E2_RESUME_FROM ? started : null, ended, elapsedSeconds: (Date.parse(ended) - Date.parse(process.env.E2_RESUME_FROM ? originalRunStart : started)) / 1000, resumedExistingLoadData: Boolean(process.env.E2_RESUME_FROM), nodeVersion: process.version, host: { platform: os.platform(), release: os.release(), architecture: process.arch, cpuModel: os.cpus()[0]?.model, cpuReportedMHz:os.cpus()[0]?.speed,totalRamBytes: os.totalmem() }, power, dataRunDirectory: path.relative(OUTPUT, RUN_OUTPUT).replace(/\\/g, '/'), randomSeed: RANDOM_SEED, shuffleSeed:'0xE2202610', roundRobinInterleaved:true, randomSeedScope: 'deterministic request IDs and nonces; server session credentials use the operating-system CSPRNG', warmupRequests: WARMUP, measuredRequests: MEASURED, repeats: REPEATS, concurrency: [1], previousConcurrency16DataIsSupplementary:true, keepAliveHttpAgent: true, vizEnabled: false, demoMode: false, legacySharedSecret: false, redisUrl: 'redis://127.0.0.1:6379', memuraiVersion: '4.2.3', nonceBackends: ['redis', 'sqlite', 'memory'], moneyOracleLedgerSource: 'direct sqlite3 SELECT from each server database', rejectionFloodsPerLayerOrder: FLOOD_ATTEMPTS, duplicateRequestIdFloodRepeatsPerOrder:3, trimFractionEachTail:0.01, profileLogsEventLoopDelayAndGC:true, loadCells: cellRows, repeatSummary, layerTimingSummary: layerRows, layerRepeatSummary, rejectionCost: rejectionRows };
   fs.writeFileSync(path.join(RUN_OUTPUT, 'run.json'), `${JSON.stringify(runMetadata, null, 2)}\n`);
   fs.copyFileSync(path.join(RUN_OUTPUT, 'run.json'), path.join(OUTPUT, 'run.json'));
   for (const [name] of reports) fs.copyFileSync(path.join(RUN_OUTPUT, name), path.join(OUTPUT, name));
