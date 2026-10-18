@@ -18,6 +18,7 @@ The system is a single-process Node/Express bank simulation with SQLite transact
 - The simulated client and server are local. All reported latency is localhost latency and is not representative of a real network.
 - The baseline traffic generator possessed the signing secret. The network attacker used for security interpretation does not.
 - The stated network-attacker case assumes login and key delivery are protected by a trusted transport. This workspace defaults to HTTP, so a passive observer who captures the login response can learn the session key; the default deployment therefore does not meet that assumption and cannot support a production network-security claim.
+- Experiment captures can set `PROXY_REDACT_LOGIN=true`. The recording proxy still forwards the login response unchanged to the browser, while its attacker-visible capture replaces both login request and response bodies with redaction markers. This models protected key delivery for the capture-based attacker; it does not add TLS or hide the response from a real on-path observer. The leaked-session-key case is measured separately as E1 scenario S9.
 
 ## Out of scope
 
