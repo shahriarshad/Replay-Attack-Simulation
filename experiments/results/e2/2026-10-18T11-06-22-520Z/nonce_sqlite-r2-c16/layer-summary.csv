@@ -1,0 +1,6 @@
+stack_id,backend,concurrency,repeat,layer,numeric_samples,disabled_count,not_reached_count,p50_ns,p95_ns,p99_ns
+nonce_sqlite,sqlite,16,2,hmac,5000,0,0,93200,276505,434004.0000000001
+nonce_sqlite,sqlite,16,2,timestamp,5000,0,0,1173900,3370885.0000000005,5753322.000000001
+nonce_sqlite,sqlite,16,2,nonce,5000,0,0,80875350,99941200,111408642.00000012
+nonce_sqlite,sqlite,16,2,request_id,5000,0,0,4462800,19161675.000000007,29991890.000000045
+nonce_sqlite,sqlite,16,2,balance,5000,0,0,900,1900,2600

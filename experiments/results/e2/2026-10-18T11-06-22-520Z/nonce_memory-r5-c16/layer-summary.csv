@@ -1,0 +1,6 @@
+stack_id,backend,concurrency,repeat,layer,numeric_samples,disabled_count,not_reached_count,p50_ns,p95_ns,p99_ns
+nonce_memory,memory,16,5,hmac,5000,0,0,65600,159510.00000000003,231109.0000000002
+nonce_memory,memory,16,5,timestamp,5000,0,0,43400,87400,115903.00000000006
+nonce_memory,memory,16,5,nonce,5000,0,0,589650,1552640.0000000002,2126643.0000000033
+nonce_memory,memory,16,5,request_id,5000,0,0,1667200,3316565.0000000005,4630527.000000001
+nonce_memory,memory,16,5,balance,5000,0,0,300,900,1800

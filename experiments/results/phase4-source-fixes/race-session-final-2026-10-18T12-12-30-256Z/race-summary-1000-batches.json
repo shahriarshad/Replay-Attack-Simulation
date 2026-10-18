@@ -1,0 +1,66 @@
+{
+  "randomSeed": "f1-race-fixed-seed-2026-v1",
+  "vizEnabled": false,
+  "identicalPayloadRace": {
+    "batches": 1000,
+    "parallelWidth": 50,
+    "acceptedCountDistribution": {
+      "1": 1000
+    },
+    "balanceDeltaDistribution": {
+      "1": 1000
+    },
+    "acceptedPerBatch": 1,
+    "totalRequests": 50000,
+    "moneyOracle": {
+      "ledgerReadDirectlyFromSqlite": true,
+      "evaluatedBatches": 1000,
+      "integrityHoldsForEveryBatch": true,
+      "totalDebitedAcrossFreshDatabaseResets": 1000,
+      "duplicateDebitCount": 0,
+      "duplicateDebitAmount": 0,
+      "unauthorizedDebitAmount": 0
+    }
+  },
+  "secretHolderSameRequestIdRace": {
+    "parallelWidth": 50,
+    "acceptedCount": 1,
+    "requestIdShared": true,
+    "distinctValidNonces": 50,
+    "balanceDelta": 1,
+    "duration_ns": "86493700",
+    "beforeBalanceTiming": {
+      "start_ns": "1321206673019400",
+      "end_ns": "1321206674175200",
+      "duration_ns": "1155800",
+      "status": 200,
+      "body": {
+        "user_id": "anis_101",
+        "username": "Anis Ahmed",
+        "balance": 10000,
+        "currency": "BDT",
+        "account_id": "acc_777"
+      }
+    },
+    "afterBalanceTiming": {
+      "start_ns": "1321206760742600",
+      "end_ns": "1321206761877200",
+      "duration_ns": "1134600",
+      "status": 200,
+      "body": {
+        "user_id": "anis_101",
+        "username": "Anis Ahmed",
+        "balance": 9999,
+        "currency": "BDT",
+        "account_id": "acc_777"
+      }
+    },
+    "oracle": {
+      "duplicate_debit_count": 0,
+      "duplicate_debit_amount": 0,
+      "unauthorized_debit_amount": 0,
+      "total_debited": 1,
+      "integrity_holds": true
+    }
+  }
+}

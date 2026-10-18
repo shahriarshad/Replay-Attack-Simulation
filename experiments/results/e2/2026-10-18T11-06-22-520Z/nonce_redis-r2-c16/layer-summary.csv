@@ -1,0 +1,6 @@
+stack_id,backend,concurrency,repeat,layer,numeric_samples,disabled_count,not_reached_count,p50_ns,p95_ns,p99_ns
+nonce_redis,redis,16,2,hmac,5000,0,0,62500,155705.00000000003,217901.00000000003
+nonce_redis,redis,16,2,timestamp,5000,0,0,54000,115800,158544.00000000096
+nonce_redis,redis,16,2,nonce,5000,0,0,1516300,2779640.000000001,3862402.0000000023
+nonce_redis,redis,16,2,request_id,5000,0,0,1453950,2921040.0000000005,5137085.000000034
+nonce_redis,redis,16,2,balance,5000,0,0,400,900,1500

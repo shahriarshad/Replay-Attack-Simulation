@@ -1,0 +1,2 @@
+request,start_ns,end_ns,duration_ns,http_status,outcome
+login,1320225778093600,1320225842855600,64762000,200,SESSION_READY

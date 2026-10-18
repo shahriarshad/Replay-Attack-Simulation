@@ -1,0 +1,18 @@
+\begin{tabular}{llrrrr}
+\toprule
+Order & Flood & Attempts & Mean ms & p95 ms & Rejected \\
+\midrule
+default & bad_signature & 1000 & 13.0116 & 22.6765 & 1000 \\
+default & stale_timestamp & 1000 & 12.2673 & 21.8633 & 1000 \\
+default & duplicate_nonce & 1000 & 12.6499 & 20.3874 & 1000 \\
+default & duplicate_request_id & 1000 & 21.9909 & 24.0037 & 1000 \\
+timestamp_first & bad_signature & 1000 & 8.8659 & 13.7026 & 1000 \\
+timestamp_first & stale_timestamp & 1000 & 11.3054 & 19.3422 & 1000 \\
+timestamp_first & duplicate_nonce & 1000 & 15.7908 & 25.4779 & 1000 \\
+timestamp_first & duplicate_request_id & 1000 & 18.6308 & 27.5715 & 1000 \\
+request_id_before_nonce & bad_signature & 1000 & 10.5757 & 15.4618 & 1000 \\
+request_id_before_nonce & stale_timestamp & 1000 & 12.6160 & 21.4289 & 1000 \\
+request_id_before_nonce & duplicate_nonce & 1000 & 14.4225 & 20.5052 & 1000 \\
+request_id_before_nonce & duplicate_request_id & 1000 & 15.1572 & 23.9707 & 1000 \\
+\bottomrule
+\end{tabular}
