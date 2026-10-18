@@ -433,6 +433,7 @@ experiments/
 │   ├── e1-sqlite-final/
 │   │   ├── 2026-10-18T10-48-47-678Z/
 │   │   │   ├── H0T0N0R0/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -440,6 +441,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H0T0N0R1/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -447,6 +449,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H0T0N1R0/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -454,6 +457,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H0T0N1R1/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -461,6 +465,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H0T1N0R0/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -468,6 +473,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H0T1N0R1/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -475,6 +481,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H0T1N1R0/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -482,6 +489,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H0T1N1R1/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -489,6 +497,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H1T0N0R0/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -496,6 +505,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H1T0N0R1/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -503,6 +513,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H1T0N1R0/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -510,6 +521,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H1T0N1R1/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -517,6 +529,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H1T1N0R0/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -524,6 +537,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H1T1N0R1/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -531,6 +545,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H1T1N1R0/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -538,6 +553,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H1T1N1R1/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -545,6 +561,7 @@ experiments/
 │   │   │   │   ├── server.stderr.log
 │   │   │   │   └── server.stdout.log
 │   │   │   ├── H1T1N1R1-DEFAULT/
+│   │   │   │   ├── proxy-request-timings.csv
 │   │   │   │   ├── proxy.stderr.log
 │   │   │   │   ├── proxy.stdout.log
 │   │   │   │   ├── requests.csv
@@ -1430,6 +1447,7 @@ experiments/
 │   │   ├── race-session-final-console.log
 │   │   ├── race-summary-1000-batches.json
 │   │   ├── races-run.log
+│   │   ├── render-dossier-final.log
 │   │   ├── render-dossier.log
 │   │   └── server-race-timings.csv
 │   ├── preparation/
@@ -1480,8 +1498,8 @@ experiments/
 | File | Bytes | SHA-256 |
 |---|---:|---|
 | `experiments/audit-egress.js` | 5856 | `ac9d03eb69f60747dc7900b090f3270bd4039639c6ca14824591227cddc40be1` |
-| `experiments/e1/finalize-oracle-summary.js` | 3296 | `83d8cd942079e1011c61ae9b3a126fca26a15de0041f11794e881f7b747af04c` |
-| `experiments/e1/run.js` | 22225 | `b1dc494645be17afd33c288b781e3a22fee6892be255435d6a8ac372634b8696` |
+| `experiments/e1/finalize-oracle-summary.js` | 4058 | `5ae55841b02742e8fb6e99b4c9023c1e3284165d037bcae62c8122984f8a5c9d` |
+| `experiments/e1/run.js` | 22397 | `9842d5ea6ee6e8b68cd218711ecc9497dddfa6b8ffb1483538ac310a17337994` |
 | `experiments/e2/run.js` | 25558 | `f463e0e254f9431d958729452046744d9709cc0b1956797740bbdbda3224a60c` |
 | `experiments/lib/http.js` | 1413 | `eeab57dbb1df4d01bd7f3590fc8c036ed56a8846ac5c993aeb92c41c2c8144e5` |
 | `experiments/recording-proxy.js` | 3811 | `da957131e97fbddab26305c534f15191d70724d12e930774b64bfb1bff97e772` |
@@ -1787,114 +1805,131 @@ experiments/
 | `experiments/results/e1-final/run.json` | 80016 | `b07e331827411f7e6cc2112ba89b7ec0e1118fb261f67a8cf51bc0c4ac612400` |
 | `experiments/results/e1-final/summary.csv` | 10318 | `7082c27fab23aa44a91c51ab3c565dac6e26bafa442a099f84d29f33fac7667d` |
 | `experiments/results/e1-final/summary.tex` | 5469 | `83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/proxy-request-timings.csv` | 136007 | `2d97af4341ed35821c2a11c62b18cadab637a964c0b62ceeefdfb32eb1aeb746` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/proxy.stdout.log` | 125 | `17e3c04b407ef7a918b424571709a6011c8328cf5cc591366064b1995d170149` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/requests.csv` | 176019 | `9099c1d0b7930a963395faecd9057f83a96f918ce998e02a3de09e55ca5eba0a` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/server-timings.csv` | 252881 | `fb25966717a94d454cbbb14e0956bd6fd0d1a01430c0a537185f7223cba6cba5` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/proxy-request-timings.csv` | 135860 | `bc82d39cf02204a8c1099143eb47a81d3831ba2f22059f3357f59f3df3db7589` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/proxy.stdout.log` | 125 | `ff4576ad9fceba8ff5a214706fc8db7f1dd292615fed4657a39f9ce38a9e6296` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/requests.csv` | 204228 | `167aa57933440988044ab5df47d1017dd84d90169ad5fb01ac9a5792a07bce9f` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/server-timings.csv` | 279051 | `7950503b0c713de8cd69d1d5ee64c711bbd3d47228dd50e197dd4ad910dd6990` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/proxy-request-timings.csv` | 136006 | `38e56ca07f14f97e05d13beb587647b7a1ea8c0e4d4133889ad763950ba4e0b8` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/proxy.stdout.log` | 125 | `5d8375078e3ff18bbdf4cc093805882d8be850fbff291eeb1686c6c3dd645e6c` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/requests.csv` | 192418 | `ff69681ba166aa4e6bab5735d90621e23a4010bcc4c66f6c9a23848637a83b5c` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/server-timings.csv` | 266925 | `d8664587dcf87c4f3f53e7af9c56d30a702064b3986c3250cf0de5fe3cb1059a` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/proxy-request-timings.csv` | 135914 | `4e2709532e06d92539014a1f16ab367d689f2f007150853e12f2d45be483cf8e` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/proxy.stdout.log` | 125 | `7aed4f7e928c624e96502c43d58e1ec0c10b8800aa89cd1eaadf8f7089001a7e` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/requests.csv` | 193086 | `d5170d248861925dc28b4c25db2c5b278dd50681dd6f0af3b8d5c1f243842c86` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/server-timings.csv` | 272114 | `6b4ea2bc094c5aa5a7ad082ed1f024fd5517d12c429addbde0de54c39f8ea7e3` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/proxy-request-timings.csv` | 136117 | `f89ae864f4c67f0020e16ac401d7f49bdfa716dd3e89be832e2b928afa866825` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/proxy.stdout.log` | 125 | `6fa16f7226f733a72b7023bd244c12bef4dccce9bf0364bff22fae3bf7cec022` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/requests.csv` | 176523 | `6d736425498fc015b39527f21bf451d109fe0553107ea543a2c21f1123124759` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/server-timings.csv` | 246944 | `8beaa06ca1c13aeda37202228a2ebdaf4949f7641672f235d8d2c6edf2699dd8` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/proxy-request-timings.csv` | 135913 | `bf21561fe6ebde4b7e877a80f74cdbdda54e616dda2685ed75408130ced1d0ed` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/proxy.stdout.log` | 125 | `0caa4e518fcdf197500d15cd77736ca5fa9fc98637375fc8c7e34e4517d8f954` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/requests.csv` | 204168 | `f446592a35698cbc7ee040a58ba082e1c3562e4ac74c8cd2bf0258c2fab4005c` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/server-timings.csv` | 272868 | `9eed9c51ff0c00c92d41d7387b508ef76e61761ef50f2d697c7209830307e2d1` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/proxy-request-timings.csv` | 135929 | `c3eac47f423120c029affc1224e917ba6765999f7506f660b78119dbc76f1cef` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/proxy.stdout.log` | 125 | `ff3c677eb0ea4208c1065ccdf42ad18f3a2d6edf23f57467678a372a4838b8aa` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/requests.csv` | 192439 | `4f18c102c9cfd865b0011b06e6fefc06df1f6f971f101c0cf8fb6dbe93860666` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/server-timings.csv` | 261990 | `acc7330fd88028724593bf6c99ab4144a0a97d8ffa76afe1b75410af972d56e8` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/proxy-request-timings.csv` | 136051 | `8a6df666ba932b0b222dd22d68f69d41706a87fde69d9a87d7b84cbde2818953` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/proxy.stdout.log` | 125 | `3621a1c20d8a47fb27277c52e80a075204536a55ba8f3a1a64dcf12c7f751281` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/requests.csv` | 193354 | `3765e6308423afc5eda9576ee8fb7010072b972c1e3a5cafdfd18b98bcb9af56` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/server-timings.csv` | 267431 | `5ebfd9bc7befc319210f5288e78ce44d71ed85c93861b1e08bfd0385a8b40b37` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/proxy-request-timings.csv` | 136154 | `c286458a088da4f6a11b7d64c861a3812ba4da409d057d7015121ce587ef451e` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/proxy.stdout.log` | 125 | `9580f6d8a0720ddecf6762a34cd35fe8fc617686b970e2b84ff3be9e45ef4c61` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/requests.csv` | 177024 | `6b1b44cf6dd0a724ab88e04b4f6d87c3fecbbf6e7bdea2b3b4905fe46126f390` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/server-timings.csv` | 248658 | `4614e6f73f94ad5e5a1bc4f4bb3d7782aeb576abf05e91c650a2274f438bbcc2` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/proxy-request-timings.csv` | 136045 | `3fe69bd741f42ab645902e8f268218d4e854eac51b6e05174b2caf6d9ea3d8fd` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/proxy.stdout.log` | 125 | `dedb14321ccf83b6c2a93c66ede97d4bf4c214e1a96923e5961423cd401a548f` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/requests.csv` | 204466 | `dd12c09a96923d198d54f3cfdfb51272cc2e903ecca434c334db87605a245798` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/server-timings.csv` | 274812 | `a490205051e9a1972dc1a4cda332c2f9d24d21b808e417cf591c753944c599b2` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/proxy-request-timings.csv` | 135982 | `bde41f05ed4f78cb6e22081cbd56df15cdbde45192191d4ed1115832e621400b` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/proxy.stdout.log` | 125 | `d50dd54ebab0a1da1e23d3dda181c75949513dfbc71024612bb3cc162784f6ba` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/requests.csv` | 192799 | `b533bb1746426b9d8cb7129cec98f990edb7ebfb38c2f699241a91a01656b287` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/server-timings.csv` | 262605 | `25f7cc400623e630ea366669096421d7278bf6556d8859c8d8f7b588676f2ce0` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/proxy-request-timings.csv` | 136103 | `d5fffd41002737d7cd82561a635c464a42c9bf977228f6b8ce135da04dd89fb9` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/proxy.stdout.log` | 125 | `03390b1bd9c2c826df2c3d2d2f01a3a4921d3e658d3305c66eb59ba3a961cd5c` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/requests.csv` | 193409 | `68eb9df88211d098c0f9f6ed316100b15a04d9a279589c78c454e99c4d2bd74d` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/server-timings.csv` | 267983 | `1d347b31bd014cea17ae4338870b7f7600b2e0ab576d861cea1a36852e0d6fe1` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/proxy-request-timings.csv` | 136181 | `7809434417abbb807b1b156ffe8d8adcb9df9b87abbc6c54305d01bb4db6a768` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/proxy.stdout.log` | 125 | `80bda5146ef0941064578121cfec0091dfec339966ce589f425d2caad560874d` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/requests.csv` | 177456 | `8b91bb17a301fa3de867b4aa59e994807099f30ea8c6b667a4064867d004f37f` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/server-timings.csv` | 243624 | `6292fdd83928e70b6ad65098ff4f801b8b61fafe43709c6c5130e3977f9e6e15` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/proxy-request-timings.csv` | 136054 | `e0fa9f8b9a9a08649bc1a9286218b8b30e3066a56b66b5ef6c690235a5265e19` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/proxy.stdout.log` | 125 | `fb04da594e19aecdcd53d8d00706ec2140e35e8ee8ba64d1f554bdc54ff2c301` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/requests.csv` | 204356 | `4dfb0ef6e982eca5c9010842b4ee5264a8e23ead2baca3c59c81d85defca5a46` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/server-timings.csv` | 269127 | `605bfc672250e2f70bc1a14647795530c31210028c4af82eb2c7af215cc5b353` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/proxy-request-timings.csv` | 135836 | `f7b9711974c3334dcf58c7aaa5344a2894a2e1f32e874898d9221f35cee9b5b9` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/proxy.stdout.log` | 125 | `87c3bafcad7ffafaa17f8afbef3348f5f09eb890224fe76309bcea26dc2986ae` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/requests.csv` | 192752 | `b0b7fa17774da70b04a32b1e427f91aff1f697561251b8b69db9c712916ba5c0` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/server-timings.csv` | 258170 | `f06c356c96bd3d8bbb27f6c2b7ab6310dd59edf6733c6d7b0ed3194985bee3ad` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/proxy-request-timings.csv` | 135924 | `d6c57d5c25801b0b9d81b4c9d32d9cd21557691032ddb67a6ee566afe4d185a7` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/proxy.stdout.log` | 125 | `4dfee725c94c07487b950f9c87f3f11a4a41c2217b904fb9df174464b2c500a3` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/requests.csv` | 193343 | `92f25f5f991e519406c25f208df93ea8b669bc886f3ae3ba2e1ca91c78cdedfd` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/server-timings.csv` | 263140 | `3f094e2ff3d0ed9649e096979c62c1cfa16e40c145989a97da14954a64349509` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/proxy-request-timings.csv` | 10115 | `0cf00593bfff0cbd5f12e800a8234d78e7772df4ea2207332d24f0c7e6ded705` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/proxy.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/proxy.stdout.log` | 133 | `ad4c38abf689f43e3c07e88d49080554d908e0fc1ca5d3b6af96213634959b95` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/requests.csv` | 18092 | `0b3da5288cf27a6118be3359cef8c3cc3171b365ca0409077c458eac9a7324b9` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/server-timings.csv` | 19681 | `37ca7e9166b4346c49a5acd4c709d3ae07c5000ba0900870f0dca62838bfb556` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/server.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/server.stdout.log` | 84 | `3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095` |
-| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/run.json` | 80343 | `3699885aeca77bb8b2d61500796d0de914dec0b73f3950a59bfe4dfa1545ebef` |
-| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.csv` | 10318 | `2c4c673adfe4ab283ae556b3e26eb7e2e8cfba23b5331c73d4ca494aca2dcc25` |
-| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.tex` | 5469 | `83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf` |
-| `experiments/results/e1-sqlite-final/run.json` | 80343 | `3699885aeca77bb8b2d61500796d0de914dec0b73f3950a59bfe4dfa1545ebef` |
-| `experiments/results/e1-sqlite-final/summary.csv` | 10318 | `2c4c673adfe4ab283ae556b3e26eb7e2e8cfba23b5331c73d4ca494aca2dcc25` |
-| `experiments/results/e1-sqlite-final/summary.tex` | 5469 | `83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/run.json` | 81941 | `0bc6a882ba903041b6613aa6cdc76d42628d6ccd5cd4c230762690898dc300d1` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.csv` | 10288 | `00deed725995a103e866a6ba4e25f872cadebf315d4285c97efc6decc97237b4` |
+| `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.tex` | 8903 | `7419497ae1f9ff5b1242bc6f3c4a02d086971e6e272b42632ab812a712710f17` |
+| `experiments/results/e1-sqlite-final/run.json` | 81941 | `0bc6a882ba903041b6613aa6cdc76d42628d6ccd5cd4c230762690898dc300d1` |
+| `experiments/results/e1-sqlite-final/summary.csv` | 10288 | `00deed725995a103e866a6ba4e25f872cadebf315d4285c97efc6decc97237b4` |
+| `experiments/results/e1-sqlite-final/summary.tex` | 8903 | `7419497ae1f9ff5b1242bc6f3c4a02d086971e6e272b42632ab812a712710f17` |
 | `experiments/results/e2/2026-10-18T11-06-22-520Z/all_four-hmac,timestamp,nonce,request_id,balance-flood-bad_signature/health-readiness.csv` | 387 | `975a9a7a2f2571aedfb198c330f0502dd16103af3185e19fcd77c923de7c524d` |
 | `experiments/results/e2/2026-10-18T11-06-22-520Z/all_four-hmac,timestamp,nonce,request_id,balance-flood-bad_signature/layer-timings-rejected.csv` | 166060 | `cc370999bdf069511c7b92f1de93c6a3f8e6b6498f89b47214961d849cc81238` |
 | `experiments/results/e2/2026-10-18T11-06-22-520Z/all_four-hmac,timestamp,nonce,request_id,balance-flood-bad_signature/layer-timings.csv` | 166060 | `cc370999bdf069511c7b92f1de93c6a3f8e6b6498f89b47214961d849cc81238` |
@@ -2671,7 +2706,8 @@ experiments/
 | `experiments/results/phase4-source-fixes/race-session-final-console.log` | 290 | `1344b084c55fb611dd61109f64f0e7c5120a56d2450717680fdeab5985653fe4` |
 | `experiments/results/phase4-source-fixes/race-summary-1000-batches.json` | 1279 | `cc65875aa7dfe2cb1538422fbc03d60ee5861145ea0c1d928319bdd7f552cd1c` |
 | `experiments/results/phase4-source-fixes/races-run.log` | 2666 | `f6c1440a323375ff9bfea29ad6a3983a28f418d9c7379627fb441fc5b5e09ccc` |
-| `experiments/results/phase4-source-fixes/render-dossier.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `experiments/results/phase4-source-fixes/render-dossier-final.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `experiments/results/phase4-source-fixes/render-dossier.log` | 112 | `197cc3091472e5421d6d9b3c8367db783eec0bdf72475e72cb1e250ab7df155e` |
 | `experiments/results/phase4-source-fixes/server-race-timings.csv` | 6801095 | `02613dc3c7672649fa79544cfe44957d5f3e52a136effe0cb7ceab7a6dbca6e1` |
 | `experiments/results/preparation/demo-session-flow.json` | 476 | `1b6667f216f9bb1494a10a857ae97e31e0282eb77fd0df207b1158405bb40206` |
 | `experiments/results/preparation/egress-audit-matrix.json` | 3168 | `1eddad7f1c18fb5689c1d4e3ccf4e9b576074a4968db4b1eedd5ae98176dcbc5` |
@@ -2704,7 +2740,7 @@ experiments/
 | `experiments/results/preparation/vite-demo.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `experiments/results/preparation/vite-demo.stdout.log` | 152 | `2da7593d69afaf9acca9bc0c741f0e15f134eca51acf018679a942c72f90ef52` |
 | `experiments/results/preparation/wsl-attack-replay.log` | 372 | `23ee4b237e27e7a755382639e003b106b9ecc54346046e60cc99954df77958b4` |
-| `experiments/results/SHA256SUMS.json` | 312432 | `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a31dd1cf3a` |
+| `experiments/results/SHA256SUMS.json` | 316473 | `695d5cf111011aa5636a816903fb0e56b8fa33df08ee9b9d6a8b655d9019e01f` |
 | `experiments/run-f1-races.js` | 3868 | `64e92f8cb4dfda74a7c1dff93b67c9ed37725e754b0d2bec48b6d9d0c924487d` |
 | `experiments/run-nonce-memory.js` | 7190 | `fff799237ca4f27c862ae13a9d6f2d594a53fdf02a1505785651fb257fc6d62b` |
 | `experiments/run-phase4.js` | 655 | `8875eed2112764ed250c035cddcb421dade03e5450a8c20b65a14756a87eede5` |
@@ -2712,7 +2748,7 @@ experiments/
 | `experiments/run-viz-curve.js` | 2710 | `fd8170f37e44cdb7b2e2106a49eac81d9154fd5e1b90aa614bb7b08ff50c1869` |
 | `experiments/send-through-proxy.js` | 2882 | `62890986624f5a34c2d69b354bfbba00e4441e85eda46eb25ea9ecffdf85a587` |
 | `experiments/verify-demo-session-flow.js` | 3825 | `ce0197418e7ae82f4b121f5dac620d2f570eda6bac1af5f4134e4526c9b6b65d` |
-| `experiments/write-results-pack.js` | 16263 | `258310bad21afcd25e1c29d4536a159c486e11733e2f9e420e13647d6d06bfb5` |
+| `experiments/write-results-pack.js` | 17247 | `57020ac6dcc51444f6fc9ddcdb2006d0503b7f6c9d939f2e527f3715927d9b56` |
 
 ## Phase 0 correction measurements
 
@@ -2838,7 +2874,7 @@ main().catch((error)=>{ process.stderr.write(`${error.stack||error.message}\n`);
 
 ### `experiments/e1/finalize-oracle-summary.js`
 
-Bytes: 3296. SHA-256: `83d8cd942079e1011c61ae9b3a126fca26a15de0041f11794e881f7b747af04c`.
+Bytes: 4058. SHA-256: `5ae55841b02742e8fb6e99b4c9023c1e3284165d037bcae62c8122984f8a5c9d`.
 
 ```js
 const fs = require('fs');
@@ -2896,6 +2932,9 @@ for (const row of rows) {
 }
 writeCsv(summaryFile, parsed.headers, rows);
 fs.copyFileSync(summaryFile, path.join(output, 'summary.csv'));
+const latex = ['\\begin{tabular}{llrrrrl}', '\\toprule', 'Configuration & Scenario & Attempts & Accepted & Debits & Success rate & Wilson 95\\% CI \\\\', '\\midrule', ...rows.filter((row) => row.scenario_id !== 'LEGITIMATE_CONTROL').map((row) => `${row.config_id} & ${row.scenario_id} & ${row.attempts} & ${row.http_accepted_count} & ${row.debited_count} & ${(100 * Number(row.attack_success_rate)).toFixed(2)}\\% & ${row.wilson95_low === '' ? 'constant outcome' : `${Number(row.wilson95_low).toFixed(4)}--${Number(row.wilson95_high).toFixed(4)}`} \\\\`), '\\bottomrule', '\\end{tabular}', ''];
+fs.writeFileSync(path.join(runDirectory, 'summary.tex'), latex.join('\n'));
+fs.copyFileSync(path.join(runDirectory, 'summary.tex'), path.join(output, 'summary.tex'));
 run.allSummaries = rows;
 fs.writeFileSync(path.join(runDirectory, 'run.json'), `${JSON.stringify(run, null, 2)}\n`);
 fs.copyFileSync(path.join(runDirectory, 'run.json'), path.join(output, 'run.json'));
@@ -2904,7 +2943,7 @@ process.stdout.write(`Finalized ${rows.length} E1 summary rows from direct SQLit
 
 ### `experiments/e1/run.js`
 
-Bytes: 22225. SHA-256: `b1dc494645be17afd33c288b781e3a22fee6892be255435d6a8ac372634b8696`.
+Bytes: 22397. SHA-256: `9842d5ea6ee6e8b68cd218711ecc9497dddfa6b8ffb1483538ac310a17337994`.
 
 ```js
 const fs = require('fs');
@@ -3206,7 +3245,7 @@ async function main() {
   writeCsv(path.join(RUN_OUTPUT, 'summary.csv'), headers, allSummaries);
   const configs = [...new Set(allSummaries.map((r) => r.config_id))];
   const scenarios = [...new Set(allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => r.scenario_id))];
-  const latex = ['\\begin{tabular}{llrrr}', '\\toprule', 'Configuration & Scenario & Attempts & Debits & Success rate \\\\', '\\midrule', ...allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => `${r.config_id} & ${r.scenario_id} & ${r.attempts} & ${r.debited_count} & ${(100 * r.attack_success_rate).toFixed(2)}\\% \\\\`), '\\bottomrule', '\\end{tabular}', ''];
+  const latex = ['\\begin{tabular}{llrrrrl}', '\\toprule', 'Configuration & Scenario & Attempts & Accepted & Debits & Success rate & Wilson 95\\% CI \\\\', '\\midrule', ...allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => `${r.config_id} & ${r.scenario_id} & ${r.attempts} & ${r.http_accepted_count} & ${r.debited_count} & ${(100 * r.attack_success_rate).toFixed(2)}\\% & ${r.wilson95_low === null ? 'constant outcome' : `${r.wilson95_low.toFixed(4)}--${r.wilson95_high.toFixed(4)}`} \\\\`), '\\bottomrule', '\\end{tabular}', ''];
   fs.writeFileSync(path.join(RUN_OUTPUT, 'summary.tex'), latex.join('\n'));
   const runMetadata = { started, ended: new Date().toISOString(), elapsedSeconds: (Date.now() - Date.parse(started)) / 1000, nodeVersion: process.version, host: { platform: os.platform(), release: os.release(), architecture: process.arch, cpuModel: os.cpus()[0]?.model, totalRamBytes: os.totalmem() }, dataRunDirectory: path.relative(OUTPUT, RUN_OUTPUT).replace(/\\/g, '/'), randomSeed: RANDOM_SEED, randomSeedScope: 'deterministic scenario request IDs and nonces; server session credentials use the operating-system CSPRNG', scaledProfile: { timestampPastSeconds: PAST, timestampFutureSeconds: FUTURE, nonceTtlSeconds: NONCE_TTL, sessionTtlSeconds: SESSION_TTL }, defaultConfirmationProfile: { timestampPastSeconds: 300, futureToleranceSeconds: 5, nonceTtlSeconds: 86400, sessionTtlSeconds: 900, waits: { S2: 60, S4: 301 } }, keepAliveHttpAgent: true, proxyRedactLogin: true, moneyOracleLedgerSource: 'direct sqlite3 SELECT from the running server database after each scenario', allConfigs: 16, totalSummaryRows: allSummaries.length, scenarios: scenarios.length, allSummaries };
   fs.writeFileSync(path.join(RUN_OUTPUT, 'run.json'), `${JSON.stringify(runMetadata, null, 2)}\n`);
@@ -18219,6 +18258,101 @@ H1T1N1R1-DEFAULT & S4_default_window_301s & 30 & 0 & 0.00\% \\
 \end{tabular}
 ```
 
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/proxy-request-timings.csv`
+
+Bytes: 136007. SHA-256: `2d97af4341ed35821c2a11c62b18cadab637a964c0b62ceeefdfb32eb1aeb746`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315292606815500,
+    "max": 1315331057782200,
+    "mean": 1315307639100383.8,
+    "p50": 1315308068650700,
+    "p95": 1315314032641360,
+    "p99": 1315331054994924
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315292619294300,
+    "max": 1315331176386200,
+    "mean": 1315307727661107.2,
+    "p50": 1315308149671000,
+    "p95": 1315314103630480,
+    "p99": 1315331097525344
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 2564300,
+    "max": 326558700,
+    "mean": 88560722.64978081,
+    "p50": 83366000,
+    "p95": 185875219.99999997,
+    "p99": 206832536
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 401,
+    "mean": 202.93716512420846,
+    "p50": 200,
+    "p95": 200,
+    "p99": 401
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315292606815500,1315292619294300,12478800,200
+POST,/api/login,1315292625175500,1315292690783900,65608400,200
+POST,/api/withdraw,1315292696512100,1315292704470000,7957900,200
+POST,/api/withdraw,1315292708965000,1315292714984100,6019100,200
+POST,/api/withdraw,1315292720485700,1315292727257600,6771900,200
+POST,/api/withdraw,1315292735287900,1315292741556800,6268900,200
+POST,/api/withdraw,1315292746047900,1315292752447700,6399800,200
+POST,/api/withdraw,1315292757437700,1315292763649900,6212200,200
+POST,/api/withdraw,1315292769021900,1315292774012700,4990800,200
+POST,/api/withdraw,1315292778898700,1315292784265600,5366900,200
+POST,/api/withdraw,1315292790051300,1315292795331800,5280500,200
+POST,/api/withdraw,1315292801012400,1315292806269300,5256900,200
+POST,/api/withdraw,1315292810364000,1315292815349800,4985800,200
+POST,/api/withdraw,1315292819049100,1315292823932800,4883700,200
+POST,/api/withdraw,1315292828036700,1315292833456200,5419500,200
+POST,/api/withdraw,1315292838356400,1315292842451800,4095400,200
+POST,/api/withdraw,1315292846044300,1315292850464500,4420200,200
+POST,/api/withdraw,1315292854266600,1315292858904300,4637700,200
+POST,/api/withdraw,1315292864082800,1315292868472100,4389300,200
+... omitted rows ...
+POST,/api/withdraw,1315331055290400,1315331103934400,48644000,200
+POST,/api/withdraw,1315331055429400,1315331106769700,51340300,200
+POST,/api/withdraw,1315331055564200,1315331112083600,56519400,200
+POST,/api/withdraw,1315331055685800,1315331117203200,61517400,200
+POST,/api/withdraw,1315331055808600,1315331120588500,64779900,200
+POST,/api/withdraw,1315331055953000,1315331123815700,67862700,200
+POST,/api/withdraw,1315331056447600,1315331127292000,70844400,200
+POST,/api/withdraw,1315331056574000,1315331130486000,73912000,200
+POST,/api/withdraw,1315331056076900,1315331133539000,77462100,200
+POST,/api/withdraw,1315331056325600,1315331137618200,81292600,200
+POST,/api/withdraw,1315331056198800,1315331140864500,84665700,200
+POST,/api/withdraw,1315331056984400,1315331145274400,88290000,200
+POST,/api/withdraw,1315331056727900,1315331148972500,92244600,200
+POST,/api/withdraw,1315331057123900,1315331152601000,95477100,200
+POST,/api/withdraw,1315331057252500,1315331156058900,98806400,200
+POST,/api/withdraw,1315331057378900,1315331159710800,102331900,200
+POST,/api/withdraw,1315331057522700,1315331163253300,105730600,200
+POST,/api/withdraw,1315331057658300,1315331166807300,109149000,200
+POST,/api/withdraw,1315331057782200,1315331170835800,113053600,200
+POST,/api/withdraw,1315331056856300,1315331176386200,119529900,200
+```
+
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/proxy.stderr.log`
 
 Bytes: 0. SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
@@ -18463,6 +18597,101 @@ Bytes: 84. SHA-256: `3000e93e013446093c968c940c1e5492842dee8fd652d9b213605604715
 ```text
 Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
+```
+
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/proxy-request-timings.csv`
+
+Bytes: 135860. SHA-256: `bc82d39cf02204a8c1099143eb47a81d3831ba2f22059f3357f59f3df3db7589`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315612030027200,
+    "max": 1315649601551400,
+    "mean": 1315626348426617.2,
+    "p50": 1315626759948300,
+    "p95": 1315632403353440,
+    "p99": 1315649596380236
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315612041964600,
+    "max": 1315649732763200,
+    "mean": 1315626425982870,
+    "p50": 1315626828974200,
+    "p95": 1315632496778320,
+    "p99": 1315649651419072
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 2656100,
+    "max": 327508700,
+    "mean": 77556253.190453,
+    "p50": 74563600,
+    "p95": 152236019.9999999,
+    "p99": 203105716.0000001
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 372.4378957622991,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315612030027200,1315612041964600,11937400,200
+POST,/api/login,1315612047532100,1315612110076000,62543900,200
+POST,/api/withdraw,1315612113483200,1315612121706600,8223400,200
+POST,/api/withdraw,1315612126222200,1315612132155400,5933200,200
+POST,/api/withdraw,1315612135914200,1315612141353400,5439200,200
+POST,/api/withdraw,1315612145372500,1315612150740200,5367700,200
+POST,/api/withdraw,1315612154196500,1315612159033400,4836900,200
+POST,/api/withdraw,1315612163862700,1315612169211000,5348300,200
+POST,/api/withdraw,1315612172830400,1315612179445200,6614800,200
+POST,/api/withdraw,1315612184319600,1315612189740300,5420700,200
+POST,/api/withdraw,1315612194133500,1315612199644700,5511200,200
+POST,/api/withdraw,1315612202859200,1315612207838600,4979400,200
+POST,/api/withdraw,1315612212341700,1315612217301400,4959700,200
+POST,/api/withdraw,1315612220843000,1315612232266600,11423600,200
+POST,/api/withdraw,1315612235401700,1315612240215500,4813800,200
+POST,/api/withdraw,1315612244872600,1315612249910200,5037600,200
+POST,/api/withdraw,1315612253048100,1315612257476200,4428100,200
+POST,/api/withdraw,1315612262452100,1315612266949600,4497500,200
+POST,/api/withdraw,1315612269931500,1315612274924900,4993400,200
+... omitted rows ...
+POST,/api/withdraw,1315649597066300,1315649656549900,59483600,200
+POST,/api/withdraw,1315649597454200,1315649659962500,62508300,200
+POST,/api/withdraw,1315649597859200,1315649663575100,65715900,200
+POST,/api/withdraw,1315649598345600,1315649667277200,68931600,200
+POST,/api/withdraw,1315649598668000,1315649670618500,71950500,200
+POST,/api/withdraw,1315649598959100,1315649674183100,75224000,200
+POST,/api/withdraw,1315649599277500,1315649680785300,81507800,200
+POST,/api/withdraw,1315649599564800,1315649684524100,84959300,200
+POST,/api/withdraw,1315649599828400,1315649688287900,88459500,200
+POST,/api/withdraw,1315649600071600,1315649692285400,92213800,200
+POST,/api/withdraw,1315649600311100,1315649696981000,96669900,200
+POST,/api/withdraw,1315649600471100,1315649700364400,99893300,200
+POST,/api/withdraw,1315649600629700,1315649703913100,103283400,200
+POST,/api/withdraw,1315649600773700,1315649708661200,107887500,200
+POST,/api/withdraw,1315649600904400,1315649712981800,112077400,200
+POST,/api/withdraw,1315649601046700,1315649716750900,115704200,200
+POST,/api/withdraw,1315649601165700,1315649722039600,120873900,200
+POST,/api/withdraw,1315649601287200,1315649725313100,124025900,200
+POST,/api/withdraw,1315649601429100,1315649728844100,127415000,200
+POST,/api/withdraw,1315649601551400,1315649732763200,131211800,200
 ```
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/proxy.stderr.log`
@@ -18720,6 +18949,101 @@ Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
 ```
 
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/proxy-request-timings.csv`
+
+Bytes: 136006. SHA-256: `38e56ca07f14f97e05d13beb587647b7a1ea8c0e4d4133889ad763950ba4e0b8`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315455699949400,
+    "max": 1315493937663400,
+    "mean": 1315470525701623.5,
+    "p50": 1315470843949600,
+    "p95": 1315476909780040,
+    "p99": 1315493935171992
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315455714272600,
+    "max": 1315494050852800,
+    "mean": 1315470612574621.8,
+    "p50": 1315470954308800,
+    "p95": 1315477017558160,
+    "p99": 1315493983314384
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3262600,
+    "max": 240558600,
+    "mean": 86872998.14905018,
+    "p50": 84061200,
+    "p95": 177337880,
+    "p99": 218863256
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 369.38382854359475,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315455699949400,1315455714272600,14323200,200
+POST,/api/login,1315455719542800,1315455778704000,59161200,200
+POST,/api/withdraw,1315455781443700,1315455793321400,11877700,200
+POST,/api/withdraw,1315455797385000,1315455810831000,13446000,200
+POST,/api/withdraw,1315455815941200,1315455825224100,9282900,200
+POST,/api/withdraw,1315455829199300,1315455837713900,8514600,200
+POST,/api/withdraw,1315455841716200,1315455846853300,5137100,200
+POST,/api/withdraw,1315455850541400,1315455855954400,5413000,200
+POST,/api/withdraw,1315455859228700,1315455865576500,6347800,200
+POST,/api/withdraw,1315455870157000,1315455877000900,6843900,200
+POST,/api/withdraw,1315455880696500,1315455885976200,5279700,200
+POST,/api/withdraw,1315455890146800,1315455895940000,5793200,200
+POST,/api/withdraw,1315455900281200,1315455905780700,5499500,200
+POST,/api/withdraw,1315455910242400,1315455916084900,5842500,200
+POST,/api/withdraw,1315455919753600,1315455924842000,5088400,200
+POST,/api/withdraw,1315455929752400,1315455935356100,5603700,200
+POST,/api/withdraw,1315455939041600,1315455944790000,5748400,200
+POST,/api/withdraw,1315455948267900,1315455953369900,5102000,200
+POST,/api/withdraw,1315455956888600,1315455962878400,5989800,200
+... omitted rows ...
+POST,/api/withdraw,1315493935556600,1315493988351600,52795000,200
+POST,/api/withdraw,1315493935422900,1315493991614500,56191600,200
+POST,/api/withdraw,1315493935675500,1315493994836300,59160800,200
+POST,/api/withdraw,1315493935790200,1315493998172700,62382500,200
+POST,/api/withdraw,1315493935925900,1315494001479200,65553300,200
+POST,/api/withdraw,1315493936040100,1315494004620300,68580200,200
+POST,/api/withdraw,1315493936151100,1315494008197500,72046400,200
+POST,/api/withdraw,1315493936400100,1315494011953900,75553800,200
+POST,/api/withdraw,1315493936268000,1315494014775900,78507900,200
+POST,/api/withdraw,1315493936516800,1315494018044100,81527300,200
+POST,/api/withdraw,1315493936626700,1315494020798300,84171600,200
+POST,/api/withdraw,1315493936854600,1315494023846800,86992200,200
+POST,/api/withdraw,1315493936971700,1315494027010300,90038600,200
+POST,/api/withdraw,1315493937094800,1315494030309900,93215100,200
+POST,/api/withdraw,1315493936745900,1315494034163100,97417200,200
+POST,/api/withdraw,1315493937204700,1315494037254900,100050200,200
+POST,/api/withdraw,1315493937430000,1315494040673700,103243700,200
+POST,/api/withdraw,1315493937324000,1315494044788200,107464200,200
+POST,/api/withdraw,1315493937545100,1315494047850600,110305500,200
+POST,/api/withdraw,1315493937663400,1315494050852800,113189400,200
+```
+
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/proxy.stderr.log`
 
 Bytes: 0. SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
@@ -18973,6 +19297,101 @@ Bytes: 84. SHA-256: `3000e93e013446093c968c940c1e5492842dee8fd652d9b213605604715
 ```text
 Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
+```
+
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/proxy-request-timings.csv`
+
+Bytes: 135914. SHA-256: `4e2709532e06d92539014a1f16ab367d689f2f007150853e12f2d45be483cf8e`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315768488623900,
+    "max": 1315806228911400,
+    "mean": 1315782753900318.2,
+    "p50": 1315783056114500,
+    "p95": 1315788957645220,
+    "p99": 1315806214454832
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315768500552000,
+    "max": 1315806365436700,
+    "mean": 1315782834240124.5,
+    "p50": 1315783134179200,
+    "p95": 1315789035305840,
+    "p99": 1315806287127984
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3318000,
+    "max": 235180100,
+    "mean": 80339807.40379933,
+    "p50": 76567200,
+    "p95": 169861040,
+    "p99": 203563724.00000003
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 373.96492937165124,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315768488623900,1315768500552000,11928100,200
+POST,/api/login,1315768505123100,1315768565549400,60426300,200
+POST,/api/withdraw,1315768570273900,1315768581381500,11107600,200
+POST,/api/withdraw,1315768585121100,1315768591877800,6756700,200
+POST,/api/withdraw,1315768596124100,1315768601944700,5820600,200
+POST,/api/withdraw,1315768605379000,1315768613270300,7891300,200
+POST,/api/withdraw,1315768617506900,1315768623005900,5499000,200
+POST,/api/withdraw,1315768628749300,1315768635285200,6535900,200
+POST,/api/withdraw,1315768638964200,1315768645863800,6899600,200
+POST,/api/withdraw,1315768649330700,1315768654630600,5299900,200
+POST,/api/withdraw,1315768659799200,1315768665244200,5445000,200
+POST,/api/withdraw,1315768668661500,1315768674559500,5898000,200
+POST,/api/withdraw,1315768679326600,1315768684877200,5550600,200
+POST,/api/withdraw,1315768688143000,1315768693499900,5356900,200
+POST,/api/withdraw,1315768696860700,1315768702017100,5156400,200
+POST,/api/withdraw,1315768705553500,1315768713279000,7725500,200
+POST,/api/withdraw,1315768717666600,1315768723413000,5746400,200
+POST,/api/withdraw,1315768731088400,1315768736899400,5811000,200
+POST,/api/withdraw,1315768741418300,1315768749937400,8519100,200
+... omitted rows ...
+POST,/api/withdraw,1315806215879700,1315806292691200,76811500,200
+POST,/api/withdraw,1315806216662200,1315806296043200,79381000,200
+POST,/api/withdraw,1315806217494800,1315806299790100,82295300,200
+POST,/api/withdraw,1315806219062600,1315806303309100,84246500,200
+POST,/api/withdraw,1315806219825200,1315806306544800,86719600,200
+POST,/api/withdraw,1315806222590400,1315806309865600,87275200,200
+POST,/api/withdraw,1315806221061600,1315806313266800,92205200,200
+POST,/api/withdraw,1315806218147500,1315806319511400,101363900,200
+POST,/api/withdraw,1315806223381300,1315806325855700,102474400,200
+POST,/api/withdraw,1315806218645600,1315806329650700,111005100,200
+POST,/api/withdraw,1315806225823400,1315806332784500,106961100,200
+POST,/api/withdraw,1315806223991300,1315806337372100,113380800,200
+POST,/api/withdraw,1315806226572900,1315806340933700,114360800,200
+POST,/api/withdraw,1315806227696400,1315806344714600,117018200,200
+POST,/api/withdraw,1315806227170300,1315806347862300,120692000,200
+POST,/api/withdraw,1315806228295800,1315806351812800,123517000,200
+POST,/api/withdraw,1315806228911400,1315806354854600,125943200,200
+POST,/api/withdraw,1315806225166600,1315806358226800,133060200,200
+POST,/api/withdraw,1315806213462400,1315806361557100,148094700,200
+POST,/api/withdraw,1315806224607500,1315806365436700,140829200,200
 ```
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/proxy.stderr.log`
@@ -19239,6 +19658,101 @@ Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
 ```
 
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/proxy-request-timings.csv`
+
+Bytes: 136117. SHA-256: `f89ae864f4c67f0020e16ac401d7f49bdfa716dd3e89be832e2b928afa866825`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315373600669300,
+    "max": 1315413105510600,
+    "mean": 1315389016062446,
+    "p50": 1315389399434800,
+    "p95": 1315396108356880,
+    "p99": 1315413102184988
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315373614512400,
+    "max": 1315413214201200,
+    "mean": 1315389118095169,
+    "p50": 1315389495420800,
+    "p95": 1315396187915580,
+    "p99": 1315413140142152
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3147300,
+    "max": 331831700,
+    "mean": 102032722.74719922,
+    "p50": 92326900,
+    "p95": 224307059.99999994,
+    "p99": 292839844
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 401,
+    "mean": 205.85971748660498,
+    "p50": 200,
+    "p95": 200,
+    "p99": 401
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315373600669300,1315373614512400,13843100,200
+POST,/api/login,1315373619483900,1315373684847700,65363800,200
+POST,/api/withdraw,1315373687966100,1315373695553100,7587000,200
+POST,/api/withdraw,1315373700195800,1315373706128600,5932800,200
+POST,/api/withdraw,1315373709660200,1315373715101900,5441700,200
+POST,/api/withdraw,1315373719137000,1315373725434400,6297400,200
+POST,/api/withdraw,1315373729076000,1315373734104700,5028700,200
+POST,/api/withdraw,1315373737889200,1315373743385400,5496200,200
+POST,/api/withdraw,1315373746933000,1315373752853800,5920800,200
+POST,/api/withdraw,1315373756567400,1315373762073600,5506200,200
+POST,/api/withdraw,1315373765499100,1315373771045800,5546700,200
+POST,/api/withdraw,1315373774863000,1315373780064200,5201200,200
+POST,/api/withdraw,1315373783872200,1315373789249000,5376800,200
+POST,/api/withdraw,1315373793155300,1315373798844100,5688800,200
+POST,/api/withdraw,1315373802548800,1315373807407000,4858200,200
+POST,/api/withdraw,1315373810757100,1315373815765200,5008100,200
+POST,/api/withdraw,1315373819196200,1315373824042700,4846500,200
+POST,/api/withdraw,1315373827595400,1315373832462300,4866900,200
+POST,/api/withdraw,1315373835851500,1315373840746800,4895300,200
+... omitted rows ...
+POST,/api/withdraw,1315413102276300,1315413144832800,42556500,200
+POST,/api/withdraw,1315413102613400,1315413147880900,45267500,200
+POST,/api/withdraw,1315413102779600,1315413151225200,48445600,200
+POST,/api/withdraw,1315413102930500,1315413153784900,50854400,200
+POST,/api/withdraw,1315413103081500,1315413157216300,54134800,200
+POST,/api/withdraw,1315413103229800,1315413160687900,57458100,200
+POST,/api/withdraw,1315413103385700,1315413163721800,60336100,200
+POST,/api/withdraw,1315413103533000,1315413166996400,63463400,200
+POST,/api/withdraw,1315413103696600,1315413170186500,66489900,200
+POST,/api/withdraw,1315413104197700,1315413173720000,69522300,200
+POST,/api/withdraw,1315413103841000,1315413177564600,73723600,200
+POST,/api/withdraw,1315413104353400,1315413180985600,76632200,200
+POST,/api/withdraw,1315413104660900,1315413184764300,80103400,200
+POST,/api/withdraw,1315413104852000,1315413189314400,84462400,200
+POST,/api/withdraw,1315413105055300,1315413193944300,88889000,200
+POST,/api/withdraw,1315413104023100,1315413197181200,93158100,200
+POST,/api/withdraw,1315413105204900,1315413200842000,95637100,200
+POST,/api/withdraw,1315413105368900,1315413204965300,99596400,200
+POST,/api/withdraw,1315413105510600,1315413209656100,104145500,200
+POST,/api/withdraw,1315413104504900,1315413214201200,109696300,200
+```
+
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/proxy.stderr.log`
 
 Bytes: 0. SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
@@ -19483,6 +19997,101 @@ Bytes: 84. SHA-256: `3000e93e013446093c968c940c1e5492842dee8fd652d9b213605604715
 ```text
 Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
+```
+
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/proxy-request-timings.csv`
+
+Bytes: 135913. SHA-256: `bf21561fe6ebde4b7e877a80f74cdbdda54e616dda2685ed75408130ced1d0ed`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315690347380400,
+    "max": 1315727731041300,
+    "mean": 1315704627774610.5,
+    "p50": 1315704980192700,
+    "p95": 1315710633653400,
+    "p99": 1315727728440220
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315690357101900,
+    "max": 1315727848550700,
+    "mean": 1315704708536675.8,
+    "p50": 1315705058169900,
+    "p95": 1315710716802520,
+    "p99": 1315727773672920
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 2299600,
+    "max": 267250000,
+    "mean": 80762064.97808085,
+    "p50": 78191400,
+    "p95": 163917960,
+    "p99": 205414856.00000006
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 372.3063809059912,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315690347380400,1315690357101900,9721500,200
+POST,/api/login,1315690362156400,1315690423363100,61206700,200
+POST,/api/withdraw,1315690429510300,1315690437833200,8322900,200
+POST,/api/withdraw,1315690441420300,1315690447470300,6050000,200
+POST,/api/withdraw,1315690451227600,1315690457550500,6322900,200
+POST,/api/withdraw,1315690460922800,1315690474581800,13659000,200
+POST,/api/withdraw,1315690477722800,1315690483299600,5576800,200
+POST,/api/withdraw,1315690486948000,1315690493233700,6285700,200
+POST,/api/withdraw,1315690496689100,1315690503226300,6537200,200
+POST,/api/withdraw,1315690507201900,1315690513093200,5891300,200
+POST,/api/withdraw,1315690518023300,1315690523843400,5820100,200
+POST,/api/withdraw,1315690527359300,1315690532992800,5633500,200
+POST,/api/withdraw,1315690536287500,1315690541597100,5309600,200
+POST,/api/withdraw,1315690544980700,1315690550413300,5432600,200
+POST,/api/withdraw,1315690553719200,1315690558718700,4999500,200
+POST,/api/withdraw,1315690562156200,1315690567357800,5201600,200
+POST,/api/withdraw,1315690570542100,1315690576125000,5582900,200
+POST,/api/withdraw,1315690579474400,1315690584549800,5075400,200
+POST,/api/withdraw,1315690587685600,1315690593105900,5420300,200
+... omitted rows ...
+POST,/api/withdraw,1315727728943600,1315727778742700,49799100,200
+POST,/api/withdraw,1315727729432700,1315727781985600,52552900,200
+POST,/api/withdraw,1315727729554500,1315727785388600,55834100,200
+POST,/api/withdraw,1315727729185200,1315727788745500,59560300,200
+POST,/api/withdraw,1315727729679400,1315727792081300,62401900,200
+POST,/api/withdraw,1315727729308700,1315727795914900,66606200,200
+POST,/api/withdraw,1315727728655200,1315727799419700,70764500,200
+POST,/api/withdraw,1315727728511200,1315727803250300,74739100,200
+POST,/api/withdraw,1315727729063000,1315727807282900,78219900,200
+POST,/api/withdraw,1315727729813500,1315727814110700,84297200,200
+POST,/api/withdraw,1315727729929600,1315727817513400,87583800,200
+POST,/api/withdraw,1315727730056200,1315727820936200,90880000,200
+POST,/api/withdraw,1315727730176900,1315727824041400,93864500,200
+POST,/api/withdraw,1315727730298600,1315727827526400,97227800,200
+POST,/api/withdraw,1315727730417000,1315727830897400,100480400,200
+POST,/api/withdraw,1315727730536100,1315727834570700,104034600,200
+POST,/api/withdraw,1315727730927800,1315727838117800,107190000,200
+POST,/api/withdraw,1315727731041300,1315727841815200,110773900,200
+POST,/api/withdraw,1315727730657800,1315727845085800,114428000,200
+POST,/api/withdraw,1315727730813400,1315727848550700,117737300,200
 ```
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/proxy.stderr.log`
@@ -19740,6 +20349,101 @@ Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
 ```
 
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/proxy-request-timings.csv`
+
+Bytes: 135929. SHA-256: `c3eac47f423120c029affc1224e917ba6765999f7506f660b78119dbc76f1cef`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315534673421600,
+    "max": 1315572397789100,
+    "mean": 1315549294282457.2,
+    "p50": 1315549824847700,
+    "p95": 1315555434838220,
+    "p99": 1315572394599676
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315534686880200,
+    "max": 1315572521462600,
+    "mean": 1315549377283450.2,
+    "p50": 1315549891774900,
+    "p95": 1315555509292900,
+    "p99": 1315572447234816
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 2794900,
+    "max": 271677700,
+    "mean": 83000991.32976133,
+    "p50": 79350200,
+    "p95": 172742920,
+    "p99": 202382468
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 369.2523136872869,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315534673421600,1315534686880200,13458600,200
+POST,/api/login,1315534692586900,1315534754565400,61978500,200
+POST,/api/withdraw,1315534757856600,1315534766208400,8351800,200
+POST,/api/withdraw,1315534770774600,1315534782679100,11904500,200
+POST,/api/withdraw,1315534786619700,1315534792737900,6118200,200
+POST,/api/withdraw,1315534796598900,1315534802896300,6297400,200
+POST,/api/withdraw,1315534806727500,1315534812516100,5788600,200
+POST,/api/withdraw,1315534816181700,1315534824641700,8460000,200
+POST,/api/withdraw,1315534828589700,1315534834420000,5830300,200
+POST,/api/withdraw,1315534839562700,1315534845657400,6094700,200
+POST,/api/withdraw,1315534849302900,1315534854709100,5406200,200
+POST,/api/withdraw,1315534858037900,1315534862963700,4925800,200
+POST,/api/withdraw,1315534866179300,1315534871460900,5281600,200
+POST,/api/withdraw,1315534874518800,1315534879380700,4861900,200
+POST,/api/withdraw,1315534882495800,1315534887759300,5263500,200
+POST,/api/withdraw,1315534891016100,1315534896294700,5278600,200
+POST,/api/withdraw,1315534900034900,1315534905539900,5505000,200
+POST,/api/withdraw,1315534909745800,1315534914866200,5120400,200
+POST,/api/withdraw,1315534918117300,1315534923416600,5299300,200
+... omitted rows ...
+POST,/api/withdraw,1315572394790700,1315572451892200,57101500,200
+POST,/api/withdraw,1315572395203900,1315572455139300,59935400,200
+POST,/api/withdraw,1315572394909300,1315572458539700,63630400,200
+POST,/api/withdraw,1315572395321700,1315572461814800,66493100,200
+POST,/api/withdraw,1315572395600700,1315572465248100,69647400,200
+POST,/api/withdraw,1315572395725100,1315572468411200,72686100,200
+POST,/api/withdraw,1315572395852900,1315572471700900,75848000,200
+POST,/api/withdraw,1315572395068300,1315572476311000,81242700,200
+POST,/api/withdraw,1315572395966800,1315572479598700,83631900,200
+POST,/api/withdraw,1315572396537600,1315572483088700,86551100,200
+POST,/api/withdraw,1315572396077100,1315572486443300,90366200,200
+POST,/api/withdraw,1315572396288500,1315572490696500,94408000,200
+POST,/api/withdraw,1315572397093200,1315572493850700,96757500,200
+POST,/api/withdraw,1315572396860700,1315572497242000,100381300,200
+POST,/api/withdraw,1315572397470700,1315572500339300,102868600,200
+POST,/api/withdraw,1315572395453600,1315572503436700,107983100,200
+POST,/api/withdraw,1315572397628000,1315572509619500,111991500,200
+POST,/api/withdraw,1315572396736800,1315572513974200,117237400,200
+POST,/api/withdraw,1315572397315100,1315572517415100,120100000,200
+POST,/api/withdraw,1315572397789100,1315572521462600,123673500,200
+```
+
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/proxy.stderr.log`
 
 Bytes: 0. SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
@@ -19993,6 +20697,101 @@ Bytes: 84. SHA-256: `3000e93e013446093c968c940c1e5492842dee8fd652d9b213605604715
 ```text
 Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
+```
+
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/proxy-request-timings.csv`
+
+Bytes: 136051. SHA-256: `8a6df666ba932b0b222dd22d68f69d41706a87fde69d9a87d7b84cbde2818953`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315847809986000,
+    "max": 1315886515344600,
+    "mean": 1315863181343431.5,
+    "p50": 1315863767272000,
+    "p95": 1315869597362720,
+    "p99": 1315886512919052
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315847817556200,
+    "max": 1315886628270100,
+    "mean": 1315863272970236.2,
+    "p50": 1315863846894100,
+    "p95": 1315869662208940,
+    "p99": 1315886558942804
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3954800,
+    "max": 381328100,
+    "mean": 91626804.43253775,
+    "p50": 87176400,
+    "p95": 182578680,
+    "p99": 271605428.0000001
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 373.8334145153434,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315847809986000,1315847817556200,7570200,200
+POST,/api/login,1315847821376000,1315847879075900,57699900,200
+POST,/api/withdraw,1315847882643300,1315847892056900,9413600,200
+POST,/api/withdraw,1315847895831300,1315847902782000,6950700,200
+POST,/api/withdraw,1315847906362600,1315847912480600,6118000,200
+POST,/api/withdraw,1315847917362300,1315847923150100,5787800,200
+POST,/api/withdraw,1315847926404500,1315847931787300,5382800,200
+POST,/api/withdraw,1315847936567600,1315847942570800,6003200,200
+POST,/api/withdraw,1315847945845900,1315847951568800,5722900,200
+POST,/api/withdraw,1315847955029200,1315847960119200,5090000,200
+POST,/api/withdraw,1315847963454100,1315847970268600,6814500,200
+POST,/api/withdraw,1315847973480500,1315847978740200,5259700,200
+POST,/api/withdraw,1315847982496100,1315847987970400,5474300,200
+POST,/api/withdraw,1315847991281800,1315847996026500,4744700,200
+POST,/api/withdraw,1315848000984800,1315848006113700,5128900,200
+POST,/api/withdraw,1315848009836200,1315848014861700,5025500,200
+POST,/api/withdraw,1315848018474600,1315848023273300,4798700,200
+POST,/api/withdraw,1315848027153200,1315848032865200,5712000,200
+POST,/api/withdraw,1315848035930900,1315848040754500,4823600,200
+... omitted rows ...
+POST,/api/withdraw,1315886513140600,1315886563736400,50595800,200
+POST,/api/withdraw,1315886513384400,1315886566772700,53388300,200
+POST,/api/withdraw,1315886513497700,1315886569756000,56258300,200
+POST,/api/withdraw,1315886513610400,1315886573063800,59453400,200
+POST,/api/withdraw,1315886513839800,1315886577138900,63299100,200
+POST,/api/withdraw,1315886513727600,1315886580412400,66684800,200
+POST,/api/withdraw,1315886514077700,1315886583425300,69347600,200
+POST,/api/withdraw,1315886513264400,1315886586482700,73218300,200
+POST,/api/withdraw,1315886514185700,1315886589845500,75659800,200
+POST,/api/withdraw,1315886514293700,1315886593220800,78927100,200
+POST,/api/withdraw,1315886514401500,1315886596392600,81991100,200
+POST,/api/withdraw,1315886514725400,1315886599653600,84928200,200
+POST,/api/withdraw,1315886514847800,1315886602675000,87827200,200
+POST,/api/withdraw,1315886514969100,1315886605970000,91000900,200
+POST,/api/withdraw,1315886515097000,1315886609550000,94453000,200
+POST,/api/withdraw,1315886513967300,1315886612978200,99010900,200
+POST,/api/withdraw,1315886515219900,1315886616162900,100943000,200
+POST,/api/withdraw,1315886514507500,1315886621088700,106581200,200
+POST,/api/withdraw,1315886514616500,1315886624462000,109845500,200
+POST,/api/withdraw,1315886515344600,1315886628270100,112925500,200
 ```
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/proxy.stderr.log`
@@ -20259,6 +21058,101 @@ Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
 ```
 
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/proxy-request-timings.csv`
+
+Bytes: 136154. SHA-256: `c286458a088da4f6a11b7d64c861a3812ba4da409d057d7015121ce587ef451e`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315332207541400,
+    "max": 1315372448603000,
+    "mean": 1315347794080506.8,
+    "p50": 1315348161184200,
+    "p95": 1315355187616780,
+    "p99": 1315372442680056
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315332218116300,
+    "max": 1315372563996700,
+    "mean": 1315347899819703.2,
+    "p50": 1315348261337300,
+    "p95": 1315355274096620,
+    "p99": 1315372484617168
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3568600,
+    "max": 369230900,
+    "mean": 105739194.00876766,
+    "p50": 96042700,
+    "p95": 233035919.9999999,
+    "p99": 309073944.00000006
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 401,
+    "mean": 208.81149537262542,
+    "p50": 200,
+    "p95": 200,
+    "p99": 401
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315332207541400,1315332218116300,10574900,200
+POST,/api/login,1315332222616300,1315332277686800,55070500,200
+POST,/api/withdraw,1315332280516900,1315332288585500,8068600,200
+POST,/api/withdraw,1315332292318500,1315332298378300,6059800,200
+POST,/api/withdraw,1315332302520100,1315332309600200,7080100,200
+POST,/api/withdraw,1315332313036100,1315332318266900,5230800,200
+POST,/api/withdraw,1315332322197800,1315332327643200,5445400,200
+POST,/api/withdraw,1315332331143700,1315332337070000,5926300,200
+POST,/api/withdraw,1315332340588000,1315332349127600,8539600,200
+POST,/api/withdraw,1315332353521100,1315332358412400,4891300,200
+POST,/api/withdraw,1315332361991000,1315332367545700,5554700,200
+POST,/api/withdraw,1315332371241800,1315332376574500,5332700,200
+POST,/api/withdraw,1315332379986700,1315332391814200,11827500,200
+POST,/api/withdraw,1315332396570000,1315332401112800,4542800,200
+POST,/api/withdraw,1315332406051600,1315332411199200,5147600,200
+POST,/api/withdraw,1315332414831200,1315332420154700,5323500,200
+POST,/api/withdraw,1315332425004700,1315332430652700,5648000,200
+POST,/api/withdraw,1315332434604500,1315332441103000,6498500,200
+POST,/api/withdraw,1315332444616300,1315332449780400,5164100,200
+... omitted rows ...
+POST,/api/withdraw,1315372443067700,1315372490350700,47283000,200
+POST,/api/withdraw,1315372443305900,1315372493559900,50254000,200
+POST,/api/withdraw,1315372444318900,1315372496949500,52630600,200
+POST,/api/withdraw,1315372444038600,1315372501505000,57466400,200
+POST,/api/withdraw,1315372443538200,1315372505320500,61782300,200
+POST,/api/withdraw,1315372445067500,1315372510194400,65126900,200
+POST,/api/withdraw,1315372444674900,1315372513953200,69278300,200
+POST,/api/withdraw,1315372445787200,1315372517432100,71644900,200
+POST,/api/withdraw,1315372446138900,1315372521002600,74863700,200
+POST,/api/withdraw,1315372445517000,1315372525340500,79823500,200
+POST,/api/withdraw,1315372445272200,1315372528985000,83712800,200
+POST,/api/withdraw,1315372443782900,1315372532604600,88821700,200
+POST,/api/withdraw,1315372446545100,1315372535997900,89452800,200
+POST,/api/withdraw,1315372447028100,1315372539648100,92620000,200
+POST,/api/withdraw,1315372447397900,1315372542969600,95571700,200
+POST,/api/withdraw,1315372447705400,1315372546653800,98948400,200
+POST,/api/withdraw,1315372448603000,1315372551867000,103264000,200
+POST,/api/withdraw,1315372448389000,1315372555678200,107289200,200
+POST,/api/withdraw,1315372447933200,1315372559472100,111538900,200
+POST,/api/withdraw,1315372448174100,1315372563996700,115822600,200
+```
+
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/proxy.stderr.log`
 
 Bytes: 0. SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
@@ -20503,6 +21397,101 @@ Bytes: 84. SHA-256: `3000e93e013446093c968c940c1e5492842dee8fd652d9b213605604715
 ```text
 Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
+```
+
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/proxy-request-timings.csv`
+
+Bytes: 136045. SHA-256: `3fe69bd741f42ab645902e8f268218d4e854eac51b6e05174b2caf6d9ea3d8fd`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315650737969200,
+    "max": 1315689211532300,
+    "mean": 1315665316050096,
+    "p50": 1315665386509800,
+    "p95": 1315672198304420,
+    "p99": 1315689206762092
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315650745264600,
+    "max": 1315689338420100,
+    "mean": 1315665406845802.2,
+    "p50": 1315665479563800,
+    "p95": 1315672269175860,
+    "p99": 1315689251626248
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 2355800,
+    "max": 268922600,
+    "mean": 90795701.21773015,
+    "p50": 86401000,
+    "p95": 192767299.99999994,
+    "p99": 223218788.00000006
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 373.7311251826595,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315650737969200,1315650745264600,7295400,200
+POST,/api/login,1315650749589800,1315650811218200,61628400,200
+POST,/api/withdraw,1315650814461600,1315650823536400,9074800,200
+POST,/api/withdraw,1315650827291400,1315650833971600,6680200,200
+POST,/api/withdraw,1315650837303600,1315650843823300,6519700,200
+POST,/api/withdraw,1315650847668300,1315650853430800,5762500,200
+POST,/api/withdraw,1315650856990900,1315650863338900,6348000,200
+POST,/api/withdraw,1315650866778800,1315650872470700,5691900,200
+POST,/api/withdraw,1315650876355600,1315650889341500,12985900,200
+POST,/api/withdraw,1315650895785400,1315650902281300,6495900,200
+POST,/api/withdraw,1315650905587200,1315650911279300,5692100,200
+POST,/api/withdraw,1315650914628900,1315650919761700,5132800,200
+POST,/api/withdraw,1315650923722200,1315650929282800,5560600,200
+POST,/api/withdraw,1315650933089400,1315650938256000,5166600,200
+POST,/api/withdraw,1315650941897500,1315650947253700,5356200,200
+POST,/api/withdraw,1315650950633200,1315650955856800,5223600,200
+POST,/api/withdraw,1315650959667000,1315650965273200,5606200,200
+POST,/api/withdraw,1315650969492000,1315650975108000,5616000,200
+POST,/api/withdraw,1315650978789700,1315650984230200,5440500,200
+... omitted rows ...
+POST,/api/withdraw,1315689207717400,1315689257340400,49623000,200
+POST,/api/withdraw,1315689207969100,1315689261347400,53378300,200
+POST,/api/withdraw,1315689208153300,1315689265153100,56999800,200
+POST,/api/withdraw,1315689207250800,1315689269989100,62738300,200
+POST,/api/withdraw,1315689206911800,1315689273616100,66704300,200
+POST,/api/withdraw,1315689209028100,1315689277765600,68737500,200
+POST,/api/withdraw,1315689209295600,1315689283306800,74011200,200
+POST,/api/withdraw,1315689208595300,1315689287106800,78511500,200
+POST,/api/withdraw,1315689210170700,1315689291705000,81534300,200
+POST,/api/withdraw,1315689209982900,1315689295256900,85274000,200
+POST,/api/withdraw,1315689209787600,1315689299056100,89268500,200
+POST,/api/withdraw,1315689209538600,1315689303163400,93624800,200
+POST,/api/withdraw,1315689208818300,1315689307068200,98249900,200
+POST,/api/withdraw,1315689208394000,1315689310861800,102467800,200
+POST,/api/withdraw,1315689210440000,1315689316152200,105712200,200
+POST,/api/withdraw,1315689211157300,1315689320541500,109384200,200
+POST,/api/withdraw,1315689211347000,1315689324610400,113263400,200
+POST,/api/withdraw,1315689210954700,1315689331294700,120340000,200
+POST,/api/withdraw,1315689210706100,1315689334951000,124244900,200
+POST,/api/withdraw,1315689211532300,1315689338420100,126887800,200
 ```
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/proxy.stderr.log`
@@ -20769,6 +21758,101 @@ Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
 ```
 
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/proxy-request-timings.csv`
+
+Bytes: 135982. SHA-256: `bde41f05ed4f78cb6e22081cbd56df15cdbde45192191d4ed1115832e621400b`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315495079861700,
+    "max": 1315533529665800,
+    "mean": 1315509780908024.5,
+    "p50": 1315509943784200,
+    "p95": 1315516318223320,
+    "p99": 1315533526282784
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315495091674900,
+    "max": 1315533654282400,
+    "mean": 1315509866922237.2,
+    "p50": 1315510012951600,
+    "p95": 1315516417409640,
+    "p99": 1315533573093400
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3366200,
+    "max": 287823800,
+    "mean": 86014215.2946907,
+    "p50": 83276600,
+    "p95": 180838180,
+    "p99": 221669360.00000003
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 370.6770579639552,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315495079861700,1315495091674900,11813200,200
+POST,/api/login,1315495096890000,1315495156776700,59886700,200
+POST,/api/withdraw,1315495160344400,1315495169548400,9204000,200
+POST,/api/withdraw,1315495173311500,1315495187183800,13872300,200
+POST,/api/withdraw,1315495190735900,1315495196511300,5775400,200
+POST,/api/withdraw,1315495201333000,1315495207506800,6173800,200
+POST,/api/withdraw,1315495211037900,1315495216901500,5863600,200
+POST,/api/withdraw,1315495220208700,1315495226087700,5879000,200
+POST,/api/withdraw,1315495229794400,1315495236598300,6803900,200
+POST,/api/withdraw,1315495240108200,1315495245907500,5799300,200
+POST,/api/withdraw,1315495249600000,1315495255240800,5640800,200
+POST,/api/withdraw,1315495259318600,1315495266287300,6968700,200
+POST,/api/withdraw,1315495269954500,1315495274910200,4955700,200
+POST,/api/withdraw,1315495279806400,1315495284844600,5038200,200
+POST,/api/withdraw,1315495288069400,1315495293375900,5306500,200
+POST,/api/withdraw,1315495296835100,1315495303885600,7050500,200
+POST,/api/withdraw,1315495307370700,1315495312288800,4918100,200
+POST,/api/withdraw,1315495315563500,1315495323648000,8084500,200
+POST,/api/withdraw,1315495328877200,1315495334347900,5470700,200
+... omitted rows ...
+POST,/api/withdraw,1315533526030200,1315533578156000,52125800,200
+POST,/api/withdraw,1315533527266400,1315533581763300,54496900,200
+POST,/api/withdraw,1315533527104400,1315533585129900,58025500,200
+POST,/api/withdraw,1315533526693200,1315533588786400,62093200,200
+POST,/api/withdraw,1315533527420100,1315533592916900,65496800,200
+POST,/api/withdraw,1315533527568900,1315533599639500,72070600,200
+POST,/api/withdraw,1315533527736100,1315533603329900,75593800,200
+POST,/api/withdraw,1315533527890800,1315533606724700,78833900,200
+POST,/api/withdraw,1315533528378200,1315533610153900,81775700,200
+POST,/api/withdraw,1315533528534000,1315533613585900,85051900,200
+POST,/api/withdraw,1315533526891600,1315533616937500,90045900,200
+POST,/api/withdraw,1315533528714700,1315533620331800,91617100,200
+POST,/api/withdraw,1315533528871800,1315533625428800,96557000,200
+POST,/api/withdraw,1315533529023200,1315533630447300,101424100,200
+POST,/api/withdraw,1315533529324100,1315533633620000,104295900,200
+POST,/api/withdraw,1315533529173300,1315533637494400,108321100,200
+POST,/api/withdraw,1315533528211200,1315533640835200,112624000,200
+POST,/api/withdraw,1315533528058700,1315533645618600,117559900,200
+POST,/api/withdraw,1315533529472500,1315533649822900,120350400,200
+POST,/api/withdraw,1315533529665800,1315533654282400,124616600,200
+```
+
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/proxy.stderr.log`
 
 Bytes: 0. SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
@@ -21031,6 +22115,101 @@ Bytes: 84. SHA-256: `3000e93e013446093c968c940c1e5492842dee8fd652d9b213605604715
 ```text
 Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
+```
+
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/proxy-request-timings.csv`
+
+Bytes: 136103. SHA-256: `d5fffd41002737d7cd82561a635c464a42c9bf977228f6b8ce135da04dd89fb9`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315807380655200,
+    "max": 1315846559594700,
+    "mean": 1315822507216553.8,
+    "p50": 1315822803882900,
+    "p95": 1315829350824620,
+    "p99": 1315846548984492
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315807387747700,
+    "max": 1315846798366100,
+    "mean": 1315822605885757.8,
+    "p50": 1315822891620300,
+    "p95": 1315829407874120,
+    "p99": 1315846681772144
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3837900,
+    "max": 409220300,
+    "mean": 98669201.12031174,
+    "p50": 91740700,
+    "p95": 205212020,
+    "p99": 263993180.00000003
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 373.7311251826595,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315807380655200,1315807387747700,7092500,200
+POST,/api/login,1315807391651100,1315807444293700,52642600,200
+POST,/api/withdraw,1315807447973400,1315807456704100,8730700,200
+POST,/api/withdraw,1315807460429900,1315807467010900,6581000,200
+POST,/api/withdraw,1315807470920700,1315807477203400,6282700,200
+POST,/api/withdraw,1315807480770600,1315807487014000,6243400,200
+POST,/api/withdraw,1315807490702000,1315807503434200,12732200,200
+POST,/api/withdraw,1315807508660800,1315807514582300,5921500,200
+POST,/api/withdraw,1315807521326200,1315807526752900,5426700,200
+POST,/api/withdraw,1315807530735200,1315807535956200,5221000,200
+POST,/api/withdraw,1315807539283800,1315807544476800,5193000,200
+POST,/api/withdraw,1315807548022300,1315807553173700,5151400,200
+POST,/api/withdraw,1315807556513800,1315807561774500,5260700,200
+POST,/api/withdraw,1315807565443500,1315807571346000,5902500,200
+POST,/api/withdraw,1315807574624700,1315807580047900,5423200,200
+POST,/api/withdraw,1315807583811600,1315807588849500,5037900,200
+POST,/api/withdraw,1315807592685800,1315807598142600,5456800,200
+POST,/api/withdraw,1315807601392900,1315807606128100,4735200,200
+POST,/api/withdraw,1315807609503700,1315807615011400,5507700,200
+... omitted rows ...
+POST,/api/withdraw,1315846548771900,1315846699278500,150506600,200
+POST,/api/withdraw,1315846552285700,1315846718866400,166580700,200
+POST,/api/withdraw,1315846552869100,1315846723087700,170218600,200
+POST,/api/withdraw,1315846553442300,1315846727421200,173978900,200
+POST,/api/withdraw,1315846550234300,1315846732366900,182132600,200
+POST,/api/withdraw,1315846553927400,1315846737450900,183523500,200
+POST,/api/withdraw,1315846551819900,1315846741985400,190165500,200
+POST,/api/withdraw,1315846549735600,1315846747143200,197407600,200
+POST,/api/withdraw,1315846551310900,1315846751642000,200331100,200
+POST,/api/withdraw,1315846555512000,1315846755430800,199918800,200
+POST,/api/withdraw,1315846556315600,1315846759197300,202881700,200
+POST,/api/withdraw,1315846557430800,1315846762891300,205460500,200
+POST,/api/withdraw,1315846558621500,1315846769400400,210778900,200
+POST,/api/withdraw,1315846554477900,1315846773667300,219189400,200
+POST,/api/withdraw,1315846559594700,1315846777429000,217834300,200
+POST,/api/withdraw,1315846559136000,1315846781617800,222481800,200
+POST,/api/withdraw,1315846556779300,1315846785929400,229150100,200
+POST,/api/withdraw,1315846558098400,1315846789835000,231736600,200
+POST,/api/withdraw,1315846555909000,1315846794302200,238393200,200
+POST,/api/withdraw,1315846555068000,1315846798366100,243298100,200
 ```
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/proxy.stderr.log`
@@ -21306,6 +22485,101 @@ Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
 ```
 
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/proxy-request-timings.csv`
+
+Bytes: 136181. SHA-256: `7809434417abbb807b1b156ffe8d8adcb9df9b87abbc6c54305d01bb4db6a768`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315414254917300,
+    "max": 1315454559159200,
+    "mean": 1315430144278722.8,
+    "p50": 1315430341768900,
+    "p95": 1315437547661220,
+    "p99": 1315454556516704
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315414268714500,
+    "max": 1315454665637400,
+    "mean": 1315430254205956,
+    "p50": 1315430532225000,
+    "p95": 1315437605909740,
+    "p99": 1315454596167816
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3495800,
+    "max": 369926600,
+    "mean": 109927235.50901121,
+    "p50": 99176300,
+    "p95": 234928580,
+    "p99": 284259496
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 401,
+    "mean": 211.73404773502193,
+    "p50": 200,
+    "p95": 400,
+    "p99": 401
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315414254917300,1315414268714500,13797200,200
+POST,/api/login,1315414275518300,1315414339617200,64098900,200
+POST,/api/withdraw,1315414345609200,1315414355410900,9801700,200
+POST,/api/withdraw,1315414360413900,1315414366504400,6090500,200
+POST,/api/withdraw,1315414371084700,1315414377409900,6325200,200
+POST,/api/withdraw,1315414383350400,1315414390732600,7382200,200
+POST,/api/withdraw,1315414395937100,1315414402617400,6680300,200
+POST,/api/withdraw,1315414407993600,1315414415693400,7699800,200
+POST,/api/withdraw,1315414421426600,1315414427829300,6402700,200
+POST,/api/withdraw,1315414432472700,1315414438060700,5588000,200
+POST,/api/withdraw,1315414441903800,1315414446484900,4581100,200
+POST,/api/withdraw,1315414450731400,1315414456656500,5925100,200
+POST,/api/withdraw,1315414461349000,1315414467127400,5778400,200
+POST,/api/withdraw,1315414471196100,1315414477479100,6283000,200
+POST,/api/withdraw,1315414482679900,1315414488012400,5332500,200
+POST,/api/withdraw,1315414492639600,1315414497758800,5119200,200
+POST,/api/withdraw,1315414502956700,1315414508947700,5991000,200
+POST,/api/withdraw,1315414513981000,1315414518596600,4615600,200
+POST,/api/withdraw,1315414521943400,1315414526229700,4286300,200
+... omitted rows ...
+POST,/api/withdraw,1315454556780500,1315454601179700,44399200,200
+POST,/api/withdraw,1315454557059300,1315454604483400,47424100,200
+POST,/api/withdraw,1315454556934500,1315454607502400,50567900,200
+POST,/api/withdraw,1315454557432300,1315454610977600,53545300,200
+POST,/api/withdraw,1315454557557300,1315454614188100,56630800,200
+POST,/api/withdraw,1315454557676900,1315454617360300,59683400,200
+POST,/api/withdraw,1315454557797100,1315454620420700,62623600,200
+POST,/api/withdraw,1315454557187600,1315454623598900,66411300,200
+POST,/api/withdraw,1315454557932200,1315454626864700,68932500,200
+POST,/api/withdraw,1315454557308300,1315454630527400,73219100,200
+POST,/api/withdraw,1315454558047100,1315454633615400,75568300,200
+POST,/api/withdraw,1315454558163300,1315454637037400,78874100,200
+POST,/api/withdraw,1315454558435400,1315454640244300,81808900,200
+POST,/api/withdraw,1315454558551500,1315454643421700,84870200,200
+POST,/api/withdraw,1315454558294700,1315454647106100,88811400,200
+POST,/api/withdraw,1315454558665600,1315454650314700,91649100,200
+POST,/api/withdraw,1315454558798400,1315454653396200,94597800,200
+POST,/api/withdraw,1315454558928800,1315454657056100,98127300,200
+POST,/api/withdraw,1315454559038200,1315454661430300,102392100,200
+POST,/api/withdraw,1315454559159200,1315454665637400,106478200,200
+```
+
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/proxy.stderr.log`
 
 Bytes: 0. SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
@@ -21559,6 +22833,101 @@ Bytes: 84. SHA-256: `3000e93e013446093c968c940c1e5492842dee8fd652d9b213605604715
 ```text
 Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
+```
+
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/proxy-request-timings.csv`
+
+Bytes: 136054. SHA-256: `e0fa9f8b9a9a08649bc1a9286218b8b30e3066a56b66b5ef6c690235a5265e19`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315728884224600,
+    "max": 1315767333871800,
+    "mean": 1315743977307800,
+    "p50": 1315744496452700,
+    "p95": 1315750333644800,
+    "p99": 1315767327480380
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315728899836200,
+    "max": 1315767464285000,
+    "mean": 1315744067438967.5,
+    "p50": 1315744577695900,
+    "p95": 1315750392104780,
+    "p99": 1315767384923092
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 2900100,
+    "max": 238652000,
+    "mean": 90131168.82610813,
+    "p50": 86729200,
+    "p95": 183886900,
+    "p99": 210655536
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 373.5996103263517,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315728884224600,1315728899836200,15611600,200
+POST,/api/login,1315728905613100,1315728962228200,56615100,200
+POST,/api/withdraw,1315728965352900,1315728976413000,11060100,200
+POST,/api/withdraw,1315728980949400,1315728986872600,5923200,200
+POST,/api/withdraw,1315728990483300,1315728996615700,6132400,200
+POST,/api/withdraw,1315729001794200,1315729008038400,6244200,200
+POST,/api/withdraw,1315729011440200,1315729016968900,5528700,200
+POST,/api/withdraw,1315729020315400,1315729025856700,5541300,200
+POST,/api/withdraw,1315729029652800,1315729035699700,6046900,200
+POST,/api/withdraw,1315729039841700,1315729046034600,6192900,200
+POST,/api/withdraw,1315729049358200,1315729066207200,16849000,200
+POST,/api/withdraw,1315729069956300,1315729076274500,6318200,200
+POST,/api/withdraw,1315729079479300,1315729084970400,5491100,200
+POST,/api/withdraw,1315729088427800,1315729094216800,5789000,200
+POST,/api/withdraw,1315729097743200,1315729103659800,5916600,200
+POST,/api/withdraw,1315729107498700,1315729112799500,5300800,200
+POST,/api/withdraw,1315729116331300,1315729121581500,5250200,200
+POST,/api/withdraw,1315729124876100,1315729129267700,4391600,200
+POST,/api/withdraw,1315729132279900,1315729139130600,6850700,200
+... omitted rows ...
+POST,/api/withdraw,1315767327984000,1315767390922900,62938900,200
+POST,/api/withdraw,1315767328281500,1315767394868900,66587400,200
+POST,/api/withdraw,1315767328584900,1315767398227300,69642400,200
+POST,/api/withdraw,1315767328861300,1315767401889900,73028600,200
+POST,/api/withdraw,1315767329153000,1315767405393300,76240300,200
+POST,/api/withdraw,1315767329431800,1315767409115100,79683300,200
+POST,/api/withdraw,1315767329972300,1315767412492800,82520500,200
+POST,/api/withdraw,1315767330267100,1315767415975100,85708000,200
+POST,/api/withdraw,1315767329707100,1315767420162200,90455100,200
+POST,/api/withdraw,1315767330643700,1315767423432600,92788900,200
+POST,/api/withdraw,1315767330965200,1315767427066300,96101100,200
+POST,/api/withdraw,1315767331271300,1315767430808900,99537600,200
+POST,/api/withdraw,1315767331556800,1315767436863600,105306800,200
+POST,/api/withdraw,1315767332966100,1315767442426700,109460600,200
+POST,/api/withdraw,1315767332222500,1315767446231500,114009000,200
+POST,/api/withdraw,1315767333289100,1315767450000300,116711200,200
+POST,/api/withdraw,1315767333871800,1315767453346800,119475000,200
+POST,/api/withdraw,1315767333574500,1315767456526600,122952100,200
+POST,/api/withdraw,1315767332630200,1315767460663200,128033000,200
+POST,/api/withdraw,1315767331897400,1315767464285000,132387600,200
 ```
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/proxy.stderr.log`
@@ -21834,6 +23203,101 @@ Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
 ```
 
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/proxy-request-timings.csv`
+
+Bytes: 135836. SHA-256: `f7b9711974c3334dcf58c7aaa5344a2894a2e1f32e874898d9221f35cee9b5b9`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315573544288200,
+    "max": 1315610896105200,
+    "mean": 1315588002571266.8,
+    "p50": 1315588388041900,
+    "p95": 1315593933052980,
+    "p99": 1315610888914072
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315573571474800,
+    "max": 1315611020609100,
+    "mean": 1315588078346604.5,
+    "p50": 1315588457637500,
+    "p95": 1315593991924340,
+    "p99": 1315610940282208
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3115500,
+    "max": 233147800,
+    "mean": 75775334.53482708,
+    "p50": 73669900,
+    "p95": 151257979.99999997,
+    "p99": 194397144.00000003
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 370.54554310764735,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315573544288200,1315573571474800,27186600,200
+POST,/api/login,1315573578001800,1315573651048400,73046600,200
+POST,/api/withdraw,1315573656682000,1315573665522000,8840000,200
+POST,/api/withdraw,1315573669909500,1315573676402500,6493000,200
+POST,/api/withdraw,1315573680260400,1315573685866500,5606100,200
+POST,/api/withdraw,1315573689188100,1315573694890100,5702000,200
+POST,/api/withdraw,1315573699608500,1315573705103400,5494900,200
+POST,/api/withdraw,1315573708550800,1315573734375000,25824200,200
+POST,/api/withdraw,1315573748801300,1315573766972700,18171400,200
+POST,/api/withdraw,1315573781967600,1315573799438900,17471300,200
+POST,/api/withdraw,1315573815129500,1315573830435000,15305500,200
+POST,/api/withdraw,1315573838363500,1315573850076300,11712800,200
+POST,/api/withdraw,1315573856374300,1315573864504000,8129700,200
+POST,/api/withdraw,1315573870832400,1315573878967300,8134900,200
+POST,/api/withdraw,1315573885320200,1315573903921700,18601500,200
+POST,/api/withdraw,1315573912078400,1315573921383300,9304900,200
+POST,/api/withdraw,1315573927732900,1315573938409000,10676100,200
+POST,/api/withdraw,1315573949147800,1315573961052800,11905000,200
+POST,/api/withdraw,1315573967232200,1315573975798300,8566100,200
+... omitted rows ...
+POST,/api/withdraw,1315610890399900,1315610946040200,55640300,200
+POST,/api/withdraw,1315610889450500,1315610949283500,59833000,200
+POST,/api/withdraw,1315610889726100,1315610952611000,62884900,200
+POST,/api/withdraw,1315610890047400,1315610956115400,66068000,200
+POST,/api/withdraw,1315610890660000,1315610960001300,69341300,200
+POST,/api/withdraw,1315610891359400,1315610963742700,72383300,200
+POST,/api/withdraw,1315610891553300,1315610967244000,75690700,200
+POST,/api/withdraw,1315610892163900,1315610974196200,82032300,200
+POST,/api/withdraw,1315610892735900,1315610977567000,84831100,200
+POST,/api/withdraw,1315610890921500,1315610981127100,90205600,200
+POST,/api/withdraw,1315610891149000,1315610984207500,93058500,200
+POST,/api/withdraw,1315610893162200,1315610987932000,94769800,200
+POST,/api/withdraw,1315610893575800,1315610995325200,101749400,200
+POST,/api/withdraw,1315610893950900,1315611000127000,106176100,200
+POST,/api/withdraw,1315610894384900,1315611003763800,109378900,200
+POST,/api/withdraw,1315610894815000,1315611007243000,112428000,200
+POST,/api/withdraw,1315610895169600,1315611010584500,115414900,200
+POST,/api/withdraw,1315610895491000,1315611013818300,118327300,200
+POST,/api/withdraw,1315610895796800,1315611017111600,121314800,200
+POST,/api/withdraw,1315610896105200,1315611020609100,124503900,200
+```
+
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/proxy.stderr.log`
 
 Bytes: 0. SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
@@ -22105,6 +23569,101 @@ Bytes: 84. SHA-256: `3000e93e013446093c968c940c1e5492842dee8fd652d9b213605604715
 ```text
 Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
+```
+
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/proxy-request-timings.csv`
+
+Bytes: 135924. SHA-256: `d6c57d5c25801b0b9d81b4c9d32d9cd21557691032ddb67a6ee566afe4d185a7`.
+
+Large-result rule applied. The complete result remains on disk.
+
+Total rows: 2054.
+
+Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric columns):
+
+```json
+{
+  "start_ns": {
+    "count": 2053,
+    "min": 1315887664066100,
+    "max": 1315925285452500,
+    "mean": 1315902054980950,
+    "p50": 1315902222249000,
+    "p95": 1315908303002240,
+    "p99": 1315925282622968
+  },
+  "end_ns": {
+    "count": 2053,
+    "min": 1315887683906900,
+    "max": 1315925402762800,
+    "mean": 1315902137310438.2,
+    "p50": 1315902315396500,
+    "p95": 1315908362660400,
+    "p99": 1315925325131140
+  },
+  "duration_ns": {
+    "count": 2053,
+    "min": 3597900,
+    "max": 221355300,
+    "mean": 82329491.57330735,
+    "p50": 77554500,
+    "p95": 175880299.99999994,
+    "p99": 199887816
+  },
+  "http_status": {
+    "count": 2053,
+    "min": 200,
+    "max": 409,
+    "mean": 373.5996103263517,
+    "p50": 409,
+    "p95": 409,
+    "p99": 409
+  }
+}
+```
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315887664066100,1315887683906900,19840800,200
+POST,/api/login,1315887690087800,1315887756564600,66476800,200
+POST,/api/withdraw,1315887759306800,1315887768576500,9269700,200
+POST,/api/withdraw,1315887772041500,1315887782074400,10032900,200
+POST,/api/withdraw,1315887785297700,1315887791509700,6212000,200
+POST,/api/withdraw,1315887794839500,1315887800692200,5852700,200
+POST,/api/withdraw,1315887803587300,1315887809576500,5989200,200
+POST,/api/withdraw,1315887812634500,1315887818271100,5636600,200
+POST,/api/withdraw,1315887821898500,1315887828645000,6746500,200
+POST,/api/withdraw,1315887832248300,1315887838052500,5804200,200
+POST,/api/withdraw,1315887841071900,1315887846223600,5151700,200
+POST,/api/withdraw,1315887849307400,1315887854593100,5285700,200
+POST,/api/withdraw,1315887857421300,1315887872702400,15281100,200
+POST,/api/withdraw,1315887876571100,1315887883041900,6470800,200
+POST,/api/withdraw,1315887886304700,1315887891807400,5502700,200
+POST,/api/withdraw,1315887894959200,1315887900934000,5974800,200
+POST,/api/withdraw,1315887905624500,1315887910852000,5227500,200
+POST,/api/withdraw,1315887914433300,1315887919483100,5049800,200
+POST,/api/withdraw,1315887922901500,1315887928213400,5311900,200
+... omitted rows ...
+POST,/api/withdraw,1315925282701800,1315925330360800,47659000,200
+POST,/api/withdraw,1315925282971500,1315925333875800,50904300,200
+POST,/api/withdraw,1315925283460700,1315925337370800,53910100,200
+POST,/api/withdraw,1315925283231200,1315925341152100,57920900,200
+POST,/api/withdraw,1315925283827200,1315925344476400,60649200,200
+POST,/api/withdraw,1315925283348000,1315925347766000,64418000,200
+POST,/api/withdraw,1315925283578300,1315925351154200,67575900,200
+POST,/api/withdraw,1315925284076400,1315925357900100,73823700,200
+POST,/api/withdraw,1315925284331500,1315925364467500,80136000,200
+POST,/api/withdraw,1315925282837700,1315925367670900,84833200,200
+POST,/api/withdraw,1315925284710900,1315925371621200,86910300,200
+POST,/api/withdraw,1315925284193800,1315925374978400,90784600,200
+POST,/api/withdraw,1315925284893600,1315925378723600,93830000,200
+POST,/api/withdraw,1315925285330700,1315925382076800,96746100,200
+POST,/api/withdraw,1315925285452500,1315925385786700,100334200,200
+POST,/api/withdraw,1315925285200900,1315925389647100,104446200,200
+POST,/api/withdraw,1315925284516300,1315925392846100,108329800,200
+POST,/api/withdraw,1315925283705600,1315925395988800,112283200,200
+POST,/api/withdraw,1315925283952000,1315925399170500,115218500,200
+POST,/api/withdraw,1315925285056200,1315925402762800,117706600,200
 ```
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/proxy.stderr.log`
@@ -22387,6 +23946,168 @@ Bytes: 84. SHA-256: `3000e93e013446093c968c940c1e5492842dee8fd652d9b213605604715
 ```text
 Viz Socket.io server listening on port 3201
 Bank server listening on 127.0.0.1:3200
+```
+
+### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/proxy-request-timings.csv`
+
+Bytes: 10115. SHA-256: `0cf00593bfff0cbd5f12e800a8234d78e7772df4ea2207332d24f0c7e6ded705`.
+
+```csv
+method,path,start_ns,end_ns,duration_ns,http_status
+GET,/api/health,1315926419891500,1315926433878300,13986800,200
+POST,/api/login,1315926439084400,1315926494079500,54995100,200
+POST,/api/withdraw,1315926497950900,1315926506550000,8599100,200
+POST,/api/withdraw,1315926510013800,1315926515746700,5732900,200
+POST,/api/withdraw,1315926519234000,1315926525393200,6159200,200
+POST,/api/withdraw,1315926528816400,1315926535114700,6298300,200
+POST,/api/withdraw,1315926538570700,1315926544270600,5699900,200
+POST,/api/withdraw,1315926547334400,1315926552924500,5590100,200
+POST,/api/withdraw,1315926557315500,1315926562776400,5460900,200
+POST,/api/withdraw,1315926565713200,1315926571132600,5419400,200
+POST,/api/withdraw,1315926574166500,1315926579613400,5446900,200
+POST,/api/withdraw,1315926582954700,1315926588475400,5520700,200
+POST,/api/withdraw,1315926591372900,1315926596316600,4943700,200
+POST,/api/withdraw,1315926599783000,1315926605086600,5303600,200
+POST,/api/withdraw,1315926608553300,1315926613769500,5216200,200
+POST,/api/withdraw,1315926616848900,1315926622102700,5253800,200
+POST,/api/withdraw,1315926625132800,1315926635777300,10644500,200
+POST,/api/withdraw,1315926640323600,1315926646772700,6449100,200
+POST,/api/withdraw,1315926649801900,1315926654900200,5098300,200
+POST,/api/withdraw,1315926658156900,1315926663605400,5448500,200
+POST,/api/withdraw,1315926666754500,1315926672212800,5458300,200
+POST,/api/withdraw,1315926675577500,1315926681115700,5538200,200
+POST,/api/withdraw,1315926684261900,1315926689750600,5488700,200
+POST,/api/withdraw,1315926693855300,1315926699067800,5212500,200
+POST,/api/withdraw,1315926702325200,1315926707518400,5193200,200
+POST,/api/withdraw,1315926710919900,1315926716430700,5510800,200
+POST,/api/withdraw,1315926719630400,1315926725408700,5778300,200
+POST,/api/withdraw,1315926729179800,1315926734085300,4905500,200
+POST,/api/withdraw,1315926737277200,1315926742562900,5285700,200
+POST,/api/withdraw,1315926745466100,1315926750280200,4814100,200
+POST,/api/withdraw,1315926753150000,1315926757957900,4807900,200
+POST,/api/withdraw,1315926761224200,1315926766689400,5465200,200
+POST,/api/login,1315926769939000,1315926813689300,43750300,200
+POST,/api/withdraw,1315926815546900,1315926820459700,4912800,200
+POST,/api/withdraw,1315926823535200,1315926828866000,5330800,200
+POST,/api/withdraw,1315926832150400,1315926838482800,6332400,200
+POST,/api/withdraw,1315926841402500,1315926846413600,5011100,200
+POST,/api/withdraw,1315926849778500,1315926854821300,5042800,200
+POST,/api/withdraw,1315926858198400,1315926863270900,5072500,200
+POST,/api/withdraw,1315926866556800,1315926872004500,5447700,200
+POST,/api/withdraw,1315926875080200,1315926880200200,5120000,200
+POST,/api/withdraw,1315926883195500,1315926888061400,4865900,200
+POST,/api/withdraw,1315926891348500,1315926896180500,4832000,200
+POST,/api/withdraw,1315926900080800,1315926905054200,4973400,200
+POST,/api/withdraw,1315926908081000,1315926913185500,5104500,200
+POST,/api/withdraw,1315926916162000,1315926921266100,5104100,200
+POST,/api/withdraw,1315926924494800,1315926929632300,5137500,200
+POST,/api/withdraw,1315926932597600,1315926937352800,4755200,200
+POST,/api/withdraw,1315926940823200,1315926946038900,5215700,200
+POST,/api/withdraw,1315926949004200,1315926953814600,4810400,200
+POST,/api/withdraw,1315926956782500,1315926962825000,6042500,200
+POST,/api/withdraw,1315926966070100,1315926972601900,6531800,200
+POST,/api/withdraw,1315926977034100,1315926981525200,4491100,200
+POST,/api/withdraw,1315926984579300,1315926989164400,4585100,200
+POST,/api/withdraw,1315926992132900,1315926997170600,5037700,200
+POST,/api/withdraw,1315927000224400,1315927004975600,4751200,200
+POST,/api/withdraw,1315927007999200,1315927013011100,5011900,200
+POST,/api/withdraw,1315927015952900,1315927020974100,5021200,200
+POST,/api/withdraw,1315927024137100,1315927028971100,4834000,200
+POST,/api/withdraw,1315927032576900,1315927037306800,4729900,200
+POST,/api/withdraw,1315927040378800,1315927045239600,4860800,200
+POST,/api/withdraw,1315927048351600,1315927053786100,5434500,200
+POST,/api/withdraw,1315927056878000,1315927062218700,5340700,200
+POST,/api/withdraw,1315987104773500,1315987130103900,25330400,409
+POST,/api/withdraw,1315987106503400,1315987133772100,27268700,409
+POST,/api/withdraw,1315987107578600,1315987137246300,29667700,409
+POST,/api/withdraw,1315987108635100,1315987141678300,33043200,409
+POST,/api/withdraw,1315987111836700,1315987144349800,32513100,409
+POST,/api/withdraw,1315987112553000,1315987146923700,34370700,409
+POST,/api/withdraw,1315987110454300,1315987149891200,39436900,409
+POST,/api/withdraw,1315987111131600,1315987152619900,41488300,409
+POST,/api/withdraw,1315987109733700,1315987155619400,45885700,409
+POST,/api/withdraw,1315987115958200,1315987158367600,42409400,409
+POST,/api/withdraw,1315987113262200,1315987160963200,47701000,409
+POST,/api/withdraw,1315987116707300,1315987163137900,46430600,409
+POST,/api/withdraw,1315987114038900,1315987165319100,51280200,409
+POST,/api/withdraw,1315987115124000,1315987167515700,52391700,409
+POST,/api/withdraw,1315987118017700,1315987170251400,52233700,409
+POST,/api/withdraw,1315987117378100,1315987172439200,55061100,409
+POST,/api/withdraw,1315987120631700,1315987174812400,54180700,409
+POST,/api/withdraw,1315987118618500,1315987177099000,58480500,409
+POST,/api/withdraw,1315987121210000,1315987179330000,58120000,409
+POST,/api/withdraw,1315987119325800,1315987182092500,62766700,409
+POST,/api/withdraw,1315987119922300,1315987184465000,64542700,409
+POST,/api/withdraw,1315987121848500,1315987187138400,65289900,409
+POST,/api/withdraw,1315987124184000,1315987189543100,65359100,409
+POST,/api/withdraw,1315987122460800,1315987191841700,69380900,409
+POST,/api/withdraw,1315987125545300,1315987194209200,68663900,409
+POST,/api/withdraw,1315987126199100,1315987196490600,70291500,409
+POST,/api/withdraw,1315987124883800,1315987198926600,74042800,409
+POST,/api/withdraw,1315987123476400,1315987201351300,77874900,409
+POST,/api/withdraw,1315987127455400,1315987205283100,77827700,409
+POST,/api/withdraw,1315987128199000,1315987207667200,79468200,409
+POST,/api/login,1315987210869000,1315987257851500,46982500,200
+POST,/api/withdraw,1315987259652900,1315987267380900,7728000,200
+POST,/api/withdraw,1315987270569700,1315987275002100,4432400,200
+POST,/api/withdraw,1315987278124500,1315987282976900,4852400,200
+POST,/api/withdraw,1315987286424900,1315987290720700,4295800,200
+POST,/api/withdraw,1315987293920900,1315987299191600,5270700,200
+POST,/api/withdraw,1315987302281800,1315987306450300,4168500,200
+POST,/api/withdraw,1315987309834400,1315987315796600,5962200,200
+POST,/api/withdraw,1315987319843800,1315987324766100,4922300,200
+POST,/api/withdraw,1315987328087100,1315987332663000,4575900,200
+POST,/api/withdraw,1315987335873300,1315987340353400,4480100,200
+POST,/api/withdraw,1315987343765800,1315987348236400,4470600,200
+POST,/api/withdraw,1315987351481200,1315987355755600,4274400,200
+POST,/api/withdraw,1315987359012200,1315987363142500,4130300,200
+POST,/api/withdraw,1315987366272400,1315987371052200,4779800,200
+POST,/api/withdraw,1315987374251200,1315987378512100,4260900,200
+POST,/api/withdraw,1315987381812400,1315987386123700,4311300,200
+POST,/api/withdraw,1315987389520400,1315987393751000,4230600,200
+POST,/api/withdraw,1315987397025300,1315987401500300,4475000,200
+POST,/api/withdraw,1315987405219300,1315987409767600,4548300,200
+POST,/api/withdraw,1315987412976700,1315987418509300,5532600,200
+POST,/api/withdraw,1315987422840800,1315987428949200,6108400,200
+POST,/api/withdraw,1315987433148000,1315987437297800,4149800,200
+POST,/api/withdraw,1315987440408500,1315987444651600,4243100,200
+POST,/api/withdraw,1315987447869000,1315987452420600,4551600,200
+POST,/api/withdraw,1315987456295000,1315987460631900,4336900,200
+POST,/api/withdraw,1315987463924600,1315987468250800,4326200,200
+POST,/api/withdraw,1315987471904100,1315987476301800,4397700,200
+POST,/api/withdraw,1315987479567400,1315987483936500,4369100,200
+POST,/api/withdraw,1315987487207200,1315987495164800,7957600,200
+POST,/api/withdraw,1315987498860600,1315987504417900,5557300,200
+POST,/api/withdraw,1316288540816900,1316288564981700,24164800,400
+POST,/api/withdraw,1316288542970600,1316288568546400,25575800,400
+POST,/api/withdraw,1316288543773500,1316288572963200,29189700,400
+POST,/api/withdraw,1316288544454900,1316288578025400,33570500,400
+POST,/api/withdraw,1316288545122300,1316288580967500,35845200,400
+POST,/api/withdraw,1316288547064800,1316288584043800,36979000,400
+POST,/api/withdraw,1316288548332600,1316288586781300,38448700,400
+POST,/api/withdraw,1316288546385500,1316288591169100,44783600,400
+POST,/api/withdraw,1316288547781000,1316288594964700,47183700,400
+POST,/api/withdraw,1316288550182700,1316288598363100,48180400,400
+POST,/api/withdraw,1316288545771900,1316288601659300,55887400,400
+POST,/api/withdraw,1316288551531000,1316288605313900,53782900,400
+POST,/api/withdraw,1316288549559600,1316288608622600,59063000,400
+POST,/api/withdraw,1316288548861400,1316288611142800,62281400,400
+POST,/api/withdraw,1316288550914100,1316288613909700,62995600,400
+POST,/api/withdraw,1316288552221700,1316288617121500,64899800,400
+POST,/api/withdraw,1316288553050100,1316288619869400,66819300,400
+POST,/api/withdraw,1316288553749600,1316288622582900,68833300,400
+POST,/api/withdraw,1316288554622400,1316288625448800,70826400,400
+POST,/api/withdraw,1316288559405100,1316288627807500,68402400,400
+POST,/api/withdraw,1316288559938800,1316288630310900,70372100,400
+POST,/api/withdraw,1316288558408700,1316288632924300,74515600,400
+POST,/api/withdraw,1316288561068900,1316288636375300,75306400,400
+POST,/api/withdraw,1316288561626200,1316288640925600,79299400,400
+POST,/api/withdraw,1316288562208800,1316288644813300,82604500,400
+POST,/api/withdraw,1316288562911000,1316288647341300,84430300,400
+POST,/api/withdraw,1316288557190000,1316288650364400,93174400,400
+POST,/api/withdraw,1316288563442300,1316288652940500,89498200,400
+POST,/api/withdraw,1316288558954600,1316288655778300,96823700,400
+POST,/api/withdraw,1316288560462900,1316288658957400,98494500,400
 ```
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/proxy.stderr.log`
@@ -22736,7 +24457,7 @@ Bank server listening on 127.0.0.1:3200
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/run.json`
 
-Bytes: 80343. SHA-256: `3699885aeca77bb8b2d61500796d0de914dec0b73f3950a59bfe4dfa1545ebef`.
+Bytes: 81941. SHA-256: `0bc6a882ba903041b6613aa6cdc76d42628d6ccd5cd4c230762690898dc300d1`.
 
 Large-result rule applied. The complete result remains on disk.
 
@@ -22780,22 +24501,22 @@ Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric colu
     "waits": {
       "S2": 60,
 ... omitted rows ...
-      "oracle_unauthorized_debit_amount_delta": 0,
+      "oracle_unauthorized_debit_amount_delta": "0",
       "oracle_integrity_holds": true
     },
     {
       "config_id": "H1T1N1R1-DEFAULT",
       "scenario_id": "S4_default_window_301s",
-      "attempts": 30,
-      "http_accepted_count": 0,
-      "debited_count": 0,
-      "attack_success_rate": 0,
-      "wilson95_low": null,
-      "wilson95_high": null,
+      "attempts": "30",
+      "http_accepted_count": "0",
+      "debited_count": "0",
+      "attack_success_rate": "0",
+      "wilson95_low": "",
+      "wilson95_high": "",
       "blocking_reason_histogram": "{\"TIMESTAMP_FAIL\":30}",
-      "oracle_duplicate_debit_count_delta": 0,
-      "oracle_duplicate_debit_amount_delta": 0,
-      "oracle_unauthorized_debit_amount_delta": 0,
+      "oracle_duplicate_debit_count_delta": "0",
+      "oracle_duplicate_debit_amount_delta": "0",
+      "oracle_unauthorized_debit_amount_delta": "0",
       "oracle_integrity_holds": true
     }
   ]
@@ -22804,7 +24525,7 @@ Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric colu
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.csv`
 
-Bytes: 10318. SHA-256: `2c4c673adfe4ab283ae556b3e26eb7e2e8cfba23b5331c73d4ca494aca2dcc25`.
+Bytes: 10288. SHA-256: `00deed725995a103e866a6ba4e25f872cadebf315d4285c97efc6decc97237b4`.
 
 ```csv
 config_id,scenario_id,attempts,http_accepted_count,debited_count,attack_success_rate,wilson95_low,wilson95_high,blocking_reason_histogram,oracle_duplicate_debit_count_delta,oracle_duplicate_debit_amount_delta,oracle_unauthorized_debit_amount_delta,oracle_integrity_holds
@@ -22816,7 +24537,7 @@ H0T0N0R0,S4,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H0T0N0R0,S5,1500,1500,1500,1,,,"{""ACCEPTED"":1500}",1500,1500,0,false
 H0T0N0R0,S6,30,30,30,1,,,"{""ACCEPTED"":30}",30,60,60,false
 H0T0N0R0,S7,30,30,30,1,,,"{""ACCEPTED"":30}",15,15,15,false
-H0T0N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T0N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T0N0R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T0N0R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T0N0R0,S1,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
@@ -22824,69 +24545,69 @@ H1T0N0R0,S2,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T0N0R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T0N0R0,S4,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T0N0R0,S5,1500,1500,1500,1,,,"{""ACCEPTED"":1500}",1500,1500,0,false
-H1T0N0R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T0N0R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T0N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H1T0N0R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T0N0R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T0N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H1T0N0R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H0T1N0R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H0T1N0R0,S1,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H0T1N0R0,S2,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H0T1N0R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H0T1N0R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,false
+H0T1N0R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
 H0T1N0R0,S5,1500,1500,1500,1,,,"{""ACCEPTED"":1500}",1500,1500,0,false
 H0T1N0R0,S6,30,30,30,1,,,"{""ACCEPTED"":30}",30,60,60,false
 H0T1N0R0,S7,30,30,30,1,,,"{""ACCEPTED"":30}",15,15,15,false
-H0T1N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T1N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T1N0R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T1N0R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T1N0R0,S1,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T1N0R0,S2,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T1N0R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H1T1N0R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,false
+H1T1N0R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
 H1T1N0R0,S5,1500,1500,1500,1,,,"{""ACCEPTED"":1500}",1500,1500,0,false
-H1T1N0R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T1N0R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T1N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H1T1N0R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T1N0R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T1N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H1T1N0R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H0T0N1R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H0T0N1R0,S1,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T0N1R0,S2,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T0N1R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H0T0N1R0,S4,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,false
-H0T0N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,false
-H0T0N1R0,S6,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,false
+H0T0N1R0,S4,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
+H0T0N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,true
+H0T0N1R0,S6,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T0N1R0,S7,30,15,15,0.5,0.33154125640533766,0.6684587435946623,"{""NONCE_FAIL"":15,""ACCEPTED"":15}",15,15,0,false
-H0T0N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T0N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T0N1R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T0N1R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T0N1R0,S1,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H1T0N1R0,S2,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H1T0N1R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H1T0N1R0,S4,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,false
-H1T0N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,false
-H1T0N1R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T0N1R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T0N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H1T0N1R0,S4,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
+H1T0N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,true
+H1T0N1R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T0N1R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T0N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H1T0N1R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H0T1N1R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H0T1N1R0,S1,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T1N1R0,S2,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T1N1R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H0T1N1R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,false
-H0T1N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,false
-H0T1N1R0,S6,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,false
+H0T1N1R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
+H0T1N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,true
+H0T1N1R0,S6,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T1N1R0,S7,30,15,15,0.5,0.33154125640533766,0.6684587435946623,"{""NONCE_FAIL"":15,""ACCEPTED"":15}",15,15,0,false
-H0T1N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T1N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T1N1R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T1N1R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T1N1R0,S1,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H1T1N1R0,S2,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H1T1N1R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H1T1N1R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,false
-H1T1N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,false
-H1T1N1R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T1N1R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T1N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H1T1N1R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
+H1T1N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,true
+H1T1N1R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T1N1R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T1N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H1T1N1R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H0T0N0R1,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H0T0N0R1,S1,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
@@ -22896,7 +24617,7 @@ H0T0N0R1,S4,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
 H0T0N0R1,S5,1500,0,0,0,,,"{""ALREADY_PROCESSED"":1500}",0,0,0,true
 H0T0N0R1,S6,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
 H0T0N0R1,S7,30,15,15,0.5,0.33154125640533766,0.6684587435946623,"{""ACCEPTED"":15,""ALREADY_PROCESSED"":15}",0,0,15,false
-H0T0N0R1,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T0N0R1,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T0N0R1,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T0N0R1,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T0N0R1,S1,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
@@ -22916,7 +24637,7 @@ H0T1N0R1,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
 H0T1N0R1,S5,1500,0,0,0,,,"{""ALREADY_PROCESSED"":1500}",0,0,0,true
 H0T1N0R1,S6,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
 H0T1N0R1,S7,30,15,15,0.5,0.33154125640533766,0.6684587435946623,"{""ACCEPTED"":15,""ALREADY_PROCESSED"":15}",0,0,15,false
-H0T1N0R1,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T1N0R1,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T1N0R1,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T1N0R1,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T1N0R1,S1,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
@@ -22975,166 +24696,166 @@ H1T1N1R1-DEFAULT,S4_default_window_301s,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0
 
 ### `experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.tex`
 
-Bytes: 5469. SHA-256: `83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf`.
+Bytes: 8903. SHA-256: `7419497ae1f9ff5b1242bc6f3c4a02d086971e6e272b42632ab812a712710f17`.
 
 ```text
-\begin{tabular}{llrrr}
+\begin{tabular}{llrrrrl}
 \toprule
-Configuration & Scenario & Attempts & Debits & Success rate \\
+Configuration & Scenario & Attempts & Accepted & Debits & Success rate & Wilson 95\% CI \\
 \midrule
-H0T0N0R0 & S1 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S2 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S3 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S4 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S5 & 1500 & 1500 & 100.00\% \\
-H0T0N0R0 & S6 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S7 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S8 & 30 & 0 & 0.00\% \\
-H0T0N0R0 & S9 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S1 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S2 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S3 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S4 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S5 & 1500 & 1500 & 100.00\% \\
-H1T0N0R0 & S6 & 30 & 0 & 0.00\% \\
-H1T0N0R0 & S7 & 30 & 0 & 0.00\% \\
-H1T0N0R0 & S8 & 30 & 0 & 0.00\% \\
-H1T0N0R0 & S9 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S1 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S2 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S3 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S4 & 30 & 0 & 0.00\% \\
-H0T1N0R0 & S5 & 1500 & 1500 & 100.00\% \\
-H0T1N0R0 & S6 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S7 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S8 & 30 & 0 & 0.00\% \\
-H0T1N0R0 & S9 & 30 & 30 & 100.00\% \\
-H1T1N0R0 & S1 & 30 & 30 & 100.00\% \\
-H1T1N0R0 & S2 & 30 & 30 & 100.00\% \\
-H1T1N0R0 & S3 & 30 & 30 & 100.00\% \\
-H1T1N0R0 & S4 & 30 & 0 & 0.00\% \\
-H1T1N0R0 & S5 & 1500 & 1500 & 100.00\% \\
-H1T1N0R0 & S6 & 30 & 0 & 0.00\% \\
-H1T1N0R0 & S7 & 30 & 0 & 0.00\% \\
-H1T1N0R0 & S8 & 30 & 0 & 0.00\% \\
-H1T1N0R0 & S9 & 30 & 30 & 100.00\% \\
-H0T0N1R0 & S1 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S2 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S3 & 30 & 30 & 100.00\% \\
-H0T0N1R0 & S4 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S5 & 1500 & 0 & 0.00\% \\
-H0T0N1R0 & S6 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S7 & 30 & 15 & 50.00\% \\
-H0T0N1R0 & S8 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S9 & 30 & 30 & 100.00\% \\
-H1T0N1R0 & S1 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S2 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S3 & 30 & 30 & 100.00\% \\
-H1T0N1R0 & S4 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S5 & 1500 & 0 & 0.00\% \\
-H1T0N1R0 & S6 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S7 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S8 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S9 & 30 & 30 & 100.00\% \\
-H0T1N1R0 & S1 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S2 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S3 & 30 & 30 & 100.00\% \\
-H0T1N1R0 & S4 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S5 & 1500 & 0 & 0.00\% \\
-H0T1N1R0 & S6 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S7 & 30 & 15 & 50.00\% \\
-H0T1N1R0 & S8 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S9 & 30 & 30 & 100.00\% \\
-H1T1N1R0 & S1 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S2 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S3 & 30 & 30 & 100.00\% \\
-H1T1N1R0 & S4 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S5 & 1500 & 0 & 0.00\% \\
-H1T1N1R0 & S6 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S7 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S8 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S9 & 30 & 30 & 100.00\% \\
-H0T0N0R1 & S1 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S2 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S3 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S4 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S5 & 1500 & 0 & 0.00\% \\
-H0T0N0R1 & S6 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S7 & 30 & 15 & 50.00\% \\
-H0T0N0R1 & S8 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S9 & 30 & 30 & 100.00\% \\
-H1T0N0R1 & S1 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S2 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S3 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S4 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S5 & 1500 & 0 & 0.00\% \\
-H1T0N0R1 & S6 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S7 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S8 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S9 & 30 & 30 & 100.00\% \\
-H0T1N0R1 & S1 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S2 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S3 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S4 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S5 & 1500 & 0 & 0.00\% \\
-H0T1N0R1 & S6 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S7 & 30 & 15 & 50.00\% \\
-H0T1N0R1 & S8 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S9 & 30 & 30 & 100.00\% \\
-H1T1N0R1 & S1 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S2 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S3 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S4 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S5 & 1500 & 0 & 0.00\% \\
-H1T1N0R1 & S6 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S7 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S8 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S9 & 30 & 30 & 100.00\% \\
-H0T0N1R1 & S1 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S2 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S3 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S4 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S5 & 1500 & 0 & 0.00\% \\
-H0T0N1R1 & S6 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S7 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S8 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S9 & 30 & 30 & 100.00\% \\
-H1T0N1R1 & S1 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S2 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S3 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S4 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S5 & 1500 & 0 & 0.00\% \\
-H1T0N1R1 & S6 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S7 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S8 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S9 & 30 & 30 & 100.00\% \\
-H0T1N1R1 & S1 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S2 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S3 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S4 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S5 & 1500 & 0 & 0.00\% \\
-H0T1N1R1 & S6 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S7 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S8 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S9 & 30 & 30 & 100.00\% \\
-H1T1N1R1 & S1 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S2 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S3 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S4 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S5 & 1500 & 0 & 0.00\% \\
-H1T1N1R1 & S6 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S7 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S8 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S9 & 30 & 30 & 100.00\% \\
-H1T1N1R1-DEFAULT & S2_default_window_60s & 30 & 0 & 0.00\% \\
-H1T1N1R1-DEFAULT & S4_default_window_301s & 30 & 0 & 0.00\% \\
+H0T0N0R0 & S1 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S2 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S4 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S5 & 1500 & 1500 & 1500 & 100.00\% & constant outcome \\
+H0T0N0R0 & S6 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S7 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S1 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S2 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S4 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S5 & 1500 & 1500 & 1500 & 100.00\% & constant outcome \\
+H1T0N0R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R0 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S1 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S2 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R0 & S5 & 1500 & 1500 & 1500 & 100.00\% & constant outcome \\
+H0T1N0R0 & S6 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S7 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R0 & S1 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R0 & S2 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R0 & S5 & 1500 & 1500 & 1500 & 100.00\% & constant outcome \\
+H1T1N0R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R0 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N1R0 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N1R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S7 & 30 & 15 & 15 & 50.00\% & 0.3315--0.6685 \\
+H0T0N1R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N1R0 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N1R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N1R0 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N1R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S7 & 30 & 15 & 15 & 50.00\% & 0.3315--0.6685 \\
+H0T1N1R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N1R0 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N1R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S7 & 30 & 15 & 15 & 50.00\% & 0.3315--0.6685 \\
+H0T0N0R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S7 & 30 & 15 & 15 & 50.00\% & 0.3315--0.6685 \\
+H0T1N0R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N1R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N1R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N1R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N1R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N1R1-DEFAULT & S2_default_window_60s & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1-DEFAULT & S4_default_window_301s & 30 & 0 & 0 & 0.00\% & constant outcome \\
 \bottomrule
 \end{tabular}
 ```
 
 ### `experiments/results/e1-sqlite-final/run.json`
 
-Bytes: 80343. SHA-256: `3699885aeca77bb8b2d61500796d0de914dec0b73f3950a59bfe4dfa1545ebef`.
+Bytes: 81941. SHA-256: `0bc6a882ba903041b6613aa6cdc76d42628d6ccd5cd4c230762690898dc300d1`.
 
 Large-result rule applied. The complete result remains on disk.
 
@@ -23178,22 +24899,22 @@ Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric colu
     "waits": {
       "S2": 60,
 ... omitted rows ...
-      "oracle_unauthorized_debit_amount_delta": 0,
+      "oracle_unauthorized_debit_amount_delta": "0",
       "oracle_integrity_holds": true
     },
     {
       "config_id": "H1T1N1R1-DEFAULT",
       "scenario_id": "S4_default_window_301s",
-      "attempts": 30,
-      "http_accepted_count": 0,
-      "debited_count": 0,
-      "attack_success_rate": 0,
-      "wilson95_low": null,
-      "wilson95_high": null,
+      "attempts": "30",
+      "http_accepted_count": "0",
+      "debited_count": "0",
+      "attack_success_rate": "0",
+      "wilson95_low": "",
+      "wilson95_high": "",
       "blocking_reason_histogram": "{\"TIMESTAMP_FAIL\":30}",
-      "oracle_duplicate_debit_count_delta": 0,
-      "oracle_duplicate_debit_amount_delta": 0,
-      "oracle_unauthorized_debit_amount_delta": 0,
+      "oracle_duplicate_debit_count_delta": "0",
+      "oracle_duplicate_debit_amount_delta": "0",
+      "oracle_unauthorized_debit_amount_delta": "0",
       "oracle_integrity_holds": true
     }
   ]
@@ -23202,7 +24923,7 @@ Aggregate statistics (counts, min, max, mean, p50, p95, and p99 for numeric colu
 
 ### `experiments/results/e1-sqlite-final/summary.csv`
 
-Bytes: 10318. SHA-256: `2c4c673adfe4ab283ae556b3e26eb7e2e8cfba23b5331c73d4ca494aca2dcc25`.
+Bytes: 10288. SHA-256: `00deed725995a103e866a6ba4e25f872cadebf315d4285c97efc6decc97237b4`.
 
 ```csv
 config_id,scenario_id,attempts,http_accepted_count,debited_count,attack_success_rate,wilson95_low,wilson95_high,blocking_reason_histogram,oracle_duplicate_debit_count_delta,oracle_duplicate_debit_amount_delta,oracle_unauthorized_debit_amount_delta,oracle_integrity_holds
@@ -23214,7 +24935,7 @@ H0T0N0R0,S4,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H0T0N0R0,S5,1500,1500,1500,1,,,"{""ACCEPTED"":1500}",1500,1500,0,false
 H0T0N0R0,S6,30,30,30,1,,,"{""ACCEPTED"":30}",30,60,60,false
 H0T0N0R0,S7,30,30,30,1,,,"{""ACCEPTED"":30}",15,15,15,false
-H0T0N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T0N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T0N0R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T0N0R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T0N0R0,S1,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
@@ -23222,69 +24943,69 @@ H1T0N0R0,S2,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T0N0R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T0N0R0,S4,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T0N0R0,S5,1500,1500,1500,1,,,"{""ACCEPTED"":1500}",1500,1500,0,false
-H1T0N0R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T0N0R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T0N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H1T0N0R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T0N0R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T0N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H1T0N0R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H0T1N0R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H0T1N0R0,S1,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H0T1N0R0,S2,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H0T1N0R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H0T1N0R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,false
+H0T1N0R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
 H0T1N0R0,S5,1500,1500,1500,1,,,"{""ACCEPTED"":1500}",1500,1500,0,false
 H0T1N0R0,S6,30,30,30,1,,,"{""ACCEPTED"":30}",30,60,60,false
 H0T1N0R0,S7,30,30,30,1,,,"{""ACCEPTED"":30}",15,15,15,false
-H0T1N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T1N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T1N0R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T1N0R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T1N0R0,S1,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T1N0R0,S2,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
 H1T1N0R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H1T1N0R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,false
+H1T1N0R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
 H1T1N0R0,S5,1500,1500,1500,1,,,"{""ACCEPTED"":1500}",1500,1500,0,false
-H1T1N0R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T1N0R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T1N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H1T1N0R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T1N0R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T1N0R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H1T1N0R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H0T0N1R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H0T0N1R0,S1,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T0N1R0,S2,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T0N1R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H0T0N1R0,S4,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,false
-H0T0N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,false
-H0T0N1R0,S6,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,false
+H0T0N1R0,S4,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
+H0T0N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,true
+H0T0N1R0,S6,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T0N1R0,S7,30,15,15,0.5,0.33154125640533766,0.6684587435946623,"{""NONCE_FAIL"":15,""ACCEPTED"":15}",15,15,0,false
-H0T0N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T0N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T0N1R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T0N1R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T0N1R0,S1,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H1T0N1R0,S2,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H1T0N1R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H1T0N1R0,S4,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,false
-H1T0N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,false
-H1T0N1R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T0N1R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T0N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H1T0N1R0,S4,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
+H1T0N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,true
+H1T0N1R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T0N1R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T0N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H1T0N1R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H0T1N1R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H0T1N1R0,S1,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T1N1R0,S2,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T1N1R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H0T1N1R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,false
-H0T1N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,false
-H0T1N1R0,S6,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,false
+H0T1N1R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
+H0T1N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,true
+H0T1N1R0,S6,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H0T1N1R0,S7,30,15,15,0.5,0.33154125640533766,0.6684587435946623,"{""NONCE_FAIL"":15,""ACCEPTED"":15}",15,15,0,false
-H0T1N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T1N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T1N1R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T1N1R0,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T1N1R0,S1,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H1T1N1R0,S2,30,0,0,0,,,"{""NONCE_FAIL"":30}",0,0,0,true
 H1T1N1R0,S3,30,30,30,1,,,"{""ACCEPTED"":30}",30,30,0,false
-H1T1N1R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,false
-H1T1N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,false
-H1T1N1R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T1N1R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,false
-H1T1N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H1T1N1R0,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
+H1T1N1R0,S5,1500,0,0,0,,,"{""NONCE_FAIL"":1500}",0,0,0,true
+H1T1N1R0,S6,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T1N1R0,S7,30,0,0,0,,,"{""SIGNATURE_FAIL"":30}",0,0,0,true
+H1T1N1R0,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H1T1N1R0,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H0T0N0R1,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H0T0N0R1,S1,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
@@ -23294,7 +25015,7 @@ H0T0N0R1,S4,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
 H0T0N0R1,S5,1500,0,0,0,,,"{""ALREADY_PROCESSED"":1500}",0,0,0,true
 H0T0N0R1,S6,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
 H0T0N0R1,S7,30,15,15,0.5,0.33154125640533766,0.6684587435946623,"{""ACCEPTED"":15,""ALREADY_PROCESSED"":15}",0,0,15,false
-H0T0N0R1,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T0N0R1,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T0N0R1,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T0N0R1,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T0N0R1,S1,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
@@ -23314,7 +25035,7 @@ H0T1N0R1,S4,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0,0,true
 H0T1N0R1,S5,1500,0,0,0,,,"{""ALREADY_PROCESSED"":1500}",0,0,0,true
 H0T1N0R1,S6,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
 H0T1N0R1,S7,30,15,15,0.5,0.33154125640533766,0.6684587435946623,"{""ACCEPTED"":15,""ALREADY_PROCESSED"":15}",0,0,15,false
-H0T1N0R1,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,false
+H0T1N0R1,S8,30,0,0,0,,,"{""SESSION_INVALID"":30}",0,0,0,true
 H0T1N0R1,S9,30,30,30,1,,,"{""ACCEPTED"":30}",0,0,30,false
 H1T1N0R1,LEGITIMATE_CONTROL,30,30,30,,,,{},0,0,0,true
 H1T1N0R1,S1,30,0,0,0,,,"{""ALREADY_PROCESSED"":30}",0,0,0,true
@@ -23373,159 +25094,159 @@ H1T1N1R1-DEFAULT,S4_default_window_301s,30,0,0,0,,,"{""TIMESTAMP_FAIL"":30}",0,0
 
 ### `experiments/results/e1-sqlite-final/summary.tex`
 
-Bytes: 5469. SHA-256: `83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf`.
+Bytes: 8903. SHA-256: `7419497ae1f9ff5b1242bc6f3c4a02d086971e6e272b42632ab812a712710f17`.
 
 ```text
-\begin{tabular}{llrrr}
+\begin{tabular}{llrrrrl}
 \toprule
-Configuration & Scenario & Attempts & Debits & Success rate \\
+Configuration & Scenario & Attempts & Accepted & Debits & Success rate & Wilson 95\% CI \\
 \midrule
-H0T0N0R0 & S1 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S2 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S3 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S4 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S5 & 1500 & 1500 & 100.00\% \\
-H0T0N0R0 & S6 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S7 & 30 & 30 & 100.00\% \\
-H0T0N0R0 & S8 & 30 & 0 & 0.00\% \\
-H0T0N0R0 & S9 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S1 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S2 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S3 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S4 & 30 & 30 & 100.00\% \\
-H1T0N0R0 & S5 & 1500 & 1500 & 100.00\% \\
-H1T0N0R0 & S6 & 30 & 0 & 0.00\% \\
-H1T0N0R0 & S7 & 30 & 0 & 0.00\% \\
-H1T0N0R0 & S8 & 30 & 0 & 0.00\% \\
-H1T0N0R0 & S9 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S1 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S2 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S3 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S4 & 30 & 0 & 0.00\% \\
-H0T1N0R0 & S5 & 1500 & 1500 & 100.00\% \\
-H0T1N0R0 & S6 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S7 & 30 & 30 & 100.00\% \\
-H0T1N0R0 & S8 & 30 & 0 & 0.00\% \\
-H0T1N0R0 & S9 & 30 & 30 & 100.00\% \\
-H1T1N0R0 & S1 & 30 & 30 & 100.00\% \\
-H1T1N0R0 & S2 & 30 & 30 & 100.00\% \\
-H1T1N0R0 & S3 & 30 & 30 & 100.00\% \\
-H1T1N0R0 & S4 & 30 & 0 & 0.00\% \\
-H1T1N0R0 & S5 & 1500 & 1500 & 100.00\% \\
-H1T1N0R0 & S6 & 30 & 0 & 0.00\% \\
-H1T1N0R0 & S7 & 30 & 0 & 0.00\% \\
-H1T1N0R0 & S8 & 30 & 0 & 0.00\% \\
-H1T1N0R0 & S9 & 30 & 30 & 100.00\% \\
-H0T0N1R0 & S1 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S2 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S3 & 30 & 30 & 100.00\% \\
-H0T0N1R0 & S4 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S5 & 1500 & 0 & 0.00\% \\
-H0T0N1R0 & S6 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S7 & 30 & 15 & 50.00\% \\
-H0T0N1R0 & S8 & 30 & 0 & 0.00\% \\
-H0T0N1R0 & S9 & 30 & 30 & 100.00\% \\
-H1T0N1R0 & S1 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S2 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S3 & 30 & 30 & 100.00\% \\
-H1T0N1R0 & S4 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S5 & 1500 & 0 & 0.00\% \\
-H1T0N1R0 & S6 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S7 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S8 & 30 & 0 & 0.00\% \\
-H1T0N1R0 & S9 & 30 & 30 & 100.00\% \\
-H0T1N1R0 & S1 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S2 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S3 & 30 & 30 & 100.00\% \\
-H0T1N1R0 & S4 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S5 & 1500 & 0 & 0.00\% \\
-H0T1N1R0 & S6 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S7 & 30 & 15 & 50.00\% \\
-H0T1N1R0 & S8 & 30 & 0 & 0.00\% \\
-H0T1N1R0 & S9 & 30 & 30 & 100.00\% \\
-H1T1N1R0 & S1 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S2 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S3 & 30 & 30 & 100.00\% \\
-H1T1N1R0 & S4 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S5 & 1500 & 0 & 0.00\% \\
-H1T1N1R0 & S6 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S7 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S8 & 30 & 0 & 0.00\% \\
-H1T1N1R0 & S9 & 30 & 30 & 100.00\% \\
-H0T0N0R1 & S1 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S2 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S3 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S4 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S5 & 1500 & 0 & 0.00\% \\
-H0T0N0R1 & S6 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S7 & 30 & 15 & 50.00\% \\
-H0T0N0R1 & S8 & 30 & 0 & 0.00\% \\
-H0T0N0R1 & S9 & 30 & 30 & 100.00\% \\
-H1T0N0R1 & S1 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S2 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S3 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S4 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S5 & 1500 & 0 & 0.00\% \\
-H1T0N0R1 & S6 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S7 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S8 & 30 & 0 & 0.00\% \\
-H1T0N0R1 & S9 & 30 & 30 & 100.00\% \\
-H0T1N0R1 & S1 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S2 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S3 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S4 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S5 & 1500 & 0 & 0.00\% \\
-H0T1N0R1 & S6 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S7 & 30 & 15 & 50.00\% \\
-H0T1N0R1 & S8 & 30 & 0 & 0.00\% \\
-H0T1N0R1 & S9 & 30 & 30 & 100.00\% \\
-H1T1N0R1 & S1 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S2 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S3 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S4 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S5 & 1500 & 0 & 0.00\% \\
-H1T1N0R1 & S6 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S7 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S8 & 30 & 0 & 0.00\% \\
-H1T1N0R1 & S9 & 30 & 30 & 100.00\% \\
-H0T0N1R1 & S1 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S2 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S3 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S4 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S5 & 1500 & 0 & 0.00\% \\
-H0T0N1R1 & S6 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S7 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S8 & 30 & 0 & 0.00\% \\
-H0T0N1R1 & S9 & 30 & 30 & 100.00\% \\
-H1T0N1R1 & S1 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S2 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S3 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S4 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S5 & 1500 & 0 & 0.00\% \\
-H1T0N1R1 & S6 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S7 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S8 & 30 & 0 & 0.00\% \\
-H1T0N1R1 & S9 & 30 & 30 & 100.00\% \\
-H0T1N1R1 & S1 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S2 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S3 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S4 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S5 & 1500 & 0 & 0.00\% \\
-H0T1N1R1 & S6 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S7 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S8 & 30 & 0 & 0.00\% \\
-H0T1N1R1 & S9 & 30 & 30 & 100.00\% \\
-H1T1N1R1 & S1 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S2 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S3 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S4 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S5 & 1500 & 0 & 0.00\% \\
-H1T1N1R1 & S6 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S7 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S8 & 30 & 0 & 0.00\% \\
-H1T1N1R1 & S9 & 30 & 30 & 100.00\% \\
-H1T1N1R1-DEFAULT & S2_default_window_60s & 30 & 0 & 0.00\% \\
-H1T1N1R1-DEFAULT & S4_default_window_301s & 30 & 0 & 0.00\% \\
+H0T0N0R0 & S1 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S2 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S4 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S5 & 1500 & 1500 & 1500 & 100.00\% & constant outcome \\
+H0T0N0R0 & S6 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S7 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S1 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S2 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S4 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R0 & S5 & 1500 & 1500 & 1500 & 100.00\% & constant outcome \\
+H1T0N0R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R0 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S1 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S2 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R0 & S5 & 1500 & 1500 & 1500 & 100.00\% & constant outcome \\
+H0T1N0R0 & S6 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S7 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R0 & S1 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R0 & S2 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R0 & S5 & 1500 & 1500 & 1500 & 100.00\% & constant outcome \\
+H1T1N0R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R0 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N1R0 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N1R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S7 & 30 & 15 & 15 & 50.00\% & 0.3315--0.6685 \\
+H0T0N1R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N1R0 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N1R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N1R0 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N1R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S7 & 30 & 15 & 15 & 50.00\% & 0.3315--0.6685 \\
+H0T1N1R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N1R0 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S3 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N1R0 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R0 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N0R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S7 & 30 & 15 & 15 & 50.00\% & 0.3315--0.6685 \\
+H0T0N0R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N0R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N0R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N0R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N0R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S7 & 30 & 15 & 15 & 50.00\% & 0.3315--0.6685 \\
+H0T1N0R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N0R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N0R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N0R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T0N1R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T0N1R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T0N1R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T0N1R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H0T1N1R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H0T1N1R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N1R1 & S1 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S2 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S3 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S4 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S5 & 1500 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S6 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S7 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S8 & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1 & S9 & 30 & 30 & 30 & 100.00\% & constant outcome \\
+H1T1N1R1-DEFAULT & S2_default_window_60s & 30 & 0 & 0 & 0.00\% & constant outcome \\
+H1T1N1R1-DEFAULT & S4_default_window_301s & 30 & 0 & 0 & 0.00\% & constant outcome \\
 \bottomrule
 \end{tabular}
 ```
@@ -99774,11 +101495,20 @@ Bytes: 2666. SHA-256: `f6c1440a323375ff9bfea29ad6a3983a28f418d9c7379627fb441fc5b
  
 ```
 
-### `experiments/results/phase4-source-fixes/render-dossier.log`
+### `experiments/results/phase4-source-fixes/render-dossier-final.log`
 
 Bytes: 0. SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
 
 _Empty file (0 bytes)._
+
+### `experiments/results/phase4-source-fixes/render-dossier.log`
+
+Bytes: 112. SHA-256: `197cc3091472e5421d6d9b3c8367db783eec0bdf72475e72cb1e250ab7df155e`.
+
+```text
+��W r o t e   d o c s / E X P E R I M E N T S . m d   w i t h   1 2 3 4   e x p e r i m e n t   f i l e s .  
+ 
+```
 
 ### `experiments/results/phase4-source-fixes/server-race-timings.csv`
 
@@ -100528,7 +102258,7 @@ Bytes: 372. SHA-256: `23ee4b237e27e7a755382639e003b106b9ecc54346046e60cc99954df7
 
 ### `experiments/results/SHA256SUMS.json`
 
-Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a31dd1cf3a`.
+Bytes: 316473. SHA-256: `695d5cf111011aa5636a816903fb0e56b8fa33df08ee9b9d6a8b655d9019e01f`.
 
 ```json
 [
@@ -102613,6 +104343,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/proxy-request-timings.csv",
+    "sizeBytes": 136007,
+    "sha256": "2d97af4341ed35821c2a11c62b18cadab637a964c0b62ceeefdfb32eb1aeb746"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -102656,6 +104391,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "9c73aacaef1a3d15a8db14269553c1b1369df8b10f66573306231ed027907981"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/proxy-request-timings.csv",
+    "sizeBytes": 135860,
+    "sha256": "bc82d39cf02204a8c1099143eb47a81d3831ba2f22059f3357f59f3df3db7589"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/proxy.stderr.log",
@@ -102703,6 +104443,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "bde2134b585a485476816cc006209e26ae441b827fe0cf657dd305f2ef490a63"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/proxy-request-timings.csv",
+    "sizeBytes": 136006,
+    "sha256": "38e56ca07f14f97e05d13beb587647b7a1ea8c0e4d4133889ad763950ba4e0b8"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -102746,6 +104491,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "eaf9cf802154cf33a2c6839c6165611221afa20e94b9638af0aa758cb952df42"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/proxy-request-timings.csv",
+    "sizeBytes": 135914,
+    "sha256": "4e2709532e06d92539014a1f16ab367d689f2f007150853e12f2d45be483cf8e"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/proxy.stderr.log",
@@ -102793,6 +104543,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "0bd9ed4afe9c0d2f339e186e0d936b9ef5beb1532ec5bc909d1e629b178bda91"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/proxy-request-timings.csv",
+    "sizeBytes": 136117,
+    "sha256": "f89ae864f4c67f0020e16ac401d7f49bdfa716dd3e89be832e2b928afa866825"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -102836,6 +104591,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "c07cf095ee2a233e0ffeb9723ebd09b3ac433957c419eb47acf1958aef16b35e"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/proxy-request-timings.csv",
+    "sizeBytes": 135913,
+    "sha256": "bf21561fe6ebde4b7e877a80f74cdbdda54e616dda2685ed75408130ced1d0ed"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/proxy.stderr.log",
@@ -102883,6 +104643,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "2652fbe9364c01b6bf80f2394cd0848e29438959483c16dc3420077a704ee63f"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/proxy-request-timings.csv",
+    "sizeBytes": 135929,
+    "sha256": "c3eac47f423120c029affc1224e917ba6765999f7506f660b78119dbc76f1cef"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -102926,6 +104691,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "04a67c294bbee449b1b7e1646cba57e33f70937171b013ae3afe71f46fcd6c18"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/proxy-request-timings.csv",
+    "sizeBytes": 136051,
+    "sha256": "8a6df666ba932b0b222dd22d68f69d41706a87fde69d9a87d7b84cbde2818953"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/proxy.stderr.log",
@@ -102973,6 +104743,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "e4865fbe1959ac0a121e8b8ade77404b60fe47fb271e0cc20d9526d8cc1aca22"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/proxy-request-timings.csv",
+    "sizeBytes": 136154,
+    "sha256": "c286458a088da4f6a11b7d64c861a3812ba4da409d057d7015121ce587ef451e"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -103016,6 +104791,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "a54ca37df71e80301590031ab514eca61bccef379ca77fb258f20d92e100a217"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/proxy-request-timings.csv",
+    "sizeBytes": 136045,
+    "sha256": "3fe69bd741f42ab645902e8f268218d4e854eac51b6e05174b2caf6d9ea3d8fd"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/proxy.stderr.log",
@@ -103063,6 +104843,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "89eb2318c7bcb0248e28d9daca3bf2de32cc676d09db5900037f8998413102fc"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/proxy-request-timings.csv",
+    "sizeBytes": 135982,
+    "sha256": "bde41f05ed4f78cb6e22081cbd56df15cdbde45192191d4ed1115832e621400b"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -103106,6 +104891,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "ed9c93c9521190581a4027976a137212edcf660d83ca852ce10cc26ce2fc005e"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/proxy-request-timings.csv",
+    "sizeBytes": 136103,
+    "sha256": "d5fffd41002737d7cd82561a635c464a42c9bf977228f6b8ce135da04dd89fb9"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/proxy.stderr.log",
@@ -103153,6 +104943,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "eaabc0d54b01ce6e46467b78d8f63e132d3d41e0df6e1826309494ddb704f671"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/proxy-request-timings.csv",
+    "sizeBytes": 136181,
+    "sha256": "7809434417abbb807b1b156ffe8d8adcb9df9b87abbc6c54305d01bb4db6a768"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -103196,6 +104991,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "eb0dae0764de265cd0101405b8fa6e50892cc9d6c723cf4e91622c779ba91b8b"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/proxy-request-timings.csv",
+    "sizeBytes": 136054,
+    "sha256": "e0fa9f8b9a9a08649bc1a9286218b8b30e3066a56b66b5ef6c690235a5265e19"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/proxy.stderr.log",
@@ -103243,6 +105043,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "0b6f711f79791013d453756f63a17175db2c8885c07175547fc85f61fc64e462"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/proxy-request-timings.csv",
+    "sizeBytes": 135836,
+    "sha256": "f7b9711974c3334dcf58c7aaa5344a2894a2e1f32e874898d9221f35cee9b5b9"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -103288,6 +105093,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "42deaac4b6444bf9fffe3d3a9b1f7bd67a7f04df081fe83ccd2b220305743d61"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/proxy-request-timings.csv",
+    "sizeBytes": 135924,
+    "sha256": "d6c57d5c25801b0b9d81b4c9d32d9cd21557691032ddb67a6ee566afe4d185a7"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -103316,6 +105126,11 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/server.stdout.log",
     "sizeBytes": 84,
     "sha256": "3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/proxy-request-timings.csv",
+    "sizeBytes": 10115,
+    "sha256": "0cf00593bfff0cbd5f12e800a8234d78e7772df4ea2207332d24f0c7e6ded705"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/proxy.stderr.log",
@@ -103379,18 +105194,18 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/run.json",
-    "sizeBytes": 80343,
-    "sha256": "3699885aeca77bb8b2d61500796d0de914dec0b73f3950a59bfe4dfa1545ebef"
+    "sizeBytes": 81941,
+    "sha256": "0bc6a882ba903041b6613aa6cdc76d42628d6ccd5cd4c230762690898dc300d1"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.csv",
-    "sizeBytes": 10318,
-    "sha256": "2c4c673adfe4ab283ae556b3e26eb7e2e8cfba23b5331c73d4ca494aca2dcc25"
+    "sizeBytes": 10288,
+    "sha256": "00deed725995a103e866a6ba4e25f872cadebf315d4285c97efc6decc97237b4"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.tex",
-    "sizeBytes": 5469,
-    "sha256": "83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf"
+    "sizeBytes": 8903,
+    "sha256": "7419497ae1f9ff5b1242bc6f3c4a02d086971e6e272b42632ab812a712710f17"
   },
   {
     "path": "experiments/results/e1-sqlite-final/attack-success-heatmap.pdf",
@@ -103409,18 +105224,18 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
   },
   {
     "path": "experiments/results/e1-sqlite-final/run.json",
-    "sizeBytes": 80343,
-    "sha256": "3699885aeca77bb8b2d61500796d0de914dec0b73f3950a59bfe4dfa1545ebef"
+    "sizeBytes": 81941,
+    "sha256": "0bc6a882ba903041b6613aa6cdc76d42628d6ccd5cd4c230762690898dc300d1"
   },
   {
     "path": "experiments/results/e1-sqlite-final/summary.csv",
-    "sizeBytes": 10318,
-    "sha256": "2c4c673adfe4ab283ae556b3e26eb7e2e8cfba23b5331c73d4ca494aca2dcc25"
+    "sizeBytes": 10288,
+    "sha256": "00deed725995a103e866a6ba4e25f872cadebf315d4285c97efc6decc97237b4"
   },
   {
     "path": "experiments/results/e1-sqlite-final/summary.tex",
-    "sizeBytes": 5469,
-    "sha256": "83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf"
+    "sizeBytes": 8903,
+    "sha256": "7419497ae1f9ff5b1242bc6f3c4a02d086971e6e272b42632ab812a712710f17"
   },
   {
     "path": "experiments/results/e2/2026-10-18T11-06-22-520Z/all_four-hmac,timestamp,nonce,request_id,balance-flood-bad_signature/health-readiness.csv",
@@ -107933,9 +109748,14 @@ Bytes: 312432. SHA-256: `076fdd09735965d473b2a15ca343fe1f9f68cc9c5e86440b949d63a
     "sha256": "8cb018d875cacf310ab30fb36087cb7a725c55c0277e29f9554d90f985be842d"
   },
   {
-    "path": "experiments/results/phase4-source-fixes/render-dossier.log",
+    "path": "experiments/results/phase4-source-fixes/render-dossier-final.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "experiments/results/phase4-source-fixes/render-dossier.log",
+    "sizeBytes": 112,
+    "sha256": "197cc3091472e5421d6d9b3c8367db783eec0bdf72475e72cb1e250ab7df155e"
   },
   {
     "path": "experiments/results/phase4-source-fixes/server-race-timings.csv",
@@ -108734,7 +110554,7 @@ main().catch((error)=>{ process.stderr.write(`${error.stack||error.message}\n`);
 
 ### `experiments/write-results-pack.js`
 
-Bytes: 16263. SHA-256: `258310bad21afcd25e1c29d4536a159c486e11733e2f9e420e13647d6d06bfb5`.
+Bytes: 17247. SHA-256: `57020ac6dcc51444f6fc9ddcdb2006d0503b7f6c9d939f2e527f3715927d9b56`.
 
 ```js
 ﻿const fs = require('fs');
@@ -108837,7 +110657,8 @@ const lines = [
   'This pack reports only the E1 ablation and E2 cost runs. E3, E4, and Phase 5 were not run.', '',
   '## Reproduction settings', '',
   `- E1 command: \`node experiments/e1/run.js\`. Runtime: ${e1Run.elapsedSeconds} seconds; started ${e1Run.started}; ended ${e1Run.ended}.`,
-  `- E2 command: \`node experiments/e2/run.js\`. Runtime: ${e2Run.elapsedSeconds} seconds; started ${e2Run.started}; ended ${e2Run.ended}.`,
+  `- E2 command: \`node experiments/e2/run.js\`. This run completed load cells before a setup error stopped the first rejection cell; after fixing log-header initialization, the completed loads were reused with \`$env:E2_RESUME_FROM=experiments/results/e2/${e2Run.dataRunDirectory}; node experiments/e2/run.js\`. Runtime from initial start to final end: ${e2Run.elapsedSeconds} seconds; started ${e2Run.started}; resumed flood phase ${e2Run.resumedRejectionStarted}; ended ${e2Run.ended}.`,
+  '- E2 setup issue and correction: the first attempt read the per-layer CSV before a rejection request had created it, so it ended before that flood sent traffic. The harness now creates the CSV header at server setup. The initial output is retained at `experiments/results/e2-run-console.log`; the resumed run is at `experiments/results/e2-resume-console.log`. All 80 load cells were re-read and their SQLite ledgers revalidated before running the 12 rejection cells.',
   '- Plot and LaTeX rendering: `python experiments/render-pack-a.py`; results documentation: `node experiments/write-results-pack.js`.',
   `- Node: ${e1Run.nodeVersion || process.version}; OS: ${environment?.host?.osVersion || `${process.platform} ${process.arch}`}; CPU: ${environment?.host?.cpuModel || 'see environment.json'}; RAM: ${environment?.host?.totalRamGiB || 'see environment.json'} GiB; SQLite: ${environment?.runtime?.sqliteLibrary || 'see environment.json'}; matplotlib: 3.11.2. Service: ${environment?.nonceBackend?.product || 'Memurai Developer'}, version ${environment?.nonceBackend?.memuraiVersion || 'see environment.json'} (not stock Redis), IPv4 at 127.0.0.1:6379. All traffic was localhost traffic on one Windows machine.`,
   '- The harness used explicit HTTP keep-alive agents. All measured server runs set `LEGACY_SHARED_SECRET=false`, `VIZ_ENABLED=false`, `DEMO_MODE=false`, and `HOST=127.0.0.1`.',
@@ -108847,12 +110668,13 @@ const lines = [
   '- E2 load cells used 500 warm-up and 5,000 measured requests, five repeats, and concurrency 1 and 16. Latencies are localhost Windows measurements with Memurai 4.2.3 and support relative comparison only.',
   '- Statistical convention: Wilson 95% intervals are recorded for nonconstant E1 outcomes; constant 0/100% cells have blank intervals. E2 reports the mean and t-based 95% CI across five per-repeat medians.',
   '', '## E1 ablation findings', '',
-  '| Configuration | Scenario | Attempts | HTTP accepted | Ledger debits | Attack success | Blocking reasons | Oracle holds |',
-  '| --- | --- | ---: | ---: | ---: | ---: | --- | --- |'
+  '| Configuration | Scenario | Attempts | HTTP accepted | Ledger debits | Attack success | Wilson 95% CI | Blocking reasons | Oracle holds |',
+  '| --- | --- | ---: | ---: | ---: | ---: | --- | --- | --- |'
 ];
 for (const scenario of ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S2_default_window_60s', 'S4_default_window_301s']) {
   for (const row of e1Summary.filter((item) => item.scenario_id === scenario && ['H0T0N0R0', 'H1T1N1R1', 'H1T1N1R1-DEFAULT'].includes(item.config_id))) {
-    lines.push(`| ${row.config_id} | ${scenario} | ${row.attempts} | ${row.http_accepted_count} | ${row.debited_count} | ${row.attack_success_rate} | ${escapeCell(row.blocking_reason_histogram)} | ${row.oracle_integrity_holds} |`);
+    const wilson = row.wilson95_low === '' ? 'constant outcome (not computed)' : `${row.wilson95_low} to ${row.wilson95_high}`;
+    lines.push(`| ${row.config_id} | ${scenario} | ${row.attempts} | ${row.http_accepted_count} | ${row.debited_count} | ${row.attack_success_rate} | ${wilson} | ${escapeCell(row.blocking_reason_histogram)} | ${row.oracle_integrity_holds} |`);
   }
 }
 lines.push('', `E1 scanned ${e1Run.allConfigs} flag configurations and ${e1Run.scenarios} replay scenarios. Across "none", S1 exact replay had ${none.find((r) => r.scenario_id === 'S1')?.debited_count} ledger debits from ${none.find((r) => r.scenario_id === 'S1')?.attempts} attempts; all-on S1 had ${allOn.find((r) => r.scenario_id === 'S1')?.debited_count}. In all-on S9, ${allOn.find((r) => r.scenario_id === 'S9')?.debited_count} of 30 fresh requests were debited with the deliberately leaked session key.`, '');

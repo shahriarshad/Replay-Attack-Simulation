@@ -2080,6 +2080,11 @@
     "sha256": "83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/proxy-request-timings.csv",
+    "sizeBytes": 136007,
+    "sha256": "2d97af4341ed35821c2a11c62b18cadab637a964c0b62ceeefdfb32eb1aeb746"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -2123,6 +2128,11 @@
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "9c73aacaef1a3d15a8db14269553c1b1369df8b10f66573306231ed027907981"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/proxy-request-timings.csv",
+    "sizeBytes": 135860,
+    "sha256": "bc82d39cf02204a8c1099143eb47a81d3831ba2f22059f3357f59f3df3db7589"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N0R1/proxy.stderr.log",
@@ -2170,6 +2180,11 @@
     "sha256": "bde2134b585a485476816cc006209e26ae441b827fe0cf657dd305f2ef490a63"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/proxy-request-timings.csv",
+    "sizeBytes": 136006,
+    "sha256": "38e56ca07f14f97e05d13beb587647b7a1ea8c0e4d4133889ad763950ba4e0b8"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -2213,6 +2228,11 @@
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "eaf9cf802154cf33a2c6839c6165611221afa20e94b9638af0aa758cb952df42"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/proxy-request-timings.csv",
+    "sizeBytes": 135914,
+    "sha256": "4e2709532e06d92539014a1f16ab367d689f2f007150853e12f2d45be483cf8e"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T0N1R1/proxy.stderr.log",
@@ -2260,6 +2280,11 @@
     "sha256": "0bd9ed4afe9c0d2f339e186e0d936b9ef5beb1532ec5bc909d1e629b178bda91"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/proxy-request-timings.csv",
+    "sizeBytes": 136117,
+    "sha256": "f89ae864f4c67f0020e16ac401d7f49bdfa716dd3e89be832e2b928afa866825"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -2303,6 +2328,11 @@
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "c07cf095ee2a233e0ffeb9723ebd09b3ac433957c419eb47acf1958aef16b35e"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/proxy-request-timings.csv",
+    "sizeBytes": 135913,
+    "sha256": "bf21561fe6ebde4b7e877a80f74cdbdda54e616dda2685ed75408130ced1d0ed"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N0R1/proxy.stderr.log",
@@ -2350,6 +2380,11 @@
     "sha256": "2652fbe9364c01b6bf80f2394cd0848e29438959483c16dc3420077a704ee63f"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/proxy-request-timings.csv",
+    "sizeBytes": 135929,
+    "sha256": "c3eac47f423120c029affc1224e917ba6765999f7506f660b78119dbc76f1cef"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -2393,6 +2428,11 @@
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "04a67c294bbee449b1b7e1646cba57e33f70937171b013ae3afe71f46fcd6c18"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/proxy-request-timings.csv",
+    "sizeBytes": 136051,
+    "sha256": "8a6df666ba932b0b222dd22d68f69d41706a87fde69d9a87d7b84cbde2818953"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H0T1N1R1/proxy.stderr.log",
@@ -2440,6 +2480,11 @@
     "sha256": "e4865fbe1959ac0a121e8b8ade77404b60fe47fb271e0cc20d9526d8cc1aca22"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/proxy-request-timings.csv",
+    "sizeBytes": 136154,
+    "sha256": "c286458a088da4f6a11b7d64c861a3812ba4da409d057d7015121ce587ef451e"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -2483,6 +2528,11 @@
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "a54ca37df71e80301590031ab514eca61bccef379ca77fb258f20d92e100a217"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/proxy-request-timings.csv",
+    "sizeBytes": 136045,
+    "sha256": "3fe69bd741f42ab645902e8f268218d4e854eac51b6e05174b2caf6d9ea3d8fd"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N0R1/proxy.stderr.log",
@@ -2530,6 +2580,11 @@
     "sha256": "89eb2318c7bcb0248e28d9daca3bf2de32cc676d09db5900037f8998413102fc"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/proxy-request-timings.csv",
+    "sizeBytes": 135982,
+    "sha256": "bde41f05ed4f78cb6e22081cbd56df15cdbde45192191d4ed1115832e621400b"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -2573,6 +2628,11 @@
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "ed9c93c9521190581a4027976a137212edcf660d83ca852ce10cc26ce2fc005e"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/proxy-request-timings.csv",
+    "sizeBytes": 136103,
+    "sha256": "d5fffd41002737d7cd82561a635c464a42c9bf977228f6b8ce135da04dd89fb9"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T0N1R1/proxy.stderr.log",
@@ -2620,6 +2680,11 @@
     "sha256": "eaabc0d54b01ce6e46467b78d8f63e132d3d41e0df6e1826309494ddb704f671"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/proxy-request-timings.csv",
+    "sizeBytes": 136181,
+    "sha256": "7809434417abbb807b1b156ffe8d8adcb9df9b87abbc6c54305d01bb4db6a768"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -2663,6 +2728,11 @@
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R0.sqlite-wal",
     "sizeBytes": 4128272,
     "sha256": "eb0dae0764de265cd0101405b8fa6e50892cc9d6c723cf4e91622c779ba91b8b"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/proxy-request-timings.csv",
+    "sizeBytes": 136054,
+    "sha256": "e0fa9f8b9a9a08649bc1a9286218b8b30e3066a56b66b5ef6c690235a5265e19"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N0R1/proxy.stderr.log",
@@ -2710,6 +2780,11 @@
     "sha256": "0b6f711f79791013d453756f63a17175db2c8885c07175547fc85f61fc64e462"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/proxy-request-timings.csv",
+    "sizeBytes": 135836,
+    "sha256": "f7b9711974c3334dcf58c7aaa5344a2894a2e1f32e874898d9221f35cee9b5b9"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R0/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -2755,6 +2830,11 @@
     "sha256": "42deaac4b6444bf9fffe3d3a9b1f7bd67a7f04df081fe83ccd2b220305743d61"
   },
   {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/proxy-request-timings.csv",
+    "sizeBytes": 135924,
+    "sha256": "d6c57d5c25801b0b9d81b4c9d32d9cd21557691032ddb67a6ee566afe4d185a7"
+  },
+  {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/proxy.stderr.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -2783,6 +2863,11 @@
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1/server.stdout.log",
     "sizeBytes": 84,
     "sha256": "3000e93e013446093c968c940c1e5492842dee8fd652d9b21360560471523095"
+  },
+  {
+    "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/proxy-request-timings.csv",
+    "sizeBytes": 10115,
+    "sha256": "0cf00593bfff0cbd5f12e800a8234d78e7772df4ea2207332d24f0c7e6ded705"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/H1T1N1R1-DEFAULT/proxy.stderr.log",
@@ -2846,18 +2931,18 @@
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/run.json",
-    "sizeBytes": 80343,
-    "sha256": "3699885aeca77bb8b2d61500796d0de914dec0b73f3950a59bfe4dfa1545ebef"
+    "sizeBytes": 81941,
+    "sha256": "0bc6a882ba903041b6613aa6cdc76d42628d6ccd5cd4c230762690898dc300d1"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.csv",
-    "sizeBytes": 10318,
-    "sha256": "2c4c673adfe4ab283ae556b3e26eb7e2e8cfba23b5331c73d4ca494aca2dcc25"
+    "sizeBytes": 10288,
+    "sha256": "00deed725995a103e866a6ba4e25f872cadebf315d4285c97efc6decc97237b4"
   },
   {
     "path": "experiments/results/e1-sqlite-final/2026-10-18T10-48-47-678Z/summary.tex",
-    "sizeBytes": 5469,
-    "sha256": "83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf"
+    "sizeBytes": 8903,
+    "sha256": "7419497ae1f9ff5b1242bc6f3c4a02d086971e6e272b42632ab812a712710f17"
   },
   {
     "path": "experiments/results/e1-sqlite-final/attack-success-heatmap.pdf",
@@ -2876,18 +2961,18 @@
   },
   {
     "path": "experiments/results/e1-sqlite-final/run.json",
-    "sizeBytes": 80343,
-    "sha256": "3699885aeca77bb8b2d61500796d0de914dec0b73f3950a59bfe4dfa1545ebef"
+    "sizeBytes": 81941,
+    "sha256": "0bc6a882ba903041b6613aa6cdc76d42628d6ccd5cd4c230762690898dc300d1"
   },
   {
     "path": "experiments/results/e1-sqlite-final/summary.csv",
-    "sizeBytes": 10318,
-    "sha256": "2c4c673adfe4ab283ae556b3e26eb7e2e8cfba23b5331c73d4ca494aca2dcc25"
+    "sizeBytes": 10288,
+    "sha256": "00deed725995a103e866a6ba4e25f872cadebf315d4285c97efc6decc97237b4"
   },
   {
     "path": "experiments/results/e1-sqlite-final/summary.tex",
-    "sizeBytes": 5469,
-    "sha256": "83cc1298b97ea70998a173120b68b162bfabb6b9031ed3ba83e6fea9fbfc7fbf"
+    "sizeBytes": 8903,
+    "sha256": "7419497ae1f9ff5b1242bc6f3c4a02d086971e6e272b42632ab812a712710f17"
   },
   {
     "path": "experiments/results/e2/2026-10-18T11-06-22-520Z/all_four-hmac,timestamp,nonce,request_id,balance-flood-bad_signature/health-readiness.csv",
@@ -7400,9 +7485,14 @@
     "sha256": "8cb018d875cacf310ab30fb36087cb7a725c55c0277e29f9554d90f985be842d"
   },
   {
-    "path": "experiments/results/phase4-source-fixes/render-dossier.log",
+    "path": "experiments/results/phase4-source-fixes/render-dossier-final.log",
     "sizeBytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "experiments/results/phase4-source-fixes/render-dossier.log",
+    "sizeBytes": 112,
+    "sha256": "197cc3091472e5421d6d9b3c8367db783eec0bdf72475e72cb1e250ab7df155e"
   },
   {
     "path": "experiments/results/phase4-source-fixes/server-race-timings.csv",
