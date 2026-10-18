@@ -19,9 +19,27 @@ function sqliteGet(db, sql, params = []) {
   }));
 }
 
+function sweepExpiredMemory(store, now = Date.now()) {
+  let removed = 0;
+  for (const [entry, expiresAt] of store) {
+    if (expiresAt <= now) { store.delete(entry); removed += 1; }
+  }
+  return removed;
+}
+
+function startNonceSweep({ backend, store, intervalMs = 60000, now = Date.now }) {
+  const timer = setInterval(() => {
+    if (backend === 'memory') sweepExpiredMemory(store, now());
+    else if (backend === 'sqlite') sqliteRun(store, 'DELETE FROM used_nonces WHERE expires_at <= ?', [now()]).catch(() => {});
+  }, intervalMs);
+  timer.unref?.();
+  return timer;
+}
+
 async function verifyNonce(store, userId, nonce, options = {}) {
   const backend = options.backend || 'redis';
-  const ttlSeconds = Number(options.ttlSeconds || process.env.NONCE_TTL || DEFAULT_NONCE_TTL_SECONDS);
+  const ttlSeconds = Number(options.ttlSeconds ?? process.env.NONCE_TTL ?? DEFAULT_NONCE_TTL_SECONDS);
+  const now = typeof options.now === 'function' ? options.now() : Date.now();
   const key = nonceKey(userId, nonce);
   let valid;
   let result;
@@ -31,19 +49,14 @@ async function verifyNonce(store, userId, nonce, options = {}) {
     valid = redisResult === 'OK';
     result = valid ? 'SETNX_SUCCESS' : 'SETNX_FAILED';
   } else if (backend === 'sqlite') {
-    await sqliteRun(store, 'DELETE FROM used_nonces WHERE expires_at <= ?', [Date.now()]);
-    try {
-      await sqliteRun(store, 'INSERT INTO used_nonces (user_id, nonce, expires_at) VALUES (?, ?, ?)', [userId, nonce, Date.now() + ttlSeconds * 1000]);
-      valid = true;
-    } catch (error) {
-      if (error.code && error.code.startsWith('SQLITE_CONSTRAINT')) valid = false;
-      else throw error;
-    }
+    await sqliteRun(store, 'DELETE FROM used_nonces WHERE user_id = ? AND nonce = ? AND expires_at <= ?', [userId, nonce, now]);
+    const inserted = await sqliteRun(store, 'INSERT OR IGNORE INTO used_nonces (user_id, nonce, expires_at) VALUES (?, ?, ?)', [userId, nonce, now + ttlSeconds * 1000]);
+    valid = inserted.changes === 1;
     result = valid ? 'SQLITE_INSERT_SUCCESS' : 'SQLITE_DUPLICATE';
   } else if (backend === 'memory') {
-    const now = Date.now();
-    for (const [entry, expiresAt] of store) if (expiresAt <= now) store.delete(entry);
     const memKey = `${process.env.NONCE_KEY_NAMESPACE || ''}\u0000${userId}\u0000${nonce}`;
+    const expiresAt = store.get(memKey);
+    if (expiresAt !== undefined && expiresAt <= now) store.delete(memKey);
     valid = !store.has(memKey);
     if (valid) store.set(memKey, now + ttlSeconds * 1000);
     result = valid ? 'MEMORY_INSERT_SUCCESS' : 'MEMORY_DUPLICATE';
@@ -101,6 +114,8 @@ module.exports = {
   verifyNonceResilient,
   sqliteRun,
   sqliteGet,
+  sweepExpiredMemory,
+  startNonceSweep,
   listNonceKeys,
   clearNonceKeys
 };

@@ -8,7 +8,8 @@ const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const { createClient } = require('redis');
 const { verifySignature } = require('./utils/hmac');
-const { verifyNonceResilient, listNonceKeys, clearNonceKeys, sqliteRun, sqliteGet } = require('./utils/nonce');
+const { validSignedRequest } = require('./utils/request');
+const { verifyNonceResilient, listNonceKeys, clearNonceKeys, sqliteRun, sqliteGet, startNonceSweep } = require('./utils/nonce');
 const { isRequestProcessed } = require('./utils/idempotency');
 const { startVizServer, emitVizEvent } = require('./viz-server');
 
@@ -27,6 +28,7 @@ const PAST_WINDOW = Number(process.env.TIMESTAMP_PAST_WINDOW_SECONDS || 300);
 const FUTURE_WINDOW = Number(process.env.TIMESTAMP_FUTURE_WINDOW_SECONDS || 5);
 const VIZ_ENABLED = flag('VIZ_ENABLED', true);
 const DEMO_MODE = flag('DEMO_MODE', true);
+const ENABLE_DEMO_ROUTES = flag('ENABLE_DEMO_ROUTES', true);
 const DEPOSIT_REPLAY_PROTECTION = flag('DEPOSIT_REPLAY_PROTECTION', true);
 const DEFENSES = {
   hmac: flag('DEFENSE_HMAC', true),
@@ -46,6 +48,7 @@ redisClient.on('error', (error) => console.error(`Redis client error: ${error.me
 const memoryNonces = new Map();
 let transactionQueue = Promise.resolve();
 let now = () => Date.now();
+let nonceSweepTimer;
 
 function flag(name, fallback) {
   const value = process.env[name];
@@ -145,6 +148,11 @@ async function initializeDatabase() {
     user_id TEXT NOT NULL, nonce TEXT NOT NULL, expires_at INTEGER NOT NULL,
     PRIMARY KEY(user_id, nonce)
   )`);
+  await run('CREATE INDEX IF NOT EXISTS idx_used_nonces_expires_at ON used_nonces(expires_at)');
+  if (NONCE_BACKEND === 'memory' || NONCE_BACKEND === 'sqlite') {
+    if (nonceSweepTimer) clearInterval(nonceSweepTimer);
+    nonceSweepTimer = startNonceSweep({ backend: NONCE_BACKEND, store: NONCE_BACKEND === 'memory' ? memoryNonces : db, now: () => now() });
+  }
   const accountSalt = crypto.randomBytes(16).toString('hex');
   const accountHash = pinDigest(defaultPin, accountSalt);
   await run(`INSERT OR IGNORE INTO accounts (user_id, username, balance, currency, account_id, pin_salt, pin_hash)
@@ -244,11 +252,17 @@ function rejectVisual(reason, amount) {
 }
 
 function validRequest(payload, type) {
-  return Boolean(payload && payload.method === 'POST' && payload.path === `/api/${type.toLowerCase()}` && payload.user_id && payload.account_id && payload.currency && payload.nonce && payload.request_id && Number.isSafeInteger(Number(payload.amount)) && Number(payload.amount) > 0 && Number.isFinite(Date.parse(payload.timestamp)));
+  return validSignedRequest(payload, type);
 }
 
 function timingFields() {
-  return { hmac_ns: 'skipped', timestamp_ns: 'skipped', nonce_ns: 'skipped', request_id_ns: 'skipped', balance_ns: 'skipped' };
+  return {
+    hmac_ns: DEFENSES.hmac ? 'not_reached' : 'disabled',
+    timestamp_ns: DEFENSES.timestamp ? 'not_reached' : 'disabled',
+    nonce_ns: DEFENSES.nonce ? 'not_reached' : 'disabled',
+    request_id_ns: DEFENSES.request_id ? 'not_reached' : 'disabled',
+    balance_ns: 'not_reached'
+  };
 }
 
 async function processTransaction(req, res, type) {
@@ -293,7 +307,7 @@ async function processTransaction(req, res, type) {
 
     const checks = {
       hmac: async () => {
-        if (!DEFENSES.hmac) return { valid: true, skipped: true };
+        if (!DEFENSES.hmac) return { valid: true, disabled: true };
         const result = verifySignature(payload, auth.secret);
         emit('check-signature', DEMO_MODE
           ? { status: result.valid ? 'PASS' : 'FAIL', expected: result.expected, received: result.received }
@@ -301,21 +315,21 @@ async function processTransaction(req, res, type) {
         return result;
       },
       timestamp: async () => {
-        if (!DEFENSES.timestamp) return { valid: true, skipped: true };
+        if (!DEFENSES.timestamp) return { valid: true, disabled: true };
         const skewSeconds = (now() - Date.parse(payload.timestamp)) / 1000;
         const valid = skewSeconds >= -FUTURE_WINDOW && skewSeconds <= PAST_WINDOW;
         emit('check-timestamp', { status: valid ? 'PASS' : 'FAIL', diff: Math.round(skewSeconds), allowedPast: PAST_WINDOW, allowedFuture: FUTURE_WINDOW });
         return { valid, skewSeconds };
       },
       nonce: async () => {
-        if (!DEFENSES.nonce) return { valid: true, skipped: true };
+        if (!DEFENSES.nonce) return { valid: true, disabled: true };
         const result = await verifyAndRememberNonce(payload.user_id, payload.nonce);
         emit('check-nonce', { status: result.valid ? 'PASS' : 'FAIL', redisResult: result.redisResult });
         await emitNonceUpdate();
         return result;
       },
       request_id: async () => {
-        if (!DEFENSES.request_id) return { valid: true, skipped: true };
+        if (!DEFENSES.request_id) return { valid: true, disabled: true };
         const result = await isRequestProcessed(db, payload.request_id);
         emit('check-requestid', { status: result.processed ? 'FAIL' : 'PASS', found: result.processed });
         return { valid: !result.processed, result };
@@ -327,7 +341,7 @@ async function processTransaction(req, res, type) {
       const before = startTiming();
       const result = await checks[layer]();
       timings[`${layer}_ns`] = (startTiming() - before).toString();
-      if (result.skipped) timings[`${layer}_ns`] = 'skipped';
+      if (result.disabled) timings[`${layer}_ns`] = 'disabled';
       if (!result.valid) {
         if (layer === 'nonce' && result.redisResult === 'STORE_ERROR_FAIL_CLOSED') {
           complete(503, 'NONCE_STORE_UNAVAILABLE');
@@ -475,7 +489,7 @@ app.post('/api/deposit', async (req, res) => {
 
 app.post('/api/withdraw', (req, res) => processTransaction(req, res, 'WITHDRAW'));
 
-app.post('/api/reset', async (req, res) => {
+if (ENABLE_DEMO_ROUTES) app.post('/api/reset', async (req, res) => {
   try {
     await run('BEGIN IMMEDIATE');
     await run('DELETE FROM transactions');
@@ -494,7 +508,7 @@ app.post('/api/reset', async (req, res) => {
   }
 });
 
-app.post('/api/demo/nonce-crash', async (req, res) => {
+if (ENABLE_DEMO_ROUTES) app.post('/api/demo/nonce-crash', async (req, res) => {
   try {
     const cleared = await clearUsedNonces();
     await emitNonceUpdate();
@@ -514,6 +528,8 @@ app.use((error, req, res, next) => {
 app.use((req, res) => res.status(404).json({ error: 'NOT_FOUND' }));
 
 async function start() {
+  if (NONCE_TTL < PAST_WINDOW + FUTURE_WINDOW) console.warn(`NONCE_TTL (${NONCE_TTL}s) is shorter than the combined timestamp window (${PAST_WINDOW + FUTURE_WINDOW}s).`);
+  if (HOST === '0.0.0.0' && ENABLE_DEMO_ROUTES) console.warn('ENABLE_DEMO_ROUTES is enabled while HOST=0.0.0.0; demo reset/crash routes are exposed on all interfaces.');
   await initializeDatabase();
   try {
     if (!redisClient.isOpen) await redisClient.connect();
@@ -534,8 +550,8 @@ function setClock(clockFn) { now = clockFn; }
 
 module.exports = {
   app, db, redisClient, initializeDatabase, start, setClock, processTransaction,
-  config: { LEGACY_SHARED_SECRET, HMAC_SECRET, NONCE_BACKEND, NONCE_TTL, PAST_WINDOW, FUTURE_WINDOW, VIZ_ENABLED, DEMO_MODE, DEPOSIT_REPLAY_PROTECTION, DEFENSES, CHECK_ORDER, NONCE_STORE_FAIL_MODE },
-  helpers: { get, all, run, pinDigest, clearUsedNonces, currentNonceKeys, emitDatabaseUpdate, parseOrder }
+  config: { LEGACY_SHARED_SECRET, HMAC_SECRET, NONCE_BACKEND, NONCE_TTL, PAST_WINDOW, FUTURE_WINDOW, VIZ_ENABLED, DEMO_MODE, ENABLE_DEMO_ROUTES, DEPOSIT_REPLAY_PROTECTION, DEFENSES, CHECK_ORDER, NONCE_STORE_FAIL_MODE },
+  helpers: { get, all, run, pinDigest, clearUsedNonces, currentNonceKeys, emitDatabaseUpdate, parseOrder, validRequest }
 };
 
 if (require.main === module) {

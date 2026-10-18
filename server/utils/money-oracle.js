@@ -9,27 +9,37 @@ function payloadFingerprint(payload) {
   return crypto.createHash('sha256').update(stable).digest('hex');
 }
 
-function computeMoneyIntegrity(transactions, authorizedPayloads = []) {
-  const withdrawals = transactions.filter((row) => row.type === 'WITHDRAW' && row.status === 'SUCCESS');
-  const totalDebited = withdrawals.reduce((sum, row) => sum + Number(row.amount), 0);
-  const authorizedByFingerprint = new Map();
-  for (const payload of authorizedPayloads) authorizedByFingerprint.set(payloadFingerprint(payload), Number(payload.amount));
-  const authorizedTotal = [...authorizedByFingerprint.values()].reduce((sum, amount) => sum + amount, 0);
-  const counts = new Map();
-  const firstAmounts = new Map();
-  for (const row of withdrawals) {
-    const identity = row.payload_fingerprint || row.signature || `${row.user_id}|${row.request_id}|${row.amount}`;
-    counts.set(identity, (counts.get(identity) || 0) + 1);
-    firstAmounts.set(identity, Number(row.amount));
+function computeMoneyIntegrity(ledgerRows, authorizedIntents = []) {
+  const authorized = new Map(authorizedIntents.map((intent) => [String(intent.request_id), {
+    amount: Number(intent.amount), type: String(intent.type)
+  }]));
+  const debits = ledgerRows.filter((row) => row.status === 'SUCCESS' && row.type === 'WITHDRAW');
+  const byRequestId = new Map();
+  let unauthorizedDebitAmount = 0;
+  let totalDebited = 0;
+  for (const row of debits) {
+    const amount = Number(row.amount);
+    totalDebited += amount;
+    const intent = authorized.get(String(row.request_id));
+    if (!intent || intent.amount !== amount || intent.type !== 'WITHDRAW') unauthorizedDebitAmount += amount;
+    const rows = byRequestId.get(String(row.request_id)) || [];
+    rows.push(row);
+    byRequestId.set(String(row.request_id), rows);
   }
-  const duplicateDebitCount = [...counts.values()].reduce((sum, count) => sum + Math.max(0, count - 1), 0);
-  const duplicateDebitAmount = [...counts.entries()].reduce((sum, [identity, count]) => sum + Math.max(0, count - 1) * firstAmounts.get(identity), 0);
+  let duplicateDebitCount = 0;
+  let duplicateDebitAmount = 0;
+  for (const rows of byRequestId.values()) {
+    for (const duplicate of rows.slice(1)) {
+      duplicateDebitCount += 1;
+      duplicateDebitAmount += Number(duplicate.amount);
+    }
+  }
   return {
-    totalDebited,
-    authorizedTotal,
-    duplicateDebitAmount,
-    duplicateDebitCount,
-    integrityHolds: totalDebited <= authorizedTotal && duplicateDebitCount === 0
+    duplicate_debit_count: duplicateDebitCount,
+    duplicate_debit_amount: duplicateDebitAmount,
+    unauthorized_debit_amount: unauthorizedDebitAmount,
+    total_debited: totalDebited,
+    integrity_holds: duplicateDebitCount === 0 && unauthorizedDebitAmount === 0
   };
 }
 
