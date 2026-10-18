@@ -1,0 +1,67 @@
+{
+  "runId": "prep-requestid-20261018",
+  "mode": "requestid",
+  "nonceBackend": "redis",
+  "vizEnabled": false,
+  "label": "nonce-store growth from requests rejected at the request-ID check",
+  "createdAt": "2026-10-18T06:05:55.229Z",
+  "nonceTtlSeconds": 86400,
+  "duration_ns": "177713144200",
+  "durationSeconds": 177.7131442,
+  "durationVsTtl": 0.002056865094907407,
+  "baselineUsedMemoryBytes": 1087544,
+  "baselineNonceKeys": 0,
+  "snapshots": [
+    {
+      "targetKeys": 0,
+      "measuredKeys": 0,
+      "usedMemoryBytes": 1087544,
+      "baselineUsedMemoryBytes": 1087544,
+      "deltaBytes": 0,
+      "bytesPerKeyAboveBaseline": null,
+      "elapsed_ns": "0",
+      "ttlSeconds": 86400
+    },
+    {
+      "targetKeys": 1000,
+      "measuredKeys": 1000,
+      "usedMemoryBytes": 1263864,
+      "baselineUsedMemoryBytes": 1087544,
+      "deltaBytes": 176320,
+      "bytesPerKeyAboveBaseline": 176.32,
+      "elapsed_ns": "3897184300",
+      "elapsedSeconds": 3.8971843,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.00004510629976851852
+    },
+    {
+      "targetKeys": 10000,
+      "measuredKeys": 10000,
+      "usedMemoryBytes": 2949624,
+      "baselineUsedMemoryBytes": 1087544,
+      "deltaBytes": 1862080,
+      "bytesPerKeyAboveBaseline": 186.208,
+      "elapsed_ns": "21516198600",
+      "elapsedSeconds": 21.5161986,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.0002490300763888889
+    },
+    {
+      "targetKeys": 100000,
+      "measuredKeys": 100000,
+      "usedMemoryBytes": 19184632,
+      "baselineUsedMemoryBytes": 1087544,
+      "deltaBytes": 18097088,
+      "bytesPerKeyAboveBaseline": 180.97088,
+      "elapsed_ns": "176681624500",
+      "elapsedSeconds": 176.6816245,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.0020449262094907406
+    }
+  ],
+  "baselineSubtractedSlopeBytesPerKey": 180.97088,
+  "requestRowsCsv": "nonce-memory-requestid-prep-requestid-20261018-requests.csv",
+  "controlRowsCsv": "nonce-memory-requestid-prep-requestid-20261018-control.csv",
+  "rawInfoLog": "nonce-memory-requestid-prep-requestid-20261018-raw-info.log",
+  "requestCount": 100000
+}

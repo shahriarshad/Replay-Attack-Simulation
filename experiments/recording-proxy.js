@@ -8,6 +8,7 @@ if (!['127.0.0.1', 'localhost'].includes(upstream.hostname)) throw new Error('Re
 const port = Number(process.env.PROXY_PORT || 3002);
 const outputPath = process.env.PROXY_CAPTURE_FILE || path.join(os.tmpdir(), 'cs-project-onpath-capture.json');
 const captureLogPath = `${outputPath}.jsonl`;
+const withdrawalCapturePath = process.env.PROXY_WITHDRAW_CAPTURE_FILE || `${outputPath}.withdraw.json`;
 
 const server = http.createServer((request, response) => {
   const started = process.hrtime.bigint();
@@ -47,6 +48,11 @@ const server = http.createServer((request, response) => {
         const tempPath = `${outputPath}.${process.pid}.tmp`;
         fs.writeFileSync(tempPath, `${JSON.stringify(record, null, 2)}\n`, { mode: 0o600 });
         fs.renameSync(tempPath, outputPath);
+        if (request.method === 'POST' && new URL(request.url, upstream).pathname === '/api/withdraw') {
+          const withdrawalTempPath = `${withdrawalCapturePath}.${process.pid}.tmp`;
+          fs.writeFileSync(withdrawalTempPath, `${JSON.stringify(record, null, 2)}\n`, { mode: 0o600 });
+          fs.renameSync(withdrawalTempPath, withdrawalCapturePath);
+        }
         response.writeHead(upstreamResponse.statusCode || 502, upstreamResponse.headers);
         response.end(responseBody);
       });

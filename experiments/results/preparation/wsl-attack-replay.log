@@ -1,0 +1,9 @@
+[EVE] Using attacker-side captured request: /mnt/c/Users/Home/AppData/Local/Temp/cs-project-demo-capture.json.withdraw.json
+[EVE] Starting Replay Attack on localhost:3000...
+[EVE] Payload: /mnt/c/Users/Home/AppData/Local/Temp/cs-project-demo-capture.json.withdraw.json
+[EVE] Payload age: 15s
+[EVE] Replay attempt #1...
+{
+  "status": "REJECTED",
+  "reason": "NONCE_FAIL"
+}

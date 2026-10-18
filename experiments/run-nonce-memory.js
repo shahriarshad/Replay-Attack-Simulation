@@ -22,8 +22,10 @@ function parseInfo(text) {
   }));
 }
 
-function memoryBytes() {
-  const info = parseInfo(execFileSync(cli, ['INFO', 'memory'], { encoding: 'utf8' }));
+function memoryBytes(label, rawInfoPath) {
+  const raw = execFileSync(cli, ['INFO', 'memory'], { encoding: 'utf8' });
+  fs.appendFileSync(rawInfoPath, `\n[${new Date().toISOString()}] ${label}\n${raw}\n`);
+  const info = parseInfo(raw);
   return Number(info.used_memory);
 }
 
@@ -67,7 +69,9 @@ async function main() {
     controlRows.push({ name: 'nonce-store-clear', ...clear });
   }
 
-  const baselineMemory = memoryBytes();
+  const rawInfoPath = path.join(output, `nonce-memory-${mode}-${runId}-raw-info.log`);
+  fs.writeFileSync(rawInfoPath, '');
+  const baselineMemory = memoryBytes('baseline-empty-store', rawInfoPath);
   const baselineKeys = namespaceKeyCount(namespace);
   if (baselineKeys !== 0) throw new Error(`Expected an empty run namespace, found ${baselineKeys} keys`);
   const snapshots = [{ targetKeys: 0, measuredKeys: 0, usedMemoryBytes: baselineMemory, baselineUsedMemoryBytes: baselineMemory, deltaBytes: 0, bytesPerKeyAboveBaseline: null, elapsed_ns: '0', ttlSeconds }];
@@ -84,7 +88,7 @@ async function main() {
     }
     const elapsed = process.hrtime.bigint() - runStart;
     const actualKeys = namespaceKeyCount(namespace);
-    const usedMemory = memoryBytes();
+    const usedMemory = memoryBytes(`${target}-keys`, rawInfoPath);
     if (actualKeys !== target) throw new Error(`Expected ${target} live nonce keys, found ${actualKeys}`);
     if (Number(elapsed) / 1e9 >= ttlSeconds) throw new Error(`Run exceeded NONCE_TTL before snapshot ${target}`);
     snapshots.push({ targetKeys: target, measuredKeys: actualKeys, usedMemoryBytes: usedMemory, baselineUsedMemoryBytes: baselineMemory,
@@ -104,7 +108,7 @@ async function main() {
     durationSeconds: Number(runEnd - runStart) / 1e9, durationVsTtl: Number(runEnd - runStart) / 1e9 / ttlSeconds,
     baselineUsedMemoryBytes: baselineMemory, baselineNonceKeys: baselineKeys, snapshots,
     baselineSubtractedSlopeBytesPerKey: (snapshots.at(-1).usedMemoryBytes - baselineMemory) / 100000,
-    requestRowsCsv: path.basename(csvPath), controlRowsCsv: `nonce-memory-${mode}-${runId}-control.csv`, requestCount: sent
+    requestRowsCsv: path.basename(csvPath), controlRowsCsv: `nonce-memory-${mode}-${runId}-control.csv`, rawInfoLog: path.basename(rawInfoPath), requestCount: sent
   };
   fs.writeFileSync(path.join(output, `nonce-memory-${mode}-${runId}-summary.json`), `${JSON.stringify(summary, null, 2)}\n`);
   process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);

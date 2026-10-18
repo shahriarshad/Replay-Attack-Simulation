@@ -1,0 +1,67 @@
+{
+  "runId": "prep-accepted-clean-20261018",
+  "mode": "accepted",
+  "nonceBackend": "redis",
+  "vizEnabled": false,
+  "label": "nonce-store growth from accepted requests",
+  "createdAt": "2026-10-18T06:01:21.023Z",
+  "nonceTtlSeconds": 86400,
+  "duration_ns": "843211151600",
+  "durationSeconds": 843.2111516,
+  "durationVsTtl": 0.009759388328703704,
+  "baselineUsedMemoryBytes": 1083904,
+  "baselineNonceKeys": 0,
+  "snapshots": [
+    {
+      "targetKeys": 0,
+      "measuredKeys": 0,
+      "usedMemoryBytes": 1083904,
+      "baselineUsedMemoryBytes": 1083904,
+      "deltaBytes": 0,
+      "bytesPerKeyAboveBaseline": null,
+      "elapsed_ns": "0",
+      "ttlSeconds": 86400
+    },
+    {
+      "targetKeys": 1000,
+      "measuredKeys": 1000,
+      "usedMemoryBytes": 1260000,
+      "baselineUsedMemoryBytes": 1083904,
+      "deltaBytes": 176096,
+      "bytesPerKeyAboveBaseline": 176.096,
+      "elapsed_ns": "6474575500",
+      "elapsedSeconds": 6.4745755,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.0000749372164351852
+    },
+    {
+      "targetKeys": 10000,
+      "measuredKeys": 10000,
+      "usedMemoryBytes": 2945760,
+      "baselineUsedMemoryBytes": 1083904,
+      "deltaBytes": 1861856,
+      "bytesPerKeyAboveBaseline": 186.1856,
+      "elapsed_ns": "62852654300",
+      "elapsedSeconds": 62.8526543,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.0007274612766203704
+    },
+    {
+      "targetKeys": 100000,
+      "measuredKeys": 100000,
+      "usedMemoryBytes": 19180768,
+      "baselineUsedMemoryBytes": 1083904,
+      "deltaBytes": 18096864,
+      "bytesPerKeyAboveBaseline": 180.96864,
+      "elapsed_ns": "841995417900",
+      "elapsedSeconds": 841.9954179,
+      "ttlSeconds": 86400,
+      "ttlFractionUsed": 0.009745317336805556
+    }
+  ],
+  "baselineSubtractedSlopeBytesPerKey": 180.96864,
+  "requestRowsCsv": "nonce-memory-accepted-prep-accepted-clean-20261018-requests.csv",
+  "controlRowsCsv": "nonce-memory-accepted-prep-accepted-clean-20261018-control.csv",
+  "rawInfoLog": "nonce-memory-accepted-prep-accepted-clean-20261018-raw-info.log",
+  "requestCount": 100000
+}

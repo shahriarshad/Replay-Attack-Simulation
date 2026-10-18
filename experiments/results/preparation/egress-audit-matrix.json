@@ -1,0 +1,154 @@
+[
+  {
+    "config": "viz-false-demo-false",
+    "vizEnabled": false,
+    "demoMode": false,
+    "eventsReceived": [],
+    "socketSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "consoleSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "experimentCsvSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "transactionHttpStatus": 200,
+    "wrongPinStatuses": [
+      401,
+      401,
+      401,
+      401,
+      401
+    ],
+    "correctPinAfterFailuresStatus": 200,
+    "sessionKeyLayout": "session:<sessionToken>",
+    "sessionTtlSeconds": 900,
+    "nonceKeyLayout": "used_nonce:<namespace>:<user_id>:<nonce>",
+    "nonceTtlSeconds": 300
+  },
+  {
+    "config": "viz-false-demo-true",
+    "vizEnabled": false,
+    "demoMode": true,
+    "eventsReceived": [],
+    "socketSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "consoleSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "experimentCsvSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "transactionHttpStatus": 200,
+    "wrongPinStatuses": [
+      401,
+      401,
+      401,
+      401,
+      401
+    ],
+    "correctPinAfterFailuresStatus": 200,
+    "sessionKeyLayout": "session:<sessionToken>",
+    "sessionTtlSeconds": 900,
+    "nonceKeyLayout": "used_nonce:<namespace>:<user_id>:<nonce>",
+    "nonceTtlSeconds": 300
+  },
+  {
+    "config": "viz-true-demo-false",
+    "vizEnabled": true,
+    "demoMode": false,
+    "eventsReceived": [
+      "request-received",
+      "check-signature",
+      "check-nonce",
+      "check-requestid",
+      "check-balance",
+      "transaction-result",
+      "db-update"
+    ],
+    "socketSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "consoleSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "experimentCsvSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "transactionHttpStatus": 200,
+    "wrongPinStatuses": [
+      401,
+      401,
+      401,
+      401,
+      401
+    ],
+    "correctPinAfterFailuresStatus": 200,
+    "sessionKeyLayout": "session:<sessionToken>",
+    "sessionTtlSeconds": 900,
+    "nonceKeyLayout": "used_nonce:<namespace>:<user_id>:<nonce>",
+    "nonceTtlSeconds": 300
+  },
+  {
+    "config": "viz-true-demo-true",
+    "vizEnabled": true,
+    "demoMode": true,
+    "eventsReceived": [
+      "request-received",
+      "check-signature",
+      "check-nonce",
+      "check-requestid",
+      "check-balance",
+      "transaction-result",
+      "db-update"
+    ],
+    "socketSensitiveValuesFound": [
+      false,
+      false,
+      true
+    ],
+    "consoleSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "experimentCsvSensitiveValuesFound": [
+      false,
+      false,
+      false
+    ],
+    "transactionHttpStatus": 200,
+    "wrongPinStatuses": [
+      401,
+      401,
+      401,
+      401,
+      401
+    ],
+    "correctPinAfterFailuresStatus": 200,
+    "sessionKeyLayout": "session:<sessionToken>",
+    "sessionTtlSeconds": 900,
+    "nonceKeyLayout": "used_nonce:<namespace>:<user_id>:<nonce>",
+    "nonceTtlSeconds": 300
+  }
+]

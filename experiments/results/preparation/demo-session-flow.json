@@ -1,0 +1,14 @@
+{
+  "loginHttpStatus": 200,
+  "withdrawalHttpStatus": 200,
+  "withdrawalOutcome": "ACCEPTED",
+  "postWithdrawalRefreshesCompleted": true,
+  "latestGeneralCapturePath": "/api/transactions/anis_101",
+  "dedicatedCapturePath": "/api/withdraw",
+  "dedicatedCaptureIsWithdrawal": true,
+  "exactForwardedBodyRecorded": true,
+  "bearerHeaderCaptured": true,
+  "requestSignatureCaptured": true,
+  "sessionKeyWrittenToProxyCapture": true,
+  "sessionTokenWrittenToProxyCapture": true
+}
