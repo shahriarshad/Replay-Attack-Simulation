@@ -19,3 +19,11 @@ This is an evidence map, not a claim that each result generalizes beyond the loc
 - The S11 token-only attacker holds a bearer token but lacks the session key. It demonstrates why HMAC cannot be disabled when bearer-only forgery is in scope.
 - No claim here says anything about a real bank, telecom operator, or mobile financial service.
 - Every numeric claim must be tied to the raw artifact path and SHA-256 in `PAPER_FACTS_CURATED.md`.
+
+## Round F evidence update
+
+- Claim 2 (failed-request idempotency trade-off): Round F 100-trial policy sweep reports S10_fast and S10_late for request-ID-on configurations. Under success_only, a delayed failed attempt can execute after later funding when the request-ID defense has not already consumed it as a success; under ny_outcome, failed rows consume the request ID and those tested retries were rejected. See the complete cells and Wilson intervals in [RESULTS_PACK_A.md](RESULTS_PACK_A.md), raw runs under experiments/results/round-f/B-S10-*. This supports the stated policy behavior for these tested conditions; timing and balances are harness-specific.
+- Claim 3 (nonce TTL relative to the timestamp window): default-window A reproduces the tested gap only when request-ID is off: all 30 replays were accepted at 301 s and 303 s, while 299 s and 305/307 s were all blocked; A2 with request-ID on had zero accepted. See A/A2 tables and raw CSV hashes in [RESULTS_PACK_A.md](RESULTS_PACK_A.md). This demonstrates behavior at the tested default values; it does not establish a universal TTL inequality independent of defense ordering and request-ID.
+
+
+Privacy note: SQLite signature-column values in the new Round F databases were nulled after the measured runs and ledger oracle queries. The audit was rerun after this sanitization and still matched all compared values.

@@ -9,6 +9,14 @@ const { sqliteRun } = require('../utils/nonce');
 const { validSignedRequest } = require('../utils/request');
 const { getStartupWarnings } = require('../utils/config-warnings');
 const { isTimestampWithinWindow } = require('../utils/timestamp');
+const { readAttemptCount } = require('../../experiments/e1/attempt-count');
+
+test('E1 attempt count defaults to 30 and accepts positive integer overrides', () => {
+  assert.equal(readAttemptCount(undefined), 30);
+  assert.equal(readAttemptCount('100'), 100);
+  assert.equal(readAttemptCount('0'), 30);
+  assert.equal(readAttemptCount('3.5'), 30);
+});
 
 test('server and E3 share the inclusive timestamp acceptance rule', () => {
   const now = Date.parse('2026-01-01T00:00:00.000Z');

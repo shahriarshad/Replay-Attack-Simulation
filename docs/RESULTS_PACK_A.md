@@ -594,3 +594,110 @@ The artifact hash is for the rendered file; the source hash is for its raw CSV. 
 | E3 P2 false-rejection plot svg | experiments/results/e3-v2/p2-false-rejection-vs-future.svg | 4967dd70309c22ae815e6257e710db89b9c3f0a2489a40280e0f93e13a936e3b | experiments/results/e3-v2/summary.csv | b9a5898245997649e70872b61ea83198f608bd241647ddbc936a587d06d40b12 | python experiments/render-v2-results.py | 9.5961856 |
 | E3 P3 false-rejection plot svg | experiments/results/e3-v2/p3-false-rejection-vs-future.svg | 996144f85d90f28997d2ca237d798fc476a9d8491a06774431321038f5b7c90a | experiments/results/e3-v2/summary.csv | b9a5898245997649e70872b61ea83198f608bd241647ddbc936a587d06d40b12 | python experiments/render-v2-results.py | 9.5961856 |
 | E3 false-rejection vs PAST svg | experiments/results/e3-v2/false-rejection-vs-past-and-replay-window.svg | 855ad4e4e87dda878f8fd01548c3eb9f91eb822f64760aa182a565bfcab1085c | experiments/results/e3-v2/summary.csv | b9a5898245997649e70872b61ea83198f608bd241647ddbc936a587d06d40b12 | python experiments/render-v2-results.py | 9.5961856 |
+
+## Round F: default-window TTL gap and higher-trial headline cells
+
+New results only. Earlier result directories were not overwritten. A/A2 use default PAST=300 s, FUTURE=5 s, NONCE_TTL=300 s, client offset +4 s, SESSION_TTL=900 s, 30 independent captured requests at each delay. A used H1T1N1R0; A2 used H1T1N1R1. The tested rule predicts nonce rejection before expiry, replay acceptance after nonce expiry while timestamp age remains below 304 s, then timestamp rejection.
+
+| Run | Intended delay | attempts | accepted / ledger replay debits | Wilson 95% | reasons |
+|---|---:|---:|---:|---:|---|
+| H1T1N1R0 | 299s | 30 | 0/0 | [0, 0.113513393173969] | {"NONCE_FAIL":30} |
+| H1T1N1R0 | 301s | 30 | 30/30 | [0.886486606826031, 1] | {"ACCEPTED":30} |
+| H1T1N1R0 | 303s | 30 | 30/30 | [0.886486606826031, 1] | {"ACCEPTED":30} |
+| H1T1N1R0 | 305s | 30 | 0/0 | [0, 0.113513393173969] | {"TIMESTAMP_FAIL":30} |
+| H1T1N1R0 | 307s | 30 | 0/0 | [0, 0.113513393173969] | {"TIMESTAMP_FAIL":30} |
+| H1T1N1R1 | 299s | 30 | 0/0 | [0, 0.113513393173969] | {"NONCE_FAIL":30} |
+| H1T1N1R1 | 301s | 30 | 0/0 | [0, 0.113513393173969] | {"ALREADY_PROCESSED":30} |
+| H1T1N1R1 | 303s | 30 | 0/0 | [0, 0.113513393173969] | {"ALREADY_PROCESSED":30} |
+| H1T1N1R1 | 305s | 30 | 0/0 | [0, 0.113513393173969] | {"TIMESTAMP_FAIL":30} |
+| H1T1N1R1 | 307s | 30 | 0/0 | [0, 0.113513393173969] | {"TIMESTAMP_FAIL":30} |
+
+The observed A sequence is 0, 30, 30, 0, 0 accepted at 299/301/303/305/307 s, matching the prediction. A2 accepted 0 at every delay; 301 s and 303 s were stopped by request-ID idempotency (`ALREADY_PROCESSED`). Each table is aggregated from the corresponding requests.csv; SQLite ledger counts and timing fields are saved alongside it.
+
+| Config | Raw requests CSV | SHA-256 | Metadata |
+|---|---|---|---|
+| H1T1N1R0 | $f | $hash | $full/H1T1N1R0/run.json |
+| H1T1N1R1 | $f | $hash | $full/H1T1N1R1/run.json |
+
+### B: 100 attempts per requested cell
+
+The per-cell Wilson intervals below use the exact Wilson score formula and the SQLite ledger oracle debit count as successes. Controls are 30/30 accepted in every configuration and omitted here for compactness; they are present in each raw summary. Each run has a summary.csv, per-config requests.csv, SQLite database, run.json, and console.log.
+
+| Run | config | scenario | attempts | oracle debits / attempts | Wilson 95% | blocking reasons |
+|---|---|---|---:|---:|---:|---|
+| B-S10-fast-R0 | H0T0N0R0 | S10_fast | 100 | 5/100 | [0.021543679154368, 0.111750469231919] | {"ACCEPTED":5,"INSUFFICIENT_BALANCE":95} |
+| B-S10-fast-R0 | H1T0N0R0 | S10_fast | 100 | 5/100 | [0.021543679154368, 0.111750469231919] | {"ACCEPTED":5,"INSUFFICIENT_BALANCE":95} |
+| B-S10-fast-R0 | H0T1N0R0 | S10_fast | 100 | 5/100 | [0.021543679154368, 0.111750469231919] | {"ACCEPTED":5,"INSUFFICIENT_BALANCE":95} |
+| B-S10-fast-R0 | H1T1N0R0 | S10_fast | 100 | 5/100 | [0.021543679154368, 0.111750469231919] | {"ACCEPTED":5,"INSUFFICIENT_BALANCE":95} |
+| B-S10-fast-R0 | H0T0N1R0 | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R0 | H1T0N1R0 | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R0 | H0T1N1R0 | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R0 | H1T1N1R0 | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R1 | H0T0N0R1-success_only | S10_fast | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"ALREADY_PROCESSED":99} |
+| B-S10-fast-R1 | H1T0N0R1-success_only | S10_fast | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"ALREADY_PROCESSED":99} |
+| B-S10-fast-R1 | H0T1N0R1-success_only | S10_fast | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"ALREADY_PROCESSED":99} |
+| B-S10-fast-R1 | H1T1N0R1-success_only | S10_fast | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"ALREADY_PROCESSED":99} |
+| B-S10-fast-R1 | H0T0N1R1-success_only | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R1 | H1T0N1R1-success_only | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R1 | H0T1N1R1-success_only | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R1 | H1T1N1R1-success_only | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R1 | H0T0N0R1-any_outcome | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"ALREADY_PROCESSED":100} |
+| B-S10-fast-R1 | H1T0N0R1-any_outcome | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"ALREADY_PROCESSED":100} |
+| B-S10-fast-R1 | H0T1N0R1-any_outcome | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"ALREADY_PROCESSED":100} |
+| B-S10-fast-R1 | H1T1N0R1-any_outcome | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"ALREADY_PROCESSED":100} |
+| B-S10-fast-R1 | H0T0N1R1-any_outcome | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R1 | H1T0N1R1-any_outcome | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R1 | H0T1N1R1-any_outcome | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-fast-R1 | H1T1N1R1-any_outcome | S10_fast | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"NONCE_FAIL":100} |
+| B-S10-late-R0 | H0T0N0R0 | S10_late | 100 | 5/100 | [0.021543679154368, 0.111750469231919] | {"ACCEPTED":5,"INSUFFICIENT_BALANCE":95} |
+| B-S10-late-R0 | H1T0N0R0 | S10_late | 100 | 5/100 | [0.021543679154368, 0.111750469231919] | {"ACCEPTED":5,"INSUFFICIENT_BALANCE":95} |
+| B-S10-late-R0 | H0T1N0R0 | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R0 | H1T1N0R0 | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R0 | H0T0N1R0 | S10_late | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"NONCE_FAIL":99} |
+| B-S10-late-R0 | H1T0N1R0 | S10_late | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"NONCE_FAIL":99} |
+| B-S10-late-R0 | H0T1N1R0 | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R0 | H1T1N1R0 | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R1 | H0T0N0R1-success_only | S10_late | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"ALREADY_PROCESSED":99} |
+| B-S10-late-R1 | H1T0N0R1-success_only | S10_late | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"ALREADY_PROCESSED":99} |
+| B-S10-late-R1 | H0T1N0R1-success_only | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R1 | H1T1N0R1-success_only | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R1 | H0T0N1R1-success_only | S10_late | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"NONCE_FAIL":99} |
+| B-S10-late-R1 | H1T0N1R1-success_only | S10_late | 100 | 1/100 | [0.00176743206414065, 0.0544861961787053] | {"ACCEPTED":1,"NONCE_FAIL":99} |
+| B-S10-late-R1 | H0T1N1R1-success_only | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R1 | H1T1N1R1-success_only | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R1 | H0T0N0R1-any_outcome | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"ALREADY_PROCESSED":100} |
+| B-S10-late-R1 | H1T0N0R1-any_outcome | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"ALREADY_PROCESSED":100} |
+| B-S10-late-R1 | H0T1N0R1-any_outcome | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R1 | H1T1N0R1-any_outcome | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R1 | H0T0N1R1-any_outcome | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"ALREADY_PROCESSED":1,"NONCE_FAIL":99} |
+| B-S10-late-R1 | H1T0N1R1-any_outcome | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"ALREADY_PROCESSED":1,"NONCE_FAIL":99} |
+| B-S10-late-R1 | H0T1N1R1-any_outcome | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-S10-late-R1 | H1T1N1R1-any_outcome | S10_late | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"TIMESTAMP_FAIL":100} |
+| B-s11-100 | H0T0N0R0 | S11 | 100 | 100/100 | [0.963006501793014, 1] | {"ACCEPTED":100} |
+| B-s11-100 | H1T0N0R0 | S11 | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"SIGNATURE_FAIL":100} |
+| B-s11-100 | H0T1N0R0 | S11 | 100 | 100/100 | [0.963006501793014, 1] | {"ACCEPTED":100} |
+| B-s11-100 | H1T1N0R0 | S11 | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"SIGNATURE_FAIL":100} |
+| B-s11-100 | H0T0N1R0 | S11 | 100 | 100/100 | [0.963006501793014, 1] | {"ACCEPTED":100} |
+| B-s11-100 | H1T0N1R0 | S11 | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"SIGNATURE_FAIL":100} |
+| B-s11-100 | H0T1N1R0 | S11 | 100 | 100/100 | [0.963006501793014, 1] | {"ACCEPTED":100} |
+| B-s11-100 | H1T1N1R0 | S11 | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"SIGNATURE_FAIL":100} |
+| B-s11-100 | H0T0N0R1 | S11 | 100 | 100/100 | [0.963006501793014, 1] | {"ACCEPTED":100} |
+| B-s11-100 | H1T0N0R1 | S11 | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"SIGNATURE_FAIL":100} |
+| B-s11-100 | H0T1N0R1 | S11 | 100 | 100/100 | [0.963006501793014, 1] | {"ACCEPTED":100} |
+| B-s11-100 | H1T1N0R1 | S11 | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"SIGNATURE_FAIL":100} |
+| B-s11-100 | H0T0N1R1 | S11 | 100 | 100/100 | [0.963006501793014, 1] | {"ACCEPTED":100} |
+| B-s11-100 | H1T0N1R1 | S11 | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"SIGNATURE_FAIL":100} |
+| B-s11-100 | H0T1N1R1 | S11 | 100 | 100/100 | [0.963006501793014, 1] | {"ACCEPTED":100} |
+| B-s11-100 | H1T1N1R1 | S11 | 100 | 0/100 | [3.46944695195361E-18, 0.0369934982069857] | {"SIGNATURE_FAIL":100} |
+
+Headline: S11 produced 100/100 debits when HMAC was disabled (all 8 such configurations; Wilson [0.9630, 1.0000]) and 0/100 when HMAC was enabled (all 8; [0.0000, 0.0370], `SIGNATURE_FAIL`). For S10_fast with request-ID disabled and nonce disabled, each of four HMAC/timestamp combinations produced 5/100 late executions after funding (Wilson [0.0215, 0.1118]); enabling nonce reduced these to 0/100. With request-ID enabled under success_only, all nonce-disabled cells produced 1/100 and nonce-enabled cells 0/100; under any_outcome all produced 0/100. For S10_late, HMAC is irrelevant; timestamp-enabled cells were 0/100. Request-ID-off, timestamp-off cells had 5/100 for no nonce and 1/100 for nonce. Request-ID-on success_only had 1/100 with timestamp off; any_outcome produced 0/100.
+
+| Run | summary.csv | SHA-256 | run.json |
+|---|---|---|---|
+| B-S10-fast-R0 | $f | $hash | experiments/results/round-f/B-S10-fast-R0/run.json |
+| B-S10-fast-R1 | $f | $hash | experiments/results/round-f/B-S10-fast-R1/run.json |
+| B-S10-late-R0 | $f | $hash | experiments/results/round-f/B-S10-late-R0/run.json |
+| B-S10-late-R1 | $f | $hash | experiments/results/round-f/B-S10-late-R1/run.json |
+| B-s11-100 | $f | $hash | experiments/results/round-f/B-s11-100/run.json |
+
+Privacy treatment: the post-run SQLite files retained the transaction and balance columns used by the oracle. After the oracle queries completed, stored signature column values were set to NULL and the files checkpointed; this removes signatures from the deliverable artifacts without changing ledger outcome fields. The independent audit was rerun successfully against these sanitized SQLite files at experiments/results/round-f/audit-final4/audit-report.json.

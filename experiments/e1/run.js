@@ -8,6 +8,7 @@ const { generateSignature } = require('../../server/utils/hmac');
 const { computeMoneyIntegrity } = require('../../server/utils/money-oracle');
 const sqlite3 = require('../../server/node_modules/sqlite3').verbose();
 const { timedRequest } = require('../lib/http');
+const { readAttemptCount } = require('./attempt-count');
 
 const ROOT = path.resolve(__dirname, '../..');
 const SERVER = path.join(ROOT, 'server');
@@ -16,6 +17,7 @@ const RUN_TAG = new Date().toISOString().replace(/[:.]/g, '-');
 const RUN_OUTPUT = path.join(OUTPUT, RUN_TAG);
 const RANDOM_SEED = 'e1-fixed-seed-2026-v1';
 const WIDTH = 30;
+const ATTEMPTS = readAttemptCount();
 const PAST = 6;
 const FUTURE = 2;
 const NONCE_TTL = 4;
@@ -277,12 +279,12 @@ async function runConfiguration(mask, profile = {}) {
         const [tokenCapture] = await baseline('S11_token_capture_seed', 1);
         const bearer = tokenCapture.request.headers.authorization.replace(/^Bearer\s+/i, '');
         // The attacker gets only the bearer token. No session key is read or used here.
-        const forged = Array.from({ length: WIDTH }, () => ({
+        const forged = Array.from({ length: ATTEMPTS }, () => ({
           method: 'POST', path: '/api/withdraw', user_id: 'anis_101', account_id: 'acc_777', amount: 1,
           currency: 'BDT', timestamp: new Date().toISOString(), nonce: `s11-n-${deterministicId(id)}`,
           request_id: `s11-r-${deterministicId(id)}`
         }));
-        const results = await measureScenario(scenario, WIDTH, async () => Promise.all(forged.map((payload) => submit(payload, bearer))));
+        const results = await measureScenario(scenario, ATTEMPTS, async () => Promise.all(forged.map((payload) => submit(payload, bearer))));
         recordAttempts(scenario, results);
       } else if (scenario === 'S10_fast' || scenario === 'S10_late') {
         const deposit = async (amount) => {
@@ -300,7 +302,7 @@ async function runConfiguration(mask, profile = {}) {
         if (funded.status !== 200) throw new Error(`${id}/${scenario}: legitimate funding failed (${funded.status})`);
         if (scenario === 'S10_fast') await new Promise((resolve) => setTimeout(resolve, 1000));
         else await new Promise((resolve) => setTimeout(resolve, 7000));
-        const results = await measureScenario(scenario, WIDTH, async () => Promise.all(Array.from({ length: WIDTH }, () => replay(capturedFailure))));
+        const results = await measureScenario(scenario, ATTEMPTS, async () => Promise.all(Array.from({ length: ATTEMPTS }, () => replay(capturedFailure))));
         recordAttempts(scenario, results);
       }
     }
@@ -324,18 +326,23 @@ async function main() {
   const filter = process.env.E1_SCENARIO_FILTER || '';
   const onlyS11 = filter === 'S11';
   const policySweep = process.env.E1_POLICY_SWEEP === 'true';
+  const skipDefaultConfirmation = process.env.E1_SKIP_DEFAULT_CONFIRMATION === 'true';
   if (policySweep) {
     for (const policy of ['success_only', 'any_outcome']) {
       for (let mask = 8; mask < 16; mask += 1) {
+        const selected = process.env.E1_CONFIG_MASKS;
+        if (selected && !selected.split(',').map((x) => Number(x.trim())).includes(mask)) continue;
         process.stdout.write(`Policy ${policy}, config mask ${mask}, scenario ${filter}\n`);
         allSummaries.push(...await runConfiguration(mask, { suffix: `-${policy}`, idempotencyPolicy: policy }));
       }
     }
   } else for (let mask = 0; mask < 16; mask += 1) {
+    const selected = process.env.E1_CONFIG_MASKS;
+    if (selected && !selected.split(',').map((x) => Number(x.trim())).includes(mask)) continue;
     process.stdout.write(`E1 ${mask + 1}/16: defense mask ${mask}\n`);
     allSummaries.push(...await runConfiguration(mask));
   }
-  if (!onlyS11 && !policySweep) {
+  if (!onlyS11 && !policySweep && !skipDefaultConfirmation) {
     process.stdout.write('E1 default-window confirmation: S2/60s and S4/301s\n');
     allSummaries.push(...await runConfiguration(15, { suffix: '-DEFAULT', past: 300, future: 5, nonceTtl: 86400, sessionTtl: 900, fullScale: true }));
   }
@@ -345,7 +352,7 @@ async function main() {
   const scenarios = [...new Set(allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => r.scenario_id))];
   const latex = ['\\begin{tabular}{llrrrrl}', '\\toprule', 'Configuration & Scenario & Attempts & Accepted & Debits & Success rate & Wilson 95\\% CI \\\\', '\\midrule', ...allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => `${r.config_id} & ${r.scenario_id} & ${r.attempts} & ${r.http_accepted_count} & ${r.debited_count} & ${(100 * r.attack_success_rate).toFixed(2)}\\% & ${r.wilson95_low.toFixed(4)}--${r.wilson95_high.toFixed(4)} \\\\`), '\\bottomrule', '\\end{tabular}', ''];
   fs.writeFileSync(path.join(RUN_OUTPUT, 'summary.tex'), latex.join('\n'));
-  const runMetadata = { started, ended: new Date().toISOString(), elapsedSeconds: (Date.now() - Date.parse(started)) / 1000, nodeVersion: process.version, host: { platform: os.platform(), release: os.release(), architecture: process.arch, cpuModel: os.cpus()[0]?.model, totalRamBytes: os.totalmem() }, dataRunDirectory: path.relative(OUTPUT, RUN_OUTPUT).replace(/\\/g, '/'), randomSeed: RANDOM_SEED, randomSeedScope: 'deterministic scenario request IDs and nonces; server session credentials use the operating-system CSPRNG', scaledProfile: { timestampPastSeconds: PAST, timestampFutureSeconds: FUTURE, nonceTtlSeconds: NONCE_TTL, sessionTtlSeconds: SESSION_TTL }, defaultConfirmationProfile: { timestampPastSeconds: 300, futureToleranceSeconds: 5, nonceTtlSeconds: 86400, sessionTtlSeconds: 900, waits: { S2: 60, S4: 301 } }, keepAliveHttpAgent: true, proxyRedactLogin: true, moneyOracleLedgerSource: 'direct sqlite3 SELECT from the running server database after each scenario', allConfigs: 16, totalSummaryRows: allSummaries.length, scenarios: scenarios.length, allSummaries };
+  const runMetadata = { started, ended: new Date().toISOString(), elapsedSeconds: (Date.now() - Date.parse(started)) / 1000, nodeVersion: process.version, host: { platform: os.platform(), release: os.release(), architecture: process.arch, cpuModel: os.cpus()[0]?.model, totalRamBytes: os.totalmem() }, dataRunDirectory: path.relative(OUTPUT, RUN_OUTPUT).replace(/\\/g, '/'), randomSeed: RANDOM_SEED, randomSeedScope: 'deterministic scenario request IDs and nonces; server session credentials use the operating-system CSPRNG', configuredAttempts: ATTEMPTS, selectedConfigMasks: process.env.E1_CONFIG_MASKS || 'all', selectedPolicySweep: policySweep, skippedDefaultConfirmation: skipDefaultConfirmation, scaledProfile: { timestampPastSeconds: PAST, timestampFutureSeconds: FUTURE, nonceTtlSeconds: NONCE_TTL, sessionTtlSeconds: SESSION_TTL }, defaultConfirmationProfile: { timestampPastSeconds: 300, futureToleranceSeconds: 5, nonceTtlSeconds: 86400, sessionTtlSeconds: 900, waits: { S2: 60, S4: 301 } }, keepAliveHttpAgent: true, proxyRedactLogin: true, moneyOracleLedgerSource: 'direct sqlite3 SELECT from the running server database after each scenario', allConfigs: 16, totalSummaryRows: allSummaries.length, scenarios: scenarios.length, allSummaries };
   fs.writeFileSync(path.join(RUN_OUTPUT, 'run.json'), `${JSON.stringify(runMetadata, null, 2)}\n`);
   fs.copyFileSync(path.join(RUN_OUTPUT, 'summary.csv'), path.join(OUTPUT, 'summary.csv'));
   fs.copyFileSync(path.join(RUN_OUTPUT, 'summary.tex'), path.join(OUTPUT, 'summary.tex'));
