@@ -30,6 +30,7 @@ plt.rcParams.update({
     'pdf.fonttype': 42, 'ps.fonttype': 42, 'hatch.linewidth': 0.6,
 })
 CHECKED = 0
+NOT_APPLICABLE_CELLS = {('T2', 'any_outcome', 'request-ID off')}  # Policy switch is not applicable when request-ID defense is off; this cell is intentionally omitted, not encoded as 0/0.
 
 
 def raw(path: str) -> list[dict[str, str]]:
@@ -74,7 +75,7 @@ def tex_escape(s: str) -> str:
 
 
 def write_table(name: str, headers: list[str], rows: list[list[object]]) -> None:
-    out = [r'\begin{table*}[t]', r'\centering', r'\small', r'\begin{tabular}{' + 'l' * len(headers) + '}', r'\toprule', ' & '.join(tex_escape(x) for x in headers) + r' \\', r'\midrule']
+    out = [r'\begin{table*}[t]', r'\centering', r'\small', r'\begin{tabular}{l' + 'c' * (len(headers)-1) + '}', r'\toprule', ' & '.join(tex_escape(x) for x in headers) + r' \\', r'\midrule']
     out.extend(' & '.join(tex_escape(x) for x in row) + r' \\' for row in rows)
     out += [r'\bottomrule', r'\end{tabular}', r'\end{table*}', '']
     (TABLE / f'{name}.tex').write_text('\n'.join(out), encoding='utf-8')
@@ -103,7 +104,10 @@ def attacking_rows(path: str, scenario: str, variant: str | None = None) -> list
 def cell(rows: list[dict[str, str]]) -> tuple[int, int, float]:
     n = len(rows)
     k = sum(r.get('outcome') == 'ACCEPTED' and int(r.get('http_status', '0')) == 200 for r in rows)
-    return k, n, check_value(k / n if n else 0)
+    if n == 0:
+        raise ValueError('empty cell is not applicable here; no plotted/table cell may have attempts=0')
+    check_value(k); check_value(n)
+    return k, n, check_value(k / n)
 
 
 # Read every source once; all plotted/table figures are calculated from per-request CSV rows.
@@ -114,9 +118,9 @@ e1_cells: dict[tuple[str, str], tuple[int, int, float]] = {}
 for cfg in configs:
     p = f"{str(e1_dir.relative_to(ROOT)).replace('\\', '/')}/{cfg}/requests.csv"
     rows = raw(p)
-    for scenario, variant in [('S1', ''), ('S2', ''), ('S3', ''), ('S4', ''), ('S5', ''), ('S6', ''), ('S7', 'S7a'), ('S7', 'S7b')]:
-        matching = [r for r in rows if r.get('phase') == 'attacker' and r.get('scenario_id') == scenario and (not variant or r.get('variant') == variant)]
-        e1_cells[(cfg, variant or scenario)] = cell(matching)
+    for scenario in ('S1','S2','S3','S4','S5','S6','S7a','S7b'):
+        matching = [r for r in rows if r.get('phase') == 'attacker' and r.get('scenario_id') == scenario]
+        e1_cells[(cfg, scenario)] = cell(matching)
     for scenario in ('S8','S9'):
         matching=[r for r in rows if r.get('phase')=='attacker' and r.get('scenario_id')==scenario]
         e1_cells[(cfg,scenario)]=cell(matching)
@@ -149,13 +153,15 @@ def f2(width: float, stem: str) -> None:
     fig, ax = plt.subplots(figsize=(width, 5.6))
     vals = np.array([[e1_cells[(cfg, c)][2] for c in columns] for cfg in configs])
     im = ax.imshow(vals, cmap='Greys', vmin=0, vmax=1, aspect='auto')
+    from matplotlib.patches import Rectangle
     for y, cfg in enumerate(configs):
         for x, col in enumerate(columns):
             k, n, _ = e1_cells[(cfg, col)]
-            if width > 4:
-                ax.text(x, y, f'{k}/{n}', ha='center', va='center', fontsize=8,
-                        color='black' if vals[y, x] < .45 else 'white', fontfamily='DejaVu Sans Mono')
-    ax.set_xticks(range(len(columns)), columns, rotation=45, ha='right')
+            ax.add_patch(Rectangle((x-.5,y-.5),1,1,fill=False, hatch='///' if vals[y,x] >= .5 else None, linewidth=0, edgecolor='0.35'))
+            ax.text(x, y, f'{k}', ha='center', va='center', fontsize=7,
+                    color='black' if vals[y, x] < .45 else 'white', fontfamily='DejaVu Sans Mono')
+    labels=[f'{c} (n={e1_cells[(configs[0],c)][1]})' for c in columns]
+    ax.set_xticks(range(len(columns)), labels, rotation=45, ha='right')
     ax.set_yticks(range(len(configs)), configs)
     ax.set_xlabel('Scenario')
     ax.set_ylabel('Defense configuration')
@@ -181,6 +187,7 @@ for f in offsets:
     for ttl in ttls:
         for delay in delays:
             g = [r for r in e4a if int(r['client_future_offset_seconds']) == f and int(r['nonce_ttl_seconds']) == ttl and int(r['replay_delay_seconds']) == delay]
+            if not g: raise ValueError(f'empty E4a cell f={f}, TTL={ttl}, delay={delay}')
             k = sum(r['replay_accepted'] == '1' for r in g)
             f3a_values[(f, ttl, delay)] = (k, len(g), check_value(k / len(g) if g else 0))
 fig, axs = plt.subplots(1, len(offsets), figsize=(7.16, 3.5), sharey=True)
@@ -214,12 +221,12 @@ for cfg in ['H1T1N1R0', 'H1T1N1R1']:
 fig, ax = plt.subplots(figsize=(3.5, 2.5))
 for cfg, marker, label in [('H1T1N1R0', 'o', 'Request-ID off'), ('H1T1N1R1', 's', 'Request-ID on')]:
     part = [r for r in full_rows if r[0] == cfg]
-    xs = [r[1] for r in part]; ys = [r[2] for r in part]
+    xs = list(range(len(part))); ys = [r[2] for r in part]
     lo = [max(0,(ys[i]/part[i][3]-part[i][5])*part[i][3]) for i in range(len(part))]; hi = [max(0,(part[i][6]-ys[i]/part[i][3])*part[i][3]) for i in range(len(part))]
-    ax.errorbar(xs, ys, yerr=[lo, hi], marker=marker, linestyle='-', capsize=2, label=label, color='black', mfc='white' if marker == 's' else 'black')
+    ax.errorbar(xs, ys, yerr=[lo, hi], marker=marker, linestyle='none', capsize=2, label=label, color='black', mfc='white' if marker == 's' else 'black')
 ax.set_xlabel('Replay delay after first use (s)')
 ax.set_ylabel(f"Accepted replays (n={sorted({r[3] for r in full_rows})[0]})")
-ax.set_xticks(sorted({r[1] for r in full_rows}))
+ax.set_xticks(range(len(sorted({r[1] for r in full_rows}))), sorted({r[1] for r in full_rows}))
 ax.set_ylim(-1, sorted({r[3] for r in full_rows})[0]+1)
 ax.legend(frameon=False)
 savefig(fig, 'F3b-default-TTL-gap', 3.5)
@@ -284,7 +291,7 @@ for stack in stacks:
         med, low, high=t_ci(vals)
         cost_rows.append([stack.replace('nonce_',''), layer, f'{med/1000:.3f}', f'{low:.3f}', f'{high:.3f}', len(vals)])
 write_table('T3-layer-cost', ['Nonce backend','Layer','Median p50 (µs)','95% CI low (µs)','95% CI high (µs)','Repeats'], cost_rows)
-fig, ax=plt.subplots(figsize=(3.5,2.8))
+fig, ax=plt.subplots(figsize=(3.5,3.2))
 for layer, marker in zip(layers[:4], ['o','s','^','D']):
     xs=[]; ys=[]; lo=[]; hi=[]
     for i,stack in enumerate(stacks):
@@ -293,23 +300,21 @@ for layer, marker in zip(layers[:4], ['o','s','^','D']):
     offset={'hmac':-.18,'timestamp':-.06,'nonce':.06,'request_id':.18}[layer]
     ax.errorbar([x+offset for x in xs],ys,yerr=[lo,hi],marker=marker,linestyle='none',capsize=2,label=layer.replace('_',' '),color='black',mfc='white' if marker in ('s','D') else 'black')
 ax.set_xticks(range(len(stacks)), ['Redis','SQLite','Memory'])
-ax.set_ylabel('Server layer p50 (µs)')
-ax.legend(frameon=False,ncol=2)
-ax.grid(axis='y',color='0.85',linewidth=.4)
-savefig(fig,'F5-E2-layer-cost',3.5)
+ax.set_ylabel('Server layer p50 (microseconds)')
+ax.set_yscale('log')
+ax.legend(frameon=False,ncol=2,loc='upper center',bbox_to_anchor=(.5,-.20))
+ax.grid(axis='y',color='0.85',linewidth=.4,which='both')
+savefig(fig,'F5-E2-layer-cost',3.5,tight_rect=(0,.22,1,1))
 
-# T1 scenarios: fixed scenario definitions, with empirical attempts derived from the matching raw CSV cells.
+# T1 scenarios: attempts and attacker class from the measured cells.
 scenario_desc = {
- 'S1':'Immediate exact replay','S2':'Delayed exact replay inside timestamp window','S3':'Replay after nonce-store wipe','S4':'Replay after timestamp window','S5':'Parallel identical-request burst (50-way)','S6':'Amount modified; original signature retained','S7a':'Request ID modified; original signature retained','S7b':'Nonce modified; original signature retained','S8':'Expired session bearer token','S9':'Fresh forgery with leaked session key','S10 fast':'Failed withdrawal replay inside nonce and timestamp windows','S10 late':'Failed withdrawal replay after nonce TTL and timestamp window','S11':'Captured bearer token without session signing key'
+ 'S1':('Immediate exact replay','A'),'S2':('Delayed exact replay inside timestamp window','A'),'S3':('Replay after nonce-store wipe','A'),'S4':('Replay after timestamp window','A'),'S5':('Parallel identical-request burst (50 parallel x 30 batches)','A'),'S6':('Amount modified; original signature retained','A'),'S7a':('Request ID modified; original signature retained','A'),'S7b':('Nonce modified; original signature retained','A'),'S8':('Expired session bearer token','A'),'S9':('Fresh forgery with leaked session key','C'),'S10 fast':('Failed withdrawal replay inside nonce and timestamp windows','A'),'S10 late':('Failed withdrawal replay after nonce TTL and timestamp window','A'),'S11':('Captured bearer token, without session signing key','B')
 }
 t1=[]
-for label,desc in scenario_desc.items():
-    col=label if label in columns else label
-    ns=sorted({e1_cells[(c,col)][1] for c in configs if (c,col) in e1_cells})
-    if label in ('S8','S9'):
-        ns=sorted({e1_cells[(c,label)][1] for c in configs})
-    t1.append([label,desc,','.join(map(str,ns)) if ns else 'n/a'])
-write_table('T1-scenarios',['Scenario','Description','Attempts per cell, n'],t1)
+for label,(desc,attacker) in scenario_desc.items():
+    ns=sorted({e1_cells[(c,label)][1] for c in configs})
+    t1.append([label,desc,attacker,', '.join(map(str,ns))])
+write_table('T1-scenarios',['Scenario','Description','Attacker','Attempts n'],t1)
 
 # T2: all Round F S10 request-level outcomes plus the C2 resubmission attempt CSV.
 t2=[]
@@ -342,28 +347,67 @@ for policy in sorted({r['policy'] for r in resub}):
         g=[r for r in resub if r['policy']==policy and r['variant']==variant]
         k=sum(r['retry_reason']=='ACCEPTED' and r['retry_status']=='200' for r in g); n=len(g); low,high=wilson(k,n)
         t2.append(['resubmission after funding',variant,policy,k,n,f'{low:.3f}–{high:.3f}'])
-write_table('T2-idempotency-tradeoff',['Scenario','Configuration / retry','Policy','Successes','Attempts','Wilson 95%'],t2)
+write_table('T2-full',['Scenario','Configuration / retry','Policy','Successes','Attempts','Wilson 95%'],t2)
 
-# T4 failure modes from per-attempt E4b/E4c CSV rows, not pre-rendered LaTeX.
+# Compact T2 groups R1/R0 cells by T/N freshness defenses; pool H variants only when identical.
+compact=[]
+for rid,policy in [(1,'success_only'),(0,'success_only'),(1,'any_outcome')]:
+    for t,n,group in [(0,0,'none'),(1,0,'T only'),(0,1,'N only'),(1,1,'T and N')]:
+        group_cfg=[c for c in configs if c.endswith(f'R{rid}') and c[3]==str(t) and c[5]==str(n)]
+        if not group_cfg: continue
+        for scen in ['S10_fast','S10_late']:
+            values=[]
+            run='B-S10-'+('fast' if scen=='S10_fast' else 'late')+f'-R{rid}'
+            for c in group_cfg:
+                pth=latest_b_csv(run,c,policy)
+                rr=attacking_rows(pth,scen)
+                if rid == 1: rr=[r for r in rr if r.get('config_id','').endswith(policy)]
+                kk=sum(r.get('outcome')=='ACCEPTED' and r.get('http_status')=='200' for r in rr); nn=len(rr)
+                values.append((c,kk,nn))
+            if len({(v[1],v[2]) for v in values})==1:
+                k=sum(v[1] for v in values); nv=sum(v[2] for v in values); configs_label='pooled H0/H1' if len(values)>1 else values[0][0]
+                lo,hi=wilson(k,nv); compact.append([policy,('R on' if rid else 'R off')+'; '+group,scen.replace('S10_',''),f'{k}/{nv} [{lo:.3f}, {hi:.3f}]',configs_label])
+            else:
+                for c,k,nv in values:
+                    lo,hi=wilson(k,nv); compact.append([policy,('R on' if rid else 'R off')+'; '+group,scen.replace('S10_',''),f'{k}/{nv} [{lo:.3f}, {hi:.3f}]',c])
+for policy in sorted({r['policy'] for r in resub}):
+    for variant in sorted({r['variant'] for r in resub}):
+        g=[r for r in resub if r['policy']==policy and r['variant']==variant]
+        k=sum(r['retry_reason']=='ACCEPTED' and r['retry_status']=='200' for r in g); n=len(g); lo,hi=wilson(k,n)
+        compact.append([policy,'After funding',variant,f'{k}/{n} [{lo:.3f}, {hi:.3f}]','resubmission trials'])
+write_table('T2',['Policy','Request-ID / freshness','Scenario','Successes / n (Wilson 95%)','Configuration scope'],compact)
+
+# T4 failure modes: E4b Wilson rows and E4c retry outcome counts from raw trials.
 e4b_path='experiments/results/e4-final-c3/e4b.csv'; e4b=raw(e4b_path); t4=[]
 for case in sorted({r['case'] for r in e4b}):
-    g=[r for r in e4b if r['case']==case and r['phase']=='replay' and r['attempt']!='summary']
-    if not g: continue
-    k=sum(r['reason']=='ACCEPTED' and r['status']=='200' for r in g); n=len(g); low,high=wilson(k,n)
-    t4.append(['E4b '+case,f'{k}/{n}',f'{low:.3f}–{high:.3f}',Counter(r['reason'] for r in g)])
+    g=[r for r in e4b if r['case']==case and r['phase'] in ('legitimate','replay')]
+    leg=[r for r in g if r['phase']=='legitimate']; rep=[r for r in g if r['phase']=='replay']
+    lk=sum(r['reason']=='ACCEPTED' and r['status']=='200' for r in leg); rk=sum(r['reason']=='ACCEPTED' and r['status']=='200' for r in rep)
+    ln=len(leg); rn=len(rep); ll,lh=wilson(lk,ln); rl,rh=wilson(rk,rn)
+    mode='fail-open' if 'fail-open' in case else 'fail-closed'; rid='on' if case.endswith('-1') else 'off'
+    t4.append(['E4b',mode,rid,f'{lk}/{ln} [{ll:.3f}, {lh:.3f}]',f'{rk}/{rn} [{rl:.3f}, {rh:.3f}]','','',''])
 e4c_path='experiments/results/e4-final-c3-rerun/e4c.csv'; e4c=raw(e4c_path)
 for case in sorted({r['case'] for r in e4c if r.get('kind')!='summary'}):
     g=[r for r in e4c if r['case']==case and r.get('kind')!='summary']
-    if not g:continue
-    lost=sum(r.get('response_lost')=='1' for r in g)
-    failures=sum(r.get('client_failure_after_debit')=='1' for r in g)
-    confirms=sum(r.get('reason_confirms_success')=='1' for r in g)
-    retries=Counter(r.get('retry_reason','') for r in g if r.get('retry_reason'))
-    t4.append(['E4c '+case,f'lost {lost}/{len(g)}; failure after debit {failures}; confirmed {confirms}', 'raw counts', retries])
-write_table('T4-failure-modes',['Case','Outcome from trials','Interval / scope','Reason counts'],[[a,b,c,json.dumps(d,sort_keys=True)] for a,b,c,d in t4])
+    if not case.startswith('loss-'): continue
+    if not g: raise ValueError(f'missing E4c trials for {case}')
+    m=re.match(r'loss-p([0-9.]+)-(default|request_id_before_nonce)-(same-signed|fresh-nonce-same-request-id)',case)
+    if not m: continue
+    prob,order,retry=m.groups(); lost=sum(r.get('response_lost')=='1' for r in g)
+    reasons=Counter(r.get('retry_reason','not_retried') for r in g)
+    summary=next((r for r in e4c if r.get('case')==case and r.get('kind')=='summary'),None)
+    if summary is None: raise ValueError(f'missing E4c raw oracle summary for {case}')
+    debit=int(summary.get('debits') or 0); exactly=int(summary.get('exactly_one_debit_request_ids') or 0); infer=int(summary.get('reason_confirms_success_count') or 0)
+    if int(summary.get('trials') or 0)!=200 or len(g)!=200: raise ValueError(f'E4c trial count mismatch for {case}')
+    t4.append(['E4c',f'p={prob}', 'default' if order=='default' else 'request-ID first', 'identical signed request' if retry=='same-signed' else 'fresh nonce, same request_id',f'{lost}/200',json.dumps(dict(sorted(reasons.items())),sort_keys=True),f'{exactly}/200',str(infer)])
+write_table('T4-failure-modes',['Experiment','Mode / loss p','Request-ID / check order','Legitimate accepted / retry type','Replay accepted / lost responses','Retry reason counts','Exactly one debit','Client can infer success'],t4)
+t4file=TABLE/'T4-failure-modes.tex'; t4text=t4file.read_text(encoding='utf-8')
+t4text=t4text.replace(r'\small',r'\small'+'\n'+r'\caption*{E4c client failure after debit is not zero in the saved data: its summary count equals the lost-response count for each loss case. The requested table omits this separate column; see source CSV and summary fields.}')
+t4file.write_text(t4text,encoding='utf-8')
 
 # Compact empirical E1 matrix T5; every cell uses the same raw request rows as F2.
-write_table('T5-e1-coverage',['Configuration']+columns,[[cfg]+[f'{e1_cells[(cfg,c)][0]}/{e1_cells[(cfg,c)][1]}' for c in columns] for cfg in configs])
+t5headers=['Config']+[f"{c.replace('S10 fast','S10f').replace('S10 late','S10l')} (n={e1_cells[(configs[0],c)][1]})" for c in columns]
+write_table('T5-e1-coverage',t5headers,[[cfg]+[str(e1_cells[(cfg,c)][0]) for c in columns] for cfg in configs])
 
 # Every generated asset receives source paths/hashes and a data-specific caption.
 f2_sources=[f"{str(e1_dir.relative_to(ROOT)).replace('\\','/')}/{cfg}/requests.csv" for cfg in configs]
@@ -380,44 +424,37 @@ sources={
  'F4-E3-false-rejection-future':[e3_path],
  'F5-E2-layer-cost':e2_source_files,
 }
-manifest=['# Paper asset manifest','','All PDF figures are vector exports; PNG previews use 150 dpi. The generator recomputes counts, rates, Wilson intervals, percentiles and table cells from saved request-level CSVs. No services are contacted.','', '| Asset | File | Source CSV(s) and SHA-256 | Regeneration | Caption draft |','|---|---|---|---|---|']
+manifest=['# Paper asset manifest','','All PDF figures are vector exports; PNG previews use 150 dpi. The generator recomputes displayed values and intervals from saved CSVs. Notation H/T/N/R means HMAC, timestamp, nonce, and request-ID defenses; A is a network observer without the session key, B has a bearer token only, and C has a leaked session key.','', '| Asset | Output files | Source CSV(s) and SHA-256 | Regeneration | Caption draft |','|---|---|---|---|---|']
 s8_values={e1_cells[(c,'S8')][:2] for c in configs}; s9_values={e1_cells[(c,'S9')][:2] for c in configs}
 if len(s8_values)!=1 or len(s9_values)!=1: raise ValueError('S8/S9 cells are inconsistent across configurations')
 s8k,s8n=next(iter(s8_values)); s9k,s9n=next(iter(s9_values))
 if s8k!=0 or s9k!=s9n: raise ValueError('S8/S9 caption values disagree with saved rows')
-col_n={c:sorted({e1_cells[(cfg,c)][1] for cfg in configs}) for c in columns}
-e1_caption='; '.join(f'n={"/".join(map(str,ns))} for {c}' for c,ns in col_n.items())+'; cell gray level is successful attacks/attempts and the printed cell value is the numerator; E1 scaled-time except Round F S10/S11; success_only.'
-captions={
- 'F2-e1-coverage-single':e1_caption+f' S8={s8k}/{s8n} and S9={s9k}/{s9n} in every configuration; this compact panel encodes the ratio in grayscale.',
- 'F2-e1-coverage-double':e1_caption+f' S8={s8k}/{s8n} and S9={s9k}/{s9n} in every configuration; cells print successes/attempts.',
- 'F3a-scaled-TTL-grid':f'n={sorted({n for _,n,_ in f3a_values.values()})} per cell; grayscale encodes accepted fraction and printed cell is the numerator; scaled-time profile PAST=6 s and FUTURE=2 s; success_only; request-ID defense off.',
- 'F3b-default-TTL-gap':f'n={sorted({r[3] for r in full_rows})} per delay and configuration; default windows PAST=300 s, FUTURE=5 s, NONCE_TTL=300 s; success_only.',
- 'F4-E3-false-rejection-future':f'n={sorted({v[1] for v in e3_data.values()})} per profile/PAST/FUTURE cell; assumed P1–P3 delay and clock-offset profiles; success_only.',
- 'F5-E2-layer-cost':f'{sorted({len(v) for v in timing_values.values()})} repeats per backend; warm-ups discarded; measured row count per repeat={sorted(set(repeat_n.values()))}; localhost; all four defenses on; success_only.',
-}
+col_n={c:e1_cells[(configs[0],c)][1] for c in columns}
+e1_caption='F2: H/T/N/R denote HMAC/timestamp/nonce/request-ID defenses; attacker A observes traffic without the session key (S1 through S8), attacker C has the leaked session key (S9), and B holds a bearer token only (S11). Each scenario header gives n; cells print successful attacks k, with grayscale/hatching encoding k/n; S8='+f'{s8k}/{s8n}'+', S9='+f'{s9k}/{s9n}'+'. Scaled-time S1 through S9; Round F default-window S10/S11; success_only.'
+caption_map={
+'F2-e1-coverage-single':e1_caption, 'F2-e1-coverage-double':e1_caption,
+'F3a-scaled-TTL-grid':'n=30 per cell; attacker A (network observer, no session key) replays recorded requests; H/T/N/R mean HMAC/timestamp/nonce/request-ID; scaled-time PAST=6 s/FUTURE=2 s, success_only, H1T1N1R0.',
+'F3b-default-TTL-gap':'n=30 per delay/configuration; attacker A (network observer, no session key) replays captured requests; H/T/N/R mean HMAC/timestamp/nonce/request-ID; default PAST=300 s/FUTURE=5 s/NONCE_TTL=300 s, success_only; H1T1N1R0 and H1T1N1R1.',
+'F4-E3-false-rejection-future':'n=2000 per profile/PAST/FUTURE cell; attacker not applicable (legitimate traffic under assumed P1 through P3 clock/delay profiles); H/T/N/R mean HMAC/timestamp/nonce/request-ID, with all four enabled; success_only.',
+'F5-E2-layer-cost':f"10 repeats/backend, each 3000 measured requests after 500 warm-ups; attacker not applicable (legitimate traffic); H/T/N/R mean HMAC/timestamp/nonce/request-ID; localhost E2, all four on, success_only."}
 for stem,srcs in sources.items():
-    files=[FIG/f'{stem}.pdf',PREVIEW/f'{stem}.png']
-    for output in files:
-        source_text='; '.join(f'{s} (SHA-256 {sha(s)})' for s in srcs if (ROOT/s).is_file())
-        if not source_text: source_text='; '.join(srcs)
-        manifest.append(f"| Figure | `{output.relative_to(ROOT).as_posix()}` | {source_text} | `python paper/generate_paper_assets.py` | {captions[stem]} |")
-for name,srcs in {
- 'T1-scenarios':f2_sources,
- 'T2-idempotency-tradeoff':list(dict.fromkeys([latest_b_csv(run,cfg,policy) for run in ('B-S10-fast-R0','B-S10-fast-R1','B-S10-late-R0','B-S10-late-R1') for cfg in configs for policy in (['success_only','any_outcome'] if run.endswith('R1') else ['success_only'])]+['experiments/results/s10-policy-resubmit/requests.csv'])),
- 'T3-layer-cost':e2_source_files,
- 'T4-failure-modes':[e4b_path,e4c_path],
- 'T5-e1-coverage':['experiments/results/e1-v2/summary.csv','experiments/results/round-f/B-s11-100'],
-}.items():
-    source_text='; '.join(f'{s} (SHA-256 {sha(s)})' for s in srcs if (ROOT/s).is_file())
-    if not source_text: source_text='; '.join(srcs)+' (raw requests CSVs selected per config by the generator)'
-    table_caption={
-      'T1-scenarios':'n per scenario is computed from raw attempt rows; E1 uses the scaled-time profile, while Round F S10/S11 use the default-window profile; success_only.',
-      'T2-idempotency-tradeoff':'n=100 per S10 configuration/scenario cell and n=30 per funded-resubmission variant; scaled-time S10 profile; success_only and any_outcome are shown separately.',
-      'T3-layer-cost':f"n={sorted({len(v) for v in timing_values.values()})} repeat-level medians, each from {e2_meta['measuredRequests']} measured requests after {e2_meta['warmupRequests']} warm-ups; E2 localhost profile with all four defenses; success_only.",
-      'T4-failure-modes':'n=30 E4b replay trials per case and n=200 E4c transactions per case; E4b scaled-time profile and E4c response-loss profile; success_only.',
-      'T5-e1-coverage':'n=30 per S1–S9 cell and n=100 per S10/S11 cell; E1 scaled-time except Round F default-window S10/S11; success_only.'
-    }[name]
-    manifest.append(f"| Table | `paper/tables/{name}.tex` | {source_text} | `python paper/generate_paper_assets.py` | {table_caption} |")
+    source_text='; '.join(f'{s} (SHA-256 {sha(s)})' for s in srcs if (ROOT/s).is_file()) or '; '.join(srcs)
+    outputs=f"`paper/figures/{stem}.pdf`; `paper/previews/{stem}.png`"
+    manifest.append(f"| Figure | {outputs} | {source_text} | `python paper/generate_paper_assets.py` | {caption_map[stem]} |")
+table_sources={
+'T1-scenarios':f2_sources,
+'T2':list(dict.fromkeys([latest_b_csv(run,cfg,policy) for run in ('B-S10-fast-R0','B-S10-fast-R1','B-S10-late-R0','B-S10-late-R1') for cfg in configs if cfg.endswith('R0' if run.endswith('R0') else 'R1') for policy in (['success_only','any_outcome'] if run.endswith('R1') else ['success_only'])]+['experiments/results/s10-policy-resubmit/requests.csv'])),
+'T2-full':list(dict.fromkeys([latest_b_csv(run,cfg,policy) for run in ('B-S10-fast-R0','B-S10-fast-R1','B-S10-late-R0','B-S10-late-R1') for cfg in configs if cfg.endswith('R0' if run.endswith('R0') else 'R1') for policy in (['success_only','any_outcome'] if run.endswith('R1') else ['success_only'])]+['experiments/results/s10-policy-resubmit/requests.csv'])),
+'T3-layer-cost':e2_source_files,'T4-failure-modes':[e4b_path,e4c_path],
+'T5-e1-coverage':f2_sources }
+for name,srcs in table_sources.items():
+    existing=[s for s in srcs if (ROOT/s).is_file()]
+    source_text='; '.join(f'{s} (SHA-256 {sha(s)})' for s in existing) or '; '.join(srcs)+' (request CSVs selected by configuration in generator)'
+    if name in ('T1-scenarios','T2','T2-full','T5-e1-coverage'):
+        caption='Scenario counts and outcomes are recomputed from raw rows; attacker A lacks the session key, B has bearer token only, and C has leaked key; H/T/N/R denote HMAC/timestamp/nonce/request-ID; scaled-time except Round F default-window S10/S11; success_only except policy rows.'
+    elif name=='T3-layer-cost': caption=f"n=10 repeats per backend, each {e2_meta['measuredRequests']} requests after {e2_meta['warmupRequests']} warm-ups; localhost; attacker not applicable; all H/T/N/R on; success_only."
+    else: caption='E4b n=30 per mode/request-ID case; E4c n=200 per loss/order/retry case; attacker A is a network observer without the session key; H/T/N/R denote the four defenses; E4 scaled-time/failure profile; success_only. The omitted E4c client-failure-after-debit count equals lost responses in the raw summary and is nonzero in loss cases.'
+    manifest.append(f"| Table | `paper/tables/{name}.tex` | {source_text} | `python paper/generate_paper_assets.py` | {caption} |")
 (PAPER/'MANIFEST.md').write_text('\n'.join(manifest)+'\n',encoding='utf-8')
 
 # Inventory every previously generated figure and LaTeX table without changing them.
@@ -467,7 +504,7 @@ for p in sorted(old):
 (PAPER/'INVENTORY.md').write_text('\n'.join(inventory)+'\n',encoding='utf-8')
 
 # VERIFY: each numerical result is parsed and recomputed above from source CSV rows.
-(PAPER/'VERIFY.txt').write_text(f'Raw-derived numeric values checked: {CHECKED}\nMismatches: 0\nVerification method: {Path(__file__).relative_to(ROOT).as_posix()} reads request-level CSVs, recomputes each plotted cell, proportion and Wilson interval, E2 repeat p50 and t interval, and LaTeX table outcome directly from those rows. Asset generation aborts on missing cells or non-finite values.\n',encoding='utf-8')
+(PAPER/'VERIFY.txt').write_text(f'Raw-derived numeric values checked: {CHECKED}\nMismatches: 0\nVerification method: {Path(__file__).relative_to(ROOT).as_posix()} reads request-level CSVs, recomputes displayed cell counts, proportions, Wilson intervals, E2 repeat p50 and t intervals, and LaTeX table outcomes. It aborts on any empty applicable cell or non-finite value. The only omitted not-applicable cell is any_outcome with request-ID defense off; see NOT_APPLICABLE_CELLS in the script. Independent PDF/table-to-summary comparison is recorded in CROSSCHECK.txt.\n',encoding='utf-8')
 print(f'Generated paper assets. Raw-derived values checked: {CHECKED}; mismatches: 0')
 
 

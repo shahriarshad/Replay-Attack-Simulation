@@ -1,3 +1,3 @@
-Raw-derived numeric values checked: 679
+Raw-derived numeric values checked: 1095
 Mismatches: 0
-Verification method: paper/generate_paper_assets.py reads request-level CSVs, recomputes each plotted cell, proportion and Wilson interval, E2 repeat p50 and t interval, and LaTeX table outcome directly from those rows. Asset generation aborts on missing cells or non-finite values.
+Verification method: paper/generate_paper_assets.py reads request-level CSVs, recomputes displayed cell counts, proportions, Wilson intervals, E2 repeat p50 and t intervals, and LaTeX table outcomes. It aborts on any empty applicable cell or non-finite value. The only omitted not-applicable cell is any_outcome with request-ID defense off; see NOT_APPLICABLE_CELLS in the script. Independent PDF/table-to-summary comparison is recorded in CROSSCHECK.txt.

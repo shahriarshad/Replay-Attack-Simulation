@@ -1,0 +1,28 @@
+Independent paper asset cross-check
+
+Values compared: 600
+Mismatches: 0
+30-attempt vs 100-attempt rate disagreements: 16
+
+Method: standalone CSV parser and formulas; parses the embedded 7-point cell labels from both F2 PDFs, compares T5 and T2/T2-full printed cells against E1 v2 and Round F summary CSVs, and lists overlapping 30-vs-100 rate disagreements.
+
+Mismatches:
+None.
+
+Cells whose success rates differ between the 30-attempt E1 v2 and 100-attempt Round F runs:
+{"100_attempt": "5/100", "30_attempt": "5/30", "config": "H0T0N0R0", "scenario": "S10 fast"}
+{"100_attempt": "5/100", "30_attempt": "5/30", "config": "H0T0N0R0", "scenario": "S10 late"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H0T0N0R1", "scenario": "S10 fast"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H0T0N0R1", "scenario": "S10 late"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H0T0N1R0", "scenario": "S10 late"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H0T0N1R1", "scenario": "S10 late"}
+{"100_attempt": "5/100", "30_attempt": "5/30", "config": "H0T1N0R0", "scenario": "S10 fast"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H0T1N0R1", "scenario": "S10 fast"}
+{"100_attempt": "5/100", "30_attempt": "5/30", "config": "H1T0N0R0", "scenario": "S10 fast"}
+{"100_attempt": "5/100", "30_attempt": "5/30", "config": "H1T0N0R0", "scenario": "S10 late"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H1T0N0R1", "scenario": "S10 fast"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H1T0N0R1", "scenario": "S10 late"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H1T0N1R0", "scenario": "S10 late"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H1T0N1R1", "scenario": "S10 late"}
+{"100_attempt": "5/100", "30_attempt": "5/30", "config": "H1T1N0R0", "scenario": "S10 fast"}
+{"100_attempt": "1/100", "30_attempt": "1/30", "config": "H1T1N0R1", "scenario": "S10 fast"}
