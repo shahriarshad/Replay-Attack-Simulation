@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{llllll}
+\toprule
+Nonce backend & Layer & Median p50 (µs) & 95\% CI low (µs) & 95\% CI high (µs) & Repeats \\
+\midrule
+redis & hmac & 37.100 & 36.254 & 38.606 & 10 \\
+redis & timestamp & 9.700 & 9.213 & 11.687 & 10 \\
+redis & nonce & 190.050 & 185.633 & 197.067 & 10 \\
+redis & request\_id & 240.225 & 233.994 & 248.506 & 10 \\
+redis & handler\_total & 6668.225 & 5416.169 & 6960.711 & 10 \\
+sqlite & hmac & 37.225 & 35.640 & 38.380 & 10 \\
+sqlite & timestamp & 9.600 & 9.135 & 10.805 & 10 \\
+sqlite & nonce & 4516.675 & 3050.985 & 4668.855 & 10 \\
+sqlite & request\_id & 331.825 & 307.561 & 344.679 & 10 \\
+sqlite & handler\_total & 11223.050 & 8201.519 & 11559.891 & 10 \\
+memory & hmac & 37.050 & 36.044 & 40.046 & 10 \\
+memory & timestamp & 10.450 & 9.417 & 12.023 & 10 \\
+memory & nonce & 16.450 & 16.035 & 17.745 & 10 \\
+memory & request\_id & 235.700 & 228.729 & 247.091 & 10 \\
+memory & handler\_total & 6448.950 & 4588.283 & 6463.437 & 10 \\
+\bottomrule
+\end{tabular}
+\end{table*}

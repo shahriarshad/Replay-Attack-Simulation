@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+Scenario & Description & Attempts per cell, n \\
+\midrule
+S1 & Immediate exact replay & 30 \\
+S2 & Delayed exact replay inside timestamp window & 30 \\
+S3 & Replay after nonce-store wipe & 30 \\
+S4 & Replay after timestamp window & 30 \\
+S5 & Parallel identical-request burst (50-way) & 1500 \\
+S6 & Amount modified; original signature retained & 30 \\
+S7a & Request ID modified; original signature retained & 0 \\
+S7b & Nonce modified; original signature retained & 0 \\
+S8 & Expired session bearer token & 30 \\
+S9 & Fresh forgery with leaked session key & 30 \\
+S10 fast & Failed withdrawal replay inside nonce and timestamp windows & 100 \\
+S10 late & Failed withdrawal replay after nonce TTL and timestamp window & 100 \\
+S11 & Captured bearer token without session signing key & 100 \\
+\bottomrule
+\end{tabular}
+\end{table*}

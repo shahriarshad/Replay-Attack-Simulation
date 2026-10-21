@@ -1,6 +1,6 @@
 # Final Experiment Results Pack
 
-Generated 2026-10-18T18:51:29.438Z. All traffic was directed to the localhost simulation on Windows with Memurai Developer 4.2.3. Latency numbers are localhost-only and support relative comparisons. No Phase 5 work was started.
+Generated 2026-10-21T07:40:03.638Z. All traffic was directed to the localhost simulation on Windows with Memurai Developer 4.2.3. Latency numbers are localhost-only and support relative comparisons. No Phase 5 work was started.
 
 ## Methods and corrections
 
@@ -564,7 +564,7 @@ Race source `experiments/results/phase4-source-fixes/race-summary-1000-batches.j
 | accepted | 1083904 | 19180768 | 180.96864 | 843.2111516/86400 |
 | requestid | 1087544 | 19184632 | 180.97088 | 177.7131442/86400 |
 
-Boundary CSV: experiments/results/corrections/timestamp-boundaries-30-each.csv; SHA-256 ee0e2e34f7d64e111e1d050fdb4bc6d21fa0177685a250d0bf8451305cf23a07; six boundary/age cases, 30 repetitions each.
+Boundary CSV: experiments/results/corrections/timestamp-boundaries-30-each.csv; SHA-256 c5385ff3a98c76e504f83e74c3e723f099dd539f93d6478e83cf4ddf6e5762d2; six boundary/age cases, 30 repetitions each.
 
 ## Independent audit
 
@@ -616,8 +616,8 @@ The observed A sequence is 0, 30, 30, 0, 0 accepted at 299/301/303/305/307 s, ma
 
 | Config | Raw requests CSV | SHA-256 | Metadata |
 |---|---|---|---|
-| H1T1N1R0 | $f | $hash | $full/H1T1N1R0/run.json |
-| H1T1N1R1 | $f | $hash | $full/H1T1N1R1/run.json |
+| H1T1N1R0 | experiments/results/e4a-fullscale/2026-10-20T08-31-04-480Z/H1T1N1R0/requests.csv | 47fcc23e167def16075ec5cb129d9846be15cfe1bcc2f1d3681a05615ce56cc4 | experiments/results/e4a-fullscale/2026-10-20T08-31-04-480Z/H1T1N1R0/run.json |
+| H1T1N1R1 | experiments/results/e4a-fullscale/2026-10-20T08-31-04-480Z/H1T1N1R1/requests.csv | cce0d46b2da4200f66257adf8ab866716740e89d4c14d6b0e32cf885a7a90e1c | experiments/results/e4a-fullscale/2026-10-20T08-31-04-480Z/H1T1N1R1/run.json |
 
 ### B: 100 attempts per requested cell
 
@@ -694,10 +694,10 @@ Headline: S11 produced 100/100 debits when HMAC was disabled (all 8 such configu
 
 | Run | summary.csv | SHA-256 | run.json |
 |---|---|---|---|
-| B-S10-fast-R0 | $f | $hash | experiments/results/round-f/B-S10-fast-R0/run.json |
-| B-S10-fast-R1 | $f | $hash | experiments/results/round-f/B-S10-fast-R1/run.json |
-| B-S10-late-R0 | $f | $hash | experiments/results/round-f/B-S10-late-R0/run.json |
-| B-S10-late-R1 | $f | $hash | experiments/results/round-f/B-S10-late-R1/run.json |
-| B-s11-100 | $f | $hash | experiments/results/round-f/B-s11-100/run.json |
+| B-S10-fast-R0 | experiments/results/round-f/B-S10-fast-R0/summary.csv | ee4d68115750664265087d43dcaddffc2f4617cd6cd3306e29cad8cccda8af37 | experiments/results/round-f/B-S10-fast-R0/run.json |
+| B-S10-fast-R1 | experiments/results/round-f/B-S10-fast-R1/summary.csv | 71657d57a7de64f7284fc4cb30f05a113e0d3d9cb092eeca2569b77c90c137b9 | experiments/results/round-f/B-S10-fast-R1/run.json |
+| B-S10-late-R0 | experiments/results/round-f/B-S10-late-R0/summary.csv | c6ebdfa9492a733baae2297220fc15826584399a70695bef954a9d756411576b | experiments/results/round-f/B-S10-late-R0/run.json |
+| B-S10-late-R1 | experiments/results/round-f/B-S10-late-R1/summary.csv | 1d67ce561ad7eee3ebf8b4fc3694df4130c5caac530d8a5bd93250319b639285 | experiments/results/round-f/B-S10-late-R1/run.json |
+| B-s11-100 | experiments/results/round-f/B-s11-100/summary.csv | e67a7a7b69609b24598816dbc6523f11e99dbcdc2831d1178aaf0bd4c2a6fba2 | experiments/results/round-f/B-s11-100/run.json |
 
 Privacy treatment: the post-run SQLite files retained the transaction and balance columns used by the oracle. After the oracle queries completed, stored signature column values were set to NULL and the files checkpointed; this removes signatures from the deliverable artifacts without changing ledger outcome fields. The independent audit was rerun successfully against these sanitized SQLite files at experiments/results/round-f/audit-final4/audit-report.json.

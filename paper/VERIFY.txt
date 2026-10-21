@@ -1,0 +1,3 @@
+Raw-derived numeric values checked: 679
+Mismatches: 0
+Verification method: paper/generate_paper_assets.py reads request-level CSVs, recomputes each plotted cell, proportion and Wilson interval, E2 repeat p50 and t interval, and LaTeX table outcome directly from those rows. Asset generation aborts on missing cells or non-finite values.

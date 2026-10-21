@@ -1,0 +1,28 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+Case & Outcome from trials & Interval / scope & Reason counts \\
+\midrule
+E4b fault-fail-closed-requestid-0 & 0/30 & 0.000–0.114 & {"NONCE\_STORE\_UNAVAILABLE": 30} \\
+E4b fault-fail-closed-requestid-1 & 0/30 & 0.000–0.114 & {"NONCE\_STORE\_UNAVAILABLE": 30} \\
+E4b fault-fail-open-requestid-0 & 30/30 & 0.886–1.000 & {"ACCEPTED": 30} \\
+E4b fault-fail-open-requestid-1 & 0/30 & 0.000–0.114 & {"ALREADY\_PROCESSED": 30} \\
+E4c insufficient-fresh-nonce & lost 0/1; failure after debit 0; confirmed 0 & raw counts & {"ACCEPTED": 1} \\
+E4c insufficient-same-nonce & lost 0/1; failure after debit 0; confirmed 0 & raw counts & {"NONCE\_FAIL": 1} \\
+E4c loss-p0-default-fresh-nonce-same-request-id & lost 0/200; failure after debit 0; confirmed 0 & raw counts & {"not\_retried": 200} \\
+E4c loss-p0-default-same-signed & lost 0/200; failure after debit 0; confirmed 0 & raw counts & {"not\_retried": 200} \\
+E4c loss-p0-request\_id\_before\_nonce-fresh-nonce-same-request-id & lost 0/200; failure after debit 0; confirmed 0 & raw counts & {"not\_retried": 200} \\
+E4c loss-p0-request\_id\_before\_nonce-same-signed & lost 0/200; failure after debit 0; confirmed 0 & raw counts & {"not\_retried": 200} \\
+E4c loss-p0.05-default-fresh-nonce-same-request-id & lost 3/200; failure after debit 0; confirmed 3 & raw counts & {"ALREADY\_PROCESSED": 3, "not\_retried": 197} \\
+E4c loss-p0.05-default-same-signed & lost 3/200; failure after debit 0; confirmed 0 & raw counts & {"NONCE\_FAIL": 3, "not\_retried": 197} \\
+E4c loss-p0.05-request\_id\_before\_nonce-fresh-nonce-same-request-id & lost 3/200; failure after debit 0; confirmed 3 & raw counts & {"ALREADY\_PROCESSED": 3, "not\_retried": 197} \\
+E4c loss-p0.05-request\_id\_before\_nonce-same-signed & lost 3/200; failure after debit 0; confirmed 3 & raw counts & {"ALREADY\_PROCESSED": 3, "not\_retried": 197} \\
+E4c loss-p0.2-default-fresh-nonce-same-request-id & lost 44/200; failure after debit 0; confirmed 44 & raw counts & {"ALREADY\_PROCESSED": 44, "not\_retried": 156} \\
+E4c loss-p0.2-default-same-signed & lost 44/200; failure after debit 0; confirmed 0 & raw counts & {"NONCE\_FAIL": 44, "not\_retried": 156} \\
+E4c loss-p0.2-request\_id\_before\_nonce-fresh-nonce-same-request-id & lost 44/200; failure after debit 0; confirmed 44 & raw counts & {"ALREADY\_PROCESSED": 44, "not\_retried": 156} \\
+E4c loss-p0.2-request\_id\_before\_nonce-same-signed & lost 44/200; failure after debit 0; confirmed 44 & raw counts & {"ALREADY\_PROCESSED": 44, "not\_retried": 156} \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,62 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{llllll}
+\toprule
+Scenario & Configuration / retry & Policy & Successes & Attempts & Wilson 95\% \\
+\midrule
+S10\_fast & H0T0N0R0 & success\_only & 5 & 100 & 0.022–0.112 \\
+S10\_fast & H0T0N1R0 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H0T1N0R0 & success\_only & 5 & 100 & 0.022–0.112 \\
+S10\_fast & H0T1N1R0 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H1T0N0R0 & success\_only & 5 & 100 & 0.022–0.112 \\
+S10\_fast & H1T0N1R0 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H1T1N0R0 & success\_only & 5 & 100 & 0.022–0.112 \\
+S10\_fast & H1T1N1R0 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H0T0N0R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H0T0N0R1 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_fast & H0T0N1R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H0T0N1R1 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H0T1N0R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H0T1N0R1 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_fast & H0T1N1R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H0T1N1R1 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H1T0N0R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H1T0N0R1 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_fast & H1T0N1R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H1T0N1R1 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H1T1N0R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H1T1N0R1 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_fast & H1T1N1R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_fast & H1T1N1R1 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_late & H0T0N0R0 & success\_only & 5 & 100 & 0.022–0.112 \\
+S10\_late & H0T0N1R0 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_late & H0T1N0R0 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_late & H0T1N1R0 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_late & H1T0N0R0 & success\_only & 5 & 100 & 0.022–0.112 \\
+S10\_late & H1T0N1R0 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_late & H1T1N0R0 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_late & H1T1N1R0 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_late & H0T0N0R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_late & H0T0N0R1 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_late & H0T0N1R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_late & H0T0N1R1 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_late & H0T1N0R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_late & H0T1N0R1 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_late & H0T1N1R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_late & H0T1N1R1 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_late & H1T0N0R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_late & H1T0N0R1 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_late & H1T0N1R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_late & H1T0N1R1 & success\_only & 1 & 100 & 0.002–0.054 \\
+S10\_late & H1T1N0R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_late & H1T1N0R1 & success\_only & 0 & 100 & 0.000–0.037 \\
+S10\_late & H1T1N1R1 & any\_outcome & 0 & 100 & 0.000–0.037 \\
+S10\_late & H1T1N1R1 & success\_only & 0 & 100 & 0.000–0.037 \\
+resubmission after funding & new\_request\_id\_fresh\_nonce & any\_outcome & 30 & 30 & 0.886–1.000 \\
+resubmission after funding & same\_request\_id\_fresh\_nonce & any\_outcome & 0 & 30 & 0.000–0.114 \\
+resubmission after funding & new\_request\_id\_fresh\_nonce & success\_only & 30 & 30 & 0.886–1.000 \\
+resubmission after funding & same\_request\_id\_fresh\_nonce & success\_only & 30 & 30 & 0.886–1.000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

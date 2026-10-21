@@ -73,3 +73,5 @@ The canonical saved memory runs used `NONCE_TTL=86400`, collected an empty-store
 ## Reported runtimes and variability
 
 Runtimes above come from saved run metadata, except where the test or offline renderer prints its own runtime. Windows scheduling, CPU power policy, Memurai state, and background load can change a reproduction’s time and latency. Reproduction commands write new results; they do not overwrite the cited final-round result directories when the unique output paths shown above are used.
+
+Round F sanitized the SQLite artifacts after the runs: transaction signature columns were set to NULL after the ledger-oracle queries; transaction outcome fields used for the audit were retained.
