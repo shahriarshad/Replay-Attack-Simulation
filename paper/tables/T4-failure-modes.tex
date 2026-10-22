@@ -1,27 +1,28 @@
 \begin{table*}[t]
 \centering
 \small
-\caption*{E4c client failure after debit is not zero in the saved data: its summary count equals the lost-response count for each loss case. The requested table omits this separate column; see source CSV and summary fields.}
-\begin{tabular}{lccccccc}
+\caption*{For E4b, the first two outcome columns are legitimate requests accepted and replay requests accepted, each out of 30 with Wilson 95% intervals. For E4c, failures after debit equal the lost-response count by construction; the table reports lost responses, retry reasons, exactly-once debit count, and retries that reveal prior success.}
+\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{lp{0.47in}p{0.61in}p{0.75in}p{0.76in}p{0.76in}p{0.49in}p{0.75in}p{0.70in}p{0.49in}}
 \toprule
-Experiment & Mode / loss p & Request-ID / check order & Legitimate accepted / retry type & Replay accepted / lost responses & Retry reason counts & Exactly one debit & Client can infer success \\
+Experiment & Mode / loss p & Request-ID / check order & Retry type & Legitimate accepted (k/30, Wilson 95\%) & Replay accepted (k/30, Wilson 95\%) & Lost responses (of 200) & Retry reason counts & Debited exactly once (k/200) & Retries infer success (k) \\
 \midrule
-E4b & fail-closed & off & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  &  &  \\
-E4b & fail-closed & on & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  &  &  \\
-E4b & fail-open & off & 30/30 [0.886, 1.000] & 30/30 [0.886, 1.000] &  &  &  \\
-E4b & fail-open & on & 30/30 [0.886, 1.000] & 0/30 [0.000, 0.114] &  &  &  \\
-E4c & p=0 & default & fresh nonce, same request\_id & 0/200 & {"not\_retried": 200} & 200/200 & 0 \\
-E4c & p=0 & default & identical signed request & 0/200 & {"not\_retried": 200} & 200/200 & 0 \\
-E4c & p=0 & request-ID first & fresh nonce, same request\_id & 0/200 & {"not\_retried": 200} & 200/200 & 0 \\
-E4c & p=0 & request-ID first & identical signed request & 0/200 & {"not\_retried": 200} & 200/200 & 0 \\
-E4c & p=0.05 & default & fresh nonce, same request\_id & 3/200 & {"ALREADY\_PROCESSED": 3, "not\_retried": 197} & 200/200 & 3 \\
-E4c & p=0.05 & default & identical signed request & 3/200 & {"NONCE\_FAIL": 3, "not\_retried": 197} & 200/200 & 0 \\
-E4c & p=0.05 & request-ID first & fresh nonce, same request\_id & 3/200 & {"ALREADY\_PROCESSED": 3, "not\_retried": 197} & 200/200 & 3 \\
-E4c & p=0.05 & request-ID first & identical signed request & 3/200 & {"ALREADY\_PROCESSED": 3, "not\_retried": 197} & 200/200 & 3 \\
-E4c & p=0.2 & default & fresh nonce, same request\_id & 44/200 & {"ALREADY\_PROCESSED": 44, "not\_retried": 156} & 200/200 & 44 \\
-E4c & p=0.2 & default & identical signed request & 44/200 & {"NONCE\_FAIL": 44, "not\_retried": 156} & 200/200 & 0 \\
-E4c & p=0.2 & request-ID first & fresh nonce, same request\_id & 44/200 & {"ALREADY\_PROCESSED": 44, "not\_retried": 156} & 200/200 & 44 \\
-E4c & p=0.2 & request-ID first & identical signed request & 44/200 & {"ALREADY\_PROCESSED": 44, "not\_retried": 156} & 200/200 & 44 \\
+E4b & fail-closed & off &  & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  &  &  &  \\
+E4b & fail-closed & on &  & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  &  &  &  \\
+E4b & fail-open & off &  & 30/30 [0.886, 1.000] & 30/30 [0.886, 1.000] &  &  &  &  \\
+E4b & fail-open & on &  & 30/30 [0.886, 1.000] & 0/30 [0.000, 0.114] &  &  &  &  \\
+E4c & p=0 & default & fresh nonce, same request\_id &  &  & 0/200 & not\_retried:200 & 200/200 & 0 \\
+E4c & p=0 & default & identical signed request &  &  & 0/200 & not\_retried:200 & 200/200 & 0 \\
+E4c & p=0 & request-ID first & fresh nonce, same request\_id &  &  & 0/200 & not\_retried:200 & 200/200 & 0 \\
+E4c & p=0 & request-ID first & identical signed request &  &  & 0/200 & not\_retried:200 & 200/200 & 0 \\
+E4c & p=0.05 & default & fresh nonce, same request\_id &  &  & 10/200 & ALREADY\_PROCESSED:10; not\_retried:190 & 200/200 & 10 \\
+E4c & p=0.05 & default & identical signed request &  &  & 10/200 & NONCE\_FAIL:10; not\_retried:190 & 200/200 & 0 \\
+E4c & p=0.05 & request-ID first & fresh nonce, same request\_id &  &  & 10/200 & ALREADY\_PROCESSED:10; not\_retried:190 & 200/200 & 10 \\
+E4c & p=0.05 & request-ID first & identical signed request &  &  & 10/200 & ALREADY\_PROCESSED:10; not\_retried:190 & 200/200 & 10 \\
+E4c & p=0.2 & default & fresh nonce, same request\_id &  &  & 40/200 & ALREADY\_PROCESSED:40; not\_retried:160 & 200/200 & 40 \\
+E4c & p=0.2 & default & identical signed request &  &  & 40/200 & NONCE\_FAIL:40; not\_retried:160 & 200/200 & 0 \\
+E4c & p=0.2 & request-ID first & fresh nonce, same request\_id &  &  & 40/200 & ALREADY\_PROCESSED:40; not\_retried:160 & 200/200 & 40 \\
+E4c & p=0.2 & request-ID first & identical signed request &  &  & 40/200 & ALREADY\_PROCESSED:40; not\_retried:160 & 200/200 & 40 \\
 \bottomrule
 \end{tabular}
 \end{table*}

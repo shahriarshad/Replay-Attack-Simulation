@@ -701,3 +701,150 @@ Headline: S11 produced 100/100 debits when HMAC was disabled (all 8 such configu
 | B-s11-100 | experiments/results/round-f/B-s11-100/summary.csv | e67a7a7b69609b24598816dbc6523f11e99dbcdc2831d1178aaf0bd4c2a6fba2 | experiments/results/round-f/B-s11-100/run.json |
 
 Privacy treatment: the post-run SQLite files retained the transaction and balance columns used by the oracle. After the oracle queries completed, stored signature column values were set to NULL and the files checkpointed; this removes signatures from the deliverable artifacts without changing ledger outcome fields. The independent audit was rerun successfully against these sanitized SQLite files at experiments/results/round-f/audit-final4/audit-report.json.
+
+
+
+
+## Round I — final experimental addendum
+
+All new outputs are under Round I directories; older result folders were left untouched. Environment: Node v24.11.1, Windows, Memurai Developer 4.2.3, localhost only. E1 v2 used TTL 4 s, deliberately shorter than PAST 6 s (a mis-configured profile). E1 v3 used PAST=6 s, FUTURE=2 s, NONCE_TTL=8 s, SESSION_TTL=15 s, success_only. The default-window confirmation used PAST=300 s, FUTURE=5 s, NONCE_TTL=300 s, SESSION_TTL=900 s.
+
+### Provenance
+
+| Artifact | SHA-256 |
+|---|---|
+| experiments/results/e1-v3/round-i-scaled/summary.csv | 247e2ec7d01bfc17cf3082bf4810aaf121bc2f9922f76c5d87ce3b4c98c92c4a |
+| experiments/results/e1-v3-s10-independent/2026-10-22T04-40-36-408Z/summary.csv | 6b98e9ef7c39b7c5876dfac0fc0548a682e574d5cc5b281801a4fa39081b35ad |
+| experiments/results/e1-v3-s11/round-i-s11/summary.csv | e67a7a7b69609b24598816dbc6523f11e99dbcdc2831d1178aaf0bd4c2a6fba2 |
+| experiments/results/round-i/s10-independent/resubmission/summary.csv | e199bfb833759aacc297e01dd3f38dd13c336cfa9c64bb7e3f90019097c52f15 |
+| experiments/results/round-i/route-binding/requests.csv | 3c2fb362b778eeb36d0b5a4cea487aaa782a02ff39997f783b3ebd118bd4a95a |
+| experiments/results/round-i/atomic-debit/runs.csv | f9fef47c4839cdeea8c1023432d8ef3886ea645474c564020ec2b6871dbbc32d |
+| experiments/results/round-i/e4c-exact/e4c.csv | ab37252a36e325ec8d26a48a8b7d3fa5e4581de5ec1dba7f3e12ba16fd741d14 |
+
+### E1 v2 versus v3
+
+18 cells differ in count or attempt denominator. Two cells changed success rate: S4 for H0T0N1R0 and H1T0N1R0. The old 4 s TTL expired by the 7 s replay; the clean 8 s TTL remained live and blocked it. S11 changed from 30 to 100 attempts per configuration; its success rate was unchanged in every configuration. Full comparison: experiments/results/round-i/e1-v2-v3-cell-differences.csv.
+
+| Configuration | Scenario | E1 v2 k/n | E1 v3 k/n |
+|---|---|---:|---:|
+| H0T0N1R0 | S4 | 30/30 | 0/30 |
+| H1T0N1R0 | S4 | 30/30 | 0/30 |
+
+Default-window confirmation:
+
+| Scenario | Attempts | HTTP accepted / SQLite debits | Wilson 95% | Blocking reasons |
+|---|---:|---:|---|---|
+| S2_default_window_60s | 30 | 0/0 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| S4_default_window_301s | 30 | 0/0 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+
+### S10 independent trials
+
+Each cell used 30 distinct failed request IDs and nonces, withdrawal amount 100, initial balance 1, one 3,001 deposit (post-funding balance 3,002), then replayed each failed capture exactly once. The output is delayed SQLite executions by request ID.
+
+| Configuration | Policy | Scenario | Delayed executions | Wilson 95% | Blocking reason histogram |
+|---|---|---|---:|---|---|
+| H0T0N0R0-success_only | success_only | fast | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H1T0N0R0-success_only | success_only | fast | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H0T1N0R0-success_only | success_only | fast | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H1T1N0R0-success_only | success_only | fast | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H0T0N1R0-success_only | success_only | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H1T0N1R0-success_only | success_only | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H0T1N1R0-success_only | success_only | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H1T1N1R0-success_only | success_only | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H0T0N0R1-success_only | success_only | fast | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H0T0N0R1-any_outcome | any_outcome | fast | 0/30 | [0.0000, 0.1135] | ALREADY_PROCESSED:30 |
+| H1T0N0R1-success_only | success_only | fast | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H1T0N0R1-any_outcome | any_outcome | fast | 0/30 | [0.0000, 0.1135] | ALREADY_PROCESSED:30 |
+| H0T1N0R1-success_only | success_only | fast | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H0T1N0R1-any_outcome | any_outcome | fast | 0/30 | [0.0000, 0.1135] | ALREADY_PROCESSED:30 |
+| H1T1N0R1-success_only | success_only | fast | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H1T1N0R1-any_outcome | any_outcome | fast | 0/30 | [0.0000, 0.1135] | ALREADY_PROCESSED:30 |
+| H0T0N1R1-success_only | success_only | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H0T0N1R1-any_outcome | any_outcome | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H1T0N1R1-success_only | success_only | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H1T0N1R1-any_outcome | any_outcome | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H0T1N1R1-success_only | success_only | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H0T1N1R1-any_outcome | any_outcome | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H1T1N1R1-success_only | success_only | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H1T1N1R1-any_outcome | any_outcome | fast | 0/30 | [0.0000, 0.1135] | NONCE_FAIL:30 |
+| H0T0N0R0-success_only | success_only | late | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H1T0N0R0-success_only | success_only | late | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H0T1N0R0-success_only | success_only | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H1T1N0R0-success_only | success_only | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H0T0N1R0-success_only | success_only | late | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H1T0N1R0-success_only | success_only | late | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H0T1N1R0-success_only | success_only | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H1T1N1R0-success_only | success_only | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H0T0N0R1-success_only | success_only | late | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H0T0N0R1-any_outcome | any_outcome | late | 0/30 | [0.0000, 0.1135] | ALREADY_PROCESSED:30 |
+| H1T0N0R1-success_only | success_only | late | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H1T0N0R1-any_outcome | any_outcome | late | 0/30 | [0.0000, 0.1135] | ALREADY_PROCESSED:30 |
+| H0T1N0R1-success_only | success_only | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H0T1N0R1-any_outcome | any_outcome | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H1T1N0R1-success_only | success_only | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H1T1N0R1-any_outcome | any_outcome | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H0T0N1R1-success_only | success_only | late | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H0T0N1R1-any_outcome | any_outcome | late | 0/30 | [0.0000, 0.1135] | ALREADY_PROCESSED:30 |
+| H1T0N1R1-success_only | success_only | late | 30/30 | [0.8865, 1.0000] | ACCEPTED:30 |
+| H1T0N1R1-any_outcome | any_outcome | late | 0/30 | [0.0000, 0.1135] | ALREADY_PROCESSED:30 |
+| H0T1N1R1-success_only | success_only | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H0T1N1R1-any_outcome | any_outcome | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H1T1N1R1-success_only | success_only | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+| H1T1N1R1-any_outcome | any_outcome | late | 0/30 | [0.0000, 0.1135] | TIMESTAMP_FAIL:30 |
+
+### S11 token-only forgery
+
+The attacker had the captured bearer token but no session signing key; each attempt was a fresh withdrawal with amount 1 and an absent signature.
+
+| Configuration | SQLite debits / attempts | Wilson 95% | Blocking reason |
+|---|---:|---|---|
+| H0T0N0R0 | 100/100 | [0.9630, 1.0000] | ACCEPTED:100 |
+| H1T0N0R0 | 0/100 | [0.0000, 0.0370] | SIGNATURE_FAIL:100 |
+| H0T1N0R0 | 100/100 | [0.9630, 1.0000] | ACCEPTED:100 |
+| H1T1N0R0 | 0/100 | [0.0000, 0.0370] | SIGNATURE_FAIL:100 |
+| H0T0N1R0 | 100/100 | [0.9630, 1.0000] | ACCEPTED:100 |
+| H1T0N1R0 | 0/100 | [0.0000, 0.0370] | SIGNATURE_FAIL:100 |
+| H0T1N1R0 | 100/100 | [0.9630, 1.0000] | ACCEPTED:100 |
+| H1T1N1R0 | 0/100 | [0.0000, 0.0370] | SIGNATURE_FAIL:100 |
+| H0T0N0R1 | 100/100 | [0.9630, 1.0000] | ACCEPTED:100 |
+| H1T0N0R1 | 0/100 | [0.0000, 0.0370] | SIGNATURE_FAIL:100 |
+| H0T1N0R1 | 100/100 | [0.9630, 1.0000] | ACCEPTED:100 |
+| H1T1N0R1 | 0/100 | [0.0000, 0.0370] | SIGNATURE_FAIL:100 |
+| H0T0N1R1 | 100/100 | [0.9630, 1.0000] | ACCEPTED:100 |
+| H1T0N1R1 | 0/100 | [0.0000, 0.0370] | SIGNATURE_FAIL:100 |
+| H0T1N1R1 | 100/100 | [0.9630, 1.0000] | ACCEPTED:100 |
+| H1T1N1R1 | 0/100 | [0.0000, 0.0370] | SIGNATURE_FAIL:100 |
+
+### Resubmission after funding
+
+| Policy | Variant | Successes / attempts | Wilson 95% | SQLite success debits | Reasons |
+|---|---|---:|---|---:|---|
+| success_only | same_request_id_fresh_nonce | 30/30 | [0.8865, 1.0000] | 30 | ACCEPTED:30 |
+| success_only | new_request_id_fresh_nonce | 30/30 | [0.8865, 1.0000] | 30 | ACCEPTED:30 |
+| any_outcome | same_request_id_fresh_nonce | 0/30 | [0.0000, 0.1135] | 0 | ALREADY_PROCESSED:30 |
+| any_outcome | new_request_id_fresh_nonce | 30/30 | [0.8865, 1.0000] | 30 | ACCEPTED:30 |
+
+### I3 correctness checks
+
+Route binding: the four cases in experiments/results/round-i/route-binding/requests.csv were rejected as INVALID_REQUEST with zero matching ledger rows, both with HMAC enabled and disabled. Atomic debit: 30 fresh-state runs, each with 100 parallel valid withdrawals of amounts 1..100 against balance 100. All satisfy nonnegative balance, debit sum at most 100, and final balance plus successful debits equal 100. The lowest reconstructed balance was 0; distinct observed successful-debit sums were 92, 93, 94, 95, 96, 97, 98, 99, 100. Raw per-run CSV: experiments/results/round-i/atomic-debit/runs.csv; sanitized ledger rows: experiments/results/round-i/atomic-debit/ledger.csv.
+
+### E4c exact-count loss sampling
+
+The new seeded Fisher-Yates pattern selects exactly round(p x 200) positions and shares the pattern for cells with the same p.
+
+| p | Check order | Retry type | Lost responses | Retry reasons | Exactly-one debits | ALREADY_PROCESSED success clues |
+|---:|---|---|---:|---|---:|---:|
+| 0 | default | same-signed | 0/200 | none | 200/200 | 0 |
+| 0 | default | fresh-nonce-same-request-id | 0/200 | none | 200/200 | 0 |
+| 0 | request_id_before_nonce | same-signed | 0/200 | none | 200/200 | 0 |
+| 0 | request_id_before_nonce | fresh-nonce-same-request-id | 0/200 | none | 200/200 | 0 |
+| 0.05 | default | same-signed | 10/200 | NONCE_FAIL:10 | 200/200 | 0 |
+| 0.05 | default | fresh-nonce-same-request-id | 10/200 | ALREADY_PROCESSED:10 | 200/200 | 10 |
+| 0.05 | request_id_before_nonce | same-signed | 10/200 | ALREADY_PROCESSED:10 | 200/200 | 10 |
+| 0.05 | request_id_before_nonce | fresh-nonce-same-request-id | 10/200 | ALREADY_PROCESSED:10 | 200/200 | 10 |
+| 0.2 | default | same-signed | 40/200 | NONCE_FAIL:40 | 200/200 | 0 |
+| 0.2 | default | fresh-nonce-same-request-id | 40/200 | ALREADY_PROCESSED:40 | 200/200 | 40 |
+| 0.2 | request_id_before_nonce | same-signed | 40/200 | ALREADY_PROCESSED:40 | 200/200 | 40 |
+| 0.2 | request_id_before_nonce | fresh-nonce-same-request-id | 40/200 | ALREADY_PROCESSED:40 | 200/200 | 40 |
+
+The prior E4c output is superseded. Its old generator drew 200 independent Bernoulli outcomes using an LCG: function lossPattern(p){let x=(0xE4C2026+(Math.round(p*1000)*2654435761))>>>0;const out=[];for(let i=0;i<200;i++){x=(1664525*x+1013904223)>>>0;out.push(x/4294967296<p);}return out;}. It did not enforce an exact count; the old saved output happened to contain 3 losses at p=0.05 and 44 at p=0.2. New raw data: experiments/results/round-i/e4c-exact/e4c.csv.

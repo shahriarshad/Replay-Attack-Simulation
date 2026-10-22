@@ -4,8 +4,8 @@ const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
 const fs = require('fs');
-const phase3ResultDirectory = path.resolve(__dirname, '../../experiments/results/phase3');
-fs.mkdirSync(phase3ResultDirectory, { recursive: true });
+const testArtifactDirectory = path.resolve(process.env.TEST_ARTIFACT_DIR || path.join(os.tmpdir(), `cs-project-tests-${process.pid}`));
+fs.mkdirSync(testArtifactDirectory, { recursive: true });
 
 process.env.SQLITE_DB = path.join(os.tmpdir(), `cs-project-phase3-${process.pid}-${crypto.randomUUID()}.sqlite`);
 process.env.NONCE_STORE = 'memory';
@@ -20,7 +20,7 @@ process.env.DEFENSE_REQUEST_ID = 'true';
 process.env.TIMESTAMP_PAST_WINDOW_SECONDS = '300';
 process.env.TIMESTAMP_FUTURE_WINDOW_SECONDS = '5';
 process.env.ENABLE_TEST_FAULT_ROUTE = 'true';
-process.env.EXPERIMENT_LOG = path.join(phase3ResultDirectory, `layer-timings-${process.pid}.csv`);
+process.env.EXPERIMENT_LOG = path.join(testArtifactDirectory, `layer-timings-${process.pid}.csv`);
 process.env.CONFIG_ID = 'phase3-default-defenses';
 process.env.SCENARIO_ID = 'integration-suite';
 process.env.RUN_ID = `windows-node-test-${process.pid}`;
@@ -192,7 +192,7 @@ test('future and past timestamp edges repeat 30 times and save per-request timin
       rows.push({ label: item.label, repetition, offset_ms: item.offsetMs, ...result, outcome });
     }
   }
-  const output = path.resolve(__dirname, '../../experiments/results/corrections');
+  const output = testArtifactDirectory;
   fs.mkdirSync(output, { recursive: true });
   fs.writeFileSync(path.join(output, 'timestamp-boundaries-30-each.csv'), [
     'label,repetition,offset_ms,started_ns,ended_ns,duration_ns,http_status,outcome',
@@ -221,7 +221,7 @@ test('Phase 0 client clock offsets repeat 30 times per offset and save per-reque
       rows.push({ label: item.label, repetition, offset_ms: item.offsetMs, ...result, outcome });
     }
   }
-  const output = path.resolve(__dirname, '../../experiments/results/corrections');
+  const output = testArtifactDirectory;
   fs.mkdirSync(output, { recursive: true });
   fs.writeFileSync(path.join(output, 'clock-offsets-30-each.csv'), [
     'label,repetition,offset_ms,started_ns,ended_ns,duration_ns,http_status,outcome',
@@ -264,6 +264,40 @@ test('50 valid nonces racing on one request ID produce one debit', async () => {
   assert.equal(results.filter((result) => result.data.status === 'ACCEPTED').length, 1);
   const balance = await call('GET', '/api/balance/anis_101');
   assert.equal(balance.data.balance, 9999);
+});
+
+test('route binding rejects a correctly signed request sent to the other transaction route', async () => {
+  await reset();
+  const deposit = payload({ path: '/api/deposit', request_id: 'route-deposit-as-withdraw', amount: 1 });
+  const withdraw = payload({ path: '/api/withdraw', request_id: 'route-withdraw-as-deposit', amount: 1 });
+  assert.deepEqual((await call('POST', '/api/withdraw', deposit)).data, { error: 'INVALID_REQUEST' });
+  assert.deepEqual((await call('POST', '/api/deposit', withdraw)).data, { error: 'INVALID_REQUEST' });
+  const rows = await new Promise((resolve, reject) => db.all('SELECT request_id FROM transactions WHERE request_id IN (?, ?)', [deposit.request_id, withdraw.request_id], (error, result) => error ? reject(error) : resolve(result)));
+  assert.deepEqual(rows, []);
+});
+
+test('parallel withdrawals preserve atomic balance invariants', async () => {
+  await reset();
+  await new Promise((resolve, reject) => db.run("UPDATE accounts SET balance=100 WHERE user_id='anis_101'", (error) => error ? reject(error) : resolve()));
+  const requests = Array.from({ length: 100 }, (_, index) => payload({
+    amount: index + 1,
+    nonce: `atomic-${index}`,
+    request_id: `atomic-${index}`
+  }));
+  const responses = await Promise.all(requests.map((request) => call('POST', '/api/withdraw', request)));
+  const rows = await new Promise((resolve, reject) => db.all("SELECT id, amount, status FROM transactions WHERE request_id LIKE 'atomic-%' ORDER BY id", (error, result) => error ? reject(error) : resolve(result)));
+  let balance = 100;
+  let minimum = balance;
+  let successSum = 0;
+  for (const row of rows) {
+    if (row.status === 'SUCCESS') { balance -= row.amount; successSum += row.amount; }
+    minimum = Math.min(minimum, balance);
+  }
+  const account = await new Promise((resolve, reject) => db.get("SELECT balance FROM accounts WHERE user_id='anis_101'", (error, result) => error ? reject(error) : resolve(result)));
+  assert.ok(responses.some((response) => response.data.status === 'ACCEPTED'));
+  assert.ok(minimum >= 0);
+  assert.ok(successSum <= 100);
+  assert.equal(account.balance + successSum, 100);
 });
 
 test('session authentication must match the signed user ID', async () => {

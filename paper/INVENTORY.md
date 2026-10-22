@@ -22,6 +22,10 @@ Paths below enumerate existing generated assets. Source hashes refer to their un
 | LaTeX table | `experiments/results/e1-v2-s11/summary.tex` | e1-v2-s11/summary.csv | 05b6281d9f85a85349672e831ce6acb3cc98974e45814bdd17d2835127a52309 |
 | LaTeX table | `experiments/results/e1-v2-s11-superseded-invalid-token/2026-10-18T18-25-39-610Z/summary.tex` | e1-v2-s11-superseded-invalid-token/summary.csv | 68ee7f2f1834a69da989528ac935d64095bae008c3ba16eb9b23f4fab73250f9 |
 | LaTeX table | `experiments/results/e1-v2-s11-superseded-invalid-token/summary.tex` | e1-v2-s11-superseded-invalid-token/summary.csv | 68ee7f2f1834a69da989528ac935d64095bae008c3ba16eb9b23f4fab73250f9 |
+| LaTeX table | `experiments/results/e1-v3/round-i-scaled/summary.tex` | source CSV not identified from neighboring artifacts | n/a |
+| LaTeX table | `experiments/results/e1-v3/summary.tex` | source CSV not identified from neighboring artifacts | n/a |
+| LaTeX table | `experiments/results/e1-v3-s11/round-i-s11/summary.tex` | source CSV not identified from neighboring artifacts | n/a |
+| LaTeX table | `experiments/results/e1-v3-s11/summary.tex` | source CSV not identified from neighboring artifacts | n/a |
 | Figure | `experiments/results/e2/latency-by-stack.pdf` | e2/load-repeat-summary.csv | 53d4997a3d6d0e80daec90e710ba319e5fe43c5b3acf0ac4fc255460af18dd83 |
 | Figure | `experiments/results/e2/latency-by-stack.png` | e2/load-repeat-summary.csv | 53d4997a3d6d0e80daec90e710ba319e5fe43c5b3acf0ac4fc255460af18dd83 |
 | Figure | `experiments/results/e2/latency-by-stack.svg` | e2/load-repeat-summary.csv | 53d4997a3d6d0e80daec90e710ba319e5fe43c5b3acf0ac4fc255460af18dd83 |

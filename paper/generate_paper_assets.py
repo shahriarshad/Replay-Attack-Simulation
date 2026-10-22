@@ -82,7 +82,7 @@ def write_table(name: str, headers: list[str], rows: list[list[object]]) -> None
 
 
 def latest_e1_run() -> Path:
-    root = ROOT / 'experiments/results/e1-v2'
+    root = ROOT / 'experiments/results/e1-v3'
     return sorted(p for p in root.iterdir() if p.is_dir() and (p / 'H0T0N0R0/requests.csv').exists())[-1]
 
 
@@ -111,37 +111,48 @@ def cell(rows: list[dict[str, str]]) -> tuple[int, int, float]:
 
 
 # Read every source once; all plotted/table figures are calculated from per-request CSV rows.
-e1_path = 'experiments/results/e1-v2/' + str(latest_e1_run().relative_to(ROOT / 'experiments/results/e1-v2')).replace('\\', '/') + '/H0T0N0R0/requests.csv'
 e1_dir = latest_e1_run()
 configs = sorted(p.name for p in e1_dir.iterdir() if p.is_dir() and re.fullmatch(r'H[01]T[01]N[01]R[01]',p.name) and (p/'requests.csv').is_file())
+e1_path = f"{str(e1_dir.relative_to(ROOT)).replace('\\', '/')}/H0T0N0R0/requests.csv"
+e1_summary_path = f"{str(e1_dir.relative_to(ROOT)).replace('\\', '/')}/summary.csv"
+e1_summary = raw(e1_summary_path)
+def summary_cell(row: dict[str, str], success_field: str = 'debited_count') -> tuple[int, int, float]:
+    k, n = int(row[success_field]), int(row['attempts'])
+    if n == 0: raise ValueError(f"empty applicable cell {row.get('config_id')}/{row.get('scenario_id')}")
+    check_value(k); check_value(n)
+    return k, n, check_value(k/n)
 e1_cells: dict[tuple[str, str], tuple[int, int, float]] = {}
 for cfg in configs:
-    p = f"{str(e1_dir.relative_to(ROOT)).replace('\\', '/')}/{cfg}/requests.csv"
-    rows = raw(p)
-    for scenario in ('S1','S2','S3','S4','S5','S6','S7a','S7b'):
-        matching = [r for r in rows if r.get('phase') == 'attacker' and r.get('scenario_id') == scenario]
-        e1_cells[(cfg, scenario)] = cell(matching)
-    for scenario in ('S8','S9'):
-        matching=[r for r in rows if r.get('phase')=='attacker' and r.get('scenario_id')==scenario]
-        e1_cells[(cfg,scenario)]=cell(matching)
+    for scenario in ('S1','S2','S3','S4','S5','S6','S7a','S7b','S8','S9'):
+        candidates=[r for r in e1_summary if r.get('config_id')==cfg and r.get('scenario_id')==scenario]
+        if scenario in ('S7a','S7b'):
+            variant='request_id' if scenario=='S7a' else 'nonce'
+            candidates=[r for r in candidates if r.get('variant')==variant]
+        if len(candidates)!=1: raise ValueError(f'missing/ambiguous E1 v3 cell {cfg}/{scenario}: {len(candidates)}')
+        e1_cells[(cfg,scenario)]=summary_cell(candidates[0])
 
 # F2: request-level attack success matrix; S10/S11 extend the same 16-config matrix.
-b_specs = [('S10 fast', 'S10_fast', 'B-S10-fast-R0', 'B-S10-fast-R1'), ('S10 late', 'S10_late', 'B-S10-late-R0', 'B-S10-late-R1')]
+s10_root=ROOT/'experiments/results/e1-v3-s10-independent'
+s10_runs=sorted(p for p in s10_root.iterdir() if p.is_dir() and (p/'summary.csv').exists())
+if not s10_runs: raise ValueError('S10-independent summary missing')
+s10_run=s10_runs[-1]
+s10_path=str((s10_run/'requests.csv').relative_to(ROOT)).replace('\\','/')
+s10_summary_path=str((s10_run/'summary.csv').relative_to(ROOT)).replace('\\','/')
+s10_summary=raw(s10_summary_path)
+s11_root=ROOT/'experiments/results/e1-v3-s11'
+s11_runs=sorted(p for p in s11_root.iterdir() if p.is_dir() and (p/'summary.csv').exists())
+if not s11_runs: raise ValueError('E1 v3 S11 summary missing')
+s11_run=s11_runs[-1]
+s11_summary_path=str((s11_run/'summary.csv').relative_to(ROOT)).replace('\\','/')
+s11_summary=raw(s11_summary_path)
 for cfg in configs:
-    for label, scenario, r0, r1 in b_specs:
-        run=r0 if cfg.endswith('R0') else r1
-        p=latest_b_csv(run,cfg,'success_only')
-        selected=attacking_rows(p,scenario)
-        if cfg.endswith('R1'):
-            selected=[r for r in selected if r.get('config_id','').endswith('success_only')]
-        e1_cells[(cfg,label)]=cell(selected)
-    if cfg.endswith('R0'):
-        p=latest_b_csv('B-s11-100',cfg)
-        e1_cells[(cfg,'S11')]=cell(attacking_rows(p,'S11'))
-    else:
-        # S11 stores both R0/R1 in its config names and is present in the all-config run.
-        p=latest_b_csv('B-s11-100',cfg)
-        e1_cells[(cfg,'S11')]=cell(attacking_rows(p,'S11'))
+    for label,scenario in [('S10 fast','S10_indep_fast'),('S10 late','S10_indep_late')]:
+        candidates=[r for r in s10_summary if r.get('config_id')==f'{cfg}-success_only' and r.get('scenario_id')==scenario]
+        if len(candidates)!=1: raise ValueError(f'missing S10-independent success_only cell {cfg}/{scenario}')
+        e1_cells[(cfg,label)]=summary_cell(candidates[0],'delayed_execution_count')
+    candidates=[r for r in s11_summary if r.get('config_id')==cfg and r.get('scenario_id')=='S11']
+    if len(candidates)!=1: raise ValueError(f'missing E1 v3 S11 cell {cfg}')
+    e1_cells[(cfg,'S11')]=summary_cell(candidates[0])
 
 columns = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7a', 'S7b', 'S10 fast', 'S10 late', 'S11']
 for cfg in configs:
@@ -219,9 +230,9 @@ for cfg in ['H1T1N1R0', 'H1T1N1R1']:
         low, high = wilson(k, len(g))
         full_rows.append((cfg, delay, k, len(g), check_value(k/len(g)), check_value(low), check_value(high)))
 fig, ax = plt.subplots(figsize=(3.5, 2.5))
-for cfg, marker, label in [('H1T1N1R0', 'o', 'Request-ID off'), ('H1T1N1R1', 's', 'Request-ID on')]:
+for cfg, marker, label, offset in [('H1T1N1R0', 'o', 'Request-ID off', -0.09), ('H1T1N1R1', 's', 'Request-ID on', 0.09)]:
     part = [r for r in full_rows if r[0] == cfg]
-    xs = list(range(len(part))); ys = [r[2] for r in part]
+    xs = [i + offset for i in range(len(part))]; ys = [r[2] for r in part]
     lo = [max(0,(ys[i]/part[i][3]-part[i][5])*part[i][3]) for i in range(len(part))]; hi = [max(0,(part[i][6]-ys[i]/part[i][3])*part[i][3]) for i in range(len(part))]
     ax.errorbar(xs, ys, yerr=[lo, hi], marker=marker, linestyle='none', capsize=2, label=label, color='black', mfc='white' if marker == 's' else 'black')
 ax.set_xlabel('Replay delay after first use (s)')
@@ -304,17 +315,22 @@ ax.set_ylabel('Server layer p50 (microseconds)')
 ax.set_yscale('log')
 ax.legend(frameon=False,ncol=2,loc='upper center',bbox_to_anchor=(.5,-.20))
 ax.grid(axis='y',color='0.85',linewidth=.4,which='both')
-savefig(fig,'F5-E2-layer-cost',3.5,tight_rect=(0,.22,1,1))
+fig.subplots_adjust(left=.29,right=.97,top=.96,bottom=.31)
+savefig(fig,'F5-E2-layer-cost',3.5)
 
 # T1 scenarios: attempts and attacker class from the measured cells.
 scenario_desc = {
- 'S1':('Immediate exact replay','A'),'S2':('Delayed exact replay inside timestamp window','A'),'S3':('Replay after nonce-store wipe','A'),'S4':('Replay after timestamp window','A'),'S5':('Parallel identical-request burst (50 parallel x 30 batches)','A'),'S6':('Amount modified; original signature retained','A'),'S7a':('Request ID modified; original signature retained','A'),'S7b':('Nonce modified; original signature retained','A'),'S8':('Expired session bearer token','A'),'S9':('Fresh forgery with leaked session key','C'),'S10 fast':('Failed withdrawal replay inside nonce and timestamp windows','A'),'S10 late':('Failed withdrawal replay after nonce TTL and timestamp window','A'),'S11':('Captured bearer token, without session signing key','B')
+ 'S1':('Immediate exact replay','A'),'S2':('Delayed exact replay inside timestamp window','A'),'S3':('Replay after nonce-store wipe','A'),'S4':('Replay after timestamp window','A'),'S5':('Parallel identical-request burst (50 parallel x 30 batches)','A'),'S6':('Amount modified; original signature retained','A'),'S7a':('Request ID modified; original signature retained','A'),'S7b':('Nonce modified; original signature retained','A'),'S8':('Expired session bearer token','A'),'S9':('Fresh forgery with leaked session key','C'),'S10 fast':('Independent failed withdrawals replayed once after 1 s; funded balance 3,002; amount 100','A'),'S10 late':('Independent failed withdrawals replayed once after 9 s; nonce TTL 8 s and past window 6 s','A'),'S11':('Captured bearer token, without session signing key','B')
 }
 t1=[]
 for label,(desc,attacker) in scenario_desc.items():
     ns=sorted({e1_cells[(c,label)][1] for c in configs})
     t1.append([label,desc,attacker,', '.join(map(str,ns))])
 write_table('T1-scenarios',['Scenario','Description','Attacker','Attempts n'],t1)
+t1_tex=[r'\begin{table*}[t]',r'\centering',r'\small',r'\begin{tabular}{lp{4.2in}cc}',r'\toprule',r'Scenario & Description & Attacker & Attempts $n$ \\',r'\midrule']
+t1_tex += [f"{tex_escape(a)} & {tex_escape(b)} & {tex_escape(c)} & {tex_escape(d)}" + r' \\' for a,b,c,d in t1]
+t1_tex += [r'\bottomrule',r'\end{tabular}',r'\end{table*}','']
+(TABLE/'T1-scenarios.tex').write_text('\n'.join(t1_tex),encoding='utf-8')
 
 # T2: all Round F S10 request-level outcomes plus the C2 resubmission attempt CSV.
 t2=[]
@@ -377,6 +393,44 @@ for policy in sorted({r['policy'] for r in resub}):
         compact.append([policy,'After funding',variant,f'{k}/{n} [{lo:.3f}, {hi:.3f}]','resubmission trials'])
 write_table('T2',['Policy','Request-ID / freshness','Scenario','Successes / n (Wilson 95%)','Configuration scope'],compact)
 
+# Round I replaces the old single-request S10 figures with independent trials.
+resub_path='experiments/results/round-i/s10-independent/resubmission/requests.csv'
+resub=raw(resub_path)
+round_i_full=[]
+for r in s10_summary:
+    cfg=r['config_id'].rsplit('-',1)[0]; k=int(r['delayed_execution_count']); n=int(r['attempts']); lo,hi=wilson(k,n)
+    round_i_full.append([r['policy'],cfg,r['scenario_id'].replace('S10_indep_',''),f'{k}/{n}',f'{lo:.3f}–{hi:.3f}'])
+write_table('T2-full',['Policy','Configuration','Scenario','Delayed executions / n','Wilson 95%'],round_i_full)
+round_i_compact=[]
+for rid,policy in [(0,'success_only'),(1,'success_only'),(1,'any_outcome')]:
+    for t,n,fresh in [(0,0,'No T/N'),(1,0,'T only'),(0,1,'N only'),(1,1,'T and N')]:
+        candidates=[c for c in configs if c.endswith(f'R{rid}') and c[3]==str(t) and c[5]==str(n)]
+        cells=[]
+        for cfg in candidates:
+            vals=[]
+            for scenario in ['S10_indep_fast','S10_indep_late']:
+                found=[r for r in s10_summary if r['config_id']==f'{cfg}-{policy}' and r['scenario_id']==scenario]
+                if len(found)!=1: raise ValueError(f'missing independent S10 cell {cfg}/{policy}/{scenario}')
+                row=found[0]; k=int(row['delayed_execution_count']); total=int(row['attempts']); lo,hi=wilson(k,total); vals.append((k,total,lo,hi))
+            cells.append((cfg,*vals))
+        unique=[]
+        for item in cells:
+            same=next((u for u in unique if u[1:]==list(item[1:])),None)
+            if same: same[0].append(item[0])
+            else: unique.append([[item[0]],*item[1:]])
+        for names,fast,late in unique:
+            label=', '.join(names)+(f' (H0/H1 identical)' if len(names)>1 else '')
+            ftxt=f'{fast[0]}/{fast[1]} [{fast[2]:.3f}, {fast[3]:.3f}]'; ltxt=f'{late[0]}/{late[1]} [{late[2]:.3f}, {late[3]:.3f}]'
+            round_i_compact.append([policy,f'R{rid}; {fresh}',label,ftxt,ltxt,''])
+for policy in sorted({r['policy'] for r in resub}):
+    for variant in sorted({r['variant'] for r in resub}):
+        g=[r for r in resub if r['policy']==policy and r['variant']==variant]
+        k=sum(r['retry_status']=='200' and r['retry_reason']=='ACCEPTED' for r in g); n=len(g); lo,hi=wilson(k,n)
+        round_i_compact.append([policy,'After funding',variant,'N/A','N/A',f'{k}/{n} [{lo:.3f}, {hi:.3f}]'])
+write_table('T2',['Policy','Request-ID / freshness','Configuration(s)','S10 fast k/n (Wilson 95%)','S10 late k/n (Wilson 95%)','Resubmission success (Wilson 95%)'],round_i_compact)
+t2file=TABLE/'T2.tex'; t2text=t2file.read_text(encoding='utf-8').replace(r'\begin{tabular}{lccccc}',r'\setlength{\tabcolsep}{2pt}'+'\n'+r'\begin{tabular}{lp{0.68in}p{1.38in}p{1.30in}p{1.30in}p{1.15in}}')
+t2file.write_text(t2text,encoding='utf-8')
+
 # T4 failure modes: E4b Wilson rows and E4c retry outcome counts from raw trials.
 e4b_path='experiments/results/e4-final-c3/e4b.csv'; e4b=raw(e4b_path); t4=[]
 for case in sorted({r['case'] for r in e4b}):
@@ -385,8 +439,8 @@ for case in sorted({r['case'] for r in e4b}):
     lk=sum(r['reason']=='ACCEPTED' and r['status']=='200' for r in leg); rk=sum(r['reason']=='ACCEPTED' and r['status']=='200' for r in rep)
     ln=len(leg); rn=len(rep); ll,lh=wilson(lk,ln); rl,rh=wilson(rk,rn)
     mode='fail-open' if 'fail-open' in case else 'fail-closed'; rid='on' if case.endswith('-1') else 'off'
-    t4.append(['E4b',mode,rid,f'{lk}/{ln} [{ll:.3f}, {lh:.3f}]',f'{rk}/{rn} [{rl:.3f}, {rh:.3f}]','','',''])
-e4c_path='experiments/results/e4-final-c3-rerun/e4c.csv'; e4c=raw(e4c_path)
+    t4.append(['E4b',mode,rid,'',f'{lk}/{ln} [{ll:.3f}, {lh:.3f}]',f'{rk}/{rn} [{rl:.3f}, {rh:.3f}]','','','',''])
+e4c_path='experiments/results/round-i/e4c-exact/e4c.csv'; e4c=raw(e4c_path)
 for case in sorted({r['case'] for r in e4c if r.get('kind')!='summary'}):
     g=[r for r in e4c if r['case']==case and r.get('kind')!='summary']
     if not case.startswith('loss-'): continue
@@ -399,10 +453,12 @@ for case in sorted({r['case'] for r in e4c if r.get('kind')!='summary'}):
     if summary is None: raise ValueError(f'missing E4c raw oracle summary for {case}')
     debit=int(summary.get('debits') or 0); exactly=int(summary.get('exactly_one_debit_request_ids') or 0); infer=int(summary.get('reason_confirms_success_count') or 0)
     if int(summary.get('trials') or 0)!=200 or len(g)!=200: raise ValueError(f'E4c trial count mismatch for {case}')
-    t4.append(['E4c',f'p={prob}', 'default' if order=='default' else 'request-ID first', 'identical signed request' if retry=='same-signed' else 'fresh nonce, same request_id',f'{lost}/200',json.dumps(dict(sorted(reasons.items())),sort_keys=True),f'{exactly}/200',str(infer)])
-write_table('T4-failure-modes',['Experiment','Mode / loss p','Request-ID / check order','Legitimate accepted / retry type','Replay accepted / lost responses','Retry reason counts','Exactly one debit','Client can infer success'],t4)
+    reason_text='; '.join(f'{name}:{count}' for name,count in sorted(reasons.items()))
+    t4.append(['E4c',f'p={prob}', 'default' if order=='default' else 'request-ID first', 'identical signed request' if retry=='same-signed' else 'fresh nonce, same request_id','','',f'{lost}/200',reason_text,f'{exactly}/200',str(infer)])
+write_table('T4-failure-modes',['Experiment','Mode / loss p','Request-ID / check order','Retry type','Legitimate accepted (k/30, Wilson 95%)','Replay accepted (k/30, Wilson 95%)','Lost responses (of 200)','Retry reason counts','Debited exactly once (k/200)','Retries infer success (k)'],t4)
 t4file=TABLE/'T4-failure-modes.tex'; t4text=t4file.read_text(encoding='utf-8')
-t4text=t4text.replace(r'\small',r'\small'+'\n'+r'\caption*{E4c client failure after debit is not zero in the saved data: its summary count equals the lost-response count for each loss case. The requested table omits this separate column; see source CSV and summary fields.}')
+t4text=t4text.replace(r'\begin{tabular}{lccccccccc}',r'\setlength{\tabcolsep}{1.5pt}'+'\n'+r'\begin{tabular}{lp{0.47in}p{0.61in}p{0.75in}p{0.76in}p{0.76in}p{0.49in}p{0.75in}p{0.70in}p{0.49in}}')
+t4text=t4text.replace(r'\small',r'\small'+'\n'+r'\caption*{For E4b, the first two outcome columns are legitimate requests accepted and replay requests accepted, each out of 30 with Wilson 95% intervals. For E4c, failures after debit equal the lost-response count by construction; the table reports lost responses, retry reasons, exactly-once debit count, and retries that reveal prior success.}')
 t4file.write_text(t4text,encoding='utf-8')
 
 # Compact empirical E1 matrix T5; every cell uses the same raw request rows as F2.
@@ -410,10 +466,7 @@ t5headers=['Config']+[f"{c.replace('S10 fast','S10f').replace('S10 late','S10l')
 write_table('T5-e1-coverage',t5headers,[[cfg]+[str(e1_cells[(cfg,c)][0]) for c in columns] for cfg in configs])
 
 # Every generated asset receives source paths/hashes and a data-specific caption.
-f2_sources=[f"{str(e1_dir.relative_to(ROOT)).replace('\\','/')}/{cfg}/requests.csv" for cfg in configs]
-for cfg in configs:
-    f2_sources.extend([latest_b_csv(run,cfg) for run in ('B-S10-fast-R0','B-S10-fast-R1','B-S10-late-R0','B-S10-late-R1')])
-    f2_sources.append(latest_b_csv('B-s11-100',cfg))
+f2_sources=[f"{str(e1_dir.relative_to(ROOT)).replace('\\','/')}/{cfg}/requests.csv" for cfg in configs]+[e1_summary_path,s10_path,s10_summary_path,s11_summary_path]
 f2_sources=list(dict.fromkeys(f2_sources))
 e2_source_files=[str(p.relative_to(ROOT)).replace('\\','/') for stack in stacks for p in sorted(e2_root.glob(f'{stack}-r*-c1/layer-timings.csv'))]
 sources={
@@ -430,7 +483,7 @@ if len(s8_values)!=1 or len(s9_values)!=1: raise ValueError('S8/S9 cells are inc
 s8k,s8n=next(iter(s8_values)); s9k,s9n=next(iter(s9_values))
 if s8k!=0 or s9k!=s9n: raise ValueError('S8/S9 caption values disagree with saved rows')
 col_n={c:e1_cells[(configs[0],c)][1] for c in columns}
-e1_caption='F2: H/T/N/R denote HMAC/timestamp/nonce/request-ID defenses; attacker A observes traffic without the session key (S1 through S8), attacker C has the leaked session key (S9), and B holds a bearer token only (S11). Each scenario header gives n; cells print successful attacks k, with grayscale/hatching encoding k/n; S8='+f'{s8k}/{s8n}'+', S9='+f'{s9k}/{s9n}'+'. Scaled-time S1 through S9; Round F default-window S10/S11; success_only.'
+e1_caption='F2: H/T/N/R denote HMAC/timestamp/nonce/request-ID defenses; attacker A observes traffic without the session key (S1 through S8 and S10), attacker C has the leaked key (S9), and B holds a bearer token only (S11). Each column header gives n; cells print successful attacks k, with grayscale/hatching encoding k/n. S5 uses n=1,500 (50 parallel x 30 batches); S8='+f'{s8k}/{s8n}'+', S9='+f'{s9k}/{s9n}'+'. S1-S9 use E1 v3 scaled time (PAST=6 s, FUTURE=2 s, NONCE_TTL=8 s); S10 uses independent trials at 1 s/9 s; S11 uses 100 attempts; success_only.'
 caption_map={
 'F2-e1-coverage-single':e1_caption, 'F2-e1-coverage-double':e1_caption,
 'F3a-scaled-TTL-grid':'n=30 per cell; attacker A (network observer, no session key) replays recorded requests; H/T/N/R mean HMAC/timestamp/nonce/request-ID; scaled-time PAST=6 s/FUTURE=2 s, success_only, H1T1N1R0.',
@@ -443,15 +496,15 @@ for stem,srcs in sources.items():
     manifest.append(f"| Figure | {outputs} | {source_text} | `python paper/generate_paper_assets.py` | {caption_map[stem]} |")
 table_sources={
 'T1-scenarios':f2_sources,
-'T2':list(dict.fromkeys([latest_b_csv(run,cfg,policy) for run in ('B-S10-fast-R0','B-S10-fast-R1','B-S10-late-R0','B-S10-late-R1') for cfg in configs if cfg.endswith('R0' if run.endswith('R0') else 'R1') for policy in (['success_only','any_outcome'] if run.endswith('R1') else ['success_only'])]+['experiments/results/s10-policy-resubmit/requests.csv'])),
-'T2-full':list(dict.fromkeys([latest_b_csv(run,cfg,policy) for run in ('B-S10-fast-R0','B-S10-fast-R1','B-S10-late-R0','B-S10-late-R1') for cfg in configs if cfg.endswith('R0' if run.endswith('R0') else 'R1') for policy in (['success_only','any_outcome'] if run.endswith('R1') else ['success_only'])]+['experiments/results/s10-policy-resubmit/requests.csv'])),
+'T2':[s10_path,s10_summary_path,resub_path],
+'T2-full':[s10_path,s10_summary_path],
 'T3-layer-cost':e2_source_files,'T4-failure-modes':[e4b_path,e4c_path],
 'T5-e1-coverage':f2_sources }
 for name,srcs in table_sources.items():
     existing=[s for s in srcs if (ROOT/s).is_file()]
     source_text='; '.join(f'{s} (SHA-256 {sha(s)})' for s in existing) or '; '.join(srcs)+' (request CSVs selected by configuration in generator)'
     if name in ('T1-scenarios','T2','T2-full','T5-e1-coverage'):
-        caption='Scenario counts and outcomes are recomputed from raw rows; attacker A lacks the session key, B has bearer token only, and C has leaked key; H/T/N/R denote HMAC/timestamp/nonce/request-ID; scaled-time except Round F default-window S10/S11; success_only except policy rows.'
+        caption='Attacker A observes traffic without the session key, B has bearer token only, and C has leaked key; H/T/N/R denote HMAC/timestamp/nonce/request-ID. E1 v3 uses PAST=6 s/FUTURE=2 s/NONCE_TTL=8 s; S10 is independent 30-trial data; S11 has 100 attempts; success_only except the explicit any_outcome rows.'
     elif name=='T3-layer-cost': caption=f"n=10 repeats per backend, each {e2_meta['measuredRequests']} requests after {e2_meta['warmupRequests']} warm-ups; localhost; attacker not applicable; all H/T/N/R on; success_only."
     else: caption='E4b n=30 per mode/request-ID case; E4c n=200 per loss/order/retry case; attacker A is a network observer without the session key; H/T/N/R denote the four defenses; E4 scaled-time/failure profile; success_only. The omitted E4c client-failure-after-debit count equals lost responses in the raw summary and is nonzero in loss cases.'
     manifest.append(f"| Table | `paper/tables/{name}.tex` | {source_text} | `python paper/generate_paper_assets.py` | {caption} |")

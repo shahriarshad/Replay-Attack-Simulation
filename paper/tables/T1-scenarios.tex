@@ -1,9 +1,9 @@
 \begin{table*}[t]
 \centering
 \small
-\begin{tabular}{lccc}
+\begin{tabular}{lp{4.2in}cc}
 \toprule
-Scenario & Description & Attacker & Attempts n \\
+Scenario & Description & Attacker & Attempts $n$ \\
 \midrule
 S1 & Immediate exact replay & A & 30 \\
 S2 & Delayed exact replay inside timestamp window & A & 30 \\
@@ -15,8 +15,8 @@ S7a & Request ID modified; original signature retained & A & 30 \\
 S7b & Nonce modified; original signature retained & A & 30 \\
 S8 & Expired session bearer token & A & 30 \\
 S9 & Fresh forgery with leaked session key & C & 30 \\
-S10 fast & Failed withdrawal replay inside nonce and timestamp windows & A & 100 \\
-S10 late & Failed withdrawal replay after nonce TTL and timestamp window & A & 100 \\
+S10 fast & Independent failed withdrawals replayed once after 1 s; funded balance 3,002; amount 100 & A & 30 \\
+S10 late & Independent failed withdrawals replayed once after 9 s; nonce TTL 8 s and past window 6 s & A & 30 \\
 S11 & Captured bearer token, without session signing key & B & 100 \\
 \bottomrule
 \end{tabular}

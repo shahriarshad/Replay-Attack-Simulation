@@ -13,15 +13,15 @@ const { readAttemptCount } = require('./attempt-count');
 const ROOT = path.resolve(__dirname, '../..');
 const SERVER = path.join(ROOT, 'server');
 const OUTPUT = path.resolve(process.env.E1_OUTPUT_DIR || path.join(ROOT, 'experiments/results/e1-v2'));
-const RUN_TAG = new Date().toISOString().replace(/[:.]/g, '-');
+const RUN_TAG = process.env.E1_RUN_TAG || new Date().toISOString().replace(/[:.]/g, '-');
 const RUN_OUTPUT = path.join(OUTPUT, RUN_TAG);
 const RANDOM_SEED = 'e1-fixed-seed-2026-v1';
 const WIDTH = 30;
 const ATTEMPTS = readAttemptCount();
-const PAST = 6;
-const FUTURE = 2;
-const NONCE_TTL = 4;
-const SESSION_TTL = 15;
+const PAST = Number(process.env.E1_PAST_SECONDS || 6);
+const FUTURE = Number(process.env.E1_FUTURE_SECONDS || 2);
+const NONCE_TTL = Number(process.env.E1_NONCE_TTL_SECONDS || 4);
+const SESSION_TTL = Number(process.env.E1_SESSION_TTL_SECONDS || 15);
 const PIN = process.env.DEMO_PIN || '1234';
 fs.mkdirSync(OUTPUT, { recursive: true });
 
@@ -228,7 +228,7 @@ async function runConfiguration(mask, profile = {}) {
     }
 
     const filter = process.env.E1_SCENARIO_FILTER || '';
-    const selectedScenarios = filter ? [filter] : ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7a', 'S7b', 'S8', 'S9', 'S10_fast', 'S10_late'];
+    const selectedScenarios = filter ? filter.split(',').map((x) => x.trim()).filter(Boolean) : ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7a', 'S7b', 'S8', 'S9', 'S10_fast', 'S10_late'];
     for (const scenario of selectedScenarios) {
       await login();
       if (scenario === 'S1' || scenario === 'S2' || scenario === 'S3' || scenario === 'S4' || scenario === 'S8') {
@@ -344,7 +344,7 @@ async function main() {
   }
   if (!onlyS11 && !policySweep && !skipDefaultConfirmation) {
     process.stdout.write('E1 default-window confirmation: S2/60s and S4/301s\n');
-    allSummaries.push(...await runConfiguration(15, { suffix: '-DEFAULT', past: 300, future: 5, nonceTtl: 86400, sessionTtl: 900, fullScale: true }));
+    allSummaries.push(...await runConfiguration(15, { suffix: '-DEFAULT', past: 300, future: 5, nonceTtl: 300, sessionTtl: 900, fullScale: true }));
   }
   const headers = ['config_id', 'scenario_id', 'variant', 'attempts', 'http_accepted_count', 'debited_count', 'attack_success_rate', 'wilson95_low', 'wilson95_high', 'blocking_reason_histogram', 'oracle_total_debited_delta', 'oracle_duplicate_debit_count_delta', 'oracle_duplicate_debit_amount_delta', 'oracle_unauthorized_debit_amount_delta', 'oracle_delayed_execution_count_delta', 'oracle_delayed_execution_amount_delta', 'oracle_integrity_holds'];
   writeCsv(path.join(RUN_OUTPUT, 'summary.csv'), headers, allSummaries);
@@ -352,7 +352,7 @@ async function main() {
   const scenarios = [...new Set(allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => r.scenario_id))];
   const latex = ['\\begin{tabular}{llrrrrl}', '\\toprule', 'Configuration & Scenario & Attempts & Accepted & Debits & Success rate & Wilson 95\\% CI \\\\', '\\midrule', ...allSummaries.filter((r) => r.scenario_id !== 'LEGITIMATE_CONTROL').map((r) => `${r.config_id} & ${r.scenario_id} & ${r.attempts} & ${r.http_accepted_count} & ${r.debited_count} & ${(100 * r.attack_success_rate).toFixed(2)}\\% & ${r.wilson95_low.toFixed(4)}--${r.wilson95_high.toFixed(4)} \\\\`), '\\bottomrule', '\\end{tabular}', ''];
   fs.writeFileSync(path.join(RUN_OUTPUT, 'summary.tex'), latex.join('\n'));
-  const runMetadata = { started, ended: new Date().toISOString(), elapsedSeconds: (Date.now() - Date.parse(started)) / 1000, nodeVersion: process.version, host: { platform: os.platform(), release: os.release(), architecture: process.arch, cpuModel: os.cpus()[0]?.model, totalRamBytes: os.totalmem() }, dataRunDirectory: path.relative(OUTPUT, RUN_OUTPUT).replace(/\\/g, '/'), randomSeed: RANDOM_SEED, randomSeedScope: 'deterministic scenario request IDs and nonces; server session credentials use the operating-system CSPRNG', configuredAttempts: ATTEMPTS, selectedConfigMasks: process.env.E1_CONFIG_MASKS || 'all', selectedPolicySweep: policySweep, skippedDefaultConfirmation: skipDefaultConfirmation, scaledProfile: { timestampPastSeconds: PAST, timestampFutureSeconds: FUTURE, nonceTtlSeconds: NONCE_TTL, sessionTtlSeconds: SESSION_TTL }, defaultConfirmationProfile: { timestampPastSeconds: 300, futureToleranceSeconds: 5, nonceTtlSeconds: 86400, sessionTtlSeconds: 900, waits: { S2: 60, S4: 301 } }, keepAliveHttpAgent: true, proxyRedactLogin: true, moneyOracleLedgerSource: 'direct sqlite3 SELECT from the running server database after each scenario', allConfigs: 16, totalSummaryRows: allSummaries.length, scenarios: scenarios.length, allSummaries };
+  const runMetadata = { started, ended: new Date().toISOString(), elapsedSeconds: (Date.now() - Date.parse(started)) / 1000, nodeVersion: process.version, host: { platform: os.platform(), release: os.release(), architecture: process.arch, cpuModel: os.cpus()[0]?.model, totalRamBytes: os.totalmem() }, dataRunDirectory: path.relative(OUTPUT, RUN_OUTPUT).replace(/\\/g, '/'), randomSeed: RANDOM_SEED, randomSeedScope: 'deterministic scenario request IDs and nonces; server session credentials use the operating-system CSPRNG', configuredAttempts: ATTEMPTS, selectedConfigMasks: process.env.E1_CONFIG_MASKS || 'all', selectedPolicySweep: policySweep, skippedDefaultConfirmation: skipDefaultConfirmation, scaledProfile: { timestampPastSeconds: PAST, timestampFutureSeconds: FUTURE, nonceTtlSeconds: NONCE_TTL, sessionTtlSeconds: SESSION_TTL }, defaultConfirmationProfile: { timestampPastSeconds: 300, futureToleranceSeconds: 5, nonceTtlSeconds: 300, sessionTtlSeconds: 900, waits: { S2: 60, S4: 301 } }, keepAliveHttpAgent: true, proxyRedactLogin: true, moneyOracleLedgerSource: 'direct sqlite3 SELECT from the running server database after each scenario', allConfigs: 16, totalSummaryRows: allSummaries.length, scenarios: scenarios.length, allSummaries };
   fs.writeFileSync(path.join(RUN_OUTPUT, 'run.json'), `${JSON.stringify(runMetadata, null, 2)}\n`);
   fs.copyFileSync(path.join(RUN_OUTPUT, 'summary.csv'), path.join(OUTPUT, 'summary.csv'));
   fs.copyFileSync(path.join(RUN_OUTPUT, 'summary.tex'), path.join(OUTPUT, 'summary.tex'));

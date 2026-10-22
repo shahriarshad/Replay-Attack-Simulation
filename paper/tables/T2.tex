@@ -1,38 +1,27 @@
 \begin{table*}[t]
 \centering
 \small
-\begin{tabular}{lcccc}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lp{0.68in}p{1.38in}p{1.30in}p{1.30in}p{1.15in}}
 \toprule
-Policy & Request-ID / freshness & Scenario & Successes / n (Wilson 95\%) & Configuration scope \\
+Policy & Request-ID / freshness & Configuration(s) & S10 fast k/n (Wilson 95\%) & S10 late k/n (Wilson 95\%) & Resubmission success (Wilson 95\%) \\
 \midrule
-success\_only & R on; none & fast & 2/200 [0.003, 0.036] & pooled H0/H1 \\
-success\_only & R on; none & late & 2/200 [0.003, 0.036] & pooled H0/H1 \\
-success\_only & R on; T only & fast & 2/200 [0.003, 0.036] & pooled H0/H1 \\
-success\_only & R on; T only & late & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-success\_only & R on; N only & fast & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-success\_only & R on; N only & late & 2/200 [0.003, 0.036] & pooled H0/H1 \\
-success\_only & R on; T and N & fast & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-success\_only & R on; T and N & late & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-success\_only & R off; none & fast & 10/200 [0.027, 0.090] & pooled H0/H1 \\
-success\_only & R off; none & late & 10/200 [0.027, 0.090] & pooled H0/H1 \\
-success\_only & R off; T only & fast & 10/200 [0.027, 0.090] & pooled H0/H1 \\
-success\_only & R off; T only & late & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-success\_only & R off; N only & fast & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-success\_only & R off; N only & late & 2/200 [0.003, 0.036] & pooled H0/H1 \\
-success\_only & R off; T and N & fast & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-success\_only & R off; T and N & late & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-any\_outcome & R on; none & fast & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-any\_outcome & R on; none & late & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-any\_outcome & R on; T only & fast & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-any\_outcome & R on; T only & late & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-any\_outcome & R on; N only & fast & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-any\_outcome & R on; N only & late & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-any\_outcome & R on; T and N & fast & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-any\_outcome & R on; T and N & late & 0/200 [0.000, 0.019] & pooled H0/H1 \\
-any\_outcome & After funding & new\_request\_id\_fresh\_nonce & 30/30 [0.886, 1.000] & resubmission trials \\
-any\_outcome & After funding & same\_request\_id\_fresh\_nonce & 0/30 [0.000, 0.114] & resubmission trials \\
-success\_only & After funding & new\_request\_id\_fresh\_nonce & 30/30 [0.886, 1.000] & resubmission trials \\
-success\_only & After funding & same\_request\_id\_fresh\_nonce & 30/30 [0.886, 1.000] & resubmission trials \\
+success\_only & R0; No T/N & H0T0N0R0, H1T0N0R0 (H0/H1 identical) & 30/30 [0.886, 1.000] & 30/30 [0.886, 1.000] &  \\
+success\_only & R0; T only & H0T1N0R0, H1T1N0R0 (H0/H1 identical) & 30/30 [0.886, 1.000] & 0/30 [0.000, 0.114] &  \\
+success\_only & R0; N only & H0T0N1R0, H1T0N1R0 (H0/H1 identical) & 0/30 [0.000, 0.114] & 30/30 [0.886, 1.000] &  \\
+success\_only & R0; T and N & H0T1N1R0, H1T1N1R0 (H0/H1 identical) & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  \\
+success\_only & R1; No T/N & H0T0N0R1, H1T0N0R1 (H0/H1 identical) & 30/30 [0.886, 1.000] & 30/30 [0.886, 1.000] &  \\
+success\_only & R1; T only & H0T1N0R1, H1T1N0R1 (H0/H1 identical) & 30/30 [0.886, 1.000] & 0/30 [0.000, 0.114] &  \\
+success\_only & R1; N only & H0T0N1R1, H1T0N1R1 (H0/H1 identical) & 0/30 [0.000, 0.114] & 30/30 [0.886, 1.000] &  \\
+success\_only & R1; T and N & H0T1N1R1, H1T1N1R1 (H0/H1 identical) & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  \\
+any\_outcome & R1; No T/N & H0T0N0R1, H1T0N0R1 (H0/H1 identical) & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  \\
+any\_outcome & R1; T only & H0T1N0R1, H1T1N0R1 (H0/H1 identical) & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  \\
+any\_outcome & R1; N only & H0T0N1R1, H1T0N1R1 (H0/H1 identical) & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  \\
+any\_outcome & R1; T and N & H0T1N1R1, H1T1N1R1 (H0/H1 identical) & 0/30 [0.000, 0.114] & 0/30 [0.000, 0.114] &  \\
+any\_outcome & After funding & new\_request\_id\_fresh\_nonce & N/A & N/A & 30/30 [0.886, 1.000] \\
+any\_outcome & After funding & same\_request\_id\_fresh\_nonce & N/A & N/A & 0/30 [0.000, 0.114] \\
+success\_only & After funding & new\_request\_id\_fresh\_nonce & N/A & N/A & 30/30 [0.886, 1.000] \\
+success\_only & After funding & same\_request\_id\_fresh\_nonce & N/A & N/A & 30/30 [0.886, 1.000] \\
 \bottomrule
 \end{tabular}
 \end{table*}

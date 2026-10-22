@@ -27,3 +27,16 @@ This is an evidence map, not a claim that each result generalizes beyond the loc
 
 
 Privacy note: SQLite signature-column values in the new Round F databases were nulled after the measured runs and ledger oracle queries. The audit was rerun after this sanitization and still matched all compared values.
+
+
+
+
+## Round I claim scope
+
+1. Four-layer leave-one-out evidence is scoped to E1 v3 (PAST=6 s, FUTURE=2 s, NONCE_TTL=8 s, SESSION_TTL=15 s, success_only). Ordinary S1-S9 use 30 attempts (S5 uses 1,500); S11 uses 100 attempts. “None” still retains session bearer authentication and account ownership.
+
+2. The idempotency policy trade-off uses independent S10 trials: 30 distinct failed requests and one replay per failed request. Under success_only, retries can execute after funding if the other enabled freshness layer does not block them. Under any_outcome with request-ID on, the same request ID returned ALREADY_PROCESSED. The separate resubmission rows use 30 trials per policy and retry variant.
+
+3. The scaled-time TTL result is reproduced: E1 v2 used the deliberately short, mis-configured 4 s TTL; E1 v3 uses 8 s with PAST=6 s and FUTURE=2 s. S4 changed only in the nonce-on/request-ID-off cells, where the v2 replay succeeded and v3 replay was blocked. This round did not rerun E4a or the default full-scale TTL-gap experiment.
+
+See the Round I raw paths and hashes in RESULTS_PACK_A.md. Route binding and atomic debit were checked only in this local simulation; they do not establish multi-process production behavior.
