@@ -351,7 +351,7 @@ Thirty repetitions, each with 100 parallel amounts 1..100 against balance 100. A
 |0.2|request_id_before_nonce|same-signed|40/200|2846044782|200|40|
 |0.2|request_id_before_nonce|fresh-nonce-same-request-id|40/200|2846044782|200|40|
 
-Exact-count Fisher–Yates samples lost exactly 0, 10 and 40 responses at p=0, .05 and .2, shared by cells at the same p. The earlier Bernoulli LCG allowed random counts and yielded 3 and 44; that prior output is superseded. Raw SHA-256 ab37252a36e325ec8d26a48a8b7d3fa5e4581de5ec1dba7f3e12ba16fd741d14.
+Exact-count Fisher–Yates samples lost exactly 0, 10 and 40 responses at p=0, .05 and .2, shared by cells at the same p. The superseded generator was `function lossPattern(p){let x=(0xE4C2026+(Math.round(p*1000)*2654435761))>>>0;const out=[];for(let i=0;i<200;i++){x=(1664525*x+1013904223)>>>0;out.push(x/4294967296<p);}return out;}`. Because each draw was an independent threshold test, the number of losses varied; its saved run produced 3 at p=.05 and 44 at p=.2. That prior output is superseded. Raw SHA-256 ab37252a36e325ec8d26a48a8b7d3fa5e4581de5ec1dba7f3e12ba16fd741d14.
 
 ## 7. I4 paper assets
 
