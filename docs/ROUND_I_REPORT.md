@@ -8,7 +8,7 @@
 |I2 independent S10 and resubmissions|Done|experiments/results/e1-v3-s10-independent/2026-10-22T04-40-36-408Z/summary.csv; experiments/results/round-i/s10-independent/resubmission/summary.csv|
 |I3 route binding, atomic debit, exact E4c|Done|experiments/results/round-i/route-binding/requests.csv; experiments/results/round-i/atomic-debit/runs.csv; experiments/results/round-i/e4c-exact/e4c.csv|
 |I4 presentation|Done|paper/ figures and tables|
-|I5 docs, audit, tests, commit|Partly until commit|audit and test logs below|
+|I5 docs, audit, tests, commit|Done|audit-report.md; npm-test.log; commit c9022ef|
 |I6 detailed report|Done|this report|
 
 ## 2. Environment and exact run metadata
@@ -1226,7 +1226,7 @@ index cfc8ba6..96fcb9c 100644
 E1 v2 used a 4 s TTL, shorter than PAST=6 s; E1 v3 corrected it to 8 s and two S4 cells changed. E1 v3 lasted 977.778 s; independent S10 lasted 306.767 s. Windows denied AC/battery and CPU-frequency inspection. The simulation is single-host localhost; results do not establish real-network or multi-process behavior. Older result directories were not overwritten.
 ## 11. Git
 
-Local commit hashes will be recorded after committing. Pre-existing edits to `attack/payload.json` and `experiments/results/corrections/*` are excluded; no push was made.
+Round I source, test, docs and paper assets commit: `c9022ef` (Complete Round I experiment verification and paper assets). This report update is committed separately; its hash is stated in the final handoff. Pre-existing edits to `attack/payload.json` and `experiments/results/corrections/*` are excluded; no push was made.
 
 ## Appendix: all remaining tracked-file diffs
 
