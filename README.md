@@ -1,351 +1,135 @@
-# Banking Replay Attack Mitigation Simulator
+# Layered Replay-Attack Defense: Simulation and Research Artifact
 
-Interactive demo of a replay attack against a banking withdraw API and a 5-layer defense:
+This repository contains a local bank-API simulation, a browser UI, a Socket.IO visualization dashboard, replay-attack tooling, and measurement harnesses. It was built to evaluate layered replay defenses and idempotency behavior. It is a research/classroom simulation; it is not a bank product, and none of its results describe a real bank, network, Redis deployment, telecom operator, or mobile-financial-service provider.
 
-1. HMAC signature
-2. Timestamp freshness
-3. Redis nonce
-4. SQLite request ID
-5. Balance check
+## What was measured
 
-This project is for a classroom/demo presentation. It is intentionally simple and visual.
+The checked-in results pack and paper assets summarize experiments run on Windows with Node.js v24.11.1 and **Memurai Developer 4.2.3** (Redis-compatible, but not stock Redis). All measured server and client timings are localhost timings. The E3 delay and clock-skew distributions are assumptions used by the simulation, not observations of any real network.
 
-## Prerequisites
-
-- Windows host machine
-- Node.js 20+ and npm 10+
-- Memurai or Redis running on `localhost:6379`
-- WSL2 Ubuntu with `curl` and `jq`
-- WSL mirrored networking, so `curl http://localhost:3000` from WSL reaches the Windows host
-
-Verified local environment during build:
-
-- Node.js `v24.11.1`
-- Memurai CLI: `C:\Applications\memurai-cli.exe`
-- WSL Ubuntu with `curl` and `jq`
-
-## Security Warning
-
-This demo shares the HMAC secret with browser code through `.env` files. That is insecure and must never be done in production.
-
-The reset endpoint `POST /api/reset` and the dashboard RESET DEMO button are also demo-only and insecure. A real bank must never expose an endpoint that resets accounts, deletes transactions, or clears anti-replay state.
-
-## Demo-only Nonce Server Crash / Nonce State Loss
-
-The dashboard control `NONCE SERVER CRASH` and backend endpoint `POST /api/demo/nonce-crash` are a classroom fault-injection simulation only. This is not a real Redis crash; it intentionally clears Redis nonce records matching `used_nonce:*` to simulate loss of nonce-store state.
-
-SQLite transaction rows and `request_id` records are preserved. Because of that, a replay of the same captured withdraw packet can pass HMAC, timestamp, and nonce after the simulated nonce-state loss, then still be rejected by the SQLite Request ID layer with `ALREADY_PROCESSED`. This demonstrates why the SQLite request ID layer provides additional defense-in-depth.
-
-This endpoint/toggle is for classroom demonstration only and must never be exposed in a production banking system.
-
-## Install
-
-Run these once from PowerShell in the project root:
-
-```powershell
-cd server
-npm.cmd install
-
-cd ..\client\bank
-npm.cmd install
-
-cd ..\viz
-npm.cmd install
-```
-
-## Demo Day Startup Order
-
-Terminal 1, verify Memurai:
-
-```powershell
-& "C:\Applications\memurai-cli.exe" ping
-```
-
-Expected:
-
-```text
-PONG
-```
-
-Terminal 2, start the bank API and Socket.io visualization server:
-
-```powershell
-cd D:\CS_Project\server
-npm.cmd start
-```
-
-Expected:
-
-```text
-Viz Socket.io server listening on port 3001
-Bank server listening on 0.0.0.0:3000
-```
-
-Terminal 3, start the bank website:
-
-```powershell
-cd D:\CS_Project\client\bank
-npm.cmd run dev
-```
-
-Open the Vite URL, normally:
-
-```text
-http://localhost:5173/
-```
-
-Terminal 4, start the visualization dashboard:
-
-```powershell
-cd D:\CS_Project\client\viz
-npm.cmd run dev
-```
-
-Open the Vite URL, normally:
-
-```text
-http://localhost:5174/
-```
-
-Terminal 5, WSL Eve terminal:
-
-```bash
-cd /mnt/d/CS_Project
-bash attack/attack.sh
-```
-
-## Demo Reset
-
-Before a presentation, open the viz dashboard and click RESET DEMO, or run:
-
-```powershell
-curl.exe -s -X POST http://localhost:3000/api/reset
-```
-
-This restores:
-
-- `anis_101` balance to `10000 BDT`
-- transactions table to empty
-- Redis `used_nonce:*` keys to empty
-- viz dashboard local state to waiting/zero
-- bank website balance and history by Socket.io `reset` refresh
-
-Again: this is demo-only and insecure.
-
-## Demo Script
-
-Scene 1: Anis account
-
-- Open the bank website.
-- Show Anis Ahmed balance: `10000 BDT`.
-- Open the visualization dashboard in a second tab.
-- Click RESET DEMO if needed.
-
-Scene 2: Anis withdraw
-
-- In the bank website, withdraw `1000 BDT`.
-- The server writes that exact accepted signed request to `attack/payload.json` for Eve.
-- Dashboard should show:
-  - `request-received`
-  - `check-signature` PASS
-  - `check-timestamp` PASS
-  - `check-nonce` PASS
-  - `check-requestid` PASS
-  - `check-balance` PASS
-  - `transaction-result` ACCEPTED
-  - balance `9000 BDT`
-
-Scene 3: Eve prepares
-
-- Open WSL terminal.
-- Show `attack/payload.json`.
-- Explain it is the exact signed withdraw payload Anis just sent.
-
-Scene 4: Eve attack
-
-- Run:
-
-```bash
-bash attack/attack.sh
-```
-
-- Dashboard should show 10 replay attempts:
-  - signature PASS
-  - timestamp PASS when payload age is at most 300 seconds
-  - nonce FAIL for the fresh replay
-  - all rejected
-  - balance unchanged
-- To demonstrate timestamp protection, run the same unmodified payload again after it is older than 300 seconds. Dashboard should show signature PASS, timestamp FAIL, and `TIMESTAMP_FAIL`.
-
-Scene 5: Defense summary
-
-- HMAC protects against tampering.
-- Timestamp rejects stale captured traffic.
-- Redis nonce blocks short-term replay.
-- SQLite request ID blocks long-term duplicate processing.
-- Balance check enforces business rules.
-
-## Payload Capture Sync
-
-`attack/payload.json` contains a real signed withdraw request. The normal demo flow refreshes it from a real successful Bank UI withdrawal:
-
-1. Click RESET DEMO.
-2. Open the bank website in the browser.
-3. Submit a `1000 BDT` withdraw request.
-4. Confirm the `Last Withdraw Payload` panel appears.
-5. The bank server automatically writes that exact accepted request body to `attack/payload.json`.
-6. Run immediately for the nonce-defense replay:
-
-```bash
-bash attack/attack.sh
-```
-
-This preserves the replay semantics: Eve does not create, timestamp, re-sign, or mutate a request. Eve replays the original `method`, `path`, `user_id`, `account_id`, `amount`, `currency`, `timestamp`, `nonce`, `request_id`, and `signature` that Anis actually sent.
-
-If synchronization did not happen, use the `Last Withdraw Payload` panel as the fallback: copy that JSON into `attack/payload.json`. Backup capture method: open DevTools, Network tab, click the `/api/withdraw` request, and copy the JSON request body.
-
-For the scripted build verification, `payload.json` was generated with the same backend HMAC utility, not a hand-written signature.
-
-`attack/attack.sh` prints the payload age but does not refresh, re-sign, or block old payloads. The server decides the result:
-
-- Fresh replay, age at most 300 seconds: HMAC PASS, timestamp PASS, nonce FAIL, result `NONCE_FAIL`.
-- Old replay, age over 300 seconds: HMAC PASS, timestamp FAIL, result `TIMESTAMP_FAIL`.
-
-If the exact same payload is replayed after the Redis nonce TTL expires, the nonce key may be gone and the request ID layer will reject it with `ALREADY_PROCESSED` instead of `NONCE_FAIL`. Both outcomes are correct defense behavior.
-
-One protocol caveat is intentionally left visible for the demo: if Eve has a fresh, unused, correctly signed payload and sends it before Anis does, the server can accept it because it is indistinguishable from the legitimate request under this plan's locked defense order and schema.
-
-## Eve Capture / Replay / Tamper Demo
-
-Start Eve's capture watcher from WSL:
-
-```bash
-cd /mnt/d/CS_Project
-bash attack/attack.sh --capture
-```
-
-Then perform a successful Anis withdraw in the Bank UI. Eve watches the existing synchronized capture artifact at `attack/payload.json`; this is a controlled classroom capture simulation, not raw network sniffing. When the server syncs the exact accepted request, Eve prints `NEW WITHDRAW PACKET CAPTURED` and saves an unchanged copy to `/tmp/eve-captured.json`.
-
-Replay the exact captured request:
-
-```bash
-bash attack/attack.sh --replay
-```
-
-For a fresh capture, the server should show HMAC PASS, timestamp PASS, nonce FAIL, and return `NONCE_FAIL`. After the same unchanged captured request naturally ages beyond 300 seconds, run the same replay command again; the server should show HMAC PASS, timestamp FAIL, and return `TIMESTAMP_FAIL`.
-
-Tamper with the amount while preserving the original signature:
-
-```bash
-bash attack/attack.sh --tamper-amount 2000
-```
-
-This writes a temporary modified copy to `/tmp/eve-tampered.json`, changes only `amount`, and does not recompute the HMAC. The original `timestamp`, `nonce`, `request_id`, and `signature` are preserved, so the server should reject immediately at HMAC with `SIGNATURE_FAIL`.
-
-## API Endpoints
-
-- `GET /api/health`
-- `GET /api/balance/:user_id`
-- `GET /api/transactions/:user_id`
-- `POST /api/deposit`
-- `POST /api/withdraw`
-- `POST /api/reset` demo-only/insecure
-- `POST /api/demo/nonce-crash` demo-only/insecure
-
-## HMAC Message
-
-The message is pipe-separated with this exact order:
-
-```text
-method|path|user_id|account_id|amount|currency|timestamp|nonce|request_id
-```
-
-Example:
-
-```text
-POST|/api/withdraw|anis_101|acc_777|1000|BDT|2026-09-21T06:19:35.701Z|phase5_nonce_accept_001|phase5_wd_accept_001
-```
-
-## Defense Order for POST /api/withdraw
-
-1. HMAC
-2. Timestamp, 300 second window
-3. Nonce, Redis `SET NX EX 300`
-4. Request ID, SQLite `transactions.request_id`
-5. Balance
-
-Rejection reasons:
-
-- `SIGNATURE_FAIL`
-- `TIMESTAMP_FAIL`
-- `NONCE_FAIL`
-- `ALREADY_PROCESSED`
-- `INSUFFICIENT_BALANCE`
-
-## Common Issues & Fixes
-
-| Issue | Cause | Fix |
+| Finding | Measured result | Evidence |
 |---|---|---|
-| WSL cannot access localhost | Server bound to `127.0.0.1` | Bank server binds with `app.listen(3000, '0.0.0.0')` |
-| Redis connection error | Memurai/Redis is not running | Run `& "C:\Applications\memurai-cli.exe" ping` and start the service |
-| CORS error | Frontend-backend on different ports | Server uses `cors()` and Socket.io CORS `origin: '*'` |
-| Signature mismatch | Fixed order is not correct | Join with pipe `|` in the exact HMAC order |
-| SQLite locked | Concurrent access | WAL mode is enabled with `PRAGMA journal_mode = WAL` |
-| Socket.io not connecting | Wrong port | Clients connect to `ws://localhost:3001` |
-| Replay returns `TIMESTAMP_FAIL` | Captured payload older than 300 seconds | Correct for timestamp-defense demo; refresh with a new successful Bank UI withdraw for nonce-defense demo |
-| `jq: command not found` in WSL | `jq` missing in active Ubuntu distro | Install `jq` in WSL |
+| Token-only attacker, no session signing key (S11) | In the Round I run, fresh requests with a captured bearer token and no valid signature produced 100/100 SQLite debits when HMAC was off, and 0/100 in each of the eight HMAC-on configurations (`SIGNATURE_FAIL`). | `experiments/results/e1-v3-s11/round-i-s11/summary.csv`; complete counts and Wilson intervals in [RESULTS_PACK_A](docs/RESULTS_PACK_A.md) and [ROUND_I_REPORT](docs/ROUND_I_REPORT.md). |
+| Four-layer replay ablation (E1 v3) | 16 H/T/N/R configurations, scaled windows PAST=6 s, FUTURE=2 s, NONCE_TTL=8 s, SESSION_TTL=15 s. S1–S9 used 30 attempts per cell; S5 used 1,500. S9 deliberately gives the attacker the leaked signing key, so it demonstrates the scheme’s limit. | `experiments/results/e1-v3/round-i-scaled/summary.csv`; full request records are in each configuration subdirectory. |
+| Corrected TTL-gap confirmation | With default PAST=300 s, FUTURE=5 s, TTL=300 s and a +4 s client offset, request-ID off accepted 0/30 replays at 299 s, 30/30 at 301 s, 30/30 at 303 s, then 0/30 at 305 s and 307 s. With request-ID on, all five delays had 0/30 accepted. | `docs/RESULTS_PACK_A.md` Round F table; raw request CSV paths and SHA-256 hashes are listed there. |
+| Previously failed withdrawal replay (independent S10) | Each trial used a different failed request ID and nonce. Under `success_only`, a failed attempt does not reserve its ID; later execution depends on the enabled freshness defenses. Under `any_outcome` with request-ID defense on, the same failed ID is blocked. A funded legitimate retry with a fresh nonce succeeds with a new ID under both policies; reusing the failed ID succeeds only under `success_only`. | Round I S10 and resubmission tables in [RESULTS_PACK_A](docs/RESULTS_PACK_A.md); all cells and reasons in [ROUND_I_REPORT](docs/ROUND_I_REPORT.md). |
+| E2 per-layer latency (10 repeats) | Median per-request layer p50s were approximately 190.050 µs for Redis nonce storage, 4,516.675 µs for SQLite nonce storage, and 16.450 µs for in-memory nonce storage. | `paper/tables/T3-layer-cost.tex`; detailed t-based intervals and method in `docs/RESULTS_PACK_A.md`. Localhost/single-machine comparison only. |
+| E3 false rejection | Under assumed P1 parameters, PAST=5 s/FUTURE=0 rejected 629/2,000 requests; PAST=5 s/FUTURE=2 rejected 0/2,000. Every E3 cell matched the offline timestamp-rule recomputation. | E3 table in `docs/RESULTS_PACK_A.md`; `experiments/results/e3-v2/summary.csv` and `requests.csv`. These are assumption-driven simulations, not network measurements. |
+| E4a TTL/window rule | No rule violations in 135 request-ID-off cells. The tested rule was acceptance iff TTL ≤ replay delay < PAST + future offset; the exact TTL=4 boundary was not sampled. | E4a section in `docs/RESULTS_PACK_A.md`; `experiments/results/e4-v2/e4a-rule-check.json`. |
+| Concurrent debit safety check | All 30 repeats of 100 parallel distinct withdrawals against balance 100 satisfied the ledger invariants; minimum reconstructed balance was 0. | `experiments/results/round-i/atomic-debit/runs.csv` and sanitized `ledger.csv`; details in `docs/ROUND_I_REPORT.md`. |
+| Nonce-store growth | Clean runs measured about 180.97 bytes per key for accepted requests and requests rejected later at request-ID. Older 164.96 B/key data are marked unverified/superseded. | `docs/RESULTS_PACK_A.md`, memory raw files and INFO logs under `experiments/results/`. |
 
-## Assumptions
+The evidence is intentionally scoped. A bearer token alone did not let the S11 attacker sign fresh requests when HMAC was enabled, but a leaked session key can forge requests (S9). The key resides in browser memory. The network-observer interpretation assumes protected session-key delivery; the default local HTTP setup does not provide TLS.
 
-- The implementation is placed directly under `D:\CS_Project` because the workspace is the project root.
-- The available plan file was `C:\Users\Home\Downloads\Banking_Replay_Attack_Project_Plan_EN.md`; no workspace plan file existed at build start.
-- `server.js` starts the Socket.io visualization server by importing `viz-server.js`, so one backend command runs both port `3000` and port `3001`.
-- Exact dependency versions are pinned in `package.json` files to satisfy the lock.
-- `sqlite3` installed successfully on Node 24, so `better-sqlite3` was not used.
-- Browser code cannot read `server/.env`, so `client/bank/.env` mirrors the demo HMAC secret through `VITE_HMAC_SECRET`.
-- `socket.io-client` was added to the bank client after the approved reset scope addition so the bank website can refresh on Socket.io `reset`.
-- `POST /api/reset` and Socket.io `reset` are approved scope additions and are demo-only.
-- Fix A keeps malformed withdraw amount and timestamp validation before the HMAC layer and returns `400 {"error":"INVALID_REQUEST"}` with no check-layer events.
-- Fix B allows only normal clock skew from 5 seconds in the future through 300 seconds in the past.
-- Fix C keeps the balance read, balance check, debit, and success transaction insert inside one serialized immediate SQLite transaction.
-- Fix D maps SQLite constraint races in deposit and withdraw to `409 ALREADY_PROCESSED`.
-- `attack/attack.sh` prints payload age and always sends the exact captured payload to the server; the timestamp defense is demonstrated by server-side `TIMESTAMP_FAIL`.
-- Accepted withdraws are synchronized to `attack/payload.json` by the server after commit so Windows and WSL share the latest exact captured request through `D:\CS_Project` / `/mnt/d/CS_Project`.
+## Paper figures
 
-## Final Consistency Report
+- **F2 — E1 replay success matrix:** [single-column preview](paper/previews/F2-e1-coverage-single.png), [double-column preview](paper/previews/F2-e1-coverage-double.png), [PDF figures](paper/figures/).
+- **F3 — nonce TTL and timestamp window:** [scaled TTL panels](paper/figures/F3a-scaled-TTL-grid.pdf), [default-window TTL gap](paper/figures/F3b-default-TTL-gap.pdf).
+- **F4 — assumed E3 false-rejection profiles:** [PDF](paper/figures/F4-E3-false-rejection-future.pdf).
+- **F5 — nonce-backend layer cost:** [PDF](paper/figures/F5-E2-layer-cost.pdf).
+- LaTeX tables: [scenarios](paper/tables/T1-scenarios.tex), [S10/idempotency](paper/tables/T2.tex), [layer cost](paper/tables/T3-layer-cost.tex), [failure modes](paper/tables/T4-failure-modes.tex), [E1 coverage](paper/tables/T5-e1-coverage.tex).
 
-| Item | Required | Implemented |
-|---|---|---|
-| Bank server port | `0.0.0.0:3000` | `server/server.js` uses `app.listen(PORT, HOST)` with `.env` `HOST=0.0.0.0`, `PORT=3000` |
-| Viz Socket.io port | `3001` | `server/viz-server.js` starts Socket.io on `.env` `VIZ_PORT=3001` |
-| Dashboard Socket.io URL | `ws://localhost:3001` | `client/viz/src/socket.js` |
-| Bank reset Socket.io URL | `ws://localhost:3001` | `client/bank/src/socket.js` |
-| HMAC message | `method|path|user_id|account_id|amount|currency|timestamp|nonce|request_id` | `server/utils/hmac.js` and `client/bank/src/api.js` |
-| Redis nonce key | `used_nonce:{user_id}:{nonce}` | `server/utils/nonce.js` |
-| Redis command behavior | `SETNX` with `EX 300` | `redisClient.set(key, '1', { NX: true, EX: 300 })` |
-| Accounts schema | `user_id`, `username`, `balance`, `currency`, `created_at` | `server/server.js` database initialization |
-| Transactions schema | `id`, `request_id`, `user_id`, `account_id`, `type`, `amount`, `currency`, `status`, `reason`, `signature`, `created_at` | `server/server.js` database initialization |
-| Initial row | `anis_101`, `Anis Ahmed`, `10000 BDT` | `INSERT OR IGNORE` in `server/server.js`; reset restores same values |
-| WAL mode | Enabled | `PRAGMA journal_mode = WAL` |
-| `GET /api/health` | Present | `server/server.js` returns `OK` |
-| `GET /api/balance/:user_id` | Present | `server/server.js` |
-| `GET /api/transactions/:user_id` | Present | `server/server.js` |
-| `POST /api/deposit` | Present | `server/server.js` |
-| `POST /api/withdraw` | Present | `server/server.js` |
-| `POST /api/reset` | Approved demo-only addition | `server/server.js` |
-| `POST /api/demo/nonce-crash` | Demo-only nonce-state loss simulation | `server/server.js` clears only `used_nonce:*` keys and emits `redis-update` |
-| Withdraw order | HMAC, Timestamp, Nonce, Request ID, Balance | `server/server.js` implements in that order |
-| Reject reasons | Exact strings | `SIGNATURE_FAIL`, `TIMESTAMP_FAIL`, `NONCE_FAIL`, `ALREADY_PROCESSED`, `INSUFFICIENT_BALANCE` |
-| `request-received` | Emit and listen | `server/server.js` emits, `client/viz/src/socket.js` listens |
-| `check-signature` | Emit and listen | `server/server.js` emits, `client/viz/src/socket.js` listens |
-| `check-timestamp` | Emit and listen | `server/server.js` emits, `client/viz/src/socket.js` listens |
-| `check-nonce` | Emit and listen | `server/server.js` emits, `client/viz/src/socket.js` listens |
-| `check-requestid` | Emit and listen | `server/server.js` emits, `client/viz/src/socket.js` listens |
-| `check-balance` | Emit and listen | `server/server.js` emits, `client/viz/src/socket.js` listens |
-| `transaction-result` | Emit and listen | `server/server.js` emits, `client/viz/src/socket.js` listens |
-| `db-update` | Emit and listen | `server/server.js` emits, `client/viz/src/socket.js` listens |
-| `redis-update` | Emit and listen | `server/server.js` emits, `client/viz/src/socket.js` listens |
-| `reset` | Approved demo-only addition | `server/server.js` emits, both clients listen |
-| Attack script shell | Pure bash/LF | `attack/attack.sh`, `attack/attack-loop.sh`; verified with `wsl bash -n` |
-| Attack target | `localhost:3000` from WSL | `attack/attack.sh` |
-| Captured payload | Real signed JSON | `attack/payload.json`; verified with backend HMAC utility |
+
+## Reviewer map
+
+Start here, then follow the linked raw paths and hashes:
+
+1. [docs/RESULTS_PACK_A.md](docs/RESULTS_PACK_A.md) — result tables, provenance, run profiles, and superseded-result notes.
+2. [docs/CLAIMS_EVIDENCE.md](docs/CLAIMS_EVIDENCE.md) — candidate claims, supporting evidence, and caveats.
+3. [docs/PAPER_FACTS_CURATED.md](docs/PAPER_FACTS_CURATED.md) — curated values with scope and source hashes. The larger `docs/PAPER_FACTS.md` is labeled as a raw machine register, not for citation.
+4. [paper/INVENTORY.md](paper/INVENTORY.md), [paper/MANIFEST.md](paper/MANIFEST.md), and [paper/CROSSCHECK.txt](paper/CROSSCHECK.txt) — generated figures/tables, source data, and independent paper-asset check.
+5. [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md) and [docs/LIMITATIONS.md](docs/LIMITATIONS.md) — attacker assumptions, simulation limits, and security caveats.
+6. [docs/REPRODUCE.md](docs/REPRODUCE.md) — Windows reproduction commands, environment, and run conventions.
+7. [docs/ROUND_I_REPORT.md](docs/ROUND_I_REPORT.md) — final experiment round details, full per-cell results, code changes, commands, audit, tests, and caveats.
+
+### Important raw-data availability note
+
+The detailed tables and provenance documents are tracked. Some large per-request CSVs, SQLite run databases, and Round I raw outputs are local files excluded by this workspace’s `.git/info/exclude`; those files are not present in a fresh Git checkout. The documentation records their paths and hashes, but those hashes cannot be independently checked from a clone unless the raw artifacts are separately provided. A reviewer can reproduce fresh runs using the commands below; do not treat a fresh run as the exact saved run.
+
+## Verify this checkout
+
+Run these commands from Windows PowerShell at the repository root. They do not need Bash, `jq`, or WSL:
+
+```powershell
+# Test suite (44 passed in the recorded Round I run)
+npm.cmd test
+
+# Independent audit; choose a new output directory for each audit
+$env:AUDIT_OUTPUT_DIR = 'experiments/results/reviewer-audit-2026-10-28'
+node experiments/audit/verify-results.js
+
+# Compare the paper tables/heat maps against their source summaries
+python paper/crosscheck_assets.py
+```
+
+The saved Round I audit reported 4,532 compared values and 0 mismatches. The saved paper generator check reported 1,095 values and 0 mismatches; the separate cross-check reported 672 values and 0 mismatches. The audit and paper cross-check require the referenced raw experiment CSVs. A clean clone without the locally excluded Round I artifacts cannot reproduce those exact audit totals until the raw files are supplied.
+
+To regenerate the paper assets (this rewrites generated files under `paper/`), run:
+
+```powershell
+python paper/generate_paper_assets.py
+python paper/crosscheck_assets.py
+```
+
+## Reproduce the final E1 and correctness runs
+
+The harnesses start local child servers and use login/session signing, a keep-alive HTTP agent, the SQLite ledger oracle, and attacker-visible proxy captures with login-response redaction. Use a **new output directory** for every run. The commands below target loopback only and do not change the server's default NONCE_TTL.
+
+```powershell
+# E1 v3 scaled matrix plus default-window confirmation (long run)
+$env:E1_OUTPUT_DIR = 'experiments/results/reviewer-e1-v3'
+$env:E1_RUN_TAG = 'scaled'
+$env:E1_PAST_SECONDS = '6'
+$env:E1_FUTURE_SECONDS = '2'
+$env:E1_NONCE_TTL_SECONDS = '8'
+$env:E1_SESSION_TTL_SECONDS = '15'
+node experiments/e1/run.js
+
+# S11, 100 attempts per configuration; use its own output root
+$env:E1_OUTPUT_DIR = 'experiments/results/reviewer-s11'
+$env:E1_RUN_TAG = 's11'
+$env:E1_SCENARIO_FILTER = 'S11'
+$env:E1_ATTEMPTS = '100'
+node experiments/e1/run.js
+
+# Independent S10 failed-request trials
+$env:S10_INDEP_OUTPUT_DIR = 'experiments/results/reviewer-s10-independent'
+node experiments/e1/run-s10-independent.js
+
+# I3 correctness checks (set unique destinations)
+$env:ROUTE_BINDING_OUTPUT_DIR = 'experiments/results/reviewer-route-binding'
+node experiments/checks/run-route-binding.js
+$env:ATOMIC_DEBIT_OUTPUT_DIR = 'experiments/results/reviewer-atomic-debit'
+node experiments/checks/run-atomic-debit.js
+
+# Exact-count E4c loss/retry experiment
+$env:E4_OUTPUT_DIR = 'experiments/results/reviewer-e4c'
+$env:E4C_ONLY = 'true'
+node experiments/e4/run.js
+```
+
+E1 v3 takes roughly 16 minutes on the recorded machine; independent S10 took about 5 minutes. Runtime varies with CPU power state, system load, and Memurai. For E2, E3, and the full E4 sweep, see the exact commands and recorded runtimes in [docs/REPRODUCE.md](docs/REPRODUCE.md). They take longer and should be run with unique output directories. Avoid the top-level `npm run experiments` for a quick verification: it chains the full E1–E4 measurements and render/pack jobs.
+
+## Run the local demo
+
+The bank UI, API, and dashboard are for a classroom presentation. Use the dedicated [demo runbook](docs/DEMO.md) for exact Windows and WSL steps. Key environment detail: this Memurai installation listens on IPv4, so configure `REDIS_URL=redis://127.0.0.1:6379`, not `localhost`. Keep the attack pointed only at the local simulation. `attack/attack.sh` needs `jq` in WSL; the experiment harness itself runs natively on Windows.
+
+For the traditional UI and dashboard startup order, see [docs/DEMO.md](docs/DEMO.md). Demo reset and nonce-crash routes are enabled by default for classroom compatibility and must not be exposed as production endpoints.
+
+## Architecture and defense notation
+
+A protected withdrawal is bound to a login session and account, then passes the configured checks: HMAC signature (H), timestamp freshness (T), nonce uniqueness (N), request-ID idempotency (R), and account balance. `H1T1N1R1` means all four replay-defense layers are enabled; `H0T0N0R0` disables those four checks but retains session authentication, account ownership, and balance checks. The usual order is HMAC → timestamp → nonce → request ID → balance; `CHECK_ORDER` supports the experiment variants.
+
+The default idempotency policy is `success_only`: a failed insufficient-balance transaction does not permanently reserve its request ID, so a legitimate retry can succeed with a fresh nonce. `any_outcome` is an experimental alternative that also reserves failed IDs. See the S10 evidence above and the implementation details in [docs/RESULTS_PACK_A.md](docs/RESULTS_PACK_A.md).
+
+## Security and limitations
+
+- This is a simulation, not a financial service or deployment template.
+- The default server uses HTTP; no TLS is provided by this artifact.
+- A session signing key exists in client memory. Client compromise or key leakage permits forged signatures until session expiry; S9 measures this explicit limit.
+- The login PIN is a classroom mechanism, not production authentication or a claim of rate-limited credential security.
+- The dashboard and demo routes are demonstration features. Do not expose them on a public interface.
+- Redis measurements used Memurai Developer 4.2.3 on Windows; they do not establish behavior on stock Redis or a distributed production deployment.
+- Latencies are localhost measurements on one machine. E3 network-delay and clock-offset profiles are stated assumptions, not empirical network traces.
+- The USSD-style gateway is a simulation only and makes no claim about any real telecom operator or MFS provider.
+
+See [THREAT_MODEL.md](docs/THREAT_MODEL.md) and [LIMITATIONS.md](docs/LIMITATIONS.md) before interpreting any security claim.
