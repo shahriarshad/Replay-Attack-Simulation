@@ -52,9 +52,9 @@
         "amount": 1,
         "newBalance": 9999
       },
-      "started_ns": "1344277123307500",
-      "ended_ns": "1344277128529400",
-      "duration_ns": "5221900",
+      "started_ns": "1572048174439000",
+      "ended_ns": "1572048184125800",
+      "duration_ns": "9686800",
       "outcome": "ACCEPTED"
     },
     {
@@ -67,9 +67,9 @@
         "amount": 1,
         "newBalance": 9998
       },
-      "started_ns": "1344277128638700",
-      "ended_ns": "1344277134335200",
-      "duration_ns": "5696500",
+      "started_ns": "1572048184361500",
+      "ended_ns": "1572048195802800",
+      "duration_ns": "11441300",
       "outcome": "ACCEPTED"
     },
     {
@@ -82,9 +82,9 @@
         "amount": 1,
         "newBalance": 9997
       },
-      "started_ns": "1344277134428100",
-      "ended_ns": "1344277139875100",
-      "duration_ns": "5447000",
+      "started_ns": "1572048196071600",
+      "ended_ns": "1572048206291900",
+      "duration_ns": "10220300",
       "outcome": "ACCEPTED"
     },
     {
@@ -97,9 +97,9 @@
         "amount": 1,
         "newBalance": 9996
       },
-      "started_ns": "1344277139991000",
-      "ended_ns": "1344277145765000",
-      "duration_ns": "5774000",
+      "started_ns": "1572048206422300",
+      "ended_ns": "1572048214161400",
+      "duration_ns": "7739100",
       "outcome": "ACCEPTED"
     },
     {
@@ -112,9 +112,9 @@
         "amount": 1,
         "newBalance": 9995
       },
-      "started_ns": "1344277145862500",
-      "ended_ns": "1344277152054400",
-      "duration_ns": "6191900",
+      "started_ns": "1572048214303000",
+      "ended_ns": "1572048224683900",
+      "duration_ns": "10380900",
       "outcome": "ACCEPTED"
     },
     {
@@ -127,9 +127,9 @@
         "amount": 1,
         "newBalance": 9994
       },
-      "started_ns": "1344277152174500",
-      "ended_ns": "1344277158687200",
-      "duration_ns": "6512700",
+      "started_ns": "1572048224806200",
+      "ended_ns": "1572048233149700",
+      "duration_ns": "8343500",
       "outcome": "ACCEPTED"
     },
     {
@@ -142,9 +142,9 @@
         "amount": 1,
         "newBalance": 9993
       },
-      "started_ns": "1344277158785300",
-      "ended_ns": "1344277164902800",
-      "duration_ns": "6117500",
+      "started_ns": "1572048233275700",
+      "ended_ns": "1572048239795000",
+      "duration_ns": "6519300",
       "outcome": "ACCEPTED"
     },
     {
@@ -157,9 +157,9 @@
         "amount": 1,
         "newBalance": 9992
       },
-      "started_ns": "1344277165076700",
-      "ended_ns": "1344277171075500",
-      "duration_ns": "5998800",
+      "started_ns": "1572048239917800",
+      "ended_ns": "1572048247569400",
+      "duration_ns": "7651600",
       "outcome": "ACCEPTED"
     },
     {
@@ -172,9 +172,9 @@
         "amount": 1,
         "newBalance": 9991
       },
-      "started_ns": "1344277171166800",
-      "ended_ns": "1344277177006700",
-      "duration_ns": "5839900",
+      "started_ns": "1572048247748300",
+      "ended_ns": "1572048255261100",
+      "duration_ns": "7512800",
       "outcome": "ACCEPTED"
     },
     {
@@ -187,9 +187,9 @@
         "amount": 1,
         "newBalance": 9990
       },
-      "started_ns": "1344277177107400",
-      "ended_ns": "1344277183141800",
-      "duration_ns": "6034400",
+      "started_ns": "1572048255390000",
+      "ended_ns": "1572048262735200",
+      "duration_ns": "7345200",
       "outcome": "ACCEPTED"
     },
     {
@@ -202,9 +202,9 @@
         "amount": 1,
         "newBalance": 9989
       },
-      "started_ns": "1344277183267800",
-      "ended_ns": "1344277190383300",
-      "duration_ns": "7115500",
+      "started_ns": "1572048262885300",
+      "ended_ns": "1572048269382500",
+      "duration_ns": "6497200",
       "outcome": "ACCEPTED"
     },
     {
@@ -217,9 +217,9 @@
         "amount": 1,
         "newBalance": 9988
       },
-      "started_ns": "1344277190490200",
-      "ended_ns": "1344277196425600",
-      "duration_ns": "5935400",
+      "started_ns": "1572048269501000",
+      "ended_ns": "1572048276059400",
+      "duration_ns": "6558400",
       "outcome": "ACCEPTED"
     },
     {
@@ -232,9 +232,9 @@
         "amount": 1,
         "newBalance": 9987
       },
-      "started_ns": "1344277196617400",
-      "ended_ns": "1344277203193800",
-      "duration_ns": "6576400",
+      "started_ns": "1572048276176600",
+      "ended_ns": "1572048284267300",
+      "duration_ns": "8090700",
       "outcome": "ACCEPTED"
     },
     {
@@ -247,9 +247,9 @@
         "amount": 1,
         "newBalance": 9986
       },
-      "started_ns": "1344277203288300",
-      "ended_ns": "1344277208575400",
-      "duration_ns": "5287100",
+      "started_ns": "1572048284397600",
+      "ended_ns": "1572048292604900",
+      "duration_ns": "8207300",
       "outcome": "ACCEPTED"
     },
     {
@@ -262,9 +262,9 @@
         "amount": 1,
         "newBalance": 9985
       },
-      "started_ns": "1344277208683200",
-      "ended_ns": "1344277214703000",
-      "duration_ns": "6019800",
+      "started_ns": "1572048292723500",
+      "ended_ns": "1572048300251900",
+      "duration_ns": "7528400",
       "outcome": "ACCEPTED"
     },
     {
@@ -277,9 +277,9 @@
         "amount": 1,
         "newBalance": 9984
       },
-      "started_ns": "1344277214802500",
-      "ended_ns": "1344277220585300",
-      "duration_ns": "5782800",
+      "started_ns": "1572048300380000",
+      "ended_ns": "1572048306871200",
+      "duration_ns": "6491200",
       "outcome": "ACCEPTED"
     },
     {
@@ -292,9 +292,9 @@
         "amount": 1,
         "newBalance": 9983
       },
-      "started_ns": "1344277220680900",
-      "ended_ns": "1344277226715700",
-      "duration_ns": "6034800",
+      "started_ns": "1572048306989900",
+      "ended_ns": "1572048315423100",
+      "duration_ns": "8433200",
       "outcome": "ACCEPTED"
     },
     {
@@ -307,9 +307,9 @@
         "amount": 1,
         "newBalance": 9982
       },
-      "started_ns": "1344277226810300",
-      "ended_ns": "1344277232395800",
-      "duration_ns": "5585500",
+      "started_ns": "1572048315543400",
+      "ended_ns": "1572048322511000",
+      "duration_ns": "6967600",
       "outcome": "ACCEPTED"
     },
     {
@@ -322,9 +322,9 @@
         "amount": 1,
         "newBalance": 9981
       },
-      "started_ns": "1344277232501800",
-      "ended_ns": "1344277238254200",
-      "duration_ns": "5752400",
+      "started_ns": "1572048322632100",
+      "ended_ns": "1572048330018400",
+      "duration_ns": "7386300",
       "outcome": "ACCEPTED"
     },
     {
@@ -337,9 +337,9 @@
         "amount": 1,
         "newBalance": 9980
       },
-      "started_ns": "1344277238349200",
-      "ended_ns": "1344277244198800",
-      "duration_ns": "5849600",
+      "started_ns": "1572048330244800",
+      "ended_ns": "1572048336954900",
+      "duration_ns": "6710100",
       "outcome": "ACCEPTED"
     },
     {
@@ -352,9 +352,9 @@
         "amount": 1,
         "newBalance": 9979
       },
-      "started_ns": "1344277244333400",
-      "ended_ns": "1344277250413000",
-      "duration_ns": "6079600",
+      "started_ns": "1572048337077300",
+      "ended_ns": "1572048344509000",
+      "duration_ns": "7431700",
       "outcome": "ACCEPTED"
     },
     {
@@ -367,9 +367,9 @@
         "amount": 1,
         "newBalance": 9978
       },
-      "started_ns": "1344277250538000",
-      "ended_ns": "1344277256777300",
-      "duration_ns": "6239300",
+      "started_ns": "1572048344661100",
+      "ended_ns": "1572048351309500",
+      "duration_ns": "6648400",
       "outcome": "ACCEPTED"
     },
     {
@@ -382,9 +382,9 @@
         "amount": 1,
         "newBalance": 9977
       },
-      "started_ns": "1344277256891600",
-      "ended_ns": "1344277262365700",
-      "duration_ns": "5474100",
+      "started_ns": "1572048351429700",
+      "ended_ns": "1572048357364300",
+      "duration_ns": "5934600",
       "outcome": "ACCEPTED"
     },
     {
@@ -397,9 +397,9 @@
         "amount": 1,
         "newBalance": 9976
       },
-      "started_ns": "1344277262464400",
-      "ended_ns": "1344277267729800",
-      "duration_ns": "5265400",
+      "started_ns": "1572048357483800",
+      "ended_ns": "1572048364195700",
+      "duration_ns": "6711900",
       "outcome": "ACCEPTED"
     },
     {
@@ -412,9 +412,9 @@
         "amount": 1,
         "newBalance": 9975
       },
-      "started_ns": "1344277267811000",
-      "ended_ns": "1344277273495700",
-      "duration_ns": "5684700",
+      "started_ns": "1572048364294900",
+      "ended_ns": "1572048370589900",
+      "duration_ns": "6295000",
       "outcome": "ACCEPTED"
     },
     {
@@ -427,9 +427,9 @@
         "amount": 1,
         "newBalance": 9974
       },
-      "started_ns": "1344277273575000",
-      "ended_ns": "1344277279703200",
-      "duration_ns": "6128200",
+      "started_ns": "1572048370692500",
+      "ended_ns": "1572048377388800",
+      "duration_ns": "6696300",
       "outcome": "ACCEPTED"
     },
     {
@@ -442,9 +442,9 @@
         "amount": 1,
         "newBalance": 9973
       },
-      "started_ns": "1344277279778800",
-      "ended_ns": "1344277285649100",
-      "duration_ns": "5870300",
+      "started_ns": "1572048377497400",
+      "ended_ns": "1572048384394500",
+      "duration_ns": "6897100",
       "outcome": "ACCEPTED"
     },
     {
@@ -457,9 +457,9 @@
         "amount": 1,
         "newBalance": 9972
       },
-      "started_ns": "1344277285741300",
-      "ended_ns": "1344277293785400",
-      "duration_ns": "8044100",
+      "started_ns": "1572048384497200",
+      "ended_ns": "1572048391259700",
+      "duration_ns": "6762500",
       "outcome": "ACCEPTED"
     },
     {
@@ -472,9 +472,9 @@
         "amount": 1,
         "newBalance": 9971
       },
-      "started_ns": "1344277293893900",
-      "ended_ns": "1344277299827500",
-      "duration_ns": "5933600",
+      "started_ns": "1572048391409800",
+      "ended_ns": "1572048399123100",
+      "duration_ns": "7713300",
       "outcome": "ACCEPTED"
     },
     {
@@ -487,9 +487,9 @@
         "amount": 1,
         "newBalance": 9970
       },
-      "started_ns": "1344277299913500",
-      "ended_ns": "1344277305895300",
-      "duration_ns": "5981800",
+      "started_ns": "1572048399225200",
+      "ended_ns": "1572048408569700",
+      "duration_ns": "9344500",
       "outcome": "ACCEPTED"
     },
     {
@@ -502,9 +502,9 @@
         "amount": 1,
         "newBalance": 9969
       },
-      "started_ns": "1344277305985800",
-      "ended_ns": "1344277313264600",
-      "duration_ns": "7278800",
+      "started_ns": "1572048408675100",
+      "ended_ns": "1572048416176300",
+      "duration_ns": "7501200",
       "outcome": "ACCEPTED"
     },
     {
@@ -517,9 +517,9 @@
         "amount": 1,
         "newBalance": 9968
       },
-      "started_ns": "1344277313408800",
-      "ended_ns": "1344277320353700",
-      "duration_ns": "6944900",
+      "started_ns": "1572048416328100",
+      "ended_ns": "1572048423549000",
+      "duration_ns": "7220900",
       "outcome": "ACCEPTED"
     },
     {
@@ -532,9 +532,9 @@
         "amount": 1,
         "newBalance": 9967
       },
-      "started_ns": "1344277320473600",
-      "ended_ns": "1344277326921400",
-      "duration_ns": "6447800",
+      "started_ns": "1572048423754400",
+      "ended_ns": "1572048431862400",
+      "duration_ns": "8108000",
       "outcome": "ACCEPTED"
     },
     {
@@ -547,9 +547,9 @@
         "amount": 1,
         "newBalance": 9966
       },
-      "started_ns": "1344277327006200",
-      "ended_ns": "1344277332922500",
-      "duration_ns": "5916300",
+      "started_ns": "1572048431990800",
+      "ended_ns": "1572048439715300",
+      "duration_ns": "7724500",
       "outcome": "ACCEPTED"
     },
     {
@@ -562,9 +562,9 @@
         "amount": 1,
         "newBalance": 9965
       },
-      "started_ns": "1344277333002300",
-      "ended_ns": "1344277339291000",
-      "duration_ns": "6288700",
+      "started_ns": "1572048439824500",
+      "ended_ns": "1572048447806300",
+      "duration_ns": "7981800",
       "outcome": "ACCEPTED"
     },
     {
@@ -577,9 +577,9 @@
         "amount": 1,
         "newBalance": 9964
       },
-      "started_ns": "1344277339418300",
-      "ended_ns": "1344277350592300",
-      "duration_ns": "11174000",
+      "started_ns": "1572048447964400",
+      "ended_ns": "1572048455247700",
+      "duration_ns": "7283300",
       "outcome": "ACCEPTED"
     },
     {
@@ -592,9 +592,9 @@
         "amount": 1,
         "newBalance": 9963
       },
-      "started_ns": "1344277350672100",
-      "ended_ns": "1344277357077900",
-      "duration_ns": "6405800",
+      "started_ns": "1572048455349500",
+      "ended_ns": "1572048463270400",
+      "duration_ns": "7920900",
       "outcome": "ACCEPTED"
     },
     {
@@ -607,9 +607,9 @@
         "amount": 1,
         "newBalance": 9962
       },
-      "started_ns": "1344277357161700",
-      "ended_ns": "1344277363166800",
-      "duration_ns": "6005100",
+      "started_ns": "1572048463374800",
+      "ended_ns": "1572048473353500",
+      "duration_ns": "9978700",
       "outcome": "ACCEPTED"
     },
     {
@@ -622,9 +622,9 @@
         "amount": 1,
         "newBalance": 9961
       },
-      "started_ns": "1344277363262100",
-      "ended_ns": "1344277369091800",
-      "duration_ns": "5829700",
+      "started_ns": "1572048473495700",
+      "ended_ns": "1572048493924300",
+      "duration_ns": "20428600",
       "outcome": "ACCEPTED"
     },
     {
@@ -637,9 +637,9 @@
         "amount": 1,
         "newBalance": 9960
       },
-      "started_ns": "1344277369178100",
-      "ended_ns": "1344277375148800",
-      "duration_ns": "5970700",
+      "started_ns": "1572048494086900",
+      "ended_ns": "1572048501492600",
+      "duration_ns": "7405700",
       "outcome": "ACCEPTED"
     },
     {
@@ -652,9 +652,9 @@
         "amount": 1,
         "newBalance": 9959
       },
-      "started_ns": "1344277375246500",
-      "ended_ns": "1344277381372400",
-      "duration_ns": "6125900",
+      "started_ns": "1572048501589700",
+      "ended_ns": "1572048508386800",
+      "duration_ns": "6797100",
       "outcome": "ACCEPTED"
     },
     {
@@ -667,9 +667,9 @@
         "amount": 1,
         "newBalance": 9958
       },
-      "started_ns": "1344277381460300",
-      "ended_ns": "1344277388481600",
-      "duration_ns": "7021300",
+      "started_ns": "1572048508484200",
+      "ended_ns": "1572048515429800",
+      "duration_ns": "6945600",
       "outcome": "ACCEPTED"
     },
     {
@@ -682,9 +682,9 @@
         "amount": 1,
         "newBalance": 9957
       },
-      "started_ns": "1344277388566100",
-      "ended_ns": "1344277394344200",
-      "duration_ns": "5778100",
+      "started_ns": "1572048515526700",
+      "ended_ns": "1572048522421900",
+      "duration_ns": "6895200",
       "outcome": "ACCEPTED"
     },
     {
@@ -697,9 +697,9 @@
         "amount": 1,
         "newBalance": 9956
       },
-      "started_ns": "1344277394424400",
-      "ended_ns": "1344277400141500",
-      "duration_ns": "5717100",
+      "started_ns": "1572048522521700",
+      "ended_ns": "1572048531025800",
+      "duration_ns": "8504100",
       "outcome": "ACCEPTED"
     },
     {
@@ -712,9 +712,9 @@
         "amount": 1,
         "newBalance": 9955
       },
-      "started_ns": "1344277400240100",
-      "ended_ns": "1344277407112700",
-      "duration_ns": "6872600",
+      "started_ns": "1572048531178900",
+      "ended_ns": "1572048539220000",
+      "duration_ns": "8041100",
       "outcome": "ACCEPTED"
     },
     {
@@ -727,9 +727,9 @@
         "amount": 1,
         "newBalance": 9954
       },
-      "started_ns": "1344277407193300",
-      "ended_ns": "1344277413012300",
-      "duration_ns": "5819000",
+      "started_ns": "1572048539388300",
+      "ended_ns": "1572048550370100",
+      "duration_ns": "10981800",
       "outcome": "ACCEPTED"
     },
     {
@@ -742,9 +742,9 @@
         "amount": 1,
         "newBalance": 9953
       },
-      "started_ns": "1344277413104700",
-      "ended_ns": "1344277419942600",
-      "duration_ns": "6837900",
+      "started_ns": "1572048550492600",
+      "ended_ns": "1572048557831300",
+      "duration_ns": "7338700",
       "outcome": "ACCEPTED"
     },
     {
@@ -757,9 +757,9 @@
         "amount": 1,
         "newBalance": 9952
       },
-      "started_ns": "1344277420197800",
-      "ended_ns": "1344277427978000",
-      "duration_ns": "7780200",
+      "started_ns": "1572048557944300",
+      "ended_ns": "1572048567004000",
+      "duration_ns": "9059700",
       "outcome": "ACCEPTED"
     },
     {
@@ -772,9 +772,9 @@
         "amount": 1,
         "newBalance": 9951
       },
-      "started_ns": "1344277428139100",
-      "ended_ns": "1344277435216500",
-      "duration_ns": "7077400",
+      "started_ns": "1572048567166800",
+      "ended_ns": "1572048574941100",
+      "duration_ns": "7774300",
       "outcome": "ACCEPTED"
     },
     {
@@ -787,9 +787,9 @@
         "amount": 1,
         "newBalance": 9950
       },
-      "started_ns": "1344277435320200",
-      "ended_ns": "1344277441126600",
-      "duration_ns": "5806400",
+      "started_ns": "1572048575057800",
+      "ended_ns": "1572048584421600",
+      "duration_ns": "9363800",
       "outcome": "ACCEPTED"
     },
     {
@@ -802,9 +802,9 @@
         "amount": 1,
         "newBalance": 9949
       },
-      "started_ns": "1344277441226000",
-      "ended_ns": "1344277446828000",
-      "duration_ns": "5602000",
+      "started_ns": "1572048584614100",
+      "ended_ns": "1572048593098000",
+      "duration_ns": "8483900",
       "outcome": "ACCEPTED"
     },
     {
@@ -817,9 +817,9 @@
         "amount": 1,
         "newBalance": 9948
       },
-      "started_ns": "1344277446912700",
-      "ended_ns": "1344277453242700",
-      "duration_ns": "6330000",
+      "started_ns": "1572048593261600",
+      "ended_ns": "1572048600951700",
+      "duration_ns": "7690100",
       "outcome": "ACCEPTED"
     },
     {
@@ -832,9 +832,9 @@
         "amount": 1,
         "newBalance": 9947
       },
-      "started_ns": "1344277453408300",
-      "ended_ns": "1344277459015000",
-      "duration_ns": "5606700",
+      "started_ns": "1572048601116700",
+      "ended_ns": "1572048607574800",
+      "duration_ns": "6458100",
       "outcome": "ACCEPTED"
     },
     {
@@ -847,9 +847,9 @@
         "amount": 1,
         "newBalance": 9946
       },
-      "started_ns": "1344277459097400",
-      "ended_ns": "1344277464506500",
-      "duration_ns": "5409100",
+      "started_ns": "1572048607749500",
+      "ended_ns": "1572048614702500",
+      "duration_ns": "6953000",
       "outcome": "ACCEPTED"
     },
     {
@@ -862,9 +862,9 @@
         "amount": 1,
         "newBalance": 9945
       },
-      "started_ns": "1344277464617800",
-      "ended_ns": "1344277471358500",
-      "duration_ns": "6740700",
+      "started_ns": "1572048614799400",
+      "ended_ns": "1572048621342800",
+      "duration_ns": "6543400",
       "outcome": "ACCEPTED"
     },
     {
@@ -877,9 +877,9 @@
         "amount": 1,
         "newBalance": 9944
       },
-      "started_ns": "1344277471509900",
-      "ended_ns": "1344277478026500",
-      "duration_ns": "6516600",
+      "started_ns": "1572048621456400",
+      "ended_ns": "1572048629422400",
+      "duration_ns": "7966000",
       "outcome": "ACCEPTED"
     },
     {
@@ -892,9 +892,9 @@
         "amount": 1,
         "newBalance": 9943
       },
-      "started_ns": "1344277478145200",
-      "ended_ns": "1344277484792700",
-      "duration_ns": "6647500",
+      "started_ns": "1572048629642200",
+      "ended_ns": "1572048639399500",
+      "duration_ns": "9757300",
       "outcome": "ACCEPTED"
     },
     {
@@ -907,9 +907,9 @@
         "amount": 1,
         "newBalance": 9942
       },
-      "started_ns": "1344277484924400",
-      "ended_ns": "1344277491913500",
-      "duration_ns": "6989100",
+      "started_ns": "1572048639524200",
+      "ended_ns": "1572048647325600",
+      "duration_ns": "7801400",
       "outcome": "ACCEPTED"
     },
     {
@@ -922,9 +922,9 @@
         "amount": 1,
         "newBalance": 9941
       },
-      "started_ns": "1344277491994700",
-      "ended_ns": "1344277498224800",
-      "duration_ns": "6230100",
+      "started_ns": "1572048647424600",
+      "ended_ns": "1572048654339500",
+      "duration_ns": "6914900",
       "outcome": "ACCEPTED"
     },
     {
@@ -937,9 +937,9 @@
         "amount": 1,
         "newBalance": 9940
       },
-      "started_ns": "1344277498317200",
-      "ended_ns": "1344277506132000",
-      "duration_ns": "7814800",
+      "started_ns": "1572048654505300",
+      "ended_ns": "1572048662030900",
+      "duration_ns": "7525600",
       "outcome": "ACCEPTED"
     },
     {
@@ -952,9 +952,9 @@
         "amount": 1,
         "newBalance": 9939
       },
-      "started_ns": "1344277506239800",
-      "ended_ns": "1344277511957000",
-      "duration_ns": "5717200",
+      "started_ns": "1572048662206200",
+      "ended_ns": "1572048672934900",
+      "duration_ns": "10728700",
       "outcome": "ACCEPTED"
     },
     {
@@ -967,9 +967,9 @@
         "amount": 1,
         "newBalance": 9938
       },
-      "started_ns": "1344277512052300",
-      "ended_ns": "1344277519626700",
-      "duration_ns": "7574400",
+      "started_ns": "1572048673163700",
+      "ended_ns": "1572048680654700",
+      "duration_ns": "7491000",
       "outcome": "ACCEPTED"
     },
     {
@@ -982,9 +982,9 @@
         "amount": 1,
         "newBalance": 9937
       },
-      "started_ns": "1344277519794300",
-      "ended_ns": "1344277525996800",
-      "duration_ns": "6202500",
+      "started_ns": "1572048680763800",
+      "ended_ns": "1572048687757600",
+      "duration_ns": "6993800",
       "outcome": "ACCEPTED"
     },
     {
@@ -997,9 +997,9 @@
         "amount": 1,
         "newBalance": 9936
       },
-      "started_ns": "1344277526079200",
-      "ended_ns": "1344277531441200",
-      "duration_ns": "5362000",
+      "started_ns": "1572048687897400",
+      "ended_ns": "1572048695072000",
+      "duration_ns": "7174600",
       "outcome": "ACCEPTED"
     },
     {
@@ -1012,9 +1012,9 @@
         "amount": 1,
         "newBalance": 9935
       },
-      "started_ns": "1344277531542700",
-      "ended_ns": "1344277537187600",
-      "duration_ns": "5644900",
+      "started_ns": "1572048695210700",
+      "ended_ns": "1572048702045400",
+      "duration_ns": "6834700",
       "outcome": "ACCEPTED"
     },
     {
@@ -1027,9 +1027,9 @@
         "amount": 1,
         "newBalance": 9934
       },
-      "started_ns": "1344277537272400",
-      "ended_ns": "1344277542878700",
-      "duration_ns": "5606300",
+      "started_ns": "1572048702141200",
+      "ended_ns": "1572048708925900",
+      "duration_ns": "6784700",
       "outcome": "ACCEPTED"
     },
     {
@@ -1042,9 +1042,9 @@
         "amount": 1,
         "newBalance": 9933
       },
-      "started_ns": "1344277542969500",
-      "ended_ns": "1344277549133100",
-      "duration_ns": "6163600",
+      "started_ns": "1572048709056700",
+      "ended_ns": "1572048716140900",
+      "duration_ns": "7084200",
       "outcome": "ACCEPTED"
     },
     {
@@ -1057,9 +1057,9 @@
         "amount": 1,
         "newBalance": 9932
       },
-      "started_ns": "1344277549220100",
-      "ended_ns": "1344277555069400",
-      "duration_ns": "5849300",
+      "started_ns": "1572048716237200",
+      "ended_ns": "1572048722850200",
+      "duration_ns": "6613000",
       "outcome": "ACCEPTED"
     },
     {
@@ -1072,9 +1072,9 @@
         "amount": 1,
         "newBalance": 9931
       },
-      "started_ns": "1344277555196800",
-      "ended_ns": "1344277560692300",
-      "duration_ns": "5495500",
+      "started_ns": "1572048723005500",
+      "ended_ns": "1572048730239300",
+      "duration_ns": "7233800",
       "outcome": "ACCEPTED"
     },
     {
@@ -1087,9 +1087,9 @@
         "amount": 1,
         "newBalance": 9930
       },
-      "started_ns": "1344277560779300",
-      "ended_ns": "1344277566316800",
-      "duration_ns": "5537500",
+      "started_ns": "1572048730340300",
+      "ended_ns": "1572048736900700",
+      "duration_ns": "6560400",
       "outcome": "ACCEPTED"
     },
     {
@@ -1102,9 +1102,9 @@
         "amount": 1,
         "newBalance": 9929
       },
-      "started_ns": "1344277566414200",
-      "ended_ns": "1344277571978200",
-      "duration_ns": "5564000",
+      "started_ns": "1572048737006300",
+      "ended_ns": "1572048743530900",
+      "duration_ns": "6524600",
       "outcome": "ACCEPTED"
     },
     {
@@ -1117,9 +1117,9 @@
         "amount": 1,
         "newBalance": 9928
       },
-      "started_ns": "1344277572077100",
-      "ended_ns": "1344277577437000",
-      "duration_ns": "5359900",
+      "started_ns": "1572048743639100",
+      "ended_ns": "1572048751079800",
+      "duration_ns": "7440700",
       "outcome": "ACCEPTED"
     },
     {
@@ -1132,9 +1132,9 @@
         "amount": 1,
         "newBalance": 9927
       },
-      "started_ns": "1344277577529400",
-      "ended_ns": "1344277583448400",
-      "duration_ns": "5919000",
+      "started_ns": "1572048751177300",
+      "ended_ns": "1572048758352100",
+      "duration_ns": "7174800",
       "outcome": "ACCEPTED"
     },
     {
@@ -1147,9 +1147,9 @@
         "amount": 1,
         "newBalance": 9926
       },
-      "started_ns": "1344277583684000",
-      "ended_ns": "1344277590598500",
-      "duration_ns": "6914500",
+      "started_ns": "1572048758478600",
+      "ended_ns": "1572048765789100",
+      "duration_ns": "7310500",
       "outcome": "ACCEPTED"
     },
     {
@@ -1162,9 +1162,9 @@
         "amount": 1,
         "newBalance": 9925
       },
-      "started_ns": "1344277590719400",
-      "ended_ns": "1344277596915000",
-      "duration_ns": "6195600",
+      "started_ns": "1572048765929200",
+      "ended_ns": "1572048772800900",
+      "duration_ns": "6871700",
       "outcome": "ACCEPTED"
     },
     {
@@ -1177,9 +1177,9 @@
         "amount": 1,
         "newBalance": 9924
       },
-      "started_ns": "1344277597027200",
-      "ended_ns": "1344277604517000",
-      "duration_ns": "7489800",
+      "started_ns": "1572048772921000",
+      "ended_ns": "1572048780947400",
+      "duration_ns": "8026400",
       "outcome": "ACCEPTED"
     },
     {
@@ -1192,9 +1192,9 @@
         "amount": 1,
         "newBalance": 9923
       },
-      "started_ns": "1344277604628000",
-      "ended_ns": "1344277610620100",
-      "duration_ns": "5992100",
+      "started_ns": "1572048781136000",
+      "ended_ns": "1572048788883100",
+      "duration_ns": "7747100",
       "outcome": "ACCEPTED"
     },
     {
@@ -1207,9 +1207,9 @@
         "amount": 1,
         "newBalance": 9922
       },
-      "started_ns": "1344277610715200",
-      "ended_ns": "1344277628308200",
-      "duration_ns": "17593000",
+      "started_ns": "1572048789022400",
+      "ended_ns": "1572048796818100",
+      "duration_ns": "7795700",
       "outcome": "ACCEPTED"
     },
     {
@@ -1222,9 +1222,9 @@
         "amount": 1,
         "newBalance": 9921
       },
-      "started_ns": "1344277628399800",
-      "ended_ns": "1344277633884200",
-      "duration_ns": "5484400",
+      "started_ns": "1572048796920600",
+      "ended_ns": "1572048804445900",
+      "duration_ns": "7525300",
       "outcome": "ACCEPTED"
     },
     {
@@ -1237,9 +1237,9 @@
         "amount": 1,
         "newBalance": 9920
       },
-      "started_ns": "1344277633962500",
-      "ended_ns": "1344277639697800",
-      "duration_ns": "5735300",
+      "started_ns": "1572048804559700",
+      "ended_ns": "1572048811387300",
+      "duration_ns": "6827600",
       "outcome": "ACCEPTED"
     },
     {
@@ -1252,9 +1252,9 @@
         "amount": 1,
         "newBalance": 9919
       },
-      "started_ns": "1344277639775900",
-      "ended_ns": "1344277644936200",
-      "duration_ns": "5160300",
+      "started_ns": "1572048811489100",
+      "ended_ns": "1572048818299100",
+      "duration_ns": "6810000",
       "outcome": "ACCEPTED"
     },
     {
@@ -1267,9 +1267,9 @@
         "amount": 1,
         "newBalance": 9918
       },
-      "started_ns": "1344277645045600",
-      "ended_ns": "1344277651340700",
-      "duration_ns": "6295100",
+      "started_ns": "1572048818392700",
+      "ended_ns": "1572048825571100",
+      "duration_ns": "7178400",
       "outcome": "ACCEPTED"
     },
     {
@@ -1282,9 +1282,9 @@
         "amount": 1,
         "newBalance": 9917
       },
-      "started_ns": "1344277651474500",
-      "ended_ns": "1344277658347500",
-      "duration_ns": "6873000",
+      "started_ns": "1572048825663800",
+      "ended_ns": "1572048833179200",
+      "duration_ns": "7515400",
       "outcome": "ACCEPTED"
     },
     {
@@ -1297,9 +1297,9 @@
         "amount": 1,
         "newBalance": 9916
       },
-      "started_ns": "1344277658500800",
-      "ended_ns": "1344277664134600",
-      "duration_ns": "5633800",
+      "started_ns": "1572048833273800",
+      "ended_ns": "1572048839566300",
+      "duration_ns": "6292500",
       "outcome": "ACCEPTED"
     },
     {
@@ -1312,9 +1312,9 @@
         "amount": 1,
         "newBalance": 9915
       },
-      "started_ns": "1344277664227500",
-      "ended_ns": "1344277672805300",
-      "duration_ns": "8577800",
+      "started_ns": "1572048839696900",
+      "ended_ns": "1572048846566700",
+      "duration_ns": "6869800",
       "outcome": "ACCEPTED"
     },
     {
@@ -1327,9 +1327,9 @@
         "amount": 1,
         "newBalance": 9914
       },
-      "started_ns": "1344277672901100",
-      "ended_ns": "1344277679726400",
-      "duration_ns": "6825300",
+      "started_ns": "1572048846658500",
+      "ended_ns": "1572048853244700",
+      "duration_ns": "6586200",
       "outcome": "ACCEPTED"
     },
     {
@@ -1342,9 +1342,9 @@
         "amount": 1,
         "newBalance": 9913
       },
-      "started_ns": "1344277679805900",
-      "ended_ns": "1344277685102700",
-      "duration_ns": "5296800",
+      "started_ns": "1572048853342000",
+      "ended_ns": "1572048859947900",
+      "duration_ns": "6605900",
       "outcome": "ACCEPTED"
     },
     {
@@ -1357,9 +1357,9 @@
         "amount": 1,
         "newBalance": 9912
       },
-      "started_ns": "1344277685223700",
-      "ended_ns": "1344277691071000",
-      "duration_ns": "5847300",
+      "started_ns": "1572048860054000",
+      "ended_ns": "1572048867325800",
+      "duration_ns": "7271800",
       "outcome": "ACCEPTED"
     },
     {
@@ -1372,9 +1372,9 @@
         "amount": 1,
         "newBalance": 9911
       },
-      "started_ns": "1344277691157800",
-      "ended_ns": "1344277696659500",
-      "duration_ns": "5501700",
+      "started_ns": "1572048867418900",
+      "ended_ns": "1572048873960000",
+      "duration_ns": "6541100",
       "outcome": "ACCEPTED"
     },
     {
@@ -1387,9 +1387,9 @@
         "amount": 1,
         "newBalance": 9910
       },
-      "started_ns": "1344277696735100",
-      "ended_ns": "1344277702470300",
-      "duration_ns": "5735200",
+      "started_ns": "1572048874061300",
+      "ended_ns": "1572048882294900",
+      "duration_ns": "8233600",
       "outcome": "ACCEPTED"
     },
     {
@@ -1402,9 +1402,9 @@
         "amount": 1,
         "newBalance": 9909
       },
-      "started_ns": "1344277702574200",
-      "ended_ns": "1344277708382100",
-      "duration_ns": "5807900",
+      "started_ns": "1572048882467300",
+      "ended_ns": "1572048889185400",
+      "duration_ns": "6718100",
       "outcome": "ACCEPTED"
     },
     {
@@ -1417,9 +1417,9 @@
         "amount": 1,
         "newBalance": 9908
       },
-      "started_ns": "1344277708475200",
-      "ended_ns": "1344277713760900",
-      "duration_ns": "5285700",
+      "started_ns": "1572048889274200",
+      "ended_ns": "1572048896428900",
+      "duration_ns": "7154700",
       "outcome": "ACCEPTED"
     },
     {
@@ -1432,9 +1432,9 @@
         "amount": 1,
         "newBalance": 9907
       },
-      "started_ns": "1344277713841500",
-      "ended_ns": "1344277722274600",
-      "duration_ns": "8433100",
+      "started_ns": "1572048896529500",
+      "ended_ns": "1572048902911000",
+      "duration_ns": "6381500",
       "outcome": "ACCEPTED"
     },
     {
@@ -1447,9 +1447,9 @@
         "amount": 1,
         "newBalance": 9906
       },
-      "started_ns": "1344277722360100",
-      "ended_ns": "1344277727875400",
-      "duration_ns": "5515300",
+      "started_ns": "1572048903003000",
+      "ended_ns": "1572048910582000",
+      "duration_ns": "7579000",
       "outcome": "ACCEPTED"
     },
     {
@@ -1462,9 +1462,9 @@
         "amount": 1,
         "newBalance": 9905
       },
-      "started_ns": "1344277727955600",
-      "ended_ns": "1344277733689500",
-      "duration_ns": "5733900",
+      "started_ns": "1572048910681000",
+      "ended_ns": "1572048917181100",
+      "duration_ns": "6500100",
       "outcome": "ACCEPTED"
     },
     {
@@ -1477,9 +1477,9 @@
         "amount": 1,
         "newBalance": 9904
       },
-      "started_ns": "1344277733870000",
-      "ended_ns": "1344277739443600",
-      "duration_ns": "5573600",
+      "started_ns": "1572048917283800",
+      "ended_ns": "1572048923511000",
+      "duration_ns": "6227200",
       "outcome": "ACCEPTED"
     },
     {
@@ -1492,9 +1492,9 @@
         "amount": 1,
         "newBalance": 9903
       },
-      "started_ns": "1344277739534800",
-      "ended_ns": "1344277745083200",
-      "duration_ns": "5548400",
+      "started_ns": "1572048923606900",
+      "ended_ns": "1572048931275900",
+      "duration_ns": "7669000",
       "outcome": "ACCEPTED"
     },
     {
@@ -1507,9 +1507,9 @@
         "amount": 1,
         "newBalance": 9902
       },
-      "started_ns": "1344277745168600",
-      "ended_ns": "1344277750533500",
-      "duration_ns": "5364900",
+      "started_ns": "1572048931379300",
+      "ended_ns": "1572048940046200",
+      "duration_ns": "8666900",
       "outcome": "ACCEPTED"
     },
     {
@@ -1522,9 +1522,9 @@
         "amount": 1,
         "newBalance": 9901
       },
-      "started_ns": "1344277750621800",
-      "ended_ns": "1344277757045500",
-      "duration_ns": "6423700",
+      "started_ns": "1572048940139600",
+      "ended_ns": "1572048946726100",
+      "duration_ns": "6586500",
       "outcome": "ACCEPTED"
     },
     {
@@ -1537,9 +1537,9 @@
         "amount": 1,
         "newBalance": 9900
       },
-      "started_ns": "1344277757128200",
-      "ended_ns": "1344277762808900",
-      "duration_ns": "5680700",
+      "started_ns": "1572048946839700",
+      "ended_ns": "1572048956969000",
+      "duration_ns": "10129300",
       "outcome": "ACCEPTED"
     },
     {
@@ -1552,9 +1552,9 @@
         "amount": 1,
         "newBalance": 9899
       },
-      "started_ns": "1344277762886800",
-      "ended_ns": "1344277769364500",
-      "duration_ns": "6477700",
+      "started_ns": "1572048957072300",
+      "ended_ns": "1572048967675900",
+      "duration_ns": "10603600",
       "outcome": "ACCEPTED"
     },
     {
@@ -1567,9 +1567,9 @@
         "amount": 1,
         "newBalance": 9898
       },
-      "started_ns": "1344277769457300",
-      "ended_ns": "1344277775174900",
-      "duration_ns": "5717600",
+      "started_ns": "1572048967776700",
+      "ended_ns": "1572048974230800",
+      "duration_ns": "6454100",
       "outcome": "ACCEPTED"
     },
     {
@@ -1582,9 +1582,9 @@
         "amount": 1,
         "newBalance": 9897
       },
-      "started_ns": "1344277775284200",
-      "ended_ns": "1344277781635300",
-      "duration_ns": "6351100",
+      "started_ns": "1572048974327000",
+      "ended_ns": "1572048982101100",
+      "duration_ns": "7774100",
       "outcome": "ACCEPTED"
     },
     {
@@ -1597,9 +1597,9 @@
         "amount": 1,
         "newBalance": 9896
       },
-      "started_ns": "1344277781781500",
-      "ended_ns": "1344277787559300",
-      "duration_ns": "5777800",
+      "started_ns": "1572048982280500",
+      "ended_ns": "1572048989312200",
+      "duration_ns": "7031700",
       "outcome": "ACCEPTED"
     },
     {
@@ -1612,9 +1612,9 @@
         "amount": 1,
         "newBalance": 9895
       },
-      "started_ns": "1344277787649400",
-      "ended_ns": "1344277792777800",
-      "duration_ns": "5128400",
+      "started_ns": "1572048989423700",
+      "ended_ns": "1572048996735200",
+      "duration_ns": "7311500",
       "outcome": "ACCEPTED"
     },
     {
@@ -1627,9 +1627,9 @@
         "amount": 1,
         "newBalance": 9894
       },
-      "started_ns": "1344277792854300",
-      "ended_ns": "1344277798362600",
-      "duration_ns": "5508300",
+      "started_ns": "1572048996834100",
+      "ended_ns": "1572049003168500",
+      "duration_ns": "6334400",
       "outcome": "ACCEPTED"
     },
     {
@@ -1642,9 +1642,9 @@
         "amount": 1,
         "newBalance": 9893
       },
-      "started_ns": "1344277798449300",
-      "ended_ns": "1344277804369500",
-      "duration_ns": "5920200",
+      "started_ns": "1572049003265400",
+      "ended_ns": "1572049011179800",
+      "duration_ns": "7914400",
       "outcome": "ACCEPTED"
     },
     {
@@ -1657,9 +1657,9 @@
         "amount": 1,
         "newBalance": 9892
       },
-      "started_ns": "1344277804446800",
-      "ended_ns": "1344277809816400",
-      "duration_ns": "5369600",
+      "started_ns": "1572049011310200",
+      "ended_ns": "1572049020965300",
+      "duration_ns": "9655100",
       "outcome": "ACCEPTED"
     },
     {
@@ -1672,9 +1672,9 @@
         "amount": 1,
         "newBalance": 9891
       },
-      "started_ns": "1344277809894200",
-      "ended_ns": "1344277815424500",
-      "duration_ns": "5530300",
+      "started_ns": "1572049021121800",
+      "ended_ns": "1572049028224000",
+      "duration_ns": "7102200",
       "outcome": "ACCEPTED"
     },
     {
@@ -1687,9 +1687,9 @@
         "amount": 1,
         "newBalance": 9890
       },
-      "started_ns": "1344277815511800",
-      "ended_ns": "1344277821118300",
-      "duration_ns": "5606500",
+      "started_ns": "1572049028426100",
+      "ended_ns": "1572049036031000",
+      "duration_ns": "7604900",
       "outcome": "ACCEPTED"
     },
     {
@@ -1702,9 +1702,9 @@
         "amount": 1,
         "newBalance": 9889
       },
-      "started_ns": "1344277821225000",
-      "ended_ns": "1344277826573000",
-      "duration_ns": "5348000",
+      "started_ns": "1572049036231900",
+      "ended_ns": "1572049043198700",
+      "duration_ns": "6966800",
       "outcome": "ACCEPTED"
     },
     {
@@ -1717,9 +1717,9 @@
         "amount": 1,
         "newBalance": 9888
       },
-      "started_ns": "1344277826681600",
-      "ended_ns": "1344277836250600",
-      "duration_ns": "9569000",
+      "started_ns": "1572049043297400",
+      "ended_ns": "1572049049878600",
+      "duration_ns": "6581200",
       "outcome": "ACCEPTED"
     },
     {
@@ -1732,9 +1732,9 @@
         "amount": 1,
         "newBalance": 9887
       },
-      "started_ns": "1344277836395200",
-      "ended_ns": "1344277841883700",
-      "duration_ns": "5488500",
+      "started_ns": "1572049049969500",
+      "ended_ns": "1572049056612800",
+      "duration_ns": "6643300",
       "outcome": "ACCEPTED"
     },
     {
@@ -1747,9 +1747,9 @@
         "amount": 1,
         "newBalance": 9886
       },
-      "started_ns": "1344277841977600",
-      "ended_ns": "1344277847503300",
-      "duration_ns": "5525700",
+      "started_ns": "1572049056703200",
+      "ended_ns": "1572049063749100",
+      "duration_ns": "7045900",
       "outcome": "ACCEPTED"
     },
     {
@@ -1762,9 +1762,9 @@
         "amount": 1,
         "newBalance": 9885
       },
-      "started_ns": "1344277847628300",
-      "ended_ns": "1344277853785500",
-      "duration_ns": "6157200",
+      "started_ns": "1572049063880500",
+      "ended_ns": "1572049071522500",
+      "duration_ns": "7642000",
       "outcome": "ACCEPTED"
     },
     {
@@ -1777,9 +1777,9 @@
         "amount": 1,
         "newBalance": 9884
       },
-      "started_ns": "1344277853863900",
-      "ended_ns": "1344277859472100",
-      "duration_ns": "5608200",
+      "started_ns": "1572049071610700",
+      "ended_ns": "1572049078600800",
+      "duration_ns": "6990100",
       "outcome": "ACCEPTED"
     },
     {
@@ -1792,9 +1792,9 @@
         "amount": 1,
         "newBalance": 9883
       },
-      "started_ns": "1344277859603900",
-      "ended_ns": "1344277865259200",
-      "duration_ns": "5655300",
+      "started_ns": "1572049078867400",
+      "ended_ns": "1572049086264400",
+      "duration_ns": "7397000",
       "outcome": "ACCEPTED"
     },
     {
@@ -1807,9 +1807,9 @@
         "amount": 1,
         "newBalance": 9882
       },
-      "started_ns": "1344277865338600",
-      "ended_ns": "1344277870756800",
-      "duration_ns": "5418200",
+      "started_ns": "1572049086376100",
+      "ended_ns": "1572049095014400",
+      "duration_ns": "8638300",
       "outcome": "ACCEPTED"
     },
     {
@@ -1822,9 +1822,9 @@
         "amount": 1,
         "newBalance": 9881
       },
-      "started_ns": "1344277870840200",
-      "ended_ns": "1344277876822000",
-      "duration_ns": "5981800",
+      "started_ns": "1572049095189000",
+      "ended_ns": "1572049104702700",
+      "duration_ns": "9513700",
       "outcome": "ACCEPTED"
     },
     {
@@ -1837,9 +1837,9 @@
         "amount": 1,
         "newBalance": 9880
       },
-      "started_ns": "1344277876918900",
-      "ended_ns": "1344277882777100",
-      "duration_ns": "5858200",
+      "started_ns": "1572049104846300",
+      "ended_ns": "1572049112685600",
+      "duration_ns": "7839300",
       "outcome": "ACCEPTED"
     },
     {
@@ -1851,9 +1851,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277882871700",
-      "ended_ns": "1344277886112200",
-      "duration_ns": "3240500",
+      "started_ns": "1572049112962100",
+      "ended_ns": "1572049118146100",
+      "duration_ns": "5184000",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1865,9 +1865,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277886252000",
-      "ended_ns": "1344277889046900",
-      "duration_ns": "2794900",
+      "started_ns": "1572049118308200",
+      "ended_ns": "1572049122418800",
+      "duration_ns": "4110600",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1879,9 +1879,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277889131200",
-      "ended_ns": "1344277891502800",
-      "duration_ns": "2371600",
+      "started_ns": "1572049122567700",
+      "ended_ns": "1572049126409800",
+      "duration_ns": "3842100",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1893,9 +1893,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277891585900",
-      "ended_ns": "1344277894807500",
-      "duration_ns": "3221600",
+      "started_ns": "1572049126513700",
+      "ended_ns": "1572049131353100",
+      "duration_ns": "4839400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1907,9 +1907,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277894904900",
-      "ended_ns": "1344277897450400",
-      "duration_ns": "2545500",
+      "started_ns": "1572049131493500",
+      "ended_ns": "1572049134742300",
+      "duration_ns": "3248800",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1921,9 +1921,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277897528900",
-      "ended_ns": "1344277900307100",
-      "duration_ns": "2778200",
+      "started_ns": "1572049134876800",
+      "ended_ns": "1572049139119000",
+      "duration_ns": "4242200",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1935,9 +1935,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277900411800",
-      "ended_ns": "1344277902982800",
-      "duration_ns": "2571000",
+      "started_ns": "1572049139252600",
+      "ended_ns": "1572049143450200",
+      "duration_ns": "4197600",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1949,9 +1949,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277903063300",
-      "ended_ns": "1344277905601300",
-      "duration_ns": "2538000",
+      "started_ns": "1572049143688100",
+      "ended_ns": "1572049147339600",
+      "duration_ns": "3651500",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1963,9 +1963,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277905754500",
-      "ended_ns": "1344277908509800",
-      "duration_ns": "2755300",
+      "started_ns": "1572049147611000",
+      "ended_ns": "1572049150840800",
+      "duration_ns": "3229800",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1977,9 +1977,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277908599300",
-      "ended_ns": "1344277910993600",
-      "duration_ns": "2394300",
+      "started_ns": "1572049150932300",
+      "ended_ns": "1572049153774600",
+      "duration_ns": "2842300",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -1991,9 +1991,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277911069500",
-      "ended_ns": "1344277914063800",
-      "duration_ns": "2994300",
+      "started_ns": "1572049153871300",
+      "ended_ns": "1572049156915500",
+      "duration_ns": "3044200",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2005,9 +2005,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277914144800",
-      "ended_ns": "1344277916711100",
-      "duration_ns": "2566300",
+      "started_ns": "1572049157029800",
+      "ended_ns": "1572049160276600",
+      "duration_ns": "3246800",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2019,9 +2019,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277916802500",
-      "ended_ns": "1344277919504400",
-      "duration_ns": "2701900",
+      "started_ns": "1572049160415700",
+      "ended_ns": "1572049164490300",
+      "duration_ns": "4074600",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2033,9 +2033,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277919617600",
-      "ended_ns": "1344277922128100",
-      "duration_ns": "2510500",
+      "started_ns": "1572049164600600",
+      "ended_ns": "1572049168087600",
+      "duration_ns": "3487000",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2047,9 +2047,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277922205100",
-      "ended_ns": "1344277924872100",
-      "duration_ns": "2667000",
+      "started_ns": "1572049168178100",
+      "ended_ns": "1572049171983600",
+      "duration_ns": "3805500",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2061,9 +2061,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277924974400",
-      "ended_ns": "1344277927422100",
-      "duration_ns": "2447700",
+      "started_ns": "1572049172180800",
+      "ended_ns": "1572049175388600",
+      "duration_ns": "3207800",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2075,9 +2075,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277927492500",
-      "ended_ns": "1344277930294300",
-      "duration_ns": "2801800",
+      "started_ns": "1572049175504800",
+      "ended_ns": "1572049179749100",
+      "duration_ns": "4244300",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2089,9 +2089,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277930379200",
-      "ended_ns": "1344277933141300",
-      "duration_ns": "2762100",
+      "started_ns": "1572049179903400",
+      "ended_ns": "1572049185013100",
+      "duration_ns": "5109700",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2103,9 +2103,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277933216100",
-      "ended_ns": "1344277936038200",
-      "duration_ns": "2822100",
+      "started_ns": "1572049185200300",
+      "ended_ns": "1572049191002300",
+      "duration_ns": "5802000",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2117,9 +2117,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277936132400",
-      "ended_ns": "1344277938723400",
-      "duration_ns": "2591000",
+      "started_ns": "1572049191132600",
+      "ended_ns": "1572049196404400",
+      "duration_ns": "5271800",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2131,9 +2131,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277938821400",
-      "ended_ns": "1344277941602100",
-      "duration_ns": "2780700",
+      "started_ns": "1572049196664000",
+      "ended_ns": "1572049201374600",
+      "duration_ns": "4710600",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2145,9 +2145,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277941682100",
-      "ended_ns": "1344277944223400",
-      "duration_ns": "2541300",
+      "started_ns": "1572049201493000",
+      "ended_ns": "1572049205147500",
+      "duration_ns": "3654500",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2159,9 +2159,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277944308300",
-      "ended_ns": "1344277947339400",
-      "duration_ns": "3031100",
+      "started_ns": "1572049205251000",
+      "ended_ns": "1572049209977300",
+      "duration_ns": "4726300",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2173,9 +2173,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277947413000",
-      "ended_ns": "1344277950119800",
-      "duration_ns": "2706800",
+      "started_ns": "1572049210192400",
+      "ended_ns": "1572049213912800",
+      "duration_ns": "3720400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2187,9 +2187,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277950195800",
-      "ended_ns": "1344277953647500",
-      "duration_ns": "3451700",
+      "started_ns": "1572049214007800",
+      "ended_ns": "1572049217904200",
+      "duration_ns": "3896400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2201,9 +2201,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277953767100",
-      "ended_ns": "1344277956960400",
-      "duration_ns": "3193300",
+      "started_ns": "1572049218084200",
+      "ended_ns": "1572049221786200",
+      "duration_ns": "3702000",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2215,9 +2215,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277957065400",
-      "ended_ns": "1344277959851100",
-      "duration_ns": "2785700",
+      "started_ns": "1572049221889200",
+      "ended_ns": "1572049225080600",
+      "duration_ns": "3191400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2229,9 +2229,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277959924200",
-      "ended_ns": "1344277962379700",
-      "duration_ns": "2455500",
+      "started_ns": "1572049225210300",
+      "ended_ns": "1572049229969900",
+      "duration_ns": "4759600",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2243,9 +2243,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277962454400",
-      "ended_ns": "1344277965145500",
-      "duration_ns": "2691100",
+      "started_ns": "1572049230112500",
+      "ended_ns": "1572049233956200",
+      "duration_ns": "3843700",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2257,9 +2257,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277965219900",
-      "ended_ns": "1344277967577200",
-      "duration_ns": "2357300",
+      "started_ns": "1572049234073100",
+      "ended_ns": "1572049237865200",
+      "duration_ns": "3792100",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2271,9 +2271,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277967670600",
-      "ended_ns": "1344277970261300",
-      "duration_ns": "2590700",
+      "started_ns": "1572049238098800",
+      "ended_ns": "1572049241578700",
+      "duration_ns": "3479900",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2285,9 +2285,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277970347400",
-      "ended_ns": "1344277973258200",
-      "duration_ns": "2910800",
+      "started_ns": "1572049241697000",
+      "ended_ns": "1572049244868000",
+      "duration_ns": "3171000",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2299,9 +2299,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277973336000",
-      "ended_ns": "1344277975848300",
-      "duration_ns": "2512300",
+      "started_ns": "1572049244956500",
+      "ended_ns": "1572049247939800",
+      "duration_ns": "2983300",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2313,9 +2313,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277975934800",
-      "ended_ns": "1344277978348100",
-      "duration_ns": "2413300",
+      "started_ns": "1572049248033700",
+      "ended_ns": "1572049250749100",
+      "duration_ns": "2715400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2327,9 +2327,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277978420200",
-      "ended_ns": "1344277980751100",
-      "duration_ns": "2330900",
+      "started_ns": "1572049250849800",
+      "ended_ns": "1572049253649100",
+      "duration_ns": "2799300",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2341,9 +2341,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277980840300",
-      "ended_ns": "1344277983361200",
-      "duration_ns": "2520900",
+      "started_ns": "1572049253777300",
+      "ended_ns": "1572049256975400",
+      "duration_ns": "3198100",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2355,9 +2355,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277983433700",
-      "ended_ns": "1344277986177600",
-      "duration_ns": "2743900",
+      "started_ns": "1572049257089100",
+      "ended_ns": "1572049260744600",
+      "duration_ns": "3655500",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2369,9 +2369,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277986361500",
-      "ended_ns": "1344277989213500",
-      "duration_ns": "2852000",
+      "started_ns": "1572049260963200",
+      "ended_ns": "1572049265107500",
+      "duration_ns": "4144300",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2383,9 +2383,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277989296700",
-      "ended_ns": "1344277991838700",
-      "duration_ns": "2542000",
+      "started_ns": "1572049265208000",
+      "ended_ns": "1572049268467400",
+      "duration_ns": "3259400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2397,9 +2397,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277991913600",
-      "ended_ns": "1344277994293600",
-      "duration_ns": "2380000",
+      "started_ns": "1572049268566200",
+      "ended_ns": "1572049271697100",
+      "duration_ns": "3130900",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2411,9 +2411,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277994391100",
-      "ended_ns": "1344277996943900",
-      "duration_ns": "2552800",
+      "started_ns": "1572049271792700",
+      "ended_ns": "1572049275952700",
+      "duration_ns": "4160000",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2425,9 +2425,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277997022500",
-      "ended_ns": "1344277999740100",
-      "duration_ns": "2717600",
+      "started_ns": "1572049276234000",
+      "ended_ns": "1572049280747400",
+      "duration_ns": "4513400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2439,9 +2439,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344277999850700",
-      "ended_ns": "1344278002475000",
-      "duration_ns": "2624300",
+      "started_ns": "1572049280888300",
+      "ended_ns": "1572049283864700",
+      "duration_ns": "2976400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2453,9 +2453,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278002626600",
-      "ended_ns": "1344278005768400",
-      "duration_ns": "3141800",
+      "started_ns": "1572049283953800",
+      "ended_ns": "1572049286637600",
+      "duration_ns": "2683800",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2467,9 +2467,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278005866400",
-      "ended_ns": "1344278008786100",
-      "duration_ns": "2919700",
+      "started_ns": "1572049286719400",
+      "ended_ns": "1572049290179400",
+      "duration_ns": "3460000",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2481,9 +2481,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278008883300",
-      "ended_ns": "1344278011541800",
-      "duration_ns": "2658500",
+      "started_ns": "1572049290274000",
+      "ended_ns": "1572049293333700",
+      "duration_ns": "3059700",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2495,9 +2495,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278011631300",
-      "ended_ns": "1344278014005100",
-      "duration_ns": "2373800",
+      "started_ns": "1572049293446800",
+      "ended_ns": "1572049296994400",
+      "duration_ns": "3547600",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2509,9 +2509,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278014071800",
-      "ended_ns": "1344278016540900",
-      "duration_ns": "2469100",
+      "started_ns": "1572049297094100",
+      "ended_ns": "1572049311858500",
+      "duration_ns": "14764400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2523,9 +2523,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278016615500",
-      "ended_ns": "1344278020363900",
-      "duration_ns": "3748400",
+      "started_ns": "1572049311941800",
+      "ended_ns": "1572049314547700",
+      "duration_ns": "2605900",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2537,9 +2537,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278020568000",
-      "ended_ns": "1344278023494000",
-      "duration_ns": "2926000",
+      "started_ns": "1572049314624000",
+      "ended_ns": "1572049317218300",
+      "duration_ns": "2594300",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2551,9 +2551,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278023579900",
-      "ended_ns": "1344278026056600",
-      "duration_ns": "2476700",
+      "started_ns": "1572049317295100",
+      "ended_ns": "1572049319826300",
+      "duration_ns": "2531200",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2565,9 +2565,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278026126000",
-      "ended_ns": "1344278028767800",
-      "duration_ns": "2641800",
+      "started_ns": "1572049319903300",
+      "ended_ns": "1572049322789500",
+      "duration_ns": "2886200",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2579,9 +2579,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278028860500",
-      "ended_ns": "1344278031796500",
-      "duration_ns": "2936000",
+      "started_ns": "1572049322897200",
+      "ended_ns": "1572049325972400",
+      "duration_ns": "3075200",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2593,9 +2593,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278031885900",
-      "ended_ns": "1344278036492500",
-      "duration_ns": "4606600",
+      "started_ns": "1572049326125100",
+      "ended_ns": "1572049329925500",
+      "duration_ns": "3800400",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2607,9 +2607,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278036630300",
-      "ended_ns": "1344278039885600",
-      "duration_ns": "3255300",
+      "started_ns": "1572049330017900",
+      "ended_ns": "1572049332945600",
+      "duration_ns": "2927700",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2621,9 +2621,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278039980800",
-      "ended_ns": "1344278043741500",
-      "duration_ns": "3760700",
+      "started_ns": "1572049333021800",
+      "ended_ns": "1572049335746400",
+      "duration_ns": "2724600",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2635,9 +2635,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278043928200",
-      "ended_ns": "1344278047275900",
-      "duration_ns": "3347700",
+      "started_ns": "1572049335883000",
+      "ended_ns": "1572049339000000",
+      "duration_ns": "3117000",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2649,9 +2649,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278047352600",
-      "ended_ns": "1344278052068300",
-      "duration_ns": "4715700",
+      "started_ns": "1572049339079600",
+      "ended_ns": "1572049342174400",
+      "duration_ns": "3094800",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2663,9 +2663,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278052276900",
-      "ended_ns": "1344278056443200",
-      "duration_ns": "4166300",
+      "started_ns": "1572049342284600",
+      "ended_ns": "1572049345851400",
+      "duration_ns": "3566800",
       "outcome": "TIMESTAMP_FAIL"
     },
     {
@@ -2677,9 +2677,9 @@
         "status": "REJECTED",
         "reason": "TIMESTAMP_FAIL"
       },
-      "started_ns": "1344278056668600",
-      "ended_ns": "1344278060477900",
-      "duration_ns": "3809300",
+      "started_ns": "1572049345934000",
+      "ended_ns": "1572049348615100",
+      "duration_ns": "2681100",
       "outcome": "TIMESTAMP_FAIL"
     }
   ]
