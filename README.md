@@ -20,7 +20,7 @@ The checked-in results pack and paper assets summarize experiments run on Window
 
 The evidence is intentionally scoped. A bearer token alone did not let the S11 attacker sign fresh requests when HMAC was enabled, but a leaked session key can forge requests (S9). The key resides in browser memory. The network-observer interpretation assumes protected session-key delivery; the default local HTTP setup does not provide TLS.
 
-## Paper figures
+## Figures
 
 - **F2 — E1 replay success matrix:** [single-column preview](paper/previews/F2-e1-coverage-single.png), [double-column preview](paper/previews/F2-e1-coverage-double.png), [PDF figures](paper/figures/).
 - **F3 — nonce TTL and timestamp window:** [scaled TTL panels](paper/figures/F3a-scaled-TTL-grid.pdf), [default-window TTL gap](paper/figures/F3b-default-TTL-gap.pdf).
