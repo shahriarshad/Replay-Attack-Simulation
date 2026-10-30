@@ -13,12 +13,34 @@ The checked-in results pack and paper assets summarize experiments run on Window
 | Corrected TTL-gap confirmation | With default PAST=300 s, FUTURE=5 s, TTL=300 s and a +4 s client offset, request-ID off accepted 0/30 replays at 299 s, 30/30 at 301 s, 30/30 at 303 s, then 0/30 at 305 s and 307 s. With request-ID on, all five delays had 0/30 accepted. | `docs/RESULTS_PACK_A.md` Round F table; raw request CSV paths and SHA-256 hashes are listed there. |
 | Previously failed withdrawal replay (independent S10) | Each trial used a different failed request ID and nonce. Under `success_only`, a failed attempt does not reserve its ID; later execution depends on the enabled freshness defenses. Under `any_outcome` with request-ID defense on, the same failed ID is blocked. A funded legitimate retry with a fresh nonce succeeds with a new ID under both policies; reusing the failed ID succeeds only under `success_only`. | Round I S10 and resubmission tables in [RESULTS_PACK_A](docs/RESULTS_PACK_A.md); all cells and reasons in [ROUND_I_REPORT](docs/ROUND_I_REPORT.md). |
 | E2 per-layer latency (10 repeats) | Median per-request layer p50s were approximately 190.050 µs for Redis nonce storage, 4,516.675 µs for SQLite nonce storage, and 16.450 µs for in-memory nonce storage. | `paper/tables/T3-layer-cost.tex`; detailed t-based intervals and method in `docs/RESULTS_PACK_A.md`. Localhost/single-machine comparison only. |
-| E3 false rejection | Under assumed P1 parameters, PAST=5 s/FUTURE=0 rejected 629/2,000 requests; PAST=5 s/FUTURE=2 rejected 0/2,000. Every E3 cell matched the offline timestamp-rule recomputation. | E3 table in `docs/RESULTS_PACK_A.md`; `experiments/results/e3-v2/summary.csv` and `requests.csv`. These are assumption-driven simulations, not network measurements. |
+| E3 false rejection | Under assumed P1 parameters, PAST=5 s/FUTURE=0 rejected 629/2,000 requests; PAST=5 s/FUTURE=2 rejected 0/2,000. Under P3 at FUTURE=60 s, PAST=120 s rejected 47/2,000 (2.35%) and PAST=300 s rejected 19/2,000 (0.95%); these matched the offline expected counts. | E3 table in `docs/RESULTS_PACK_A.md`; `experiments/results/e3-v2/summary.csv` and `requests.csv`. These are assumption-driven simulations, not network measurements. |
 | E4a TTL/window rule | No rule violations in 135 request-ID-off cells. The tested rule was acceptance iff TTL ≤ replay delay < PAST + future offset; the exact TTL=4 boundary was not sampled. | E4a section in `docs/RESULTS_PACK_A.md`; `experiments/results/e4-v2/e4a-rule-check.json`. |
 | Concurrent debit safety check | All 30 repeats of 100 parallel distinct withdrawals against balance 100 satisfied the ledger invariants; minimum reconstructed balance was 0. | `experiments/results/round-i/atomic-debit/runs.csv` and sanitized `ledger.csv`; details in `docs/ROUND_I_REPORT.md`. |
 | Nonce-store growth | Clean runs measured about 180.97 bytes per key for accepted requests and requests rejected later at request-ID. Older 164.96 B/key data are marked unverified/superseded. | `docs/RESULTS_PACK_A.md`, memory raw files and INFO logs under `experiments/results/`. |
 
 The evidence is intentionally scoped. A bearer token alone did not let the S11 attacker sign fresh requests when HMAC was enabled, but a leaked session key can forge requests (S9). The key resides in browser memory. The network-observer interpretation assumes protected session-key delivery; the default local HTTP setup does not provide TLS.
+
+## Paper-to-artifact map
+
+The paper’s E1 coverage matrix is a composite asset, not one single run directory:
+
+- S1–S9: `experiments/results/e1-v3/round-i-scaled/summary.csv`
+- S10 fast/late and policy-resubmission rows: `experiments/results/e1-v3-s10-independent/2026-10-22T04-40-36-408Z/summary.csv`
+- S11: `experiments/results/e1-v3-s11/round-i-s11/summary.csv`
+- Paper matrix: `paper/tables/T5-e1-coverage.tex`
+
+The E1 matrix uses `success_only`, with PAST=6 s, FUTURE=2 s, NONCE_TTL=8 s, SESSION_TTL=15 s. S10 is independently sampled at 1 s and 9 s after funding; S11 uses 100 attempts. The separate S10 table also records the `any_outcome` R-on rows and the same-ID/new-ID resubmission comparison. A complete 16-configuration E1 matrix under `any_outcome` is not part of the cited paper asset.
+
+For the other paper tables, use these authoritative saved artifacts:
+
+- E2 layer costs: `paper/tables/T3-layer-cost.tex`, sourced from `experiments/results/e2-v2/`.
+- E3 false-rejection sweep: `experiments/results/e3-v2/summary.csv`; the model prediction is recorded in `offline_expected_rejections`.
+- E4a full-scale default-window confirmation: `experiments/results/e4a-fullscale/2026-10-20T08-31-04-480Z/`.
+- E4a scaled TTL/future-offset grid: `experiments/results/e4-v2/e4a-summary.csv`.
+- E4b corrected fail-open/fail-closed run: `experiments/results/e4-final-c3/e4b.csv` and `run-e4b-corrected.json`. It has 30 legitimate attempts and 30 replay attempts per cell; fail-open is 30/30 replay-success with request ID off and 0/30 with request ID on.
+- E4c exact-count loss/retry run: `experiments/results/round-i/e4c-exact/e4c.csv` and `run-e4c-corrected.json`. It uses 200 transactions per cell, exact loss counts of 0, 10, and 40, and exactly-once debit accounting of 200/200. Identical signed retries produce `NONCE_FAIL`; fresh-nonce retries with the same request ID produce `ALREADY_PROCESSED` where request-ID checking is reached.
+
+The paper tables and their source hashes are listed in `paper/MANIFEST.md`; the independent paper cross-check is recorded in `paper/CROSSCHECK.txt` (672 values, 0 mismatches). Generated paper assets can be rebuilt with `python paper/generate_paper_assets.py`, followed by `python paper/crosscheck_assets.py`.
 
 ## Figures
 
@@ -33,13 +55,15 @@ The evidence is intentionally scoped. A bearer token alone did not let the S11 a
 
 Start here, then follow the linked raw paths and hashes:
 
-1. [docs/RESULTS_PACK_A.md](docs/RESULTS_PACK_A.md) — result tables, provenance, run profiles, and superseded-result notes.
-2. [docs/CLAIMS_EVIDENCE.md](docs/CLAIMS_EVIDENCE.md) — candidate claims, supporting evidence, and caveats.
-3. [docs/PAPER_FACTS_CURATED.md](docs/PAPER_FACTS_CURATED.md) — curated values with scope and source hashes. The larger `docs/PAPER_FACTS.md` is labeled as a raw machine register, not for citation.
-4. [paper/INVENTORY.md](paper/INVENTORY.md), [paper/MANIFEST.md](paper/MANIFEST.md), and [paper/CROSSCHECK.txt](paper/CROSSCHECK.txt) — generated figures/tables, source data, and independent paper-asset check.
-5. [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md) and [docs/LIMITATIONS.md](docs/LIMITATIONS.md) — attacker assumptions, simulation limits, and security caveats.
-6. [docs/REPRODUCE.md](docs/REPRODUCE.md) — Windows reproduction commands, environment, and run conventions.
-7. [docs/ROUND_I_REPORT.md](docs/ROUND_I_REPORT.md) — final experiment round details, full per-cell results, code changes, commands, audit, tests, and caveats.
+1. `paper/tables/` and `paper/MANIFEST.md` — paper values, source paths, hashes, and regeneration commands.
+2. `experiments/results/e1-v3/`, `e1-v3-s10-independent/`, and `e1-v3-s11/` — composite E1 coverage sources.
+3. [docs/RESULTS_PACK_A.md](docs/RESULTS_PACK_A.md) — result tables, provenance, run profiles, and superseded-result notes.
+4. [docs/CLAIMS_EVIDENCE.md](docs/CLAIMS_EVIDENCE.md) — candidate claims, supporting evidence, and caveats.
+5. [docs/PAPER_FACTS_CURATED.md](docs/PAPER_FACTS_CURATED.md) — curated values with scope and source hashes. The larger `docs/PAPER_FACTS.md` is labeled as a raw machine register, not for citation.
+6. [paper/INVENTORY.md](paper/INVENTORY.md) and [paper/CROSSCHECK.txt](paper/CROSSCHECK.txt) — generated assets and independent paper-asset check.
+7. [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md) and [docs/LIMITATIONS.md](docs/LIMITATIONS.md) — attacker assumptions, simulation limits, and security caveats.
+8. [docs/REPRODUCE.md](docs/REPRODUCE.md) — Windows reproduction commands, environment, and run conventions.
+9. [docs/ROUND_I_REPORT.md](docs/ROUND_I_REPORT.md) — final experiment round details, full per-cell results, code changes, commands, audit, tests, and caveats.
 
 ### Important raw-data availability note
 
@@ -50,7 +74,7 @@ The detailed tables and provenance documents are tracked. Some large per-request
 Run these commands from Windows PowerShell at the repository root. They do not need Bash, `jq`, or WSL:
 
 ```powershell
-# Test suite (44 passed in the recorded Round I run)
+# Test suite (44 declared test cases across server/test/*.test.js)
 npm.cmd test
 
 # Independent audit; choose a new output directory for each audit
@@ -61,7 +85,7 @@ node experiments/audit/verify-results.js
 python paper/crosscheck_assets.py
 ```
 
-The saved Round I audit reported 4,532 compared values and 0 mismatches. The saved paper generator check reported 1,095 values and 0 mismatches; the separate cross-check reported 672 values and 0 mismatches. The audit and paper cross-check require the referenced raw experiment CSVs. A clean clone without the locally excluded Round I artifacts cannot reproduce those exact audit totals until the raw files are supplied.
+The repository’s seven server test files declare 44 test cases. The saved Round I audit reported 4,532 compared values and 0 mismatches. The saved paper generator check reported 1,095 values and 0 mismatches; the separate cross-check reported 672 values and 0 mismatches. These are different checks: test cases are executable Node tests, while the audit totals are compared result values. The audit and paper cross-check require the referenced raw experiment CSVs. A clean clone without the locally excluded Round I artifacts cannot reproduce those exact audit totals until the raw files are supplied.
 
 To regenerate the paper assets (this rewrites generated files under `paper/`), run:
 
